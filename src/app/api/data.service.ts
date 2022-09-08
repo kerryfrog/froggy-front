@@ -9,9 +9,10 @@ import axios from 'axios';
 export class DataService {
     async getYarnDataFromRaverly(id) {
         try {
+            let result;
             const BASE_URI = "https://api.ravelry.com";
             const headers = new Headers(); // 인증
-            const endpoint = `${BASE_URI}/patterns/${id}.json`;
+            const endpoint = `${BASE_URI}/yarns/${id}.json`;
             headers.append(
                 "Authorization",
                 "Basic " +
@@ -21,18 +22,19 @@ export class DataService {
                     "nKTdyxY5v3mF3TDb8hkQHGhHwHNQL7lbJtU8Dz15"
                 )
             );
-            fetch(endpoint, { method: "GET", headers: headers })
+            await fetch(endpoint, { method: "GET", headers: headers })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
-                    return data;
+                    result = data; 
                 })
+            return result;
         }
         catch (error) {
             return error.response;
         }
     }
     async postYarnData(data) {
+        console.log("post Yarn Data", data);
         try {
             const response = await axios({
                 method: 'post',
@@ -40,7 +42,7 @@ export class DataService {
                 data,
                 responseType: 'json'
             }); 
-      return response;
+            return response;
         } catch (error) {
         return error.response;
         }
