@@ -41,7 +41,7 @@ export class DataService {
                 url: `${environment.apiUrl}/dbTest`,
                 data,
                 responseType: 'json'
-            }); 
+            });
             return response;
         } catch (error) {
         return error.response;
