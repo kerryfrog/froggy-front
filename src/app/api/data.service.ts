@@ -38,10 +38,10 @@ export class DataService {
         try {
             const response = await axios({
                 method: 'post',
-                url: `${environment.apiUrl}/dbTest/`,
+                url: `${environment.apiUrl}/dbTest`,
                 data,
                 responseType: 'json'
-            }); 
+            });
             return response;
         } catch (error) {
         return error.response;
