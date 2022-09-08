@@ -38,7 +38,7 @@ export class DataService {
         try {
             const response = await axios({
                 method: 'post',
-                url: `${environment.apiUrl}/dbTest/`,
+                url: `${environment.apiUrl}/dbTest`,
                 data,
                 responseType: 'json'
             }); 

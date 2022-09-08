@@ -22,7 +22,9 @@ export class MainPage {
   async getRaverlyApi() {
     const yarnId = this.getRandomInt(1, 10000);
     const response = await this.dataService.getYarnDataFromRaverly(yarnId);
-    console.log("response",response);
+    //console.log("response",response);
+    // let data = [];
+    // data.push(response);
     const postResult = await this.dataService.postYarnData(response);
   }
 
