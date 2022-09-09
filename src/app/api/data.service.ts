@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import axios from 'axios';
+// axios.defaults.withCredentials = true; 
 
 @Injectable({
   providedIn: 'root',
@@ -34,13 +35,14 @@ export class DataService {
         }
     }
     async postYarnData(data) {
+        
         console.log("post Yarn Data", data);
         try {
             const response = await axios({
                 method: 'post',
                 url: `${environment.apiUrl}/dbTest`,
                 data,
-                responseType: 'json'
+                responseType: 'json',
             });
             return response;
         } catch (error) {
