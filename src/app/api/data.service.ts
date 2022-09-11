@@ -34,6 +34,32 @@ export class DataService {
             return error.response;
         }
     }
+    async getPatternDataFromRaverly(id) {
+        try {
+            let result;
+            const BASE_URI = "https://api.ravelry.com";
+            const headers = new Headers(); // 인증
+            const endpoint = `${BASE_URI}/patterns/${id}.json`;
+            headers.append(
+                "Authorization",
+                "Basic " +
+                btoa(
+                    "read-ea6b8e0a978e097b8badec466c71a60b" +
+                    ":" +
+                    "nKTdyxY5v3mF3TDb8hkQHGhHwHNQL7lbJtU8Dz15"
+                )
+            );
+            await fetch(endpoint, { method: "GET", headers: headers })
+                .then((res) => res.json())
+                .then((data) => {
+                    result = data; 
+                })
+            return result;
+        }
+        catch (error) {
+            return error.response;
+        }
+    }
     async postYarnData(data) {
         
         console.log("post Yarn Data", data);
@@ -49,5 +75,18 @@ export class DataService {
         return error.response;
         }
     }
-
+    async postPatternData(data) {
+        console.log("post Pattern Data", data);
+        try {
+            const response = await axios({
+                method: 'post',
+                url: `${environment.apiUrl}/dbTest`,
+                data,
+                responseType: 'json',
+            });
+            return response;
+        } catch (error) {
+        return error.response;
+        }
+    }
 }

@@ -12,4 +12,29 @@
     color="light"
     placeholder="검색하기"
   ></ion-searchbar>
- </ion-content>
+  
+  
+  <ion-item>
+    <ion-input
+    type="number"
+    placeholder="min index"
+    [(ngModel)]="min"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+       type="number"
+       placeholder="max index"
+       [(ngModel)]="max"
+       ></ion-input>
+  </ion-item>
+  <h3 *ngIf="nowIndex !== -1" >get api index :{{nowIndex}} </h3>
+  <ion-button 
+    (click) = "getRaverlyApi()"
+  >
+    패턴 api 호출
+  </ion-button>
+ </ion-content> 
+
+ 
+  
