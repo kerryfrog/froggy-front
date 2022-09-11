@@ -66,7 +66,7 @@ export class DataService {
         try {
             const response = await axios({
                 method: 'post',
-                url: `${environment.apiUrl}/dbTest`,
+                url: `${environment.apiUrl}/dbYarnTest`,
                 data,
                 responseType: 'json',
             });
@@ -80,7 +80,7 @@ export class DataService {
         try {
             const response = await axios({
                 method: 'post',
-                url: `${environment.apiUrl}/dbTest`,
+                url: `${environment.apiUrl}/dbPatternTest`,
                 data,
                 responseType: 'json',
             });
