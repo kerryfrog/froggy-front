@@ -12,8 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('./main-tab/main.module').then(m => m.MainPageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('./tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'yarn',
+        loadChildren: () => import('./yarn-tab/yarn.module').then(m => m.YarnPageModule)
       },
       {
         path: 'pattern',
