@@ -4,17 +4,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { YarnPage } from './yarn.page';
-import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { YarnPageRoutingModule } from './yarn-routing.module';
+import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
+import { ToolbarComponentModule } from '../../components/toolbar/toolbar.module';
+
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
-    YarnPageRoutingModule
+    YarnPageRoutingModule,
+    ToolbarComponentModule,
   ],
   declarations: [YarnPage]
 })

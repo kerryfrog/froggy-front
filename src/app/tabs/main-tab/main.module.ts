@@ -4,19 +4,25 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MainPage } from './main.page';
 
-import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
+
 
 import { MainPageRoutingModule } from './main-routing.module';
+
+import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
+import { ToolbarComponentModule } from '../../components/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
-    MainPageRoutingModule
+    MainPageRoutingModule,
+    ToolbarComponentModule,
   ],
-  declarations: [MainPage]
+  declarations: [MainPage],
+  entryComponents: [
+    ToolbarComponent, 
+  ],
 })
 export class MainPageModule {}
 
