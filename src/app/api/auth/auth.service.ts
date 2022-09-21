@@ -6,13 +6,13 @@ import axios from 'axios';
 @Injectable({
     providedIn: 'root',
 })
-export class DataService { 
+export class AuthService { 
     async postPatternData(data) {
         console.log("post login form", data);
         try {
             const response = await axios({
                 method: 'post',
-                url: `${environment.apiUrl}/join`,
+                url: `${environment.apiUrl}/auth/join`,
                 data,
                 responseType: 'json',
             });
