@@ -34,7 +34,7 @@
       (click)="openPatternDetailModal(pattern)"
     >
       <div class="image__square">
-        <img src="{{pattern.image.squareUrl}}" (error)="onImageError($event)" />
+        <img src="{{pattern.thumbnail}}" (error)="onImageError($event)" />
         <ion-icon 
           name="heart-outline"
           class="heart"
