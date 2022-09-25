@@ -1,3 +1,51 @@
 .toolbar{
     --background:#95C597;
 }
+
+
+.list__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5vw;
+  row-gap: 5vw;
+  margin-top: 3.2vw;
+  padding: 0 4.4vw;
+  background-color: white;
+  justify-content: center;
+}
+
+.card__wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image {
+  &__square {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    margin: auto;
+    position: relative;
+    img{
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+    .heart {
+      position: absolute;
+      right: 0.7rem;
+      bottom: 0.7rem;
+      color: #ea3d51;
+      font-size: 20px;
+    &--fill {
+      position: absolute;
+      right: 0.7rem;
+      bottom: 0.7rem;
+      color: #ea3d51;
+      font-size: 20px;
+    }
+  }
+  }
+}

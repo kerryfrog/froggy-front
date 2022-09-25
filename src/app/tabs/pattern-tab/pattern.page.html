@@ -7,8 +7,6 @@
     color="light"
     placeholder="검색하기"
   ></ion-searchbar>
-  
-  
   <ion-item>
     <ion-input
     type="number"
@@ -29,6 +27,31 @@
   >
     패턴 api 호출
   </ion-button>
+  <ion-list *ngIf="patternList" class="list__wrapper">
+    <div
+      *ngFor="let pattern of patternList"
+      class="card__wrapper"
+      (click)="openPatternDetailModal(pattern)"
+    >
+      <div class="image__square">
+        <img src="{{pattern.image.squareUrl}}" (error)="onImageError($event)" />
+        <ion-icon 
+          name="heart-outline"
+          class="heart"
+          *ngIf="!pattern.isFavorite"
+          (click)="enrollFavoritePattern($event, pattern)"
+        ></ion-icon>
+        <ion-icon 
+          name="heart"
+          class="heart--fill"
+          *ngIf="pattern.isFavorite"
+          (click)="deleteFavoritePattern($event, pattern)"
+        ></ion-icon>
+      </div>
+    </div>
+  </ion-list>
+
+
  </ion-content> 
 
  

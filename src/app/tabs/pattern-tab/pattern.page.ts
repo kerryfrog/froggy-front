@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/api/data.service';
+import { PatternService } from 'src/app/api/pattern.service';
 import {
   AlertController,
-  LoadingController,
+  LoadingController, 
+  ModalController,
 } from '@ionic/angular';
+
+import { PatternDetailComponent } from 'src/app/components/pattern-detail/pattern-detail.component';
 
 
 @Component({
@@ -15,10 +19,20 @@ export class PatternPage {
   public min;
   public max;
   public nowIndex =-1;
+  public patternList = [];
+
   constructor(
     public dataService: DataService,
     public alertController: AlertController,
+    public patternService: PatternService,
+    public modalController: ModalController,
   ) {}
+
+
+  async ionViewDidEnter() {
+    console.log("pattern page enter");
+    await this.getPatternPageView();
+  }
 
   async getRaverlyApi() {
     if (
@@ -66,4 +80,40 @@ export class PatternPage {
       this.nowIndex = i;
     }
   }
+
+  async getPatternPageView() {
+    const { data } = await this.patternService.getRecommendPatternList();
+    console.log(data);
+    
+    if (data.status === 'Y') {
+      this.patternList = data.patternList;
+      console.log(data);
+      console.log(this.patternList);
+    }
+   
+  }
+
+  async openPatternDetailModal(pattern) {
+    const modal = await this.modalController.create({
+      component: PatternDetailComponent,
+      cssClass: 'modal-fullscreen',
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+
+  }
+  enrollFavoritePattern(e, pattern) {
+    
+  }
+  deleteFavoritePattern(e, pattern) {
+    
+  }
+
+  onImageError(e) {
+    
+  }
+
+
 }

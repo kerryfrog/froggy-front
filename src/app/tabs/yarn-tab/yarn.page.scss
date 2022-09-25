@@ -1,3 +1,39 @@
 .toolbar{
     --background:#95C597;
 }
+
+.list__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5vw;
+  row-gap: 5vw;
+  margin-top: 3.2vw;
+  padding: 0 4.4vw;
+  background-color: white;
+  justify-content: center;
+}
+
+.card__wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image__square {
+  width: 44vw;
+  height: 44vw;
+  position: relative;
+  object-fit: cover;
+  &__productImage{
+    width: 44vw;
+    height: 44vw;
+  }
+  
+  .heart {
+    position: absolute;
+    right: 0.7rem;
+    bottom: 0.7rem;
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+}

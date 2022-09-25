@@ -7,4 +7,29 @@
     color="light"
     placeholder="검색하기"
   ></ion-searchbar>
+  
+  <ion-list *ngIf="yarnList" class="list__wrapper">
+    <div
+      *ngFor="let yarn of yarnList"
+      class="card__wrapper"
+      (click)="openYarnDetailModal(yarn)"
+    >
+      <div class="image__square">
+        <img class="image__square__productImage" 
+        src="https://source.unsplash.com/random" (error)="onImageError($event)" />
+        <ion-icon 
+          name="heart-outline"
+          class="heart"
+          *ngIf="!yarn.isFavorite"
+          (click)="enrollFavoriteYarn($event, yarn)"
+        ></ion-icon>
+        <ion-icon 
+          name="heart"
+          class="heart"
+          *ngIf="yarn.isFavorite"
+          (click)="deleteFavoriteYarn($event, yarn)"
+        ></ion-icon>
+      </div>
+    </div>
+  </ion-list>
 </ion-content>

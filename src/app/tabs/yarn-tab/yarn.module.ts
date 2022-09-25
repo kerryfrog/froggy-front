@@ -8,6 +8,7 @@ import { YarnPage } from './yarn.page';
 import { YarnPageRoutingModule } from './yarn-routing.module';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { ToolbarComponentModule } from '../../components/toolbar/toolbar.module';
+import { YarnDetailComponentModule } from '../../components/yarn-detail/yarn-detail.module'
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ToolbarComponentModule } from '../../components/toolbar/toolbar.module'
     FormsModule,
     YarnPageRoutingModule,
     ToolbarComponentModule,
+    YarnDetailComponentModule,
   ],
   declarations: [YarnPage]
 })
