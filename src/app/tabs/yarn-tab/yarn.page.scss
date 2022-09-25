@@ -17,23 +17,33 @@
   width: 100%;
   margin: 0 auto;
 }
-
-.image__square {
-  width: 44vw;
-  height: 44vw;
-  position: relative;
-  object-fit: cover;
-  &__productImage{
-    width: 44vw;
-    height: 44vw;
+.image {
+  &__square {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    margin: auto;
+    position: relative;
+    img{
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+    .heart {
+      position: absolute;
+      right: 0.7rem;
+      bottom: 0.7rem;
+      color: #ea3d51;
+      font-size: 20px;
+    &--fill {
+      position: absolute;
+      right: 0.7rem;
+      bottom: 0.7rem;
+      color: #ea3d51;
+      font-size: 20px;
+    }
   }
-  
-  .heart {
-    position: absolute;
-    right: 0.7rem;
-    bottom: 0.7rem;
-    font-size: 14px;
-    width: 14px;
-    height: 14px;
   }
 }

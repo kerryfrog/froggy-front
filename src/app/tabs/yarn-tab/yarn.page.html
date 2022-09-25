@@ -15,8 +15,7 @@
       (click)="openYarnDetailModal(yarn)"
     >
       <div class="image__square">
-        <img class="image__square__productImage" 
-        src="https://source.unsplash.com/random" (error)="onImageError($event)" />
+        <img src="{{yarn.thumbnail}}" (error)="onImageError($event)" />
         <ion-icon 
           name="heart-outline"
           class="heart"
