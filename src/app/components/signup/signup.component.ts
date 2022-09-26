@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
       console.log('Please provide all the required values!')
       return false;
     } else {
-      await this.authService.postPatternData(this.ionicForm.value);
+      await this.authService.postSignUp(this.ionicForm.value);
       console.log(this.ionicForm.value)
     }
   }
