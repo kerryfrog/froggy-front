@@ -7,19 +7,34 @@ import axios from 'axios';
     providedIn: 'root',
 })
 export class AuthService { 
-    async postPatternData(data) {
-        console.log("post login form", data);
-        try {
-            const response = await axios({
-                method: 'post',
-                url: `${environment.apiUrl}/auth/join`,
-                data,
-                responseType: 'json',
-            });
-            return response;
-        } catch (error) {
-        return error.response;
-        }
+  async postSignIn(data) {
+    console.log("post login form", data);
+    try {
+      const response = await axios({
+        method: 'post',
+        url: `${environment.apiUrl}/auth/login`,
+        data,
+        responseType: 'json',
+      });
+      return response;
+    } catch (error) {
+      return error.response;
     }
+  }
+  
+  async postSignUp(data) {
+    console.log("post signup form", data);
+    try {
+      const response = await axios({
+        method: 'post',
+        url: `${environment.apiUrl}/auth/join`,
+        data,
+        responseType: 'json',
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 
 }
