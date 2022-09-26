@@ -21,12 +21,11 @@ export class YarnService {
             return error.response;
         }
     }
-
-    async getYarnDetail() {
+    async getYarnDetail(yarnId) {
         try {
             const response = await axios({
                 method: 'get',
-                url: `${environment.apiUrl}/yarn`,
+                url: `${environment.apiUrl}/yarn/${yarnId}`,
                 responseType: 'json',
             });
             return response;
@@ -34,7 +33,6 @@ export class YarnService {
             return error.response;
         }
     }
-
     async enrollFavoriteYarn(data) {
         try {
             const response = await axios({

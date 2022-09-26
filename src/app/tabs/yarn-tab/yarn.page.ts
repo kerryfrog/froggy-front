@@ -7,7 +7,8 @@ import {
   ModalController,
   NavController,
 } from '@ionic/angular';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-yarn',
@@ -21,10 +22,15 @@ export class YarnPage implements OnInit{
     public yarnService: YarnService,
     public navController: NavController,
     public modalController: ModalController,
+    public router: Router,
+    public activatedRoute: ActivatedRoute,
+    public location:Location,
   ) {}
   
   async ngOnInit() {
-
+    this.activatedRoute.queryParams.subscribe((params) => {
+      console.log("ngonInit", params);
+    });
   }
 
   async ionViewDidEnter() {
