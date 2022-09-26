@@ -21,4 +21,18 @@ export class YarnService {
             return error.response;
         }
     }
+
+    async enrollFavoriteYarn(data) {
+        try {
+            const response = await axios({
+                method: 'post',
+                url: `${environment.apiUrl}/yarn`,
+                responseType: 'json',
+                data,
+            });
+            return response;
+        } catch (error) {
+            return error.response;
+        }
+    }
 }

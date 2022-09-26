@@ -8,7 +8,7 @@ import {
 } from '@ionic/angular';
 
 import { PatternDetailComponent } from 'src/app/components/pattern-detail/pattern-detail.component';
-
+// import { LocalStorageService } from '../../common/local-storage.service';
 
 @Component({
   selector: 'app-pattern',
@@ -104,9 +104,38 @@ export class PatternPage {
     const { data } = await modal.onWillDismiss();
 
   }
-  enrollFavoritePattern(e, pattern) {
+  async enrollFavoritePattern(e, pattern) {
+    e.stopPropagation();
+    let patternResult = this.patternList.filter((pa) => pa.id === pattern.id)[0];
+    console.log("enrool favoaite yanr", patternResult);
+    
+    if (patternResult['isFavorite']) {
+      patternResult['isFavorite'] = false;  
+    }
+    else {
+      patternResult['isFavorite'] = true;
+    }
+    console.log(patternResult);
+  }
+
+  checkIsPatternFavorite(favoritePatternList){
+    if (!favoritePatternList) return;
+    this.patternList = this.patternList.map((pattern) => {
+      const patterns = { ...pattern };
+      const isFavorite = favoritePatternList.includes(pattern.id);
+      if (isFavorite) {
+        patterns.isFavorite = true;
+      } else {
+        patterns.isFavorite = false;
+      }
+      return patterns;
+    });
+  }
+
+  fetchEnrollFavoritePattern(pattern) {
     
   }
+
   deleteFavoritePattern(e, pattern) {
     
   }

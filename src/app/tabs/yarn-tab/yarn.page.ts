@@ -1,10 +1,13 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { YarnService } from 'src/app/api/yarn.service';
+// import { LocalStorageService } from '../../common/local-storage.service';
 import {
   AlertController,
   LoadingController, 
   ModalController,
 } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-yarn',
@@ -27,6 +30,8 @@ export class YarnPage implements OnInit{
     console.log("yarn page enter");
     
     await this.getYarnPageView();
+    this.setFavoriteFalse();
+    //this.checkIsYarnFavorite(favoriteYarnList);
   }
 
   async getYarnPageView() {
@@ -36,7 +41,6 @@ export class YarnPage implements OnInit{
     if (data.status === 'Y') {
       this.yarnList = data.randYarn;
       console.log(data);
-      
     }
     
   }
@@ -45,13 +49,59 @@ export class YarnPage implements OnInit{
     
   }
   enrollFavoriteYarn(e, yarn) {
+    e.stopPropagation();
+    let yarnResult = this.yarnList.filter((ya) => ya.id === yarn.id)[0];
+    console.log("enrool favoaite yanr", yarnResult);
+    
+    if (yarnResult['isFavorite']) {
+      yarnResult['isFavorite'] = false;  
+    }
+    else {
+      yarnResult['isFavorite'] = true;
+    }
+    console.log(yarnResult);
     
   }
   deleteFavoriteYarn(e, yarn) {
     
   }
 
+  // fetch favorite item
+  async fetchEnrollFavoriteItem(yarn) {
+    const payload = this.genPayload(yarn);
+    const response = await this.yarnService.enrollFavoriteYarn(payload);
+    if (response.status !== 200) return false;
+    return true;
+  }
+
+  genPayload(yarn) {
+    const payload = {
+      yarnId:yarn.id,
+    };
+    return payload;
+  }
+
+  checkIsYarnFavorite(favoriteYarnList) {
+    if (!favoriteYarnList) return;
+    this.yarnList = this.yarnList.map((yarn) => {
+      const isFavorite = favoriteYarnList.includes(yarn.id);
+      if (isFavorite) {
+        yarn.isFavorite = true;
+      } else {
+        yarn.isFavorite = false;
+      }
+      return yarn;
+    });
+  }
+
   onImageError(e) {
     
+  }
+
+
+  setFavoriteFalse() {
+    for (let yarn of this.yarnList) {
+      yarn['isFavorite'] = false;
+    }
   }
 }
