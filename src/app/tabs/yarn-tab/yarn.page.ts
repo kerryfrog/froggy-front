@@ -7,7 +7,7 @@ import {
   ModalController,
 } from '@ionic/angular';
 
-
+import { YarnDetailComponent } from 'src/app/components/yarn-detail/yarn-detail.component';
 
 @Component({
   selector: 'app-yarn',
@@ -45,8 +45,15 @@ export class YarnPage implements OnInit{
     
   }
 
-  openYarnDetailModal(yarn) {
-    
+  async openYarnDetailModal(yarn) {
+    const modal = await this.modalController.create({
+      component: YarnDetailComponent,
+      cssClass: 'modal-fullscreen',
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
   }
   enrollFavoriteYarn(e, yarn) {
     e.stopPropagation();

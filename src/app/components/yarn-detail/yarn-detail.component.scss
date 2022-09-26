@@ -1,3 +1,19 @@
 .toolbar{
     --background:#95C597;
 }
+
+.info__wrapper{
+    display: flex;
+    flex-direction: row;
+    width : 100%;
+    height: 40vw;
+    
+    .image__wrapper{
+        width: 40vw;
+        height: 40vw;
+    }
+    .content__wrapper{
+        width: 83vw;
+        height: 40vw;
+    }
+}
