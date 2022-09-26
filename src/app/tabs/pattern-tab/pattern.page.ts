@@ -86,8 +86,7 @@ export class PatternPage {
     console.log(data);
     
     if (data.status === 'Y') {
-      this.patternList = data.patternList;
-      console.log(data);
+     this.patternList = [...this.patternList, ...data.patternList];
       console.log(this.patternList);
     }
    
@@ -144,5 +143,13 @@ export class PatternPage {
     
   }
 
-
+  loadData(event) {
+    setTimeout(async () => {
+      await this.getPatternPageView();
+      event.target.complete();
+      // if (this.paging.curPage === this.paging.totalPage) {
+      //   event.target.disabled = true;
+      // }
+    }, 500);
+  }
 }

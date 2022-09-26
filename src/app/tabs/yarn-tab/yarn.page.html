@@ -31,4 +31,11 @@
       </div>
     </div>
   </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="circular"
+      loadingText="상품 리스트를 불러오는 중 입니다."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

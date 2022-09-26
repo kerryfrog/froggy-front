@@ -39,7 +39,7 @@ export class YarnPage implements OnInit{
     console.log("data", data);
     
     if (data.status === 'Y') {
-      this.yarnList = data.randYarn;
+      this.yarnList = [...this.yarnList, ...data.randYarn];
       console.log(data);
     }
     
@@ -111,4 +111,15 @@ export class YarnPage implements OnInit{
       yarn['isFavorite'] = false;
     }
   }
+
+  loadData(event) {
+    setTimeout(async () => {
+      await this.getYarnPageView();
+      event.target.complete();
+      // if (this.paging.curPage === this.paging.totalPage) {
+      //   event.target.disabled = true;
+      // }
+    }, 500);
+  }
+
 }
