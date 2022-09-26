@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 
 import { SignupComponent } from 'src/app/components/signup/signup.component';
-
+import { SigninComponent } from 'src/app/components/signin/signin.component';
 @Component({
   selector: 'app-mypage',
   templateUrl: './mypage.page.html',
@@ -24,4 +24,13 @@ export class MypagePage implements OnInit {
     });
     await modal.present();
   }
+
+  async openFavoriteYarn() {
+    const modal = await this.modalController.create({
+      component: SigninComponent,
+      cssClass: 'modal-fullscreen',
+    });
+    await modal.present();
+  }
+
 }

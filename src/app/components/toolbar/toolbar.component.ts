@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 
 
 @Component({
@@ -10,17 +10,16 @@ import { NavController } from '@ionic/angular';
 export class ToolbarComponent implements OnInit {
 
   constructor(
+    public modalController: ModalController,
     public navController: NavController,
   ) { }
 
   ngOnInit() {}
   
-  
-  goMypage() {
-    console.log("test");
     
+  goMypage() {
     this.navController.navigateForward('mypage'); 
-
   }
+
 
 }

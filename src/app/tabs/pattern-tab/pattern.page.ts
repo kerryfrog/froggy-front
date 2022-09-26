@@ -146,7 +146,7 @@ export class PatternPage {
   loadData(event) {
     setTimeout(async () => {
       await this.getPatternPageView();
-      event.target.complete();
+      event.target.complete(); 
       // if (this.paging.curPage === this.paging.totalPage) {
       //   event.target.disabled = true;
       // }
