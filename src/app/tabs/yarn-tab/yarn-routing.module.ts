@@ -8,7 +8,7 @@ const routes: Routes = [
     component: YarnPage,
   },
   {
-    path:'yarn-detail/:yarnId',
+    path:':yarnId',
       loadChildren: () =>
         import('src/app/pages/yarn-detail/yarn-detail.module').then(
           (m) => m.YarnDetailPageModule

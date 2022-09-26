@@ -8,7 +8,7 @@ const routes: Routes = [
     component: PatternPage,
   },
   {
-    path:'pattern-detail/:patternId',
+    path:':patternId',
       loadChildren: () =>
         import('src/app/pages/pattern-detail/pattern-detail.module').then(
           (m) => m.PatternDetailPageModule

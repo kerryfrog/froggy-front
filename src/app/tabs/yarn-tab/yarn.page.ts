@@ -49,7 +49,7 @@ export class YarnPage implements OnInit{
   async openYarnDetailModal(yarn) {
         
     this.navController.navigateForward(
-      `/tabs/yarn/yarn-detail/${yarn.id}`,
+      `/tabs/yarn/${yarn.id}`,
     );
     // const modal = await this.modalController.create({
     //   component: YarnDetailComponent,

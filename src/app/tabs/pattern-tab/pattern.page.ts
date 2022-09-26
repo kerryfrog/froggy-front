@@ -90,13 +90,12 @@ export class PatternPage {
   async openPatternDetailPage(pattern) {
     
     this.navController.navigateForward(
-      `/tabs/pattern/pattern-detail/${pattern.id}`,
+      `/tabs/pattern/${pattern.id}`,
     );
   }
   async enrollFavoritePattern(e, pattern) {
     e.stopPropagation();
     let patternResult = this.patternList.filter((pa) => pa.id === pattern.id)[0];
-    console.log("enrool favoaite yanr", patternResult);
     
     if (patternResult['isFavorite']) {
       patternResult['isFavorite'] = false;  
