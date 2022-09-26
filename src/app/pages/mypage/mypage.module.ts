@@ -9,6 +9,7 @@ import { MypagePageRoutingModule } from './mypage-routing.module';
 import { MypagePage } from './mypage.page';
 import { SignupComponent } from 'src/app/components/signup/signup.component';
 import { SignupComponentModule } from 'src/app/components/signup/signup.module';
+import { SigninComponentModule } from 'src/app/components/signin/signin.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SignupComponentModule } from 'src/app/components/signup/signup.module';
     IonicModule,
     MypagePageRoutingModule,
     SignupComponentModule,
+    SigninComponentModule,
   ],
   declarations: [MypagePage],
   entryComponents: [SignupComponent],
