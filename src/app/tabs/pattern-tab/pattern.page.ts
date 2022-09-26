@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/api/data.service';
 import { PatternService } from 'src/app/api/pattern.service';
-import {
-  AlertController,
-  LoadingController, 
-  ModalController,
-} from '@ionic/angular';
-
-import { PatternDetailComponent } from 'src/app/components/pattern-detail/pattern-detail.component';
+import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
 // import { LocalStorageService } from '../../common/local-storage.service';
 
 @Component({
@@ -22,6 +16,7 @@ export class PatternPage {
   public patternList = [];
 
   constructor(
+    public navController: NavController,
     public dataService: DataService,
     public alertController: AlertController,
     public patternService: PatternService,
@@ -92,16 +87,11 @@ export class PatternPage {
    
   }
 
-  async openPatternDetailModal(pattern) {
-    const modal = await this.modalController.create({
-      component: PatternDetailComponent,
-      cssClass: 'modal-fullscreen',
-    });
-
-    await modal.present();
-
-    const { data } = await modal.onWillDismiss();
-
+  async openPatternDetailPage(pattern) {
+    
+    this.navController.navigateForward(
+      `/tabs/pattern/pattern-detail/${pattern.id}`,
+    );
   }
   async enrollFavoritePattern(e, pattern) {
     e.stopPropagation();

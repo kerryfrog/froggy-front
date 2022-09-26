@@ -6,7 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: PatternPage,
-  }
+  },
+  {
+    path:'pattern-detail/:patternId',
+      loadChildren: () =>
+        import('src/app/pages/pattern-detail/pattern-detail.module').then(
+          (m) => m.PatternDetailPageModule
+        ),
+  },  
 ];
 
 @NgModule({

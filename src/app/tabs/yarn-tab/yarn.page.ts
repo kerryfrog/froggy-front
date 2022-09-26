@@ -5,9 +5,9 @@ import {
   AlertController,
   LoadingController, 
   ModalController,
+  NavController,
 } from '@ionic/angular';
 
-import { YarnDetailComponent } from 'src/app/components/yarn-detail/yarn-detail.component';
 
 @Component({
   selector: 'app-yarn',
@@ -19,6 +19,7 @@ export class YarnPage implements OnInit{
 
   constructor(
     public yarnService: YarnService,
+    public navController: NavController,
     public modalController: ModalController,
   ) {}
   
@@ -46,14 +47,18 @@ export class YarnPage implements OnInit{
   }
 
   async openYarnDetailModal(yarn) {
-    const modal = await this.modalController.create({
-      component: YarnDetailComponent,
-      cssClass: 'modal-fullscreen',
-    });
+        
+    this.navController.navigateForward(
+      `/tabs/yarn/yarn-detail/${yarn.id}`,
+    );
+    // const modal = await this.modalController.create({
+    //   component: YarnDetailComponent,
+    //   cssClass: 'modal-fullscreen',
+    // });
 
-    await modal.present();
+    // await modal.present();
 
-    const { data } = await modal.onWillDismiss();
+    // const { data } = await modal.onWillDismiss();
   }
   enrollFavoriteYarn(e, yarn) {
     e.stopPropagation();

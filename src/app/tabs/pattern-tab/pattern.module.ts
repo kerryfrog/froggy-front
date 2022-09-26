@@ -9,7 +9,7 @@ import { PatternPage } from './pattern.page';
 import { PatternPageRoutingModule } from './pattern-routing.module';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { ToolbarComponentModule } from '../../components/toolbar/toolbar.module';
-import { PatternDetailComponenttModule } from 'src/app/components/pattern-detail/pattern-detail.module';
+
 
 @NgModule({
   imports: [
@@ -19,7 +19,6 @@ import { PatternDetailComponenttModule } from 'src/app/components/pattern-detail
     RouterModule.forChild([{ path: '', component: PatternPage }]),
     PatternPageRoutingModule,
     ToolbarComponentModule,
-    PatternDetailComponenttModule,
   ],
   declarations: [PatternPage]
 })
