@@ -6,7 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: YarnPage,
-  }
+  },
+  {
+    path:'yarn-detail/:yarnId',
+      loadChildren: () =>
+        import('src/app/pages/yarn-detail/yarn-detail.module').then(
+          (m) => m.YarnDetailPageModule
+        ),
+  },  
 ];
 
 @NgModule({

@@ -31,7 +31,7 @@
     <div
       *ngFor="let pattern of patternList"
       class="card__wrapper"
-      (click)="openPatternDetailModal(pattern)"
+      (click)="openPatternDetailPage(pattern)"
     >
       <div class="image__square">
         <img src="{{pattern.thumbnail}}" (error)="onImageError($event)" />

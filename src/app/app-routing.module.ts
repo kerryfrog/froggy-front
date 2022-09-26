@@ -9,6 +9,14 @@ const routes: Routes = [
   {
     path: 'mypage',
     loadChildren: () => import('./pages/mypage/mypage.module').then( m => m.MypagePageModule)
+  },
+  {
+    path: 'pattern-detail',
+    loadChildren: () => import('./pages/pattern-detail/pattern-detail.module').then( m => m.PatternDetailPageModule)
+  },
+  {
+    path: 'yarn-detail',
+    loadChildren: () => import('./pages/yarn-detail/yarn-detail.module').then( m => m.YarnDetailPageModule)
   }
 ];
 @NgModule({
