@@ -1,85 +1,83 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
-        <ion-button (click)="goBack()">
-          <ion-icon name="chevron-back-outline"></ion-icon>
-        </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- <div class ="name__wrapper">{{yarn.name}} </div>  
- <div class="info__wrapper">
-    <div class ="image__square">
-      <img src='{{yarn.thumbnail}}'>
+  <div class="name__wrapper">{{yarn.name}}</div>
+  <div class="info__wrapper">
+    <div class="image__square">
+      <img src="{{yarn.thumbnail}}" />
     </div>
-    <div class ="content__wrapper">
+    <div class="content__wrapper">
       <div>회사 : {{yarn.yarnCompanyName}}</div>
-      <div> gaugeDivisor : {{yarn. gaugeDivisor}} </div>
+      <div>gaugeDivisor : {{yarn. gaugeDivisor}}</div>
       <div>무게 : {{yarn.grams}}g</div>
     </div>
   </div>
-  <div class ="link__wrapper">
+  <div class="link__wrapper">
     <div>판매 링크</div>
-    <div class ="link__list" *ngIf = "yarn.yarnCompanyName">
-      <a href="{{yarn.yarnCompanyUrl}}" target='_blank'>{{yarn.yarnCompanyName}} 바로가기</a>
+    <div class="link__list" *ngIf="yarn.yarnCompanyName">
+      <a href="{{yarn.yarnCompanyUrl}}" target="_blank"
+        >{{yarn.yarnCompanyName}} 바로가기</a
+      >
     </div>
   </div>
 
   <div class="review__wrapper">
-    <h3> 실 리뷰 </h3>
+    <h3>실 리뷰</h3>
     <div class="card">
       <ion-card>
         <ion-item>
           <ion-label>
             <span>
               <ion-icon name="star"></ion-icon>
-            </span> 
+            </span>
             <span>
               <ion-icon name="star"></ion-icon>
-            </span> 
+            </span>
             <span>
               <ion-icon name="star"></ion-icon>
-            </span> 
+            </span>
             <span>
               <ion-icon name="star-outline"></ion-icon>
-            </span> <span>
+            </span>
+            <span>
               <ion-icon name="star-outline"></ion-icon>
-            </span> 
+            </span>
           </ion-label>
           <ion-button fill="outline" slot="end">자세히 보기</ion-button>
         </ion-item>
-        <ion-card-content>
-         생각보다 너무 쨍해요
-        </ion-card-content>
-      </ion-card> 
+        <ion-card-content> 생각보다 너무 쨍해요 </ion-card-content>
+      </ion-card>
       <ion-card>
         <ion-item>
           <ion-label>
             <span>
               <ion-icon name="star"></ion-icon>
-            </span> 
+            </span>
             <span>
               <ion-icon name="star"></ion-icon>
-            </span> 
+            </span>
             <span>
               <ion-icon name="star"></ion-icon>
-            </span> 
+            </span>
             <span>
               <ion-icon name="star"></ion-icon>
-            </span> <span>
+            </span>
+            <span>
               <ion-icon name="star-outline"></ion-icon>
-            </span> 
+            </span>
           </ion-label>
           <ion-button fill="outline" slot="end">자세히 보기</ion-button>
         </ion-item>
-        <ion-card-content>
-         너무 이쁘네요 ㅎㅎ
-        </ion-card-content>
+        <ion-card-content> 너무 이쁘네요 ㅎㅎ </ion-card-content>
       </ion-card>
     </div>
   </div>
-
 </ion-content>
-

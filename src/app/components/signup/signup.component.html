@@ -1,13 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
-        <ion-button (click)="goBack()">
-          <ion-icon name="chevron-back-outline"></ion-icon>
-        </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content>
   <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
@@ -19,20 +18,42 @@
           </div>
           <div padding>
             <ion-item>
-              <ion-input name="nickname" type="text" placeholder="nickname" formControlName="nickname"></ion-input>
+              <ion-input
+                name="nickname"
+                type="text"
+                placeholder="nickname"
+                formControlName="nickname"
+              ></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="email" type="email" placeholder="xxxx@email.com" formControlName="email"></ion-input>
+              <ion-input
+                name="email"
+                type="email"
+                placeholder="xxxx@email.com"
+                formControlName="email"
+              ></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="password" type="password" placeholder="Password" formControlName="password"></ion-input>
+              <ion-input
+                name="password"
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+              ></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="confirm" type="password" placeholder="Password again" formControlName="confirm"></ion-input>
+              <ion-input
+                name="confirm"
+                type="password"
+                placeholder="Password again"
+                formControlName="confirm"
+              ></ion-input>
             </ion-item>
           </div>
           <div padding>
-            <ion-button  size="large" type="submit" expand="block">회원가입하기</ion-button>
+            <ion-button size="large" type="submit" expand="block"
+              >회원가입하기</ion-button
+            >
           </div>
         </ion-col>
       </ion-row>

@@ -1,26 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { Component, OnInit } from "@angular/core";
+import { ModalController, NavController } from "@ionic/angular";
 
-import { SignupComponent } from 'src/app/components/signup/signup.component';
-import { SigninComponent } from 'src/app/components/signin/signin.component';
+import { SignupComponent } from "src/app/components/signup/signup.component";
+import { SigninComponent } from "src/app/components/signin/signin.component";
 @Component({
-  selector: 'app-mypage',
-  templateUrl: './mypage.page.html',
-  styleUrls: ['./mypage.page.scss'],
+  selector: "app-mypage",
+  templateUrl: "./mypage.page.html",
+  styleUrls: ["./mypage.page.scss"],
 })
 export class MypagePage implements OnInit {
+  constructor(public modalController: ModalController) {}
 
-  constructor(
-    public modalController: ModalController,
-  ) { }
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   async signup() {
     const modal = await this.modalController.create({
       component: SignupComponent,
-      cssClass: 'modal-fullscreen',
+      cssClass: "modal-fullscreen",
     });
     await modal.present();
   }
@@ -28,9 +23,8 @@ export class MypagePage implements OnInit {
   async openFavoriteYarn() {
     const modal = await this.modalController.create({
       component: SigninComponent,
-      cssClass: 'modal-fullscreen',
+      cssClass: "modal-fullscreen",
     });
     await modal.present();
   }
-
 }

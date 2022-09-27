@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { PatternDetailPage } from './pattern-detail.page';
+import { PatternDetailPage } from "./pattern-detail.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: PatternDetailPage
-  }
+    path: "",
+    component: PatternDetailPage,
+  },
 ];
 
 @NgModule({

@@ -1,16 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { SigninComponent } from './signin.component';
+import { SigninComponent } from "./signin.component";
 
-describe('SigninComponent', () => {
+describe("SigninComponent", () => {
   let component: SigninComponent;
   let fixture: ComponentFixture<SigninComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SigninComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [SigninComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SigninComponent);
@@ -18,7 +18,7 @@ describe('SigninComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

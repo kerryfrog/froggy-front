@@ -1,67 +1,63 @@
-// import { Injectable } from '@angular/core';
-// import { Plugins } from '@capacitor/core';
+import { Injectable } from "@angular/core";
+import { Plugins } from "@capacitor/core";
 
-// import { Storage } from '@capacitor/storage';
+import { Storage } from "@capacitor/storage";
 
+@Injectable({
+  providedIn: "root",
+})
+export class LocalStorageService {
+  constructor() {}
+  async setLocalStorage(key, value) {
+    await Storage.set({
+      key,
+      value,
+    });
+  }
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class LocalStorageService {
+  async getLocalStorage(key) {
+    const valueObj = await Storage.get({ key });
+    if (valueObj.value) {
+      return valueObj;
+    }
+  }
 
-//   constructor() { }
-//   async setLocalStorage(key, value) {
-//     await Storage.set({
-//       key,
-//       value,
-//     });
-//   }
+  async storeFavorite(type, targetId) {
+    let key = "";
+    if (type === "yarn") key = "favoriteYarn";
+    else if (type === "pattern") key = "favoritePattern";
 
-//   async getLocalStorage(key) {
-//     const valueObj = await Storage.get({ key });
-//     if (valueObj.value) {
-//       return valueObj;
-//     }
-//   }
+    const favoriteList = await this.getFavorite(key);
 
-//   async storeFavorite(type, targetId) {
-//     let key = '';
-//     if (type === 'yarn') key = 'favoriteYarn';
-//     else if (type === 'pattern') key = 'favoritePattern';
+    if (!favoriteList) {
+      await this.setLocalStorage(key, JSON.stringify([targetId]));
+      return [targetId];
+    } else {
+      const newList = [...favoriteList, targetId];
+      await this.setLocalStorage(key, JSON.stringify(newList));
+      return newList;
+    }
+  }
 
-//     const favoriteList = await this.getFavorite(key);
+  async getFavorite(key) {
+    const favoriteObj = await this.getLocalStorage(key);
+    if (!favoriteObj) return false;
+    else return JSON.parse(favoriteObj.value);
+  }
 
-//     if (!favoriteList) {
-//       await this.setLocalStorage(key, JSON.stringify([targetId]));
-//       return [targetId];
-//     } else {
-//       const newList = [...favoriteList, targetId];
-//       await this.setLocalStorage(key, JSON.stringify(newList));
-//       return newList;
-//     }
-//   }
+  async removeFavorite(type, targetId) {
+    let key = "";
+    if (type === "yarn") key = "favoriteYarn";
+    else if (type === "pattern") key = "favoritePattern";
 
-//   async getFavorite(key) {
-//     const favoriteObj = await this.getLocalStorage(key);
-//     if (!favoriteObj) return false;
-//     else return JSON.parse(favoriteObj.value);
-//   }
+    const favoriteList = await this.getFavorite(key);
 
-//   async removeFavorite(type, targetId) {
-//     let key = '';
-//     if (type === 'yarn') key = 'favoriteYarn';
-//     else if (type === 'pattern') key = 'favoritePattern';
+    if (!favoriteList) return;
 
-//     const favoriteList = await this.getFavorite(key);
+    const newList = favoriteList.filter((id) => id !== targetId);
 
-//     if (!favoriteList) return;
+    await this.setLocalStorage(key, JSON.stringify(newList));
 
-//     const newList = favoriteList.filter((id) => id !== targetId);
-
-//     await this.setLocalStorage(key, JSON.stringify(newList));
-
-//     return newList;
-//   }
-
-
-// }
+    return newList;
+  }
+}

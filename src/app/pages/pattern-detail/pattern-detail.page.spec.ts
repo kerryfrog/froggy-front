@@ -1,16 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { PatternDetailPage } from './pattern-detail.page';
+import { PatternDetailPage } from "./pattern-detail.page";
 
-describe('PatternDetailPage', () => {
+describe("PatternDetailPage", () => {
   let component: PatternDetailPage;
   let fixture: ComponentFixture<PatternDetailPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PatternDetailPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [PatternDetailPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PatternDetailPage);
@@ -18,7 +18,7 @@ describe('PatternDetailPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

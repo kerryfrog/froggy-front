@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { YarnDetailPageRoutingModule } from './yarn-detail-routing.module';
+import { YarnDetailPageRoutingModule } from "./yarn-detail-routing.module";
 
-import { YarnDetailPage } from './yarn-detail.page';
+import { YarnDetailPage } from "./yarn-detail.page";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    YarnDetailPageRoutingModule
+    YarnDetailPageRoutingModule,
   ],
-  declarations: [YarnDetailPage]
+  declarations: [YarnDetailPage],
 })
 export class YarnDetailPageModule {}

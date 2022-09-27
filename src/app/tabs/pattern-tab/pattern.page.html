@@ -1,8 +1,7 @@
 <app-toolbar></app-toolbar>
 
-
 <ion-content [fullscreen]="true">
-  <ion-searchbar 
+  <ion-searchbar
     [debounce]="1300"
     (ionChange)="handleChange($event)"
     class="searchbar"
@@ -12,24 +11,20 @@
   <h1>{{results}}</h1>
   <ion-item>
     <ion-input
-    type="number"
-    placeholder="min index"
-    [(ngModel)]="min"
+      type="number"
+      placeholder="min index"
+      [(ngModel)]="min"
     ></ion-input>
   </ion-item>
   <ion-item>
     <ion-input
-       type="number"
-       placeholder="max index"
-       [(ngModel)]="max"
-       ></ion-input>
+      type="number"
+      placeholder="max index"
+      [(ngModel)]="max"
+    ></ion-input>
   </ion-item>
-  <h3 *ngIf="nowIndex !== -1" >get api index :{{nowIndex}} </h3>
-  <ion-button 
-    (click) = "getRaverlyApi()"
-  >
-    패턴 api 호출
-  </ion-button>
+  <h3 *ngIf="nowIndex !== -1">get api index :{{nowIndex}}</h3>
+  <ion-button (click)="getRaverlyApi()"> 패턴 api 호출 </ion-button>
   <ion-list *ngIf="patternList" class="list__wrapper">
     <div
       *ngFor="let pattern of patternList"
@@ -38,13 +33,13 @@
     >
       <div class="image__square">
         <img src="{{pattern.thumbnail}}" (error)="onImageError($event)" />
-        <ion-icon 
+        <ion-icon
           name="heart-outline"
           class="heart"
           *ngIf="!pattern.isFavorite"
           (click)="enrollFavoritePattern($event, pattern)"
         ></ion-icon>
-        <ion-icon 
+        <ion-icon
           name="heart"
           class="heart--fill"
           *ngIf="pattern.isFavorite"
@@ -60,8 +55,4 @@
     >
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
-
- </ion-content> 
-
- 
-  
+</ion-content>

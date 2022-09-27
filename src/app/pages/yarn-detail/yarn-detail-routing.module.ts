@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { YarnDetailPage } from './yarn-detail.page';
+import { YarnDetailPage } from "./yarn-detail.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: YarnDetailPage
-  }
+    path: "",
+    component: YarnDetailPage,
+  },
 ];
 
 @NgModule({

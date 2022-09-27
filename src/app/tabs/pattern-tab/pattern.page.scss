@@ -1,12 +1,10 @@
-.toolbar{
-    --background:#95C597;
+.toolbar {
+  --background: #95c597;
 }
-
 
 ion-button {
-    --background: var(--ion-color-theme)
+  --background: var(--ion-color-theme);
 }
-
 
 .list__wrapper {
   display: grid;
@@ -31,7 +29,7 @@ ion-button {
     border-radius: 8px;
     margin: auto;
     position: relative;
-    img{
+    img {
       position: absolute;
       width: 200px;
       height: 200px;
@@ -44,13 +42,13 @@ ion-button {
       bottom: 0.7rem;
       color: #ea3d51;
       font-size: 20px;
-    &--fill {
-      position: absolute;
-      right: 0.7rem;
-      bottom: 0.7rem;
-      color: #ea3d51;
-      font-size: 20px;
+      &--fill {
+        position: absolute;
+        right: 0.7rem;
+        bottom: 0.7rem;
+        color: #ea3d51;
+        font-size: 20px;
+      }
     }
-  }
   }
 }

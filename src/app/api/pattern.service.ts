@@ -1,20 +1,19 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import axios from 'axios';
-// axios.defaults.withCredentials = true; 
+import { Injectable } from "@angular/core";
+import { environment } from "src/environments/environment";
+import axios from "axios";
+// axios.defaults.withCredentials = true;
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
-
 export class PatternService {
   async getRecommendPatternList() {
     try {
       //const headers = { 'access-token': token };
       const response = await axios({
-        method: 'get',
+        method: "get",
         url: `${environment.apiUrl}/pattern`,
-        responseType: 'json',
+        responseType: "json",
       });
       return response;
     } catch (error) {
@@ -24,10 +23,10 @@ export class PatternService {
   async getPatternSearchList(keyword) {
     try {
       const response = await axios({
-        method: 'get',
+        method: "get",
         url: `${environment.apiUrl}/search`,
         params: keyword,
-        responseType: 'json',
+        responseType: "json",
       });
       console.log(response);
       return response;
@@ -35,17 +34,16 @@ export class PatternService {
       return error.response;
     }
   }
-    async getPatternDetail(patternId) {
-        try {
-            const response = await axios({
-                method: 'get',
-                url: `${environment.apiUrl}/pattern/${patternId}`,
-                responseType: 'json',
-            });
-            return response;
-        } catch (error) {
-            return error.response;
-        }
+  async getPatternDetail(patternId) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/${patternId}`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
     }
-
+  }
 }
