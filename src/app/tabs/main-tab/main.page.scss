@@ -5,3 +5,71 @@
 ion-button {
     --background: var(--ion-color-theme)
 }
+
+.container {
+  &__products {
+    background: white;
+    margin: 3.2vw 0;
+    padding: 0 3.2vw;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    .contents {
+      min-width: 31vw;
+      display: flex;
+      flex-direction: column;
+      margin: 0 1.2vw;
+      .image {
+        width: 31vw;
+        height: 35vw;
+        img {
+          border-radius: 7px;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .manual {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+
+        .name {
+          .site__name {
+            margin-top: 2vw;
+            font-size: 3.6vw;
+            line-height: 4.4vw;
+            font-weight: 500;
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+        .price {
+          position: relative;
+          margin-top: 0.5vw;
+          font-weight: 700;
+          &--origin {
+            color: #bababa;
+            font-size: 2.8vw;
+            line-height: 3.5vw;
+          }
+          &--discount {
+            color: black;
+            font-size: 3.6vw;
+            line-height: 4.4vw;
+          }
+          &--discount-rate {
+            color: #EC5E65;
+            font-size: 3.6vw;
+            line-height: 4.4vw;
+          }
+        }
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

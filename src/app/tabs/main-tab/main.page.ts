@@ -3,7 +3,12 @@ import { DataService } from 'src/app/api/data.service';
 import {
   AlertController,
   LoadingController,
+  NavController,
 } from '@ionic/angular';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+
+import { YarnService } from 'src/app/api/yarn.service';
+import { PatternService } from "src/app/api/pattern.service";
 
 
 @Component({
@@ -15,10 +20,23 @@ export class MainPage {
   public min;
   public max;
   public nowIndex = -1;
+
+  public yarnList = [];
+  public patternList = [];
+
   constructor(
     public dataService: DataService,
     public alertController: AlertController,
+    public patternService: PatternService,
+    public yarnService: YarnService,
+    public navController: NavController,
+    public activatedRoute: ActivatedRoute,
   ) {}
+
+  async ionViewDidEnter() {
+    await this.getPatternPageView();
+    await this.getYarnPageView();
+  }
 
   getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -63,6 +81,27 @@ export class MainPage {
     }); 
     await alert.present();
   }
+
+  async getPatternPageView() {
+    const { data } = await this.patternService.getRecommendPatternList();
+    console.log(data);
+
+    if (data.status === "Y") {
+      this.patternList = [...this.patternList, ...data.patternList];
+    }
+  }
+
+  async getYarnPageView() {
+    const { data } = await this.yarnService.getRecommendYarnList();
+    
+    if (data.status === 'Y') {
+      this.yarnList = [...this.yarnList, ...data.randYarn];
+      console.log(data);
+    }
+    
+  }
+
+
   async getAndFetchYarnData() {
     for (let i = this.min; i <= this.max; i++){
       const response = await this.dataService.getYarnDataFromRaverly(i);
@@ -72,4 +111,29 @@ export class MainPage {
       this.nowIndex = i;
     }
   }
+
+  async goYarnDetailPage(yarn) {
+    const props: NavigationExtras = {
+      state: {
+        yarn
+      }
+    }
+    this.navController.navigateForward(
+      `/tabs/yarn/${yarn.id}`,
+      props
+    );
+  }
+ async goPatternDetailPage(pattern) {
+    const props: NavigationExtras = {
+      state: {
+        pattern,
+      },
+    };
+    this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
+  }
+  onImageError(e) {
+    
+  }
+
+
 }

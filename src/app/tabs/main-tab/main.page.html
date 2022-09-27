@@ -24,4 +24,30 @@
   >
     실 api 호출
   </ion-button>
-</ion-content>
+  <div class="small-title"> >실 추천 </div>
+  <div *ngIf="yarnList.length > 0" class="container__products">
+    <div
+      *ngFor="let yarn of yarnList"
+      (click)="goYarnDetailPage(yarn)"
+      class="contents"
+    >
+      <div class="image">
+        <img src="{{ yarn.thumbnail }}" (error)="onImageError($event)" />
+      </div>
+    </div>
+  </div>
+  <div class="small-title"> >패턴 추천 </div>
+    <div *ngIf="patternList.length > 0" class="container__products">
+    <div
+      *ngFor="let pattern of patternList"
+      (click)="goPatternDetailPage(pattern)"
+      class="contents"
+    >
+      <div class="image">
+        <img src="{{ pattern.thumbnail }}" (error)="onImageError($event)" />
+      </div>
+    </div>
+  </div>
+
+
+  </ion-content>

@@ -30,17 +30,17 @@ export class PatternPage {
     public modalController: ModalController
   ) {}
 
+  async ionViewDidEnter() {
+    await this.getPatternPageView();
+    this.setFavoriteFalse(this.patternList);
+  }
+  
   async handleChange(event) {
     this.results = event.target.value;
     const { data } = await this.patternService.getPatternSearchList(
       this.results
     );
     console.log(data);
-  }
-
-  async ionViewDidEnter() {
-    await this.getPatternPageView();
-    this.setFavoriteFalse(this.patternList);
   }
 
   async getRaverlyApi() {
@@ -105,6 +105,7 @@ export class PatternPage {
       this.patternList = [...this.patternList, ...newPatternListWithIsFavorite];
     }
   }
+  
 
   async goPatternDetailPage(pattern) {
     const props: NavigationExtras = {
