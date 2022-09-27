@@ -24,7 +24,7 @@ export class PatternService {
     try {
       const response = await axios({
         method: "get",
-        url: `${environment.apiUrl}/search`,
+        url: `${environment.apiUrl}/pattern/search`,
         params: keyword,
         responseType: "json",
       });
