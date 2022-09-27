@@ -2,11 +2,14 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-searchbar
+  <ion-searchbar 
+    [debounce]="1300"
+    (ionChange)="handleChange($event)"
     class="searchbar"
     color="light"
     placeholder="검색하기"
   ></ion-searchbar>
+  <h1>{{results}}</h1>
   <ion-item>
     <ion-input
     type="number"
