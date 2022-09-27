@@ -2,18 +2,46 @@
     --background:#95C597;
 }
 
+.name__wrapper{
+    font-weight: 700;
+    font-size: 30px;
+    margin-left:10px;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
 .info__wrapper{
     display: flex;
     flex-direction: row;
     width : 100%;
     height: 40vw;
-    
-    .image__wrapper{
+    margin-left:10px;
+
+    .image__square{
         width: 40vw;
         height: 40vw;
+        border-radius: 8px;
+        margin: auto;
+        img{
+            width: 40vw;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
     }
     .content__wrapper{
+        margin-left: 20px;
         width: 83vw;
         height: 40vw;
     }
+}
+
+
+.link__wrapper{
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.review__wrapper{
+    margin-left:10px;
 }

@@ -7,7 +7,7 @@ import {
   ModalController,
   NavController,
 } from '@ionic/angular';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -29,16 +29,12 @@ export class YarnPage implements OnInit{
   
   async ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
-      console.log("ngonInit", params);
     });
   }
 
   async ionViewDidEnter() {
-    console.log("yarn page enter");
-    
     await this.getYarnPageView();
     this.setFavoriteFalse();
-    //this.checkIsYarnFavorite(favoriteYarnList);
   }
 
   async getYarnPageView() {
@@ -52,19 +48,16 @@ export class YarnPage implements OnInit{
     
   }
 
-  async openYarnDetailModal(yarn) {
-        
+  async goYarnDetailPage(yarn) {
+    const props: NavigationExtras = {
+      state: {
+        yarn
+      }
+    }
     this.navController.navigateForward(
       `/tabs/yarn/${yarn.id}`,
+      props
     );
-    // const modal = await this.modalController.create({
-    //   component: YarnDetailComponent,
-    //   cssClass: 'modal-fullscreen',
-    // });
-
-    // await modal.present();
-
-    // const { data } = await modal.onWillDismiss();
   }
   enrollFavoriteYarn(e, yarn) {
     e.stopPropagation();

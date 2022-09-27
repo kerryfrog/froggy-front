@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, ModalController } from '@ionic/angular';
+import { NavController, ModalController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { YarnService } from 'src/app/api/yarn.service';
 
@@ -11,34 +11,42 @@ import { YarnService } from 'src/app/api/yarn.service';
 export class YarnDetailPage implements OnInit {
   
   public yarnId;
+  public yarn :any = {};
+  public yarnImg = [];
 
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public navController: NavController,
     public yarnService: YarnService,
+    private loadingController: LoadingController,
   ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {
+       if (this.router.getCurrentNavigation().extras.state) {
+        this.yarn = this.router.getCurrentNavigation().extras.state.yarn;
+      }
       this.yarnId = params.yarnId;
     });
-  }
-
-  async ionViewDidEnter() {
-    await this.getYarnDetail();
+    console.log("this yarn", this.yarn);
     
   }
 
+  async ionViewDidEnter() {
+   
+  }
+
   async getYarnDetail() {
-    const yarnDetailResult = await this.yarnService.getYarnDetail(this.yarnId);
-    if (yarnDetailResult.status === 'Y') {
-      console.log("about yanr detail",yarnDetailResult);
-      
-    }
-    else {
-      this.failtoFetchYarnDetail();
-    }
+    // const {data} = await this.yarnService.getYarnDetail(this.yarnId);
+    // if (data.status === 'Y') {
+    //   this.yarn = data.yarn;
+    //   this.yarnImg = data.image;
+    //   console.log(this.yarn, this.yarnImg);
+    // }
+    // else {
+    //   this.failtoFetchYarnDetail();
+    // }
   }
 
   failtoFetchYarnDetail() {

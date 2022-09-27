@@ -3,6 +3,7 @@ import { DataService } from 'src/app/api/data.service';
 import { PatternService } from 'src/app/api/pattern.service';
 import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
 // import { LocalStorageService } from '../../common/local-storage.service';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pattern',
@@ -32,8 +33,8 @@ export class PatternPage {
   }
 
   async ionViewDidEnter() {
-    console.log("pattern page enter");
     await this.getPatternPageView();
+    this.setFavoriteFalse(this.patternList);
   }
 
   async getRaverlyApi() {
@@ -83,21 +84,34 @@ export class PatternPage {
     }
   }
 
+  setFavoriteFalse(newPatternList) {
+    for (let pattern of newPatternList) {
+      pattern['isFavorite'] = false;
+    }
+    return newPatternList;
+  }
+
+
   async getPatternPageView() {
     const { data } = await this.patternService.getRecommendPatternList();
     console.log(data);
     
     if (data.status === 'Y') {
-     this.patternList = [...this.patternList, ...data.patternList];
-      console.log(this.patternList);
+      const newPatternListWithIsFavorite = this.setFavoriteFalse(data.patternList);
+      this.patternList = [...this.patternList, ...newPatternListWithIsFavorite];
     }
    
   }
 
-  async openPatternDetailPage(pattern) {
-    
+  async goPatternDetailPage(pattern) {
+    const props: NavigationExtras = {
+      state: {
+        pattern
+      }
+    }
     this.navController.navigateForward(
       `/tabs/pattern/${pattern.id}`,
+      props
     );
   }
   async enrollFavoritePattern(e, pattern) {
