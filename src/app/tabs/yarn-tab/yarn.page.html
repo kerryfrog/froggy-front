@@ -1,13 +1,15 @@
 <app-toolbar></app-toolbar>
 
-
 <ion-content [fullscreen]="true">
-    <ion-searchbar
+  <ion-searchbar
+    [debounce]="1300"
+    (ionChange)="handleChange($event)"
     class="searchbar"
     color="light"
     placeholder="검색하기"
   ></ion-searchbar>
-  
+  <h1>{{results}}</h1>
+
   <ion-list *ngIf="yarnList" class="list__wrapper">
     <div
       *ngFor="let yarn of yarnList"
@@ -16,13 +18,13 @@
     >
       <div class="image__square">
         <img src="{{yarn.thumbnail}}" (error)="onImageError($event)" />
-        <ion-icon 
+        <ion-icon
           name="heart-outline"
           class="heart"
           *ngIf="!yarn.isFavorite"
           (click)="enrollFavoriteYarn($event, yarn)"
         ></ion-icon>
-        <ion-icon 
+        <ion-icon
           name="heart"
           class="heart"
           *ngIf="yarn.isFavorite"

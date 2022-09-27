@@ -20,6 +20,20 @@ export class YarnService {
       return error.response;
     }
   }
+  async getYarnSearchList(keyword) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/yarn/search`,
+        params: keyword,
+        responseType: "json",
+      });
+      console.log(response);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getYarnDetail(yarnId) {
     try {
       const response = await axios({

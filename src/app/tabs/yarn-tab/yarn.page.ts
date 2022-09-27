@@ -1,22 +1,23 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { YarnService } from 'src/app/api/yarn.service';
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { YarnService } from "src/app/api/yarn.service";
 // import { LocalStorageService } from '../../common/local-storage.service';
 import {
   AlertController,
-  LoadingController, 
+  LoadingController,
   ModalController,
   NavController,
-} from '@ionic/angular';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Location } from '@angular/common';
+} from "@ionic/angular";
+import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
-  selector: 'app-yarn',
-  templateUrl: 'yarn.page.html',
-  styleUrls: ['yarn.page.scss']
+  selector: "app-yarn",
+  templateUrl: "yarn.page.html",
+  styleUrls: ["yarn.page.scss"],
 })
-export class YarnPage implements OnInit{
+export class YarnPage implements OnInit {
   public yarnList = [];
+  public results;
 
   constructor(
     public yarnService: YarnService,
@@ -24,12 +25,17 @@ export class YarnPage implements OnInit{
     public modalController: ModalController,
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public location:Location,
+    public location: Location
   ) {}
-  
+
+  async handleChange(event) {
+    this.results = event.target.value;
+    const { data } = await this.yarnService.getYarnSearchList(this.results);
+    console.log(data);
+  }
+
   async ngOnInit() {
-    this.activatedRoute.queryParams.subscribe((params) => {
-    });
+    this.activatedRoute.queryParams.subscribe((params) => {});
   }
 
   async ionViewDidEnter() {
@@ -40,42 +46,34 @@ export class YarnPage implements OnInit{
   async getYarnPageView() {
     const { data } = await this.yarnService.getRecommendYarnList();
     console.log("data", data);
-    
-    if (data.status === 'Y') {
+
+    if (data.status === "Y") {
       this.yarnList = [...this.yarnList, ...data.randYarn];
       console.log(data);
     }
-    
   }
 
   async goYarnDetailPage(yarn) {
     const props: NavigationExtras = {
       state: {
-        yarn
-      }
-    }
-    this.navController.navigateForward(
-      `/tabs/yarn/${yarn.id}`,
-      props
-    );
+        yarn,
+      },
+    };
+    this.navController.navigateForward(`/tabs/yarn/${yarn.id}`, props);
   }
   enrollFavoriteYarn(e, yarn) {
     e.stopPropagation();
     let yarnResult = this.yarnList.filter((ya) => ya.id === yarn.id)[0];
     console.log("enrool favoaite yanr", yarnResult);
-    
-    if (yarnResult['isFavorite']) {
-      yarnResult['isFavorite'] = false;  
-    }
-    else {
-      yarnResult['isFavorite'] = true;
+
+    if (yarnResult["isFavorite"]) {
+      yarnResult["isFavorite"] = false;
+    } else {
+      yarnResult["isFavorite"] = true;
     }
     console.log(yarnResult);
-    
   }
-  deleteFavoriteYarn(e, yarn) {
-    
-  }
+  deleteFavoriteYarn(e, yarn) {}
 
   // fetch favorite item
   async fetchEnrollFavoriteItem(yarn) {
@@ -87,7 +85,7 @@ export class YarnPage implements OnInit{
 
   genPayload(yarn) {
     const payload = {
-      yarnId:yarn.id,
+      yarnId: yarn.id,
     };
     return payload;
   }
@@ -105,14 +103,11 @@ export class YarnPage implements OnInit{
     });
   }
 
-  onImageError(e) {
-    
-  }
-
+  onImageError(e) {}
 
   setFavoriteFalse() {
     for (let yarn of this.yarnList) {
-      yarn['isFavorite'] = false;
+      yarn["isFavorite"] = false;
     }
   }
 
@@ -125,5 +120,4 @@ export class YarnPage implements OnInit{
       // }
     }, 500);
   }
-
 }
