@@ -14,6 +14,8 @@ export class PatternPage {
   public max;
   public nowIndex =-1;
   public patternList = [];
+  public results;
+
 
   constructor(
     public navController: NavController,
@@ -23,6 +25,11 @@ export class PatternPage {
     public modalController: ModalController,
   ) {}
 
+  async handleChange(event) {
+    this.results = event.target.value;
+    const { data } = await this.patternService.getPatternSearchList(this.results);
+    console.log(data);
+  }
 
   async ionViewDidEnter() {
     console.log("pattern page enter");
