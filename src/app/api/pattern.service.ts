@@ -21,4 +21,17 @@ export class PatternService {
             return error.response;
         }
     }
+    async getPatternDetail(patternId) {
+        try {
+            const response = await axios({
+                method: 'get',
+                url: `${environment.apiUrl}/pattern/${patternId}`,
+                responseType: 'json',
+            });
+            return response;
+        } catch (error) {
+            return error.response;
+        }
+    }
+
 }

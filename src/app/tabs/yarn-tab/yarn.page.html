@@ -12,7 +12,7 @@
     <div
       *ngFor="let yarn of yarnList"
       class="card__wrapper"
-      (click)="openYarnDetailModal(yarn)"
+      (click)="goYarnDetailPage(yarn)"
     >
       <div class="image__square">
         <img src="{{yarn.thumbnail}}" (error)="onImageError($event)" />
