@@ -21,5 +21,8 @@ export class YarnSearchPage implements OnInit {
     const { data } = await this.yarnService.getYarnSearchList(this.results);
     this.yarnList = data['searchList'];
     console.log(this.yarnList);
-  }
+    }
+  
+  
+  
 }

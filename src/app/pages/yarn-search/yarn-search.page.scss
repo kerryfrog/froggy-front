@@ -1,0 +1,27 @@
+
+.yarn__wrapper{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  margin: 0 0rem;
+
+  .yarn__image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 2rem;
+  }
+
+  .yarn__info{
+    width:200px;
+    &__name{
+        font-size: 15px;
+        font-weight: 800;
+        color: black;
+    }
+    &__extra{
+        font-size: 10px;
+    }
+  }
+}

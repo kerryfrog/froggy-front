@@ -24,6 +24,8 @@ export class PatternSearchPage implements OnInit {
   async handleChange(event) {
     this.results = event.target.value;
     const { data } = await this.patternService.getPatternSearchList(this.results);
+    console.log("serach pattern", data);
+    
     this.patternList = data['searchList'];
     console.log(this.patternList);
   }
