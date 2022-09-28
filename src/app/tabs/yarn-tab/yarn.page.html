@@ -3,7 +3,7 @@
 <ion-content [fullscreen]="true">
   <ion-searchbar
     [debounce]="1300"
-    (ionChange)="handleChange($event)"
+    (click) ="goSearchYarnPage()"
     class="searchbar"
     color="light"
     placeholder="검색하기"

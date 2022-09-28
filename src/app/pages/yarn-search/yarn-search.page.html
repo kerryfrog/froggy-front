@@ -1,0 +1,19 @@
+<app-toolbar></app-toolbar>
+
+<ion-content>
+  <ion-searchbar
+    [debounce]="1300"
+    (ionChange)="handleChange($event)"
+    class="searchbar"
+    color="light"
+    placeholder="검색하기"
+  ></ion-searchbar>
+  <div class="serachResult" *ngIf="yarnList.length > 0 ">
+    <div class="yarn__info">
+      
+
+    </div>
+  </div>
+
+
+</ion-content>

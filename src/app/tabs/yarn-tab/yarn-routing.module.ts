@@ -8,6 +8,13 @@ const routes: Routes = [
     component: YarnPage,
   },
   {
+    path: "search",
+    loadChildren: () =>
+      import("src/app/pages/yarn-search/yarn-search.module").then(
+        (m) => m.YarnSearchPageModule
+      ),
+  },
+  {
     path:':yarnId',
       loadChildren: () =>
         import('src/app/pages/yarn-detail/yarn-detail.module').then(

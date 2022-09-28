@@ -107,14 +107,7 @@ export class PatternPage {
   }
   
 
-  async goPatternDetailPage(pattern) {
-    const props: NavigationExtras = {
-      state: {
-        pattern,
-      },
-    };
-    this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
-  }
+ 
   async enrollFavoritePattern(e, pattern) {
     e.stopPropagation();
     let patternResult = this.patternList.filter(
@@ -158,4 +151,20 @@ export class PatternPage {
       // }
     }, 500);
   }
+
+  async goPatternDetailPage(pattern) {
+    const props: NavigationExtras = {
+      state: {
+        pattern,
+      },
+    };
+    this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
+  }
+
+  async goSearchPatternPage() {
+    console.log("go search page");
+    
+    this.navController.navigateForward(`/tabs/pattern/search`);
+  }
+
 }

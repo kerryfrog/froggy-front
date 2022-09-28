@@ -1,31 +1,14 @@
 <app-toolbar></app-toolbar>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-searchbar
     [debounce]="1300"
-    (click) ="goSearchPatternPage()"
+    (ionChange)="handleChange($event)"
     class="searchbar"
     color="light"
     placeholder="검색하기"
   ></ion-searchbar>
-  <h1>{{results}}</h1>
-  <ion-item>
-    <ion-input
-      type="number"
-      placeholder="min index"
-      [(ngModel)]="min"
-    ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input
-      type="number"
-      placeholder="max index"
-      [(ngModel)]="max"
-    ></ion-input>
-  </ion-item>
-  <h3 *ngIf="nowIndex !== -1">get api index :{{nowIndex}}</h3>
-  <ion-button (click)="getRaverlyApi()"> 패턴 api 호출 </ion-button>
-  <ion-list *ngIf="patternList" class="list__wrapper">
+  <ion-list *ngIf="patternList.length > 0" class="list__wrapper">
     <div
       *ngFor="let pattern of patternList"
       class="card__wrapper"
@@ -48,11 +31,4 @@
       </div>
     </div>
   </ion-list>
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="circular"
-      loadingText="상품 리스트를 불러오는 중 입니다."
-    >
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
 </ion-content>

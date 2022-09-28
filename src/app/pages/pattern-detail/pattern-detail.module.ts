@@ -7,13 +7,14 @@ import { IonicModule } from "@ionic/angular";
 import { PatternDetailPageRoutingModule } from "./pattern-detail-routing.module";
 
 import { PatternDetailPage } from "./pattern-detail.page";
-
+import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module";
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     PatternDetailPageRoutingModule,
+    ToolbarComponentModule,
   ],
   declarations: [PatternDetailPage],
 })

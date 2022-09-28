@@ -26,6 +26,14 @@ const routes: Routes = [
         (m) => m.YarnDetailPageModule
       ),
   },
+  {
+    path: 'yarn-search',
+    loadChildren: () => import('./pages/yarn-search/yarn-search.module').then( m => m.YarnSearchPageModule)
+  },
+  {
+    path: 'pattern-search',
+    loadChildren: () => import('./pages/pattern-search/pattern-search.module').then( m => m.PatternSearchPageModule)
+  },
 ];
 @NgModule({
   imports: [

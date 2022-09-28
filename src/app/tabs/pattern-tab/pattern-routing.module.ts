@@ -8,6 +8,13 @@ const routes: Routes = [
     component: PatternPage,
   },
   {
+    path: "search",
+    loadChildren: () =>
+      import("src/app/pages/pattern-search/pattern-search.module").then(
+        (m) => m.PatternSearchPageModule
+      ),
+  },
+  {
     path: ":patternId",
     loadChildren: () =>
       import("src/app/pages/pattern-detail/pattern-detail.module").then(

@@ -120,4 +120,10 @@ export class YarnPage implements OnInit {
       // }
     }, 500);
   }
+    async goSearchYarnPage() {  
+    this.navController.navigateForward(`/tabs/yarn/search`);
+  }
+
+
+
 }
