@@ -16,7 +16,6 @@ export class SigninComponent implements OnInit {
     public formBuilder: FormBuilder,
     public modalController: ModalController,
     public authService: AuthService,
-    public storage: Storage,
   ) {}
 
   ngOnInit() {
@@ -43,7 +42,14 @@ export class SigninComponent implements OnInit {
       console.log("Please provide all the required values!");
       return false;
     } else {
-      await this.authService.postSignIn(this.ionicForm.value);
+      const signInResult = await this.authService.postSignIn(this.ionicForm.value);
+      console.log(
+       "signInResult" , signInResult
+      );
+      
+      if (signInResult.status === 200) {
+        this.goBack()
+      }
       console.log(this.ionicForm.value);
     }
   }

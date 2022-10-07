@@ -10,12 +10,20 @@ export class AuthService {
   async postSignIn(data) {
     console.log("post login form", data);
     try {
+      const headers = {
+        'Accept': "application/json",
+        'Content-Type': 'application/json',
+      }
       const response = await axios({
         method: "post",
         url: `${environment.apiUrl}/auth/login`,
+        headers,
         data,
         responseType: "json",
       });
+
+      console.log("response from server" , response);
+      
       return response;
     } catch (error) {
       return error.response;

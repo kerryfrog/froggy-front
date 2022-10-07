@@ -47,6 +47,11 @@ export class SignupComponent implements OnInit {
       ],
     });
   }
+  async ionViewDidEnter() {
+    
+  }
+ 
+
 
   get errorControl() {
     return this.ionicForm.controls;
