@@ -24,7 +24,7 @@
     ></ion-input>
   </ion-item>
   <h3 *ngIf="nowIndex !== -1">get api index :{{nowIndex}}</h3>
-  <ion-button (click)="getRaverlyApi()"> 패턴 api 호출 </ion-button>
+  <ion-button (click)="getRecommendYarnData()"> 패턴 api 호출 </ion-button>
   <ion-list *ngIf="patternList" class="list__wrapper">
     <div
       *ngFor="let pattern of patternList"
