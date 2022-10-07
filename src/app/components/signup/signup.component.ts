@@ -20,6 +20,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
+      id: ["", [Validators.required, Validators.minLength(2)]],
       nickname: ["", [Validators.required, Validators.minLength(2)]],
       email: [
         "",
