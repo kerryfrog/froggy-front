@@ -15,6 +15,8 @@ export class PatternService {
         url: `${environment.apiUrl}/pattern`,
         responseType: "json",
       });
+      console.log("response", response);
+      
       return response;
     } catch (error) {
       return error.response;
@@ -46,7 +48,7 @@ export class PatternService {
       return error.response;
     }
   }
-   async getAiPattern() {
+  async getAiPattern() {
     try {
       const response = await axios({
         method: "get",
@@ -58,6 +60,16 @@ export class PatternService {
       return error.response;
     }
   }
-
-
+  async postPatternLike(patternId) {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${environment.apiUrl}/pattern/liked/${patternId}`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 }

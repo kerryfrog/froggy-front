@@ -404,8 +404,10 @@ export class PatternPage {
     )[0];
 
     if (patternResult["isFavorite"]) {
+      
       patternResult["isFavorite"] = false;
     } else {
+      this.fetchEnrollFavoritePattern(pattern.id);
       patternResult["isFavorite"] = true;
     }
     console.log(patternResult);
@@ -425,7 +427,11 @@ export class PatternPage {
     });
   }
 
-  fetchEnrollFavoritePattern(pattern) {}
+  fetchEnrollFavoritePattern(patternId) {
+    const postPatternLikeResult = this.patternService.postPatternLike(patternId);
+    console.log(postPatternLikeResult);
+
+  }
 
   deleteFavoritePattern(e, pattern) {}
 

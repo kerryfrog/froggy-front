@@ -8,7 +8,6 @@ axios.defaults.withCredentials = true;
 })
 export class AuthService {
   async postSignIn(data) {
-    console.log("post login form", data);
     try {
       const headers = {
         'Accept': "application/json",
