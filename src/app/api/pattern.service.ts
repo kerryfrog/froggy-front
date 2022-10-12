@@ -46,4 +46,18 @@ export class PatternService {
       return error.response;
     }
   }
+   async getAiPattern() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/flask/test`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+
+
 }

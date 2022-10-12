@@ -1,3 +1,13 @@
 <app-toolbar></app-toolbar>
 
-<ion-content [fullscreen]="true"> </ion-content>
+<ion-content [fullscreen]="true"> 
+    <ion-button
+        (click)="getRecommendPatternList()"
+    >
+        추천 목록 조회
+    </ion-button>
+    <div>
+        response : {{ result }}
+    </div>
+
+</ion-content>
