@@ -2,6 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { NavController, ModalController } from "@ionic/angular";
 import { AuthService } from "src/app/api/auth/auth.service";
+import { UserService } from "src/app/services/user.service";
+import { SignupComponent } from "src/app/components/signup/signup.component";
+
+
 
 @Component({
   selector: "app-signin",
@@ -16,7 +20,8 @@ export class SigninComponent implements OnInit {
     public formBuilder: FormBuilder,
     public modalController: ModalController,
     public authService: AuthService,
-  ) {}
+    public userService:UserService,
+    ) {}
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
@@ -43,20 +48,32 @@ export class SigninComponent implements OnInit {
       return false;
     } else {
       const signInResult = await this.authService.postSignIn(this.ionicForm.value);
-      console.log(
-       "signInResult" , signInResult
-      );
-      
+      console.log("signInResult" , signInResult);
+        
       if (signInResult.status === 200) {
+        this.userService.saveUser(JSON.stringify(signInResult.data.user));        
         this.goBack()
       }
       console.log(this.ionicForm.value);
     }
   }
 
+
+  async goSignUp() {
+    const modal = await this.modalController.create({
+      component: SignupComponent,
+      cssClass: "modal-fullscreen",
+    });
+    await modal.present();
+  }
+
+
   goBack() {
     this.modalController.dismiss({
       dismissed: false,
     });
   }
+
+
+
 }

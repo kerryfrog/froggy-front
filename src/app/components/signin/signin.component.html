@@ -34,10 +34,15 @@
               ></ion-input>
             </ion-item>
           </div>
-          <div padding>
-            <ion-button size="large" type="submit" expand="block"
-              >로그인</ion-button
-            >
+          <div class="button__wrapper">
+            <div class="login">
+              <ion-button type="submit"
+                >로그인</ion-button>
+            </div>
+            <div class="siginup">
+              <ion-button (click)="goSignUp()"
+                >회원가입하기</ion-button>
+            </div>
           </div>
         </ion-col>
       </ion-row>

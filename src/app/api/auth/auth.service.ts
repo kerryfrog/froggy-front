@@ -19,10 +19,7 @@ export class AuthService {
         headers,
         data,
         responseType: "json",
-      });
-
-      console.log("response from server" , response);
-      
+      });      
       return response;
     } catch (error) {
       return error.response;
