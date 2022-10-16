@@ -404,7 +404,7 @@ export class PatternPage {
     )[0];
 
     if (patternResult["isFavorite"]) {
-      
+      this.fetchEnrollFavoritePattern(pattern.id);
       patternResult["isFavorite"] = false;
     } else {
       this.fetchEnrollFavoritePattern(pattern.id);
