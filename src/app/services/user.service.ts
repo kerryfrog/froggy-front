@@ -6,7 +6,6 @@ import { StorageService } from './storage.service';
 providedIn: 'root'
 })
 export class UserService {
-
   constructor(
     public storageService: StorageService
   ) { }
@@ -14,14 +13,11 @@ export class UserService {
 
   async saveUser(user) {
     this.storageService.set('user', user);
-
     const testUser = await this.storageService.get('user');
     console.log("test local storage", testUser);
-    
-
   }
 
-
-
-  //getUser()
+  async getUser() {
+    return await this.storageService.get('user');
+  }
 }

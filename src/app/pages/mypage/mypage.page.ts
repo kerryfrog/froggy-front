@@ -3,6 +3,7 @@ import { ModalController, NavController } from "@ionic/angular";
 
 import { SignupComponent } from "src/app/components/signup/signup.component";
 import { SigninComponent } from "src/app/components/signin/signin.component";
+import { UserInfoComponent } from "src/app/components/user-info/user-info.component";
 import { Storage } from '@ionic/storage-angular';
 
 @Component({
@@ -47,7 +48,14 @@ export class MypagePage implements OnInit {
     });
     await modal.present();
   }
-
+   
+  async userInfo() {
+    const modal = await this.modalController.create({
+      component: UserInfoComponent,
+      cssClass: "modal-fullscreen",
+    });
+    await modal.present();
+  }
 
   async openFavoriteYarn() {
     const modal = await this.modalController.create({

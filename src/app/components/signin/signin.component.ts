@@ -51,6 +51,8 @@ export class SigninComponent implements OnInit {
       console.log("signInResult" , signInResult);
         
       if (signInResult.status === 200) {
+        console.log(signInResult.config.data);
+        
         this.userService.saveUser(JSON.stringify(signInResult.data.user));        
         this.goBack()
       }
