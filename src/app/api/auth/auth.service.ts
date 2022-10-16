@@ -27,7 +27,6 @@ export class AuthService {
   }
 
   async postSignUp(data) {
-    console.log("post signup form", data);
     try {
       const response = await axios({
         method: "post",
@@ -40,4 +39,18 @@ export class AuthService {
       return error.response;
     }
   }
+
+  async logout() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/auth/logout`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }    
+  }
+
 }

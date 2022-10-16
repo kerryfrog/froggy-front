@@ -20,4 +20,8 @@ export class UserService {
   async getUser() {
     return await this.storageService.get('user');
   }
+
+  async deleteUser() {
+    return await this.storageService.delete('user');
+  }
 }

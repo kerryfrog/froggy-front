@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/api/auth/auth.service';
+
 import { NavController, ModalController } from "@ionic/angular";
 
 @Component({
@@ -12,6 +14,7 @@ export class UserInfoComponent implements OnInit {
 
   constructor(
     public userService: UserService,
+    public authService: AuthService,
     public modalController: ModalController,
   ) { }
 
@@ -28,10 +31,15 @@ export class UserInfoComponent implements OnInit {
     console.log("this.user", this.user);
     
   }
+
+  async logout() {
+    await this.userService.deleteUser();
+    await this.authService.logout();
+  }
   goBack() {
     this.modalController.dismiss({
       dismissed: false,
     });
-
   }
+
 }

@@ -12,6 +12,8 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ["./mypage.page.scss"],
 })
 export class MypagePage implements OnInit {
+
+  public isLogedin = false;
   constructor(
     public modalController: ModalController,
     public storage: Storage
@@ -22,10 +24,14 @@ export class MypagePage implements OnInit {
   async ionViewDidEnter() {
       
     const keyVal = await this.storage.get('user');
-    console.log('Key is', keyVal);
+    console.log("keyVal is ", keyVal);
+    
 
     if (!keyVal) {
-      this.signin();
+      this.isLogedin= false;
+    }
+    else {
+      this.isLogedin = true;
     }
   }
 
