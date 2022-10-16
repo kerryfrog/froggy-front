@@ -50,9 +50,7 @@ export class SigninComponent implements OnInit {
       const signInResult = await this.authService.postSignIn(this.ionicForm.value);
       console.log("signInResult" , signInResult);
         
-      if (signInResult.status === 200) {
-        console.log(signInResult.config.data);
-        
+      if (signInResult.data.status === 'Y') {
         this.userService.saveUser(JSON.stringify(signInResult.data.user));        
         this.goBack()
       }
