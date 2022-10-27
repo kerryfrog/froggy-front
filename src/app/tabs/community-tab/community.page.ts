@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
 import { PatternService } from "src/app/api/pattern.service";
+import { ModalController, NavController } from "@ionic/angular";
+
+import { WriteComponent } from "src/app/components/write/write.component";
 
 @Component({
   selector: "app-community",
@@ -11,12 +14,12 @@ export class CommunityPage {
   public flag = false;
   constructor(
     public patternService: PatternService,
+    public modalController: ModalController,
   ) { }
   
 
   async getRecommendPatternList() {
     const aiPatternResult = await this.patternService.getAiPattern();
-    console.log(aiPatternResult.data);
     
     if (aiPatternResult.data.status === 'Y') {
       this.result = aiPatternResult.data.patternList['test'];
@@ -24,5 +27,14 @@ export class CommunityPage {
     }
     
   }
+
+  async write() {
+    const modal = await this.modalController.create({
+      component: WriteComponent,
+      cssClass: "modal-fullscreen",
+    });
+    await modal.present();  
+  }
+
 
 }

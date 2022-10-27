@@ -8,6 +8,8 @@ import { CommunityPage } from "./community.page";
 import { CommunityPageRoutingModule } from "./community-routing.module";
 import { ToolbarComponent } from "../../components/toolbar/toolbar.component";
 import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module";
+import { WriteComponentModule } from "src/app/components/write/write.module";
+
 
 @NgModule({
   imports: [
@@ -17,6 +19,7 @@ import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module"
     RouterModule.forChild([{ path: "", component: CommunityPage }]),
     CommunityPageRoutingModule,
     ToolbarComponentModule,
+    WriteComponentModule,
   ],
   declarations: [CommunityPage],
 })
