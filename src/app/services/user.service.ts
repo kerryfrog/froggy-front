@@ -12,9 +12,11 @@ export class UserService {
 
 
   async saveUser(user) {
-    this.storageService.set('user', user);
-    const testUser = await this.storageService.get('user');
-    console.log("test local storage", testUser);
+    await this.storageService.set('user', user);
+    console.log("save user");
+    
+    //const testUser = await this.storageService.get('user');
+    //console.log("test local storage", testUser);
   }
 
   async getUser() {

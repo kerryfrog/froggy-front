@@ -51,8 +51,8 @@ export class SigninComponent implements OnInit {
       console.log("signInResult" , signInResult);
         
       if (signInResult.data.status === 'Y') {
-        this.userService.saveUser(JSON.stringify(signInResult.data.user));        
-        this.goBack()
+        await this.userService.saveUser(JSON.stringify(signInResult.data.user));        
+        this.goBackWithSignIn()
       }
       console.log(this.ionicForm.value);
     }
@@ -69,11 +69,18 @@ export class SigninComponent implements OnInit {
 
 
   goBack() {
+    console.log("go back");
+    
     this.modalController.dismiss({
       dismissed: false,
     });
   }
 
+  goBackWithSignIn() {
+    this.modalController.dismiss({
+      isSignedIn: true,
+    });
+  }
 
 
 }

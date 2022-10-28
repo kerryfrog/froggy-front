@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,ChangeDetectorRef, } from "@angular/core";
 import { ModalController, NavController } from "@ionic/angular";
 
 import { SignupComponent } from "src/app/components/signup/signup.component";
@@ -13,30 +13,28 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class MypagePage implements OnInit {
 
-  public isLogedin = false;
+  public isLoggedIn = false;
   constructor(
     public modalController: ModalController,
-    public storage: Storage
+    public storage: Storage,
+    public changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit() { }
   
   async ionViewDidEnter() {
-      
-    const keyVal = await this.storage.get('user');
-    console.log("keyVal is ", keyVal);
-    
-
-    if (!keyVal) {
-      this.isLogedin= false;
-    }
-    else {
-      this.isLogedin = true;
-    }
+    await this.checkIsUserLogIn();
   }
 
   async checkIsUserLogIn() {
+    const keyVal = await this.storage.get('user');
     
+    if (!keyVal) {
+      this.isLoggedIn= false;
+    }
+    else {
+      this.isLoggedIn = true;
+    }
   }
 
   async signup() {
@@ -45,6 +43,12 @@ export class MypagePage implements OnInit {
       cssClass: "modal-fullscreen",
     });
     await modal.present();
+    const keyVal = await this.storage.get('user');
+    console.log("check sign up result", keyVal);
+    await this.checkIsUserLogIn();
+    this.changeDetectorRef.detectChanges();
+
+   
   }
 
   async signin() {
@@ -53,6 +57,11 @@ export class MypagePage implements OnInit {
       cssClass: "modal-fullscreen",
     });
     await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if (data.isSignedIn) {
+      await this.checkIsUserLogIn();
+    }
+    this.changeDetectorRef.detectChanges();
   }
    
   async userInfo() {
@@ -61,6 +70,11 @@ export class MypagePage implements OnInit {
       cssClass: "modal-fullscreen",
     });
     await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if (data.isLoggedOut) {
+      await this.checkIsUserLogIn();      
+    }
+    this.changeDetectorRef.detectChanges();
   }
 
   async openFavoriteYarn() {

@@ -35,11 +35,19 @@ export class UserInfoComponent implements OnInit {
   async logout() {
     await this.userService.deleteUser();
     const logoutResult = await this.authService.logout();
-
+    console.log(logoutResult);
+    
     if (logoutResult.data.status === 'Y') {
-      this.goBack();
+      this.goBackWithLogout();
     }
   }
+  
+  goBackWithLogout() {
+     this.modalController.dismiss({
+      isLoggedOut: true,
+    });
+  }
+
   goBack() {
     this.modalController.dismiss({
       dismissed: false,

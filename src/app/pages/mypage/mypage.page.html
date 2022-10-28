@@ -15,7 +15,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="isLogedin" >
+  <div *ngIf="isLoggedIn">
     <ion-item (click)="userInfo()">
       <ion-label> 회원 정보 </ion-label>
     </ion-item>
@@ -36,7 +36,7 @@
     </ion-item>
   </div>
 
-  <div *ngIf="!isLogedin">
+  <div *ngIf="!isLoggedIn">
      <ion-item (click)="signin()">
       <ion-label> 로그인하기 </ion-label>
     </ion-item>
