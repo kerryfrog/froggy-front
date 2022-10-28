@@ -9,7 +9,7 @@ import axios from "axios";
     providedIn: "root",
 })
 export class CommunityService {
-    async postNewPost(data) {
+    async saveNewPost(data) {
     try {
       const response = await axios({
         method: "post",

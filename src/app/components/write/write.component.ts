@@ -26,15 +26,9 @@ export class WriteComponent implements OnInit {
   ngOnInit() {
   }
 
-  goBack() {
-    this.modalController.dismiss({
-      dismissed: false,
-    });
-  }
-
   myCallback(event) {
     //editor, html, text, content, delta, oldDelta, source
-    console.log("testing", event.text);
+    //console.log("testing", event.text);
     this.contents = event.text;
   }
 
@@ -45,8 +39,20 @@ export class WriteComponent implements OnInit {
       contents : this.contents
     }
 
-    await this.communityService.postNewPost(payload);
+    const savePostResult = await this.communityService.saveNewPost(payload);
+    console.log("ㅅㄷㄴㅅ",savePostResult);
+    
+    if (savePostResult.data.status === 'Y') {
+      this.goBack();
+    }
 
   }
+
+  goBack() {
+    this.modalController.dismiss({
+      dismissed: false,
+    });
+  }
   
+
 }

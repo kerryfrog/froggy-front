@@ -11,27 +11,31 @@
     </div> -->
     <div class="community__wrapper">
         <div class ="post__wrapper" *ngIf="postList">
-            <h1>글 목록</h1>
+            <div class="top">
+                <div class="top__title"> 글 목록</div>
+                <ion-button
+                    class="top__button"
+                    (click)="write()">
+                    글쓰기
+                </ion-button>
+            </div>
             <div class="postList"> 
                 <div class="post" *ngFor="let post of postList">
                     <div>
                         <ion-icon name="person-circle-outline"></ion-icon>
                         {{post.userNick}}
                     </div>
-                    <div>
+                    <div class="post__title">
                         {{post.title}}
+                    </div>
+                    <div class="post__contents">
+                        {{post.contents}}
                     </div>
                 </div>
                 <hr>
             </div>
         </div>
         
-        <div>
-            <ion-button
-                (click)="write()">
-                글쓰기
-            </ion-button>
-        </div>
     </div>
 
 

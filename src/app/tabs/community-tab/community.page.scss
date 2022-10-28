@@ -2,9 +2,18 @@
   --background: #95c597;
 }
 
+.top{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
 
-.tab-title{
+   &__title{
+    font-size: 25px;
+    font-weight: 900;
+   }
+   &__button{
 
+   }
 }
 
 .community__wrapper{
@@ -22,11 +31,18 @@
   flex-direction: column;
 
   .postList{
-    background-color: rgb(123, 123, 129); 
+    // background-color: rgb(220, 220, 227); 
   }
 
   .post{
     margin:10px;
-    background-color: green; 
+    background-color: rgb(202, 211, 202); 
+
+    &__title{
+      font-size: medium;
+      font-weight: 500;
+    }
+
+
   }
 }

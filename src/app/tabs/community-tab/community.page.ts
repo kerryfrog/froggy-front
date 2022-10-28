@@ -4,6 +4,8 @@ import { ModalController, NavController } from "@ionic/angular";
 
 import { WriteComponent } from "src/app/components/write/write.component";
 import { CommunityService } from "src/app/api/community.service";
+import { UserService } from "src/app/services/user.service";
+
 
 @Component({
   selector: "app-community",
@@ -19,7 +21,8 @@ export class CommunityPage {
   constructor(
     public patternService: PatternService,
     public modalController: ModalController,
-    public communityService:CommunityService,
+    public communityService: CommunityService,
+    public userService:UserService,
   ) { }
   
   async ionViewDidEnter() {
@@ -43,11 +46,21 @@ export class CommunityPage {
   }
 
   async write() {
-    const modal = await this.modalController.create({
-      component: WriteComponent,
-      cssClass: "modal-fullscreen",
-    });
-    await modal.present();  
+
+    const user = await this.userService.getUser()
+    console.log("userinfo", user);
+    
+    if (!user) {
+      alert("로그인해주세요");
+    }
+    else {
+      const modal = await this.modalController.create({
+        component: WriteComponent,
+        cssClass: "modal-fullscreen",
+      });
+      await modal.present();  
+    }
+
   }
 
 
