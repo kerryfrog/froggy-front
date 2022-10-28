@@ -35,6 +35,35 @@ export class CommunityService {
     } catch (error) {
       return error.response;
     }
+   }
+  async getPostDetail(postId) {
+     try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/community/post/${postId}`,
+        responseType: "json",
+      });
+      console.log("response of getPostDetail", response);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
   }
+  async saveNewComment(data) {
+    try {
+      const { postId } = data;
+      const response = await axios({
+        method: "post",
+        url: `${environment.apiUrl}/community/write/${postId}/comment`,
+        data,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+    }
+
+  
  
 }

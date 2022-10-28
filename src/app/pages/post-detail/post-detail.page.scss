@@ -1,0 +1,15 @@
+.post__wrapper{
+    padding:10px;
+}
+
+.post{
+   &__title{
+      font-size: medium;
+      font-weight: 500;
+      margin-bottom: 3px;
+      margin-top: 3px;
+    }
+    &__contents{
+      color: rgba(1, 15, 1, 0.75); 
+    }
+}

@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="post__wrapper">
+    <div class="post" *ngIf="post">
+      <div class="post__title">{{post.title}}</div>
+      <div class="post__contents">{{post.contents}}</div>
+
+      <div class="post__created-date">{{post.createdAt}}</div>
+    </div>
+
+</div>
+
+</ion-content>

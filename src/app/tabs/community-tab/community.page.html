@@ -20,7 +20,9 @@
                 </ion-button>
             </div>
             <div class="postList"> 
-                <div class="post" *ngFor="let post of postList">
+                <div class="post"
+                (click)="goPostDetailPage(post.id)"
+                 *ngFor="let post of postList; ">
                     <div>
                         <ion-icon name="person-circle-outline"></ion-icon>
                         {{post.userNick}}
@@ -32,7 +34,6 @@
                         {{post.contents}}
                     </div>
                 </div>
-                <hr>
             </div>
         </div>
         

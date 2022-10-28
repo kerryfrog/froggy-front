@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { PatternService } from "src/app/api/pattern.service";
 import { ModalController, NavController } from "@ionic/angular";
+import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
+
 
 import { WriteComponent } from "src/app/components/write/write.component";
 import { CommunityService } from "src/app/api/community.service";
@@ -22,7 +24,8 @@ export class CommunityPage {
     public patternService: PatternService,
     public modalController: ModalController,
     public communityService: CommunityService,
-    public userService:UserService,
+    public userService: UserService,
+    public navController: NavController,
   ) { }
   
   async ionViewDidEnter() {
@@ -63,5 +66,15 @@ export class CommunityPage {
 
   }
 
+  goPostDetailPage(postId) {
+    
+    
+    // const props: NavigationExtras = {
+    //   state: {
+      
+    //   },
+    // };
+    this.navController.navigateForward(`/tabs/community/${postId}`);
+  }
 
 }

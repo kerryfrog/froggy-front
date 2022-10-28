@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'pattern-search',
     loadChildren: () => import('./pages/pattern-search/pattern-search.module').then( m => m.PatternSearchPageModule)
   },
+  {
+    path: 'post-detail',
+    loadChildren: () => import('./pages/post-detail/post-detail.module').then( m => m.PostDetailPageModule)
+  },
 ];
 @NgModule({
   imports: [

@@ -7,6 +7,13 @@ const routes: Routes = [
     path: "",
     component: CommunityPage,
   },
+  {
+    path:':postId',
+      loadChildren: () =>
+        import('src/app/pages/post-detail/post-detail.module').then(
+          (m) => m.PostDetailPageModule
+        ),
+  },  
 ];
 
 @NgModule({
