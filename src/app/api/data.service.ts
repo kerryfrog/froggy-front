@@ -58,7 +58,6 @@ export class DataService {
     }
   }
   async postYarnData(data) {
-    console.log("post Yarn Data", data);
     try {
       const response = await axios({
         method: "post",

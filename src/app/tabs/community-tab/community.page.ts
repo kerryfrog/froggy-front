@@ -3,6 +3,7 @@ import { PatternService } from "src/app/api/pattern.service";
 import { ModalController, NavController } from "@ionic/angular";
 
 import { WriteComponent } from "src/app/components/write/write.component";
+import { CommunityService } from "src/app/api/community.service";
 
 @Component({
   selector: "app-community",
@@ -12,11 +13,24 @@ import { WriteComponent } from "src/app/components/write/write.component";
 export class CommunityPage {
   public result = "";
   public flag = false;
+  public postList;
+
+
   constructor(
     public patternService: PatternService,
     public modalController: ModalController,
+    public communityService:CommunityService,
   ) { }
   
+  async ionViewDidEnter() {
+    const result = await this.communityService.getMainPosts();
+
+    console.log("getMainPost result", result.data.postList);
+    if (result.data.status === 'Y') {
+      this.postList = result.data.postList;
+    }
+  }
+
 
   async getRecommendPatternList() {
     const aiPatternResult = await this.patternService.getAiPattern();

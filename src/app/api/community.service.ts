@@ -22,5 +22,19 @@ export class CommunityService {
       return error.response;
     }
     }
+   async getMainPosts() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/community/main`,
+        responseType: "json",
+      });
+      console.log("response of getMainPosts", response);
+      
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
  
 }

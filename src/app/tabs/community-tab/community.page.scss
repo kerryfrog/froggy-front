@@ -1,3 +1,32 @@
 .toolbar {
   --background: #95c597;
 }
+
+
+.tab-title{
+
+}
+
+.community__wrapper{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+
+.post__wrapper{
+  flex-direction: column;
+
+  .postList{
+    background-color: rgb(123, 123, 129); 
+  }
+
+  .post{
+    margin:10px;
+    background-color: green; 
+  }
+}

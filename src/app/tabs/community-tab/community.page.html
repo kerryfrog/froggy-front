@@ -1,20 +1,37 @@
 <app-toolbar></app-toolbar>
 
 <ion-content [fullscreen]="true"> 
-    <ion-button
+    <!-- <ion-button
         (click)="getRecommendPatternList()"
     >
         추천 목록 조회
-    </ion-button>
-    <div>
+    </ion-button> -->
+    <!-- <div>
         response : {{ result }}
-    </div>
-
+    </div> -->
     <div class="community__wrapper">
-        <ion-button
-            (click)="write()">
-            글쓰기
-        </ion-button>
+        <div class ="post__wrapper" *ngIf="postList">
+            <h1>글 목록</h1>
+            <div class="postList"> 
+                <div class="post" *ngFor="let post of postList">
+                    <div>
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                        {{post.userNick}}
+                    </div>
+                    <div>
+                        {{post.title}}
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+        
+        <div>
+            <ion-button
+                (click)="write()">
+                글쓰기
+            </ion-button>
+        </div>
     </div>
 
 
