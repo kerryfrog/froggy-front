@@ -15,8 +15,8 @@ export class WriteComponent implements OnInit {
   public ionicForm: FormGroup;
   public isSubmitted;
   public contents;
-
-  public post: Post;
+  public title;
+  
 
   constructor(
     public modalController: ModalController,
@@ -35,12 +35,18 @@ export class WriteComponent implements OnInit {
   myCallback(event) {
     //editor, html, text, content, delta, oldDelta, source
     console.log("testing", event.text);
-    this.post.contents = event.text;
+    this.contents = event.text;
   }
 
+  
   async submitPost() {
-    await this.communityService.postNewPost(this.post);
-    
+    const payload: Post = {
+      title: this.title,
+      contents : this.contents
+    }
+
+    await this.communityService.postNewPost(payload);
+
   }
   
 }
