@@ -26,16 +26,12 @@ export class UserInfoComponent implements OnInit {
 
   async getUser() {
     const userInfoStr = await this.userService.getUser();
-    this.user = JSON.parse(userInfoStr);
-
-    console.log("this.user", this.user);
-    
+    this.user = JSON.parse(userInfoStr);    
   }
 
   async logout() {
     await this.userService.deleteUser();
     const logoutResult = await this.authService.logout();
-    console.log(logoutResult);
     
     if (logoutResult.data.status === 'Y') {
       this.goBackWithLogout();

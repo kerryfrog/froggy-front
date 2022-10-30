@@ -16,7 +16,33 @@
 
       <div class="post__created-date">{{post.createdAt}}</div>
     </div>
+  </div>
 
-</div>
+
+  <div class="comment__wrapper">
+    <h1>댓글</h1>
+    <div class="comment__list" *ngFor="let comment of commentList">
+      <div>
+        <ion-icon name="person-circle-outline"></ion-icon>
+        {{post.userNick}}
+      </div>
+      <div class="comment__list__contents">
+            {{comment.contents}}
+      </div>
+      <div class="comment__list__date">{{comment.createdAt}}</div>
+        
+    </div>
+
+    <div class="comment__input">
+      <ion-input 
+        placeholder="댓글을 입력하세요"
+        [(ngModel)]="comment"
+        ></ion-input>
+        <ion-button (click)="submitComment()" [disabled]="comment===''" fill="clear">
+          <ion-icon name="paper-plane-outline"></ion-icon>
+        </ion-button>
+    </div>
+
+  </div>
 
 </ion-content>

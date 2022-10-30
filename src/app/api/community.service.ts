@@ -49,6 +49,18 @@ export class CommunityService {
       return error.response;
     }
   }
+  async getComments(postId) {
+      try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/community/comment/${postId}`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async saveNewComment(data) {
     try {
       const { postId } = data;
@@ -62,7 +74,7 @@ export class CommunityService {
     } catch (error) {
       return error.response;
     }
-    }
+  }
 
   
  

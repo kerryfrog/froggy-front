@@ -13,3 +13,21 @@
       color: rgba(1, 15, 1, 0.75); 
     }
 }
+
+.comment__wrapper{
+  padding:10px; 
+  display: flex;
+  flex-direction: column;
+
+}
+
+.comment{
+  &__input{
+    display: flex;
+    flex-direction: row;
+
+  } 
+  &__list{
+    margin:10px;
+  }
+}
