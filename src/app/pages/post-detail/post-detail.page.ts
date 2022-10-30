@@ -73,6 +73,10 @@ export class PostDetailPage implements OnInit {
     if (saveCommentResult.data.isUserLogin === 'N') {
       this.setUserSyncWithServer()
     }
+    if (saveCommentResult.data.status === 'Y') {
+      this.comment = "";
+    }
+
     await this.fetchComments();
 
   }

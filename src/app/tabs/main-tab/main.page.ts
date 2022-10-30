@@ -9,7 +9,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 import { YarnService } from 'src/app/api/yarn.service';
 import { PatternService } from "src/app/api/pattern.service";
-
+import { CommunityService } from "src/app/api/community.service";
 
 @Component({
   selector: 'app-main',
@@ -23,6 +23,7 @@ export class MainPage {
 
   public yarnList = [];
   public patternList = [];
+  public postList = [];
 
   constructor(
     public dataService: DataService,
@@ -31,11 +32,14 @@ export class MainPage {
     public yarnService: YarnService,
     public navController: NavController,
     public activatedRoute: ActivatedRoute,
+    public communityService: CommunityService,
   ) {}
 
   async ionViewDidEnter() {
+    await this.getPostList();
     await this.getPatternPageView();
     await this.getYarnPageView();
+    
   }
 
   getRandomInt(min, max) {
@@ -96,11 +100,18 @@ export class MainPage {
     
     if (data.status === 'Y') {
       this.yarnList = [...this.yarnList, ...data.randYarn];
-      console.log(data);
     }
     
   }
 
+  async getPostList() {
+    const result = await this.communityService.getMainPosts();
+
+    console.log("getMainPost result", result.data.postList);
+    if (result.data.status === 'Y') {
+      this.postList = result.data.postList.slice(0, 2);
+    }
+  }
 
   async getAndFetchYarnData() {
     for (let i = this.min; i <= this.max; i++){

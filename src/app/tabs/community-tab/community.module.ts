@@ -10,6 +10,9 @@ import { ToolbarComponent } from "../../components/toolbar/toolbar.component";
 import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module";
 import { WriteComponentModule } from "src/app/components/write/write.module";
 
+import { PostListComponent } from 'src/app/components/post-list/post-list.component';
+import { PostListComponentModule } from 'src/app/components/post-list/post-list.module';
+
 
 @NgModule({
   imports: [
@@ -20,6 +23,7 @@ import { WriteComponentModule } from "src/app/components/write/write.module";
     CommunityPageRoutingModule,
     ToolbarComponentModule,
     WriteComponentModule,
+    PostListComponentModule,
   ],
   declarations: [CommunityPage],
 })

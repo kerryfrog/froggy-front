@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms"
 
 import { Post } from "../../models/server-request";
 
+import { UserService } from 'src/app/services/user.service';
 import { CommunityService } from 'src/app/api/community.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class WriteComponent implements OnInit {
 
   constructor(
     public modalController: ModalController,
-    public communityService:CommunityService,
+    public communityService: CommunityService,
+    public userService: UserService,
   ) { }
 
   ngOnInit() {
@@ -40,12 +42,20 @@ export class WriteComponent implements OnInit {
     }
 
     const savePostResult = await this.communityService.saveNewPost(payload);
-    console.log("ㅅㄷㄴㅅ",savePostResult);
-    
+   
+    if (savePostResult.data.isUserLogin === 'N') {
+      this.setUserSyncWithServer()
+    }
+
     if (savePostResult.data.status === 'Y') {
       this.goBack();
     }
 
+  }
+
+  async setUserSyncWithServer() {
+    await this.userService.deleteUser();
+    alert('다시 로그인 해 주세요');
   }
 
   goBack() {

@@ -2,74 +2,56 @@
 <app-toolbar></app-toolbar>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-  </ion-header>
-  <ion-item>
-    <ion-input
-    type="number"
-    placeholder="min index"
-    [(ngModel)]="min"
-    ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input
-       type="number"
-       placeholder="max index"
-       [(ngModel)]="max"
-       ></ion-input>
-  </ion-item>
-  <h3 *ngIf="nowIndex !== -1" >get api index :{{nowIndex}} </h3>
-  <ion-button 
-    (click) = "getRaverlyApi()"
-  >
-    실 api 호출
-  </ion-button>
-  <div class="small-title"> > 실 추천 </div>
-  <div *ngIf="yarnList.length > 0" class="container__products">
-    <div
-      *ngFor="let yarn of yarnList"
-      (click)="goYarnDetailPage(yarn)"
-      class="contents"
+  <div class="main__wrapper">
+    <ion-header collapse="condense">
+    </ion-header>
+    <ion-item>
+      <ion-input
+      type="number"
+      placeholder="min index"
+      [(ngModel)]="min"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+         type="number"
+         placeholder="max index"
+         [(ngModel)]="max"
+         ></ion-input>
+    </ion-item>
+    <h3 *ngIf="nowIndex !== -1" >get api index :{{nowIndex}} </h3>
+    <ion-button 
+      (click) = "getRaverlyApi()"
     >
-      <div class="image">
-        <img src="{{ yarn.thumbnail }}" (error)="onImageError($event)" />
+      실 api 호출
+    </ion-button>
+    <h5>실 추천</h5> 
+    <div *ngIf="yarnList.length > 0" class="container__products">
+      <div
+        *ngFor="let yarn of yarnList"
+        (click)="goYarnDetailPage(yarn)"
+        class="contents">
+        <div class="image">
+          <img src="{{ yarn.thumbnail }}" (error)="onImageError($event)" />
+        </div>
       </div>
     </div>
-  </div>
-  <div class="small-title"> > 패턴 추천 </div>
+    <h5>패턴 추천</h5>  
     <div *ngIf="patternList.length > 0" class="container__products">
-    <div
-      *ngFor="let pattern of patternList"
-      (click)="goPatternDetailPage(pattern)"
-      class="contents"
-    >
-      <div class="image">
-        <img src="{{ pattern.thumbnail }}" (error)="onImageError($event)" />
+      <div
+        *ngFor="let pattern of patternList"
+        (click)="goPatternDetailPage(pattern)"
+        class="contents"
+      >
+        <div class="image">
+          <img src="{{ pattern.thumbnail }}" (error)="onImageError($event)" />
+        </div>
       </div>
     </div>
+    <h5>커뮤니티 인기글</h5>   
+      <app-post-list
+        [postList]="postList"
+      >
+      </app-post-list>
   </div>
-  <div class="community__wrapper"> 
-    <div class="small-title"> > 커뮤니티</div>
-    <div class="post">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>라이벌리의 Gauage가 무슨 뜻인가요 ?</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          다른건 대충 이해가 가는데, gauage는 도저히 모르겠어요...
-        </ion-card-content>
-      </ion-card>
-    </div>
-      <div class="post">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>바늘 이야기 도안 추천 부탁드려요</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          조끼 뜨고싶은데 쉬운걸로 추천해주세요
-        </ion-card-content>
-      </ion-card>
-    </div>
-  </div>
-
   </ion-content>

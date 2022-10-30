@@ -1,0 +1,18 @@
+
+
+<div class="postList"> 
+  <div class="post"
+  (click)="goPostDetailPage(post.id)"
+    *ngFor="let post of postList;">
+      <div>
+          <ion-icon name="person-circle-outline"></ion-icon>
+          {{post.userNick}}
+      </div>
+      <div class="post__title">
+          {{post.title}}
+      </div>
+      <div class="post__contents">
+          {{post.contents}}
+      </div>
+  </div>
+</div>
