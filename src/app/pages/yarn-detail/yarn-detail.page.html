@@ -20,6 +20,8 @@
       <div>무게 : {{yarn.grams}}g</div>
     </div>
   </div>
+
+  
   <div class="link__wrapper">
     <div>판매 링크</div>
     <div class="link__list" *ngIf="yarn.yarnCompanyName">
@@ -30,7 +32,13 @@
   </div>
 
   <div class="review__wrapper">
-    <h3>실 리뷰</h3>
+    <div class="review__title">
+      <div class="review__title__text">실 리뷰</div>
+      <ion-button
+      (click)="writeReview()">
+        리뷰 작성하기
+      </ion-button>
+    </div>
     <div class="card">
       <ion-card>
         <ion-item>

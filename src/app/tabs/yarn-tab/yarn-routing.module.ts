@@ -20,7 +20,15 @@ const routes: Routes = [
         import('src/app/pages/yarn-detail/yarn-detail.module').then(
           (m) => m.YarnDetailPageModule
         ),
+  },
+   {
+    path:'review/:yarnId',
+      loadChildren: () =>
+        import('src/app/pages/yarn-review-write/yarn-review-write.module').then(
+          (m) => m.YarnReviewWritePageModule
+        ),
   },  
+
 ];
 
 @NgModule({

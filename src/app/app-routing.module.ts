@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'post-detail',
     loadChildren: () => import('./pages/post-detail/post-detail.module').then( m => m.PostDetailPageModule)
   },
+  {
+    path: 'yarn-review-write',
+    loadChildren: () => import('./pages/yarn-review-write/yarn-review-write.module').then( m => m.YarnReviewWritePageModule)
+  },
 ];
 @NgModule({
   imports: [
