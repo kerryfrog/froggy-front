@@ -6,3 +6,21 @@
 .mypage__wrapper{
   padding:10px;
 }
+
+
+.nickname{
+  display: flex;
+  flex-direction: column;
+
+  &__text{
+    margin: auto 0;
+  }
+
+  &__change{
+    &__input{
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+}

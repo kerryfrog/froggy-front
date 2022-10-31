@@ -52,5 +52,4 @@ export class AuthService {
       return error.response;
     }    
   }
-
 }
