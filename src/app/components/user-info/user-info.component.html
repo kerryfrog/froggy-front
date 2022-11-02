@@ -12,22 +12,9 @@
     <div class="nickname" *ngIf="user">
       <ion-icon name="person-circle-outline"></ion-icon>
       <div class="nickname__text">{{ user.nick }} </div>
-      <ion-button class="nickname__change__btn1" fill="clear" (click)="changeNickName()" *ngIf="!isChangeNickName">
+      <ion-button class="nickname__change__btn1" fill="clear" (click)="openChangeNickAlert()" *ngIf="!isChangeNickName">
         닉네임 변경하기
       </ion-button>
-
-      <div class="nickname__change" *ngIf="isChangeNickName">
-        <h3>닉네임 변경</h3>
-        <div class="nickname__change__input">
-          <ion-input
-            [(ngModel)]="nickname"
-            [disabled]="!isChangeNickName"
-          ></ion-input>
-          <ion-button (click)="saveChangeNickName()" fill="clear">
-            확인
-          </ion-button>
-        </div>
-      </div>
     </div>
 
     <div class="preference"> 

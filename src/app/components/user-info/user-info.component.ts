@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/api/auth/auth.service';
 
-import { NavController, ModalController } from "@ionic/angular";
+import { NavController, ModalController, AlertController } from "@ionic/angular";
 
 import { ProfileService } from 'src/app/api/profile.service';
 
@@ -13,7 +13,6 @@ import { ProfileService } from 'src/app/api/profile.service';
 })
 export class UserInfoComponent implements OnInit {
   public user;
-  public nickname;
 
   public isChangeNickName = false;
 
@@ -21,7 +20,8 @@ export class UserInfoComponent implements OnInit {
     public userService: UserService,
     public authService: AuthService,
     public modalController: ModalController,
-    public profileService:ProfileService,
+    public profileService: ProfileService,
+    public alertController: AlertController
   ) { }
 
   ngOnInit() { }
@@ -33,7 +33,7 @@ export class UserInfoComponent implements OnInit {
   async getUser() {
     const userInfoStr = await this.userService.getUser();
     this.user = JSON.parse(userInfoStr);
-    this.nickname = this.user.nick;
+    //this.nickname = this.user.nick;
   }
 
   async logout() {
@@ -50,12 +50,62 @@ export class UserInfoComponent implements OnInit {
     }
   }
   
+  async openChangeNickAlert() {
+    const alert = await this.alertController.create({
+      header: '닉네임 변경',
+      buttons: [
+        {
+          text: '취소',
+          role: 'cancel',
+        },
+        {
+          text: '확인',
+          role: 'confirm',
+        },
+      ],
+      inputs: [
+        { 
+          type:'text',
+          placeholder: '새로운 닉네임을 입력하세요',
+          attributes: {
+            minlength:1,
+            maxlength: 10,
+          },
+        },
+      ],
+    });
+    await alert.present();
 
-  async saveChangeNickName() {
-    if (this.nickname !== this.user.nick && this.nickname !== "") {
-      await this.profileService.changeNickname({ newNickName:this.nickname });
+  
+    const { data, role } = await alert.onDidDismiss();
+    console.log(data);
+    
+    if (role === 'confirm') {
+      await this.saveChangeNickName(data.values['0']);
     }
   }
+
+
+  async saveChangeNickName(newNickname) {
+    if ( newNickname !== this.user.nick && newNickname !== '') {
+      const changeNicknameResult = await this.profileService.changeNickname({ newNickName:newNickname});
+      
+      if (changeNicknameResult.data.isUserLogin == 'N') {
+        this.setUserSyncWithServer()
+      }
+
+      if (changeNicknameResult.data.status === 'Y') {
+        this.setUserInfo(newNickname);
+      }
+
+    }
+  }
+
+  async setUserInfo(newNickName) {
+    this.user.nick = newNickName;
+    await this.userService.saveUser(this.user);
+  }
+
 
   goBackWithLogout() {
      this.modalController.dismiss({
@@ -69,6 +119,11 @@ export class UserInfoComponent implements OnInit {
     this.modalController.dismiss({
       dismissed: false,
     });
+  }
+
+  async setUserSyncWithServer() {
+    await this.userService.deleteUser();
+    alert('다시 로그인 해 주세요');
   }
 
 }

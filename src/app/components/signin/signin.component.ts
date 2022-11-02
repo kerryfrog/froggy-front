@@ -51,7 +51,7 @@ export class SigninComponent implements OnInit {
       console.log("signInResult" , signInResult);
         
       if (signInResult.data.status === 'Y') {
-        await this.userService.saveUser(JSON.stringify(signInResult.data.user));        
+        await this.userService.saveUser(signInResult.data.user);        
         this.goBackWithSignIn()
       }
       console.log(this.ionicForm.value);

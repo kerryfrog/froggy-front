@@ -12,7 +12,8 @@ export class UserService {
 
 
   async saveUser(user) {
-    await this.storageService.set('user', user);
+
+    await this.storageService.set('user', JSON.stringify(user));
     console.log("save user");
     
     //const testUser = await this.storageService.get('user');
