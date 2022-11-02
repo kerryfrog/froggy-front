@@ -3,20 +3,61 @@
   display: flex;
 
   .post{
-    margin:10px;
-    background-color: rgb(202, 211, 202); 
-    padding:3px;
+    margin-top:10px;
+    background-color: white; 
+    padding:3vw;
     
+    &__category{
+      display: flex;
+      background: rgb(221 220 220);
+      border-radius: 5px;
+      width: 13vw;
+      height: 6vw;
+      margin-bottom: 2vw;
+      span{
+        margin: auto;
+      }
+    }
+
     &__title{
-      font-size: medium;
+      font-size: 4vw;
       font-weight: 500;
-      margin-bottom: 3px;
-      margin-top: 3px;
+      margin-bottom: 3vw;
     }
     &__contents{
       color: rgba(1, 15, 1, 0.75); 
+      font-size: 3.7vw;
+      margin-bottom: 3vw;
     }
 
+    hr{
+      border-width: 1px;
+      height:0px;
+    }
+    &__small__info{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: rgba(1, 15, 1, 0.75); 
+      font-size: 3.2vw;
+    }
 
+    &__bottom{
+      display: flex;
+      flex-direction: row;
+      font-size: 4.3vw;
+      &__icon{
+        display: flex;
+        margin-right: 5vw;
+
+        ion-icon{
+          margin:auto;
+        }
+        span {
+          margin:auto;
+        }
+      }
+
+    }
   }
 }

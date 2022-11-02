@@ -4,6 +4,8 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PostListComponent } from "./post-list.component";
 
+
+
 @NgModule({
   imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
   declarations: [PostListComponent],

@@ -2,10 +2,20 @@
   --background: #95c597;
 }
 
+ion-content{
+  --background: rgb(185 217 193 / 75%);
+}
+
+
+ion-button {
+  --background: var(--ion-color-theme);
+}
+
 .top{
   flex-direction: row;
   display: flex;
   justify-content: space-between;
+  padding:10px;
 
    &__title{
     font-size: 25px;
@@ -20,35 +30,8 @@
   display: flex;
   flex-direction: column;
   width:100%;
-
-  padding-left: 10px;
   padding-top: 10px;
-  padding-right: 10px;
+
 }
 
 
-.post__wrapper{
-  flex-direction: column;
-
-  .postList{
-    // background-color: rgb(220, 220, 227); 
-  }
-
-  .post{
-    margin:10px;
-    background-color: rgb(202, 211, 202); 
-    padding:3px;
-    
-    &__title{
-      font-size: medium;
-      font-weight: 500;
-      margin-bottom: 3px;
-      margin-top: 3px;
-    }
-    &__contents{
-      color: rgba(1, 15, 1, 0.75); 
-    }
-
-
-  }
-}

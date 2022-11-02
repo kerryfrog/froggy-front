@@ -15,8 +15,25 @@ export class PostListComponent implements OnInit {
     public navController: NavController,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    //this.setShortPost();
+  }
   
+  setShortPost(){
+    for (let post of this.postList) {
+      console.log(post.contents.length);
+      
+      if (post.contents.length >= 100) {
+        console.log("longer");
+        
+        post.contentsForShow = post.contents.substring(0, 100) + "...";
+      } else {
+        post.contentsForShow = post.contents;
+      }
+
+    }
+  }
+
 
   goPostDetailPage(postId) {
     this.navController.navigateForward(`/tabs/community/${postId}`);
