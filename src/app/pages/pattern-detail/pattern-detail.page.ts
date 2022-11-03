@@ -32,25 +32,23 @@ export class PatternDetailPage implements OnInit {
       }
       this.patternId = params.patternId;
     });
-    console.log("this pattern", this.pattern);
   }
 
   async ionViewDidEnter() {
-    //await this.getYarnDetail();
+    await this.getPatternDetail();
   }
 
-  // async getYarnDetail() {
-  //   const yarnDetailResult = await this.patternService.getPatternDetail(this.patternId);
-  //   console.log("yarnDetailResult", yarnDetailResult);
-
-  //   if (yarnDetailResult.status === 'Y') {
-  //     console.log("about yanr detail",yarnDetailResult);
-
-  //   }
-  //   else {
-  //     this.failtoFetchYarnDetail();
-  //   }
-  // }
+  async getPatternDetail() {
+    const {data} = await this.patternService.getPatternDetail(this.patternId);
+  
+    if (data.status === 'Y') {
+      this.pattern = data.pattern
+      console.log("pattern response", data.pattern); 
+    }
+    else {
+      this.failtoFetchYarnDetail();
+    }
+  }
 
   failtoFetchYarnDetail() {
     //this.navController.navigateBack('tabs/yarn');
