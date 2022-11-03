@@ -6,8 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PreviewPipe implements PipeTransform {
 
   transform(value: string, ...args): string {
-    const short = value.substring(0, 100) + "...";
-    return short;
-  }
 
+    if (value.length >= 100) {
+      const short = value.substring(0, 70) + "...";
+      return short;
+    } else {
+      return value;
+    }
+  }
 }
