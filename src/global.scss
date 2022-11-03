@@ -28,7 +28,12 @@
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.snow.css';
 
+@import 'src/theme/common.scss';
+
 [contenteditable] {
   -webkit-user-select: text;
   user-select: text;
+}
+* {
+  font-family: 'Pretendard-Medium';
 }

@@ -1,9 +1,10 @@
 
 
 <div class="postList"> 
-  <div class="post"
+  <div 
   (click)="goPostDetailPage(post.id)"
     *ngFor="let post of postList;">
+    <div class="post">
       <div class="post__category">
         <span>{{post.category}}</span>
       </div>
@@ -33,8 +34,8 @@
           <ion-icon name="chatbubble-outline"></ion-icon>
           <span>댓글 3</span>
         </div>
-
       </div>
-
+    </div>
+      <div class="divider"></div>
   </div>
 </div>
