@@ -2,68 +2,72 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Pretendard', Nanum Barun Gothic, '나눔 고딕', Malgun Gothic,
-    '맑은 고딕', 'Apple SD Gothic Neo', '돋움', 'Dotum', Gulim, '굴림', Arial,
+  font-family: "Pretendard", Nanum Barun Gothic, "나눔 고딕", Malgun Gothic,
+    "맑은 고딕", "Apple SD Gothic Neo", "돋움", "Dotum", Gulim, "굴림", Arial,
     Sans-serif, Century Gothic, Sans-serif;
   font-size: 16px;
   color: #362d54;
-  white-space: pre-wrap;
-  letter-spacing: -0.5px;
+  letter-spacing: 0px;
 }
 
+hr {
+  color: rgba(1, 15, 1, 0.75);
+  border-width: 0.5px;
+  height: 0px;
+}
 
 // font
 @font-face {
-  font-family: 'Pretendard-Black';
-  src: local('Pretendard-Black'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-Black.woff2')
-      format('woff2');
+  font-family: "Pretendard-Black";
+  src: local("Pretendard-Black"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-Black.woff2")
+      format("woff2");
 }
 @font-face {
-  font-family: 'Pretendard-Bold';
-  src: local('Pretendard-Bold'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-Bold.woff2')
-      format('woff2');
+  font-family: "Pretendard-Bsold";
+  src: local("Pretendard-Bold"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-Bold.woff2")
+      format("woff2");
 }
 @font-face {
-  font-family: 'Pretendard-ExtraBold';
-  src: local('Pretendard-ExtraBold'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-ExtraBold.woff2')
-      format('woff2');
+  font-family: "Pretendard-ExtraBold";
+  src: local("Pretendard-ExtraBold"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-ExtraBold.woff2")
+      format("woff2");
 }
 @font-face {
-  font-family: 'Pretendard-ExtraLight';
-  src: local('Pretendard-ExtraLight'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-ExtraLight.woff2')
-      format('woff2');
+  font-family: "Pretendard-ExtraLight";
+  src: local("Pretendard-ExtraLight"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-ExtraLight.woff2")
+      format("woff2");
 }
 @font-face {
-  font-family: 'Pretendard-Light';
-  src: local('Pretendard-Light'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-Light.woff2')
-      format('woff2');
+  font-family: "Pretendard-Light";
+  src: local("Pretendard-Light"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-Light.woff2")
+      format("woff2");
 }
 @font-face {
-  font-family: 'Pretendard-Medium';
-  src: local('Pretendard-Medium'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-Medium.woff2')
-      format('woff2');
+  font-family: "Pretendard-Medium";
+  src: local("Pretendard-Medium"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-Medium.woff2")
+      format("woff2");
 }
 @font-face {
-  font-family: 'Pretendard-Regular';
-  src: local('Pretendard-Regular'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-Regular.woff2')
-      format('woff2');
+  font-family: "Pretendard-Regular";
+  src: local("Pretendard-Regular"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-Regular.woff2")
+      format("woff2");
 }
 @font-face {
-  font-family: 'Pretendard-SemiBold';
-  src: local('Pretendard-SemiBold'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-SemiBold.woff2')
-      format('woff2');
+  font-family: "Pretendard-SemiBold";
+  src: local("Pretendard-SemiBold"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-SemiBold.woff2")
+      format("woff2");
 }
 @font-face {
-  font-family: 'Pretendard-Thin';
-  src: local('Pretendard-Thin'),
-    url('../assets/fonts/Pretendard/web/static/woff2/Pretendard-Thin.woff2')
-      format('woff2');
+  font-family: "Pretendard-Thin";
+  src: local("Pretendard-Thin"),
+    url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-Thin.woff2")
+      format("woff2");
 }
