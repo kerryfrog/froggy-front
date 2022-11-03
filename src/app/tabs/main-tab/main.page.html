@@ -30,7 +30,19 @@
         (click)="goYarnDetailPage(yarn)"
         class="contents">
         <div class="image">
-          <img src="{{ yarn.thumbnail }}" (error)="onImageError($event)" />
+          <img src="{{ yarn.thumbnail }}"/>
+           <ion-icon
+            name="heart-outline"
+            class="heart"
+            *ngIf="!yarn.isFavorite"
+            (click)="enrollFavoriteYarn($event, yarn)"
+          ></ion-icon>
+          <ion-icon
+            name="heart"
+            class="heart"
+            *ngIf="yarn.isFavorite"
+            (click)="enrollFavoriteYarn($event, yarn)"
+          ></ion-icon>
         </div>
       </div>
     </div>
@@ -42,7 +54,21 @@
         class="contents"
       >
         <div class="image">
-          <img src="{{ pattern.thumbnail }}" (error)="onImageError($event)" />
+          <img src="{{ pattern.thumbnail }}"/>
+          <ion-icon
+          name="heart-outline"
+          class="heart"
+          *ngIf="!pattern.isFavorite"
+          (click)="enrollFavoritePattern($event, pattern)"
+        ></ion-icon>
+        <ion-icon
+          name="heart"
+          class="heart--fill"
+          *ngIf="pattern.isFavorite"
+          (click)="enrollFavoritePattern($event, pattern)"
+        ></ion-icon>
+        
+        
         </div>
       </div>
     </div>

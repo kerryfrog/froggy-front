@@ -142,9 +142,38 @@ export class MainPage {
     };
     this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
   }
-  onImageError(e) {
-    
+ enrollFavoriteYarn(e, yarn) {
+    e.stopPropagation();
+    let yarnResult = this.yarnList.filter((ya) => ya.id === yarn.id)[0];
+    console.log("enrool favoaite yanr", yarnResult);
+
+    if (yarnResult["isFavorite"]) {
+      yarnResult["isFavorite"] = false;
+    } else {
+      yarnResult["isFavorite"] = true;
+    }
+    console.log(yarnResult);
+ }
+  
+  async enrollFavoritePattern(e, pattern) {
+    e.stopPropagation();
+    let patternResult = this.patternList.filter(
+      (pa) => pa.id === pattern.id
+    )[0];
+
+    if (patternResult["isFavorite"]) {
+      this.fetchEnrollFavoritePattern(pattern.id);
+      patternResult["isFavorite"] = false;
+    } else {
+      this.fetchEnrollFavoritePattern(pattern.id);
+      patternResult["isFavorite"] = true;
+    }
+    console.log(patternResult);
   }
 
+  fetchEnrollFavoritePattern(patternId) {
+    const postPatternLikeResult = this.patternService.postPatternLike(patternId);
+    console.log(postPatternLikeResult);
 
+  }
 }
