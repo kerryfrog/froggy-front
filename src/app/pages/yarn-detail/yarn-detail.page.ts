@@ -28,11 +28,10 @@ export class YarnDetailPage implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {
       if (this.router.getCurrentNavigation().extras.state) {
-        //this.yarn = this.router.getCurrentNavigation().extras.state.yarn;
+        this.yarn = this.router.getCurrentNavigation().extras.state.yarn;
       }
       this.yarnId = params.yarnId;
     });
-    //console.log("this yarn", this.yarn);
   }
 
   async ionViewDidEnter() {
