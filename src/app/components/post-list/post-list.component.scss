@@ -48,13 +48,12 @@
       flex-direction: row;
       font-size: 3.8vw;
       font-family: "Pretendard-Light";
+
       &__icon {
         display: flex;
         margin-right: 2.3vw;
-
         ion-icon {
-          margin-left: 1vw;
-          margin-right: 0.3vw;
+          margin: auto;
         }
       }
     }
