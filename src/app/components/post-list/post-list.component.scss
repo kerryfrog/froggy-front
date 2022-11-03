@@ -1,68 +1,67 @@
-.postList{
+.postList {
   flex-direction: column;
   display: flex;
 
-  .post{
-    background-color: white; 
-    padding:3vw;
-    border-top: 1px solid rgb(215, 214, 214);
+  .post {
+    background-color: white;
+    padding: 3vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
 
-    &__category{
+    &__category {
+      font-size: 3.2vw;
+      font-family: "Pretendard-Light";
       display: flex;
       background: rgb(221 220 220);
       border-radius: 5px;
-      width: 13vw;
+      width: 10vw;
       height: 6vw;
-      margin-bottom: 2vw;
-      span{
+      margin-bottom: 2.5vw;
+      span {
         margin: auto;
       }
     }
 
-    &__title{
+    &__title {
       font-size: 4vw;
-      font-weight: 500;
-      margin-bottom: 3vw;
+      font-family: "Pretendard-Medium";
+      margin-bottom: 1.8vw;
     }
-    &__contents{
-      color: rgba(1, 15, 1, 0.75); 
+    &__contents {
+      color: rgba(1, 15, 1, 0.75);
       font-size: 3.7vw;
-      margin-bottom: 3vw;
+      font-family: "Pretendard-Regular";
+      margin-bottom: 4vw;
     }
 
-    hr{
-      border-width: 1px;
-      height:0px;
-    }
-    &__small__info{
+    &__small__info {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      color: rgba(1, 15, 1, 0.75); 
+      color: rgba(1, 15, 1, 0.75);
       font-size: 3.2vw;
+      font-family: "Pretendard-Light";
     }
 
-    &__bottom{
+    &__bottom {
       display: flex;
       flex-direction: row;
-      font-size: 4.3vw;
-      &__icon{
+      font-size: 3.8vw;
+      font-family: "Pretendard-Light";
+      &__icon {
         display: flex;
-        margin-right: 5vw;
+        margin-right: 2.3vw;
 
-        ion-icon{
-          margin:auto;
-        }
-        span {
-          margin:auto;
+        ion-icon {
+          margin-left: 1vw;
+          margin-right: 0.3vw;
         }
       }
-
     }
   }
 }
 
-.divider{
+.divider {
   height: 5px;
-  background-color:rgb(225, 223, 223);
+  background-color: rgb(225, 223, 223);
 }

@@ -1,41 +1,38 @@
-
-
-<div class="postList"> 
-  <div 
-  (click)="goPostDetailPage(post.id)"
-    *ngFor="let post of postList;">
+<hr />
+<div class="postList">
+  <div (click)="goPostDetailPage(post.id)" *ngFor="let post of postList">
     <div class="post">
       <div class="post__category">
-        <span>{{post.category}}</span>
+        <span>{{ post.category }}</span>
       </div>
 
       <div class="post__title">
-          {{post.title}}
+        {{ post.title }}
       </div>
 
       <div class="post__contents">
-          {{post.contents}}
+        {{ post.contents }}
       </div>
       <div class="post__small__info">
-        <div>{{post.userNick}}</div>
-        <div>{{post.createdAt | date:'YY/MM/dd HH:mm' }}</div>
+        <div>{{ post.userNick }}</div>
+        <div>{{ post.createdAt | date: "YY/MM/dd HH:mm" }}</div>
       </div>
       <!-- <div>
           <ion-icon name="person-circle-outline"></ion-icon>
           {{post.userNick}}
       </div> -->
-      <hr>
+      <hr />
       <div class="post__bottom">
         <div class="post__bottom__icon">
           <ion-icon name="heart-outline"></ion-icon>
-          <span>좋아요 5</span>
+          <span>5</span>
         </div>
         <div class="post__bottom__icon">
           <ion-icon name="chatbubble-outline"></ion-icon>
-          <span>댓글 3</span>
+          <span>3</span>
         </div>
       </div>
     </div>
-      <div class="divider"></div>
+    <div class="divider"></div>
   </div>
 </div>
