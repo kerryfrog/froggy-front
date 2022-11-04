@@ -1,5 +1,5 @@
 .toolbar {
-  --background: #95c597;
+  --background: white;
 }
 
 ion-fab-button {
@@ -10,7 +10,7 @@ ion-button {
   --background: var(--ion-color-theme);
 }
 ion-chip {
-  color: var(--ion-color-theme);
+  color: var(--ion-color-theme-shade);
 }
 
 .top {
