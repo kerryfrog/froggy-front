@@ -6,12 +6,6 @@ ion-button {
   --background: var(--ion-color-theme);
 }
 
-ion-searchbar.custom {
-  color: rgba(1, 15, 1, 0.4);
-  --box-shadow: white;
-  --border-radius: 10px;
-}
-
 .list__wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;

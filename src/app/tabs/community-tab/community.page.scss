@@ -2,14 +2,15 @@
   --background: #95c597;
 }
 
-ion-content {
-}
-
 ion-fab-button {
-  color: var(--ion-color-theme);
+  --background: var(--ion-color-theme);
+  --color: white;
 }
 ion-button {
   --background: var(--ion-color-theme);
+}
+ion-chip {
+  color: var(--ion-color-theme);
 }
 
 .top {
