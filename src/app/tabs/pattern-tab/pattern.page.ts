@@ -461,5 +461,8 @@ export class PatternPage {
     
     this.navController.navigateForward(`/tabs/pattern/search`);
   }
+  goMypage() {
+    this.navController.navigateForward("mypage");
+  }
 
 }

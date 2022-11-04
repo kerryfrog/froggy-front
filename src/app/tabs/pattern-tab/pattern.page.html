@@ -1,12 +1,21 @@
-<app-toolbar></app-toolbar>
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title> Froggy </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="goMypage()">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-searchbar
     [debounce]="1300"
-    (click) ="goSearchPatternPage()"
-    class="searchbar"
+    (click)="goSearchPatternPage()"
+    class="custom"
     color="light"
-    placeholder="검색하기"
+    placeholder="검색"
   ></ion-searchbar>
   <!-- <h1>{{results}}</h1>
   <ion-item>

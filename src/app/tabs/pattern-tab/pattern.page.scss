@@ -6,14 +6,18 @@ ion-button {
   --background: var(--ion-color-theme);
 }
 
+ion-searchbar.custom {
+  color: rgba(1, 15, 1, 0.4);
+  --box-shadow: white;
+  --border-radius: 10px;
+}
+
 .list__wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 5vw;
-  row-gap: 5vw;
-  margin-top: 3.2vw;
-  margin-bottom: 6vw;
-  padding: 0 4.4vw;
+  column-gap: 1px;
+  row-gap: 1px;
+  padding: 0;
   background-color: white;
   justify-content: center;
 }
@@ -25,15 +29,15 @@ ion-button {
 
 .image {
   &__square {
-    width: 200px;
-    height: 200px;
+    width: 49vw;
+    height: 49vw;
     border-radius: 8px;
     margin: auto;
     position: relative;
     img {
       position: absolute;
-      width: 200px;
-      height: 200px;
+      width: 49vw;
+      height: 49vw;
       -o-object-fit: cover;
       object-fit: cover;
     }
