@@ -65,3 +65,11 @@ ion-button {
     margin-bottom: 0px;
   }
 }
+
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  &__nick {
+    color: var(--ion-color-theme-shade);
+  }
+}

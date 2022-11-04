@@ -22,8 +22,13 @@
       실 api 호출
     </ion-button> -->
   <div class="contents__wrapper">
-    <h5>실 추천</h5>
-
+    <div class="section-title">
+      <div *ngIf="!user">실 추천</div>
+      <div *ngIf="user">
+        <span class="section-title__nick"> {{user.nick}} </span>
+        <span> 님을 위한 실 추천 </span>
+      </div>
+    </div>
     <div *ngIf="yarnList.length > 0" class="container__products">
       <div
         *ngFor="let yarn of yarnList"
@@ -51,7 +56,13 @@
 
   <hr />
   <div class="contents__wrapper">
-    <h5>패턴 추천</h5>
+    <div class="section-title">
+      <div *ngIf="!user">패턴 추천</div>
+      <div *ngIf="user">
+        <span class="section-title__nick"> {{user.nick}} </span>
+        <span> 님을 위한 패턴 추천 </span>
+      </div>
+    </div>
     <div *ngIf="patternList.length > 0" class="container__products">
       <div
         *ngFor="let pattern of patternList"

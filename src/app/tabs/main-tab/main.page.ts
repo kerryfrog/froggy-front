@@ -1,20 +1,22 @@
-import { Component } from '@angular/core';
-import { DataService } from 'src/app/api/data.service';
+import { Component } from "@angular/core";
+
+import { DataService } from "src/app/api/data.service";
+import { UserService } from "src/app/services/user.service";
 import {
   AlertController,
   LoadingController,
   NavController,
-} from '@ionic/angular';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+} from "@ionic/angular";
+import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 
-import { YarnService } from 'src/app/api/yarn.service';
+import { YarnService } from "src/app/api/yarn.service";
 import { PatternService } from "src/app/api/pattern.service";
 import { CommunityService } from "src/app/api/community.service";
 
 @Component({
-  selector: 'app-main',
-  templateUrl: 'main.page.html',
-  styleUrls: ['main.page.scss']
+  selector: "app-main",
+  templateUrl: "main.page.html",
+  styleUrls: ["main.page.scss"],
 })
 export class MainPage {
   public min;
@@ -24,6 +26,7 @@ export class MainPage {
   public yarnList = [];
   public patternList = [];
   public postList = [];
+  public user;
 
   constructor(
     public dataService: DataService,
@@ -33,13 +36,14 @@ export class MainPage {
     public navController: NavController,
     public activatedRoute: ActivatedRoute,
     public communityService: CommunityService,
+    public userService: UserService
   ) {}
 
   async ionViewDidEnter() {
+    await this.getUser();
     await this.getPostList();
     await this.getPatternPageView();
     await this.getYarnPageView();
-    
   }
 
   getRandomInt(min, max) {
@@ -49,40 +53,37 @@ export class MainPage {
   }
 
   async getRaverlyApi() {
-    if (
-      !this.min ||
-      !this.max
-    ) {
+    if (!this.min || !this.max) {
       const alert = await this.alertController.create({
-        header: '에러',
-        message: '범위를 입력해 주세요',
-        buttons: ['확인'],
+        header: "에러",
+        message: "범위를 입력해 주세요",
+        buttons: ["확인"],
       });
       await alert.present();
       return;
     }
     const subHeader = `index 가 ${this.min} ~ ${this.max}인 `;
-    const message = 'api 를 호출하시겠습니까?';
+    const message = "api 를 호출하시겠습니까?";
     let flag = false;
     const alert = await this.alertController.create({
-          subHeader,
-          message,
-          buttons: [ 
-          {
-            text: '취소',
-              handler: async () => {
-                this.alertController.dismiss();
-              }
+      subHeader,
+      message,
+      buttons: [
+        {
+          text: "취소",
+          handler: async () => {
+            this.alertController.dismiss();
           },
-            {
-              text: '확인',
-              handler: async () => { 
-                await this.getAndFetchYarnData();
-                flag = true;
-              },
-            },
-          ],
-    }); 
+        },
+        {
+          text: "확인",
+          handler: async () => {
+            await this.getAndFetchYarnData();
+            flag = true;
+          },
+        },
+      ],
+    });
     await alert.present();
   }
 
@@ -97,28 +98,27 @@ export class MainPage {
 
   async getYarnPageView() {
     const { data } = await this.yarnService.getRecommendYarnList();
-    
-    if (data.status === 'Y') {
+
+    if (data.status === "Y") {
       this.yarnList = [...this.yarnList, ...data.randYarn];
     }
-    
   }
 
   async getPostList() {
     const result = await this.communityService.getMainPosts();
 
     console.log("getMainPost result", result.data.postList);
-    if (result.data.status === 'Y') {
+    if (result.data.status === "Y") {
       this.postList = result.data.postList.slice(0, 2);
     }
   }
 
   async getAndFetchYarnData() {
-    for (let i = this.min; i <= this.max; i++){
+    for (let i = this.min; i <= this.max; i++) {
       const response = await this.dataService.getYarnDataFromRaverly(i);
-      console.log("for i =", i , response);
+      console.log("for i =", i, response);
       const postResult = await this.dataService.postYarnData(response);
-      
+
       this.nowIndex = i;
     }
   }
@@ -126,15 +126,12 @@ export class MainPage {
   async goYarnDetailPage(yarn) {
     const props: NavigationExtras = {
       state: {
-        yarn
-      }
-    }
-    this.navController.navigateForward(
-      `/tabs/yarn/${yarn.id}`,
-      props
-    );
+        yarn,
+      },
+    };
+    this.navController.navigateForward(`/tabs/yarn/${yarn.id}`, props);
   }
- async goPatternDetailPage(pattern) {
+  async goPatternDetailPage(pattern) {
     const props: NavigationExtras = {
       state: {
         pattern,
@@ -142,7 +139,7 @@ export class MainPage {
     };
     this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
   }
- enrollFavoriteYarn(e, yarn) {
+  enrollFavoriteYarn(e, yarn) {
     e.stopPropagation();
     let yarnResult = this.yarnList.filter((ya) => ya.id === yarn.id)[0];
     console.log("enrool favoaite yanr", yarnResult);
@@ -153,8 +150,8 @@ export class MainPage {
       yarnResult["isFavorite"] = true;
     }
     console.log(yarnResult);
- }
-  
+  }
+
   async enrollFavoritePattern(e, pattern) {
     e.stopPropagation();
     let patternResult = this.patternList.filter(
@@ -172,8 +169,13 @@ export class MainPage {
   }
 
   fetchEnrollFavoritePattern(patternId) {
-    const postPatternLikeResult = this.patternService.postPatternLike(patternId);
+    const postPatternLikeResult =
+      this.patternService.postPatternLike(patternId);
     console.log(postPatternLikeResult);
+  }
 
+  async getUser() {
+    const userInfo = await this.userService.getUser();
+    this.user = userInfo;
   }
 }
