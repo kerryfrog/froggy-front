@@ -9,6 +9,9 @@ ion-fab-button {
 ion-button {
   --background: var(--ion-color-theme);
 }
+ion-chip {
+  color: var(--ion-color-theme);
+}
 
 .top {
   flex-direction: row;
