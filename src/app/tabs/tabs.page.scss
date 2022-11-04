@@ -1,4 +1,6 @@
-ion-tab-bar,
+ion-tab-bar {
+  --color-selected: white;
+}
 ion-tab-button {
   background-color: var(--ion-color-theme);
 }
