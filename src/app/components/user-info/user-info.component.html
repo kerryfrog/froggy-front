@@ -11,22 +11,27 @@
   <div class="mypage__wrapper">
     <div class="nickname" *ngIf="user">
       <ion-icon name="person-circle-outline"></ion-icon>
-      <div class="nickname__text">{{ user.nick }} </div>
-      <ion-button class="nickname__change__btn1" fill="clear" (click)="openChangeNickAlert()" *ngIf="!isChangeNickName">
+      <div class="nickname__text">{{ user.nick }}</div>
+      <ion-button
+        class="nickname__change__btn1"
+        fill="clear"
+        (click)="openChangeNickAlert()"
+        *ngIf="!isChangeNickName"
+      >
         닉네임 변경하기
       </ion-button>
     </div>
 
-    <div class="preference"> 
-      <h3>선호 바늘 </h3>
+    <div class="preference">
+      <h3>선호 바늘</h3>
       <div class="prefernece__checkbox">
         <div class="prefernece__checkbox__list1">
           <ion-checkbox slot="start"></ion-checkbox>
-          <span>코바늘</span>  
+          <span>코바늘</span>
         </div>
         <div class="prefernece__checkbox__list1">
           <ion-checkbox slot="start"></ion-checkbox>
-          <span>대바늘</span>  
+          <span>대바늘</span>
         </div>
       </div>
     </div>
@@ -46,7 +51,6 @@
       <ion-chip color="success">stripes</ion-chip>
       <ion-chip color="success">one-piece</ion-chip>
       <ion-chip color="success">scarf</ion-chip>
-
     </div>
 
     <div class="logout">
