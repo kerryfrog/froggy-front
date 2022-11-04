@@ -11,13 +11,17 @@
     </div> -->
   <div class="community__wrapper">
     <div class="top">
-      <ion-button class="top__button" (click)="write()"> 글쓰기 </ion-button>
+      <ion-chip color="success">전체</ion-chip>
+      <ion-chip color="success">인기</ion-chip>
+      <ion-chip color="success">전시</ion-chip>
+      <ion-chip color="success">정보</ion-chip>
+      <ion-chip color="success">자유</ion-chip>
     </div>
     <app-post-list [postList]="postList"> </app-post-list>
   </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button color="secondary">
+    <ion-fab-button color="secondary" (click)="write()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
