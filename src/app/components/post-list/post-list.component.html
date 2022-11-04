@@ -2,34 +2,39 @@
 <div class="postList">
   <div (click)="goPostDetailPage(post.id)" *ngFor="let post of postList">
     <div class="post">
-      <div class="post__category">
-        <span>{{ post.category }}</span>
+      <div class="post__textbox">
+        <div class="post__category">
+          <span>{{ post.category }}</span>
+        </div>
+
+        <div class="post__title">
+          {{ post.title }}
+        </div>
+
+        <div class="post__contents">
+          {{ post.contents | preview }}
+        </div>
+        <div class="post__small__info">
+          <div>{{ post.userNick }}</div>
+          <div>{{ post.createdAt | date: "YY/MM/dd HH:mm" }}</div>
+        </div>
       </div>
 
-      <div class="post__title">
-        {{ post.title }}
-      </div>
-
-      <div class="post__contents">
-        {{ post.contents | preview }}
-      </div>
-      <div class="post__small__info">
-        <div>{{ post.userNick }}</div>
-        <div>{{ post.createdAt | date: "YY/MM/dd HH:mm" }}</div>
-      </div>
       <!-- <div>
           <ion-icon name="person-circle-outline"></ion-icon>
           {{post.userNick}}
       </div> -->
       <hr />
-      <div class="post__bottom">
-        <div class="post__bottom__icon">
-          <ion-icon name="heart-outline"></ion-icon>
-          <span>{{post.likeCount}}</span>
-        </div>
-        <div class="post__bottom__icon">
-          <ion-icon name="chatbubble-outline"></ion-icon>
-          <span>{{post.commentCount}}</span>
+      <div class="post__infobox">
+        <div class="post__bottom">
+          <div class="post__bottom__icon">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span> {{ post.likeCount }}</span>
+          </div>
+          <div class="post__bottom__icon">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+            <span> {{ post.commentCount }}</span>
+          </div>
         </div>
       </div>
     </div>

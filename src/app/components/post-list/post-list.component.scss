@@ -4,10 +4,14 @@
 
   .post {
     background-color: white;
-    padding: 3vw;
-    margin-left: 2vw;
-    margin-right: 2vw;
-
+    &__textbox {
+      padding: 2vw;
+      margin: 2vw;
+    }
+    &__infobox {
+      padding: 1.3vw;
+      margin: 2vw;
+    }
     &__category {
       font-size: 3.2vw;
       font-family: "Pretendard-Light";
@@ -19,41 +23,48 @@
       margin-bottom: 2.5vw;
       span {
         margin: auto;
+        font-family: "Pretendard-Light";
       }
     }
 
     &__title {
       font-size: 4vw;
-      font-family: "Pretendard-Medium";
+      font-family: "Pretendard-Regular";
       margin-bottom: 1.8vw;
     }
     &__contents {
       color: rgba(1, 15, 1, 0.75);
       font-size: 3.7vw;
-      font-family: "Pretendard-Regular";
-      margin-bottom: 4vw;
+      font-family: "Pretendard-Light";
+      margin-bottom: 5vw;
     }
-
     &__small__info {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       color: rgba(1, 15, 1, 0.75);
       font-size: 3.2vw;
-      font-family: "Pretendard-Light";
+      div {
+        font-family: "Pretendard-Light";
+      }
     }
 
     &__bottom {
       display: flex;
       flex-direction: row;
-      font-size: 3.8vw;
+      font-size: 3.7vw;
       font-family: "Pretendard-Light";
 
       &__icon {
         display: flex;
         margin-right: 2.3vw;
+        color: rgba(1, 15, 1, 0.75);
         ion-icon {
           margin: auto;
+          padding-right: 0.5vw;
+        }
+        span {
+          font-family: "Pretendard-Light";
         }
       }
     }
@@ -62,5 +73,6 @@
 
 .divider {
   height: 5px;
-  background-color: rgb(225, 223, 223);
+  background-color: rgba(1, 15, 1, 0.113);
+  border: 0px;
 }
