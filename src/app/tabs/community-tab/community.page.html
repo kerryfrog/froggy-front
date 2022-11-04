@@ -1,27 +1,24 @@
 <app-toolbar></app-toolbar>
 
-<ion-content [fullscreen]="true"> 
-    <!-- <ion-button
+<ion-content [fullscreen]="true">
+  <!-- <ion-button
         (click)="getRecommendPatternList()"
     >
         추천 목록 조회
     </ion-button> -->
-    <!-- <div>
+  <!-- <div>
         response : {{ result }}
     </div> -->
-    <div class="community__wrapper">
-        <div class="top">
-            <div class="top__title"> 글 목록</div>
-            <ion-button
-                class="top__button"
-                (click)="write()">
-                글쓰기
-            </ion-button>
-        </div>
-        <app-post-list
-            [postList]="postList"
-            >
-        </app-post-list>
+  <div class="community__wrapper">
+    <div class="top">
+      <ion-button class="top__button" (click)="write()"> 글쓰기 </ion-button>
     </div>
+    <app-post-list [postList]="postList"> </app-post-list>
+  </div>
 
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

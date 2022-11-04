@@ -2,36 +2,30 @@
   --background: #95c597;
 }
 
-ion-content{
-  
+ion-content {
 }
-
 
 ion-button {
   --background: var(--ion-color-theme);
 }
 
-.top{
+.top {
   flex-direction: row;
   display: flex;
   justify-content: space-between;
-  padding:10px;
+  padding: 10px;
 
-   &__title{
+  &__title {
     font-size: 25px;
-    font-weight: 900;
-   }
-   &__button{
-
-   }
+    font-family: "Pretendard-Medium";
+    margin: auto;
+  }
+  &__button {
+  }
 }
 
-.community__wrapper{
+.community__wrapper {
   display: flex;
   flex-direction: column;
-  width:100%;
-  padding-top: 10px;
-
+  width: 100%;
 }
-
-
