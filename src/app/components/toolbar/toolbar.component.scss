@@ -1,5 +1,9 @@
 .toolbar {
-  --background: #95c597;
+  --background: var(--ion-color-theme);
+}
+.logo {
+  font-family: "Comfortaa";
+  letter-spacing: -0.4px;
 }
 ion-icon {
   color: black;

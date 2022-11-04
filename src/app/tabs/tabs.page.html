@@ -1,11 +1,11 @@
 <ion-tabs #tabs (ionTabsDidChange)="handleTabsChange($event)">
   <ion-tab-bar slot="bottom" class="tab-bar">
     <ion-tab-button tab="main">
-      <ion-icon name="home-outline"></ion-icon>
-      <ion-label>메인</ion-label>
+      <!-- <ion-icon name="home-outline"></ion-icon> -->
+      <ion-label>main</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="yarn">
-      <img
+      <!-- <img
         *ngIf="!isYarnIconSelected"
         src="../../assets/yarn.png"
         class="tab-icon"
@@ -14,11 +14,11 @@
         *ngIf="isYarnIconSelected"
         src="../../assets/yarn_filled.png"
         class="tab-icon"
-      />
-      <ion-label>실</ion-label>
+      /> -->
+      <ion-label>yarn</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="pattern">
-      <img
+      <!-- <img
         *ngIf="!isPatternIconSelected"
         src="../../assets/textiles.png"
         class="tab-icon"
@@ -27,12 +27,12 @@
         *ngIf="isPatternIconSelected"
         src="../../assets/textiles_filled2.png"
         class="tab-icon"
-      />
-      <ion-label>패턴</ion-label>
+      /> -->
+      <ion-label>pattern</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="community">
-      <ion-icon name="chatbubbles-outline"></ion-icon>
-      <ion-label>게시판</ion-label>
+      <!-- <ion-icon name="chatbubbles-outline"></ion-icon> -->
+      <ion-label>community</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

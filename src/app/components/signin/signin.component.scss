@@ -1,15 +1,13 @@
 .toolbar {
-  --background: #95c597;
+  --background: var(--ion-color-theme);
 }
 
-.button__wrapper{
-  display:flex;
+.button__wrapper {
+  display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top:30px;
+  margin-top: 30px;
 }
-
-
 
 ion-button {
   --background: var(--ion-color-theme);

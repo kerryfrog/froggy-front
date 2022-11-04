@@ -1,5 +1,5 @@
-.toolbar{
-    --background:#95C597;
+.toolbar {
+  --background: var(--ion-color-theme);
 }
 
 .list__wrapper {
@@ -25,7 +25,7 @@
     border-radius: 8px;
     margin: auto;
     position: relative;
-    img{
+    img {
       position: absolute;
       width: 200px;
       height: 200px;
@@ -38,13 +38,13 @@
       bottom: 0.7rem;
       color: #ea3d51;
       font-size: 20px;
-    &--fill {
-      position: absolute;
-      right: 0.7rem;
-      bottom: 0.7rem;
-      color: #ea3d51;
-      font-size: 20px;
+      &--fill {
+        position: absolute;
+        right: 0.7rem;
+        bottom: 0.7rem;
+        color: #ea3d51;
+        font-size: 20px;
+      }
     }
-  }
   }
 }
