@@ -2,9 +2,10 @@
   --background: #95c597;
 }
 
-ion-content {
+ion-fab-button {
+  --background: var(--ion-color-theme);
+  --color: white;
 }
-
 ion-button {
   --background: var(--ion-color-theme);
 }
