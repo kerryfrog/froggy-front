@@ -14,10 +14,11 @@
       <div class="post__title">{{post.title}}</div>
       <div class="post__contents">{{post.contents}}</div>
 
-      <div class="post__created-date">{{post.createdAt}}</div>
+      <div class="post__created-date">
+        {{post.createdAt | date: "YY/MM/dd HH:mm"}}
+      </div>
     </div>
   </div>
-
 
   <div class="comment__wrapper">
     <h3>댓글</h3>
@@ -26,23 +27,24 @@
         <ion-icon name="person-circle-outline"></ion-icon>
         {{comment.userNick}}
       </div>
-      <div class="comment__list__contents">
-            {{comment.contents}}
+      <div class="comment__list__contents">{{comment.contents}}</div>
+      <div class="comment__list__date">
+        {{comment.createdAt | date: "YY/MM/dd HH:mm"}}
       </div>
-      <div class="comment__list__date">{{comment.createdAt}}</div>
-        
     </div>
 
     <div class="comment__input">
-      <ion-input 
+      <ion-input
         placeholder="댓글을 입력하세요"
         [(ngModel)]="comment"
-        ></ion-input>
-        <ion-button (click)="submitComment()" [disabled]="comment===''" fill="clear">
-          <ion-icon name="paper-plane-outline"></ion-icon>
-        </ion-button>
+      ></ion-input>
+      <ion-button
+        (click)="submitComment()"
+        [disabled]="comment===''"
+        fill="clear"
+      >
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </ion-button>
     </div>
-
   </div>
-
 </ion-content>
