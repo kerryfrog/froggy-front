@@ -1,4 +1,3 @@
-
 <app-toolbar></app-toolbar>
 
 <ion-content [fullscreen]="true">
@@ -23,15 +22,16 @@
     >
       실 api 호출
     </ion-button> -->
-    <h5>실 추천</h5> 
+    <h5>실 추천</h5>
     <div *ngIf="yarnList.length > 0" class="container__products">
       <div
         *ngFor="let yarn of yarnList"
         (click)="goYarnDetailPage(yarn)"
-        class="contents">
+        class="contents"
+      >
         <div class="image">
-          <img src="{{ yarn.thumbnail }}"/>
-           <ion-icon
+          <img src="{{ yarn.thumbnail }}" />
+          <ion-icon
             name="heart-outline"
             class="heart"
             *ngIf="!yarn.isFavorite"
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    <h5>패턴 추천</h5>  
+    <h5>패턴 추천</h5>
     <div *ngIf="patternList.length > 0" class="container__products">
       <div
         *ngFor="let pattern of patternList"
@@ -54,30 +54,25 @@
         class="contents"
       >
         <div class="image">
-          <img src="{{ pattern.thumbnail }}"/>
+          <img src="{{ pattern.thumbnail }}" />
           <ion-icon
-          name="heart-outline"
-          class="heart"
-          *ngIf="!pattern.isFavorite"
-          (click)="enrollFavoritePattern($event, pattern)"
-        ></ion-icon>
-        <ion-icon
-          name="heart"
-          class="heart--fill"
-          *ngIf="pattern.isFavorite"
-          (click)="enrollFavoritePattern($event, pattern)"
-        ></ion-icon>
-        
-        
+            name="heart-outline"
+            class="heart"
+            *ngIf="!pattern.isFavorite"
+            (click)="enrollFavoritePattern($event, pattern)"
+          ></ion-icon>
+          <ion-icon
+            name="heart"
+            class="heart--fill"
+            *ngIf="pattern.isFavorite"
+            (click)="enrollFavoritePattern($event, pattern)"
+          ></ion-icon>
         </div>
       </div>
     </div>
-    <h5>커뮤니티 인기글</h5>   
-    </div>
-    <div class="community__wrapper">
-        <app-post-list
-          [postList]="postList"
-        >
-        </app-post-list>
-    </div>
-  </ion-content>
+    <h5>커뮤니티 인기글</h5>
+  </div>
+  <div class="community__wrapper">
+    <app-post-list [postList]="postList"> </app-post-list>
+  </div>
+</ion-content>

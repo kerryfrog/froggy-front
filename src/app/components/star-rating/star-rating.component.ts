@@ -1,9 +1,9 @@
-import { Component, OnInit,Input, Output,EventEmitter, } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-star-rating',
-  templateUrl: './star-rating.component.html',
-  styleUrls: ['./star-rating.component.scss'],
+  selector: "app-star-rating",
+  templateUrl: "./star-rating.component.html",
+  styleUrls: ["./star-rating.component.scss"],
 })
 export class StarRatingComponent implements OnInit {
   @Input()
@@ -13,36 +13,39 @@ export class StarRatingComponent implements OnInit {
       this.onChange(val);
     }
   }
+  public get rating(): number {
+    return this._rating;
+  }
+
   @Output()
   ratingChanged: EventEmitter<number> = new EventEmitter<number>();
   @Input()
-  readonly: string = 'false';
+  readonly: string = "false";
   @Input()
-  activeColor: string = '#488aff';
+  activeColor: string = "#488aff";
   @Input()
-  defaultColor: string = '#aaaaaa';
+  defaultColor: string = "#aaaaaa";
   @Input()
-  activeIcon: string = 'star';
+  activeIcon: string = "star";
   @Input()
-  defaultIcon: string = 'star-outline';
+  defaultIcon: string = "star-outline";
   @Input()
-  halfIcon: string = 'star-half';
+  halfIcon: string = "star-half";
   @Input()
-  halfStar: string = 'false';
+  halfStar: string = "true";
   @Input()
   maxRating: number = 5;
   @Input()
-  fontSize: string = '28px';
+  fontSize: string = "28px";
 
   private _rating: number;
   private onChange: any;
   private onTouched: any;
   public disabled: boolean;
-  Math: any;
-  parseFloat: any;
-  iconsArray: number[] = [];  
 
-  constructor() { }
+  iconsArray: number[] = [];
+
+  constructor() {}
 
   ngOnInit() {
     this.rating = this.rating || 3; //default after input`s initialization
@@ -51,12 +54,17 @@ export class StarRatingComponent implements OnInit {
     }
   }
 
+  // event is different for firefox and chrome
   changeRating(event) {
-    if (this.readonly && this.readonly === 'true') return;
-    // event is different for firefox and chrome
-    let id = event.target.id ? parseInt(event.target.id) : parseInt(event.target.parentElement.id);
-    if (this.halfStar && this.halfStar === 'true') {
-      this.rating = ((this.rating - id > 0) && (this.rating - id <= 0.5)) ? id + 1 : id + .5;
+    console.log("??");
+
+    if (this.readonly && this.readonly === "true") return;
+    let id = event.target.id
+      ? parseInt(event.target.id)
+      : parseInt(event.target.parentElement.id);
+    if (this.halfStar && this.halfStar === "true") {
+      this.rating =
+        this.rating - id > 0 && this.rating - id <= 0.5 ? id + 1 : id + 0.5;
     } else {
       this.rating = id + 1;
     }
@@ -64,6 +72,16 @@ export class StarRatingComponent implements OnInit {
     // this.ionicRatingService.publishStartRatingChanged(this.rating);
     // this.ionicRatingService.publishTopic(this.eventInfo.topic, this.rating);
     // unique event
+    console.log(this.rating);
+
     this.ratingChanged.emit(this.rating);
+  }
+
+  round(num) {
+    return Math.round(num);
+  }
+
+  parseFloat(num) {
+    return parseFloat(num);
   }
 }
