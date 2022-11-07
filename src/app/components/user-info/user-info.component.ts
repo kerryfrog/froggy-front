@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/services/user.service";
 import { AuthService } from "src/app/api/auth/auth.service";
+import { UserPrefer } from "../../models/server-request";
 
 import {
   NavController,
@@ -17,8 +18,13 @@ import { ProfileService } from "src/app/api/profile.service";
 })
 export class UserInfoComponent implements OnInit {
   public user;
-
+  public userPreferChange: UserPrefer = {
+    proficiency: -1,
+    crochet: -1,
+    knitting: -1,
+  };
   public isChangeNickName = false;
+  public proficiency;
 
   constructor(
     public userService: UserService,
@@ -37,7 +43,9 @@ export class UserInfoComponent implements OnInit {
   async getUser() {
     const userInfo = await this.userService.getUser();
     this.user = userInfo;
-    //this.nickname = this.user.nick;
+    this.proficiency = userInfo.proficiency.toString();
+    console.log(this.user);
+    console.log("this.proficiency", this.proficiency);
   }
 
   async logout() {
@@ -106,6 +114,31 @@ export class UserInfoComponent implements OnInit {
   async setUserInfo(newNickName) {
     this.user.nick = newNickName;
     await this.userService.saveUser(this.user);
+  }
+
+  async saveUserInfo() {
+    console.log("this.userPerfernceChange", this.userPreferChange);
+  }
+
+  handleChange(event) {
+    console.log(event);
+    this.proficiency = event.detail.value;
+    this.userPreferChange.proficiency = event.detail.value;
+  }
+
+  onChangeCrochet(event) {
+    if (event.detail.value) {
+      this.userPreferChange.crochet = 1;
+    } else {
+      this.userPreferChange.crochet = 0;
+    }
+  }
+  onChangeKnitting(event) {
+    if (event.detail.value) {
+      this.userPreferChange.knitting = 1;
+    } else {
+      this.userPreferChange.knitting = 0;
+    }
   }
 
   goBackWithLogout() {

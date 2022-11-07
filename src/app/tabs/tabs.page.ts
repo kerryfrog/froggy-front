@@ -14,12 +14,9 @@ export class TabsPage {
   public isPatternIconSelected = false;
   public isCommunityIconSelected = false;
 
-  async ngOnInit() {
-    //console.log(this.tabs.getSelected());
-  }
+  async ngOnInit() {}
 
   handleTabsChange(event) {
-    console.log(event.tab);
     this.clearAll();
     if (event.tab === "main") {
       this.isMainIconSelected = true;

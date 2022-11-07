@@ -26,11 +26,19 @@
       <h3>선호 바늘</h3>
       <div class="prefernece__checkbox">
         <div class="prefernece__checkbox__list1">
-          <ion-checkbox slot="start"></ion-checkbox>
+          <ion-checkbox
+            slot="start"
+            [value]="user.crochet"
+            (ionChange)="onChangeCrochet($event)"
+          ></ion-checkbox>
           <span>코바늘</span>
         </div>
         <div class="prefernece__checkbox__list1">
-          <ion-checkbox slot="start"></ion-checkbox>
+          <ion-checkbox
+            slot="start"
+            [value]="user.knitting"
+            (ionChange)="onChangeKnitting($event)"
+          ></ion-checkbox>
           <span>대바늘</span>
         </div>
       </div>
@@ -38,10 +46,14 @@
 
     <div class="difficulty">
       <h3>숙련도</h3>
-      <ion-select placeholder="난이도 선택">
-        <ion-select-option value="apples">초보</ion-select-option>
-        <ion-select-option value="oranges">중수</ion-select-option>
-        <ion-select-option value="bananas">고수</ion-select-option>
+      <ion-select
+        (ionChange)="handleChange($event)"
+        [value]="user.proficiency"
+        placeholder="proficiency"
+      >
+        <ion-select-option value="0">초보</ion-select-option>
+        <ion-select-option value="1">중수</ion-select-option>
+        <ion-select-option value="2">고수</ion-select-option>
       </ion-select>
     </div>
 
@@ -52,6 +64,8 @@
       <ion-chip color="success">one-piece</ion-chip>
       <ion-chip color="success">scarf</ion-chip>
     </div>
+
+    <ion-button (click)="saveUserInfo()"> 변경사항저장 </ion-button>
 
     <div class="logout">
       <ion-button (click)="logout()"> 로그아웃하기 </ion-button>
