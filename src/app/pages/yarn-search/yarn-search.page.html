@@ -4,31 +4,31 @@
   <ion-searchbar
     [debounce]="1300"
     (ionChange)="handleChange($event)"
-    class="searchbar"
+    class="custom"
     color="light"
     placeholder="검색하기"
   ></ion-searchbar>
   <div class="serachResult" *ngIf="yarnList.length > 0 ">
-       <div class ="card__wrapper"
-          *ngFor="let yarn of yarnList; let i = index"
-          >
-          <ion-card>
-            <ion-card-content>
-              <div class="yarn__wrapper">
-                <div class="yarn__image">
-                   <img src="{{ yarn.thumbnail }}">
-                </div>
-                <div class ="yarn__info">
-                    <div class="yarn__info__name">{{yarn.name}}</div>
-                    <div class="yanr__info__extra"> 회사 : {{yarn.yarnCompanyName}} </div>
-                    <div class ="yanr__info__extra"> gaugeDivisor : {{yarn. gaugeDivisor}}</div>
-                    <div class ="yanr__info__extra">무게 : {{yarn.grams}}g</div>
-                </div>
+    <div class="card__wrapper" *ngFor="let yarn of yarnList; let i = index">
+      <ion-card>
+        <ion-card-content>
+          <div class="yarn__wrapper">
+            <div class="yarn__image">
+              <img src="{{ yarn.thumbnail }}" />
+            </div>
+            <div class="yarn__info">
+              <div class="yarn__info__name">{{yarn.name}}</div>
+              <div class="yanr__info__extra">
+                회사 : {{yarn.yarnCompanyName}}
               </div>
-            </ion-card-content>
-          </ion-card>
+              <div class="yanr__info__extra">
+                gaugeDivisor : {{yarn. gaugeDivisor}}
+              </div>
+              <div class="yanr__info__extra">무게 : {{yarn.grams}}g</div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
     </div>
   </div>
-
-
 </ion-content>

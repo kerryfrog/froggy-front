@@ -1,61 +1,54 @@
 .toolbar {
-  --background: #95c597;
+  --background: white;
 }
 
-
-.mypage__wrapper{
-  padding:20px;
-  display:flex;
+.mypage__wrapper {
+  padding: 20px;
+  display: flex;
   flex-direction: column;
 }
 
-
-.nickname{
+.nickname {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
 
-  ion-icon{
-    margin:auto 0;
+  ion-icon {
+    margin: auto 0;
     width: 15vw;
     height: 15vw;
   }
 
-  &__text{
+  &__text {
     margin: auto 0;
     font-size: 5vw;
   }
 
-  &__change{
-    &__btn1{
-      margin:auto;
+  &__change {
+    &__btn1 {
+      margin: auto;
     }
-    &__input{
+    &__input {
       display: flex;
       flex-direction: row;
     }
   }
-
 }
 
-
-.prefernece__checkbox{
-  padding:10px; 
-  display:flex;
+.prefernece__checkbox {
+  padding: 10px;
+  display: flex;
   flex-direction: row;
-  &__list1{
+  &__list1 {
     margin-right: 10px;
 
-    ion-checkbox{
+    ion-checkbox {
       margin-right: 5px;
     }
-
   }
-
 }
 
-
-.logout{
+.logout {
   margin: 0 auto;
   margin-top: 70vw;
 }

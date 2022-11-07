@@ -1,11 +1,11 @@
 .toolbar {
-  --background: #95c597;
+  --background: white;
 }
 
 .name__wrapper {
   font-weight: 700;
   font-size: 30px;
-  padding:10px;
+  padding: 10px;
 }
 
 .info__wrapper {
@@ -40,21 +40,18 @@
 }
 
 .review__wrapper {
-  padding:10px;
-
+  padding: 10px;
 }
 
-.review{
-  &__title{
+.review {
+  &__title {
     display: flex;
     justify-content: space-between;
 
-    &__text{
+    &__text {
       margin: auto 0;
       font-weight: 800;
       font-size: 25px;
     }
-
   }
-
 }
