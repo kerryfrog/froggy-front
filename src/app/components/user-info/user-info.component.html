@@ -28,7 +28,7 @@
         <div class="prefernece__checkbox__list1">
           <ion-checkbox
             slot="start"
-            [value]="user.crochet"
+            [(ngModel)]="userPreferForShow.crochet"
             (ionChange)="onChangeCrochet($event)"
           ></ion-checkbox>
           <span>코바늘</span>
@@ -36,7 +36,7 @@
         <div class="prefernece__checkbox__list1">
           <ion-checkbox
             slot="start"
-            [value]="user.knitting"
+            [(ngModel)]="userPreferForShow.knitting"
             (ionChange)="onChangeKnitting($event)"
           ></ion-checkbox>
           <span>대바늘</span>
@@ -48,8 +48,7 @@
       <h3>숙련도</h3>
       <ion-select
         (ionChange)="handleChange($event)"
-        [value]="user.proficiency"
-        placeholder="proficiency"
+        [value]="userPreferForShow.proficiency.toString()"
       >
         <ion-select-option value="0">초보</ion-select-option>
         <ion-select-option value="1">중수</ion-select-option>

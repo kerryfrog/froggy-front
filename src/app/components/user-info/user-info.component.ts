@@ -24,8 +24,12 @@ export class UserInfoComponent implements OnInit {
     knitting: -1,
   };
   public isChangeNickName = false;
+  public userPreferForShow: UserPrefer = {
+    proficiency: -1,
+    crochet: -1,
+    knitting: -1,
+  };
   public proficiency;
-
   constructor(
     public userService: UserService,
     public authService: AuthService,
@@ -43,9 +47,14 @@ export class UserInfoComponent implements OnInit {
   async getUser() {
     const userInfo = await this.userService.getUser();
     this.user = userInfo;
-    this.proficiency = userInfo.proficiency.toString();
+    this.userPreferForShow.proficiency = userInfo.proficiency.toString();
+    this.userPreferForShow.crochet = userInfo.crochet;
+    this.userPreferForShow.knitting = userInfo.knitting;
+    // this.proficiency = userInfo.proficiency.toString();
     console.log(this.user);
-    console.log("this.proficiency", this.proficiency);
+    console.log(this.userPreferForShow);
+
+    // console.log("this.proficiency", this.proficiency);
   }
 
   async logout() {
@@ -106,24 +115,43 @@ export class UserInfoComponent implements OnInit {
       }
 
       if (changeNicknameResult.data.status === "Y") {
-        this.setUserInfo(newNickname);
+        this.setUserNick(newNickname);
       }
     }
   }
 
-  async setUserInfo(newNickName) {
+  async setUserNick(newNickName) {
     this.user.nick = newNickName;
     await this.userService.saveUser(this.user);
   }
 
+  async setUserProfile() {
+    if (this.userPreferChange.crochet !== -1)
+      this.user.crochet = this.userPreferChange.crochet;
+    if (this.userPreferChange.knitting !== -1)
+      this.user.knitting = this.userPreferChange.knitting;
+    if (this.userPreferChange.proficiency !== -1)
+      this.user.proficiency = this.userPreferChange.proficiency;
+    await this.userService.saveUser(this.user);
+  }
+
   async saveUserInfo() {
-    console.log("this.userPerfernceChange", this.userPreferChange);
+    const changeProfileResult = await this.profileService.changeProfile({
+      newPrefer: this.userPreferChange,
+    });
+
+    if (changeProfileResult.data.isUserLogin == "N") {
+      this.setUserSyncWithServer();
+    }
+    if (changeProfileResult.data.status === "Y") {
+      this.setUserProfile();
+    }
   }
 
   handleChange(event) {
     console.log(event);
-    this.proficiency = event.detail.value;
-    this.userPreferChange.proficiency = event.detail.value;
+    this.proficiency = parseInt(event.detail.value);
+    this.userPreferChange.proficiency = parseInt(event.detail.value);
   }
 
   onChangeCrochet(event) {
@@ -158,5 +186,6 @@ export class UserInfoComponent implements OnInit {
   async setUserSyncWithServer() {
     await this.userService.deleteUser();
     alert("다시 로그인 해 주세요");
+    this.goBack();
   }
 }
