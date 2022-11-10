@@ -58,10 +58,15 @@
 
     <div class="category">
       <h3>선호 카테고리</h3>
-      <ion-chip color="success">female</ion-chip>
-      <ion-chip color="success">stripes</ion-chip>
-      <ion-chip color="success">one-piece</ion-chip>
-      <ion-chip color="success">scarf</ion-chip>
+      <ion-button slot="clear" (click)="selectPatternAttribute()"
+        >선호 카테고리 변경</ion-button
+      >
+      <div
+        *ngFor="let el of patternAttributeListForShow"
+        class="category__list"
+      >
+        <ion-chip color="success">{{el.attribute}}</ion-chip>
+      </div>
     </div>
 
     <ion-button (click)="saveUserInfo()"> 변경사항저장 </ion-button>

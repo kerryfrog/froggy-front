@@ -32,4 +32,17 @@ export class ProfileService {
       return error.response;
     }
   }
+  async saveFavoriteAttribute(data) {
+    try {
+      const response = await axios({
+        method: "put",
+        url: `${environment.apiUrl}/profile/attribute`,
+        data,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 }

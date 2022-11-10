@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Attribute, Component, OnInit } from "@angular/core";
 import {
   NavController,
   ModalController,
@@ -7,8 +7,10 @@ import {
 
 import { UserService } from "src/app/services/user.service";
 import { AuthService } from "src/app/api/auth/auth.service";
-import { UserPrefer } from "../../models/server-request";
+import { UserPrefer } from "../../../models/server-request";
 import { ProfileService } from "src/app/api/profile.service";
+import { PatternService } from "src/app/api/pattern.service";
+import { SelectAttributeComponent } from "src/app/components/select-attribute/select-attribute.component";
 @Component({
   selector: "app-user-info",
   templateUrl: "./user-info.page.html",
@@ -16,6 +18,7 @@ import { ProfileService } from "src/app/api/profile.service";
 })
 export class UserInfoPage implements OnInit {
   public user;
+  public patternAttributeListForShow = [];
   public userPreferChange: UserPrefer = {
     proficiency: -1,
     crochet: -1,
@@ -34,12 +37,14 @@ export class UserInfoPage implements OnInit {
     public modalController: ModalController,
     public navController: NavController,
     public profileService: ProfileService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public patternService: PatternService
   ) {}
 
   ngOnInit() {}
   async ionViewDidEnter() {
     await this.getUser();
+    await this.getPatternAttributeList();
   }
 
   async getUser() {
@@ -49,7 +54,19 @@ export class UserInfoPage implements OnInit {
     this.userPreferForShow.crochet = userInfo.crochet;
     this.userPreferForShow.knitting = userInfo.knitting;
   }
-
+  async getPatternAttributeList() {
+    const patternAttributeListResult =
+      await this.patternService.getPatternAttributeList();
+    if (patternAttributeListResult.data.status === "Y") {
+      const patternAttributeList =
+        patternAttributeListResult.data.patternAttributeList;
+      this.patternAttributeListForShow = patternAttributeList.filter(
+        (attribute) =>
+          this.user.favoritePatternAttributeIdArr.includes(attribute.id)
+      );
+      console.log(this.patternAttributeListForShow);
+    }
+  }
   async logout() {
     await this.userService.deleteUser();
     const logoutResult = await this.authService.logout();
@@ -123,6 +140,20 @@ export class UserInfoPage implements OnInit {
       this.setUserProfile();
     }
   }
+  async selectPatternAttribute() {
+    const modal = await this.modalController.create({
+      component: SelectAttributeComponent,
+      componentProps: { user: this.user },
+      cssClass: "modal-fullscreen",
+    });
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    if (data.dismissed) {
+      await this.getUser();
+    }
+    console.log(data);
+  }
 
   async setUserProfile() {
     if (this.userPreferChange.crochet !== -1)
@@ -164,11 +195,7 @@ export class UserInfoPage implements OnInit {
   changeNickName() {
     this.isChangeNickName = true;
   }
-  // goBack() {
-  //   this.modalController.dismiss({
-  //     dismissed: false,
-  //   });
-  // }
+
   goBack() {
     this.navController.navigateBack("mypage");
   }

@@ -57,7 +57,7 @@ const routes: Routes = [
   {
     path: "user-info",
     loadChildren: () =>
-      import("./pages/user-info/user-info.module").then(
+      import("./pages/mypage/user-info/user-info.module").then(
         (m) => m.UserInfoPageModule
       ),
   },

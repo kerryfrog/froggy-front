@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <h1>선호 카테고리를 선택해 주세요</h1>
+  <div
+    class="attribute__wrapper"
+    *ngFor="let attribute of patternAttributeList"
+  >
+    <div
+      class="custom-chip-button"
+      [ngStyle]="attribute.isSelected ? selectedStyle : notSelectedStyle"
+      (click)="selectAttribute(attribute, $event)"
+    >
+      {{ attribute.attribute }}
+    </div>
+  </div>
+
+  <ion-button (click)="saveFavoriteAttribute()">저장하기</ion-button>
+</ion-content>

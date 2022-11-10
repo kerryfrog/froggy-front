@@ -72,6 +72,18 @@ export class PatternService {
       return error.response;
     }
   }
+  async getPatternAttributeList() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/attribute/list`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async postPatternLike(patternId) {
     try {
       const response = await axios({

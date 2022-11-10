@@ -66,8 +66,6 @@ export class SigninComponent implements OnInit {
   }
 
   goBack() {
-    console.log("go back");
-
     this.modalController.dismiss({
       dismissed: false,
     });
