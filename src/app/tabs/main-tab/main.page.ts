@@ -28,6 +28,8 @@ export class MainPage {
   public postList = [];
   public user;
 
+  //추천 html위한
+  public patternList6 = [];
   constructor(
     public dataService: DataService,
     public alertController: AlertController,
@@ -93,7 +95,9 @@ export class MainPage {
 
     if (data.status === "Y") {
       this.patternList = [...this.patternList, ...data.patternList];
+      this.patternList6 = this.patternList.slice(0, 6);
     }
+    console.log(this.patternList6);
   }
 
   async getYarnPageView() {
@@ -107,7 +111,6 @@ export class MainPage {
   async getPostList() {
     const result = await this.communityService.getMainPosts();
 
-    console.log("getMainPost result", result.data.postList);
     if (result.data.status === "Y") {
       this.postList = result.data.postList.slice(0, 2);
     }
@@ -142,8 +145,6 @@ export class MainPage {
   enrollFavoriteYarn(e, yarn) {
     e.stopPropagation();
     let yarnResult = this.yarnList.filter((ya) => ya.id === yarn.id)[0];
-    console.log("enrool favoaite yanr", yarnResult);
-
     if (yarnResult["isFavorite"]) {
       yarnResult["isFavorite"] = false;
     } else {
@@ -177,5 +178,6 @@ export class MainPage {
   async getUser() {
     const userInfo = await this.userService.getUser();
     this.user = userInfo;
+    console.log(this.user.isSetProfile);
   }
 }

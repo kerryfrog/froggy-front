@@ -1,17 +1,16 @@
-import { IonicModule } from '@ionic/angular';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { MainPage } from './main.page';
+import { IonicModule } from "@ionic/angular";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { MainPage } from "./main.page";
 
+import { MainPageRoutingModule } from "./main-routing.module";
 
-
-import { MainPageRoutingModule } from './main-routing.module';
-
-import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
-import { ToolbarComponentModule } from '../../components/toolbar/toolbar.module';
-import { PostListComponent } from 'src/app/components/post-list/post-list.component';
-import { PostListComponentModule } from 'src/app/components/post-list/post-list.module';
+import { ToolbarComponent } from "../../components/toolbar/toolbar.component";
+import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module";
+import { PostListComponent } from "src/app/components/post-list/post-list.component";
+import { PostListComponentModule } from "src/app/components/post-list/post-list.module";
+import { RecommendListComponentModule } from "src/app/components/recommend-list/recommend-list.module";
 
 @NgModule({
   imports: [
@@ -21,12 +20,9 @@ import { PostListComponentModule } from 'src/app/components/post-list/post-list.
     MainPageRoutingModule,
     ToolbarComponentModule,
     PostListComponentModule,
+    RecommendListComponentModule,
   ],
   declarations: [MainPage],
-  entryComponents: [
-    ToolbarComponent, 
-    PostListComponent,
-  ],
+  entryComponents: [ToolbarComponent, PostListComponent],
 })
 export class MainPageModule {}
-

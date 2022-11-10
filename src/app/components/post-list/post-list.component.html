@@ -11,7 +11,7 @@
         </div>
 
         <div class="post__contents">
-          {{ post.contents | preview }}
+          {{ post.contents | preview: 100 }}
         </div>
         <div class="post__small__info">
           <div>{{ post.userNick }}</div>

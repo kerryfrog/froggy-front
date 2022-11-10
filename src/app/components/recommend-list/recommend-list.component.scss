@@ -1,0 +1,48 @@
+.list__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1px;
+  row-gap: 1px;
+  padding: 0;
+  background-color: white;
+  justify-content: center;
+}
+
+.card__wrapper {
+  height: 50vw;
+  .card__text {
+    font-family: "Pretendard-Medium";
+    color: rgba(1, 15, 1, 0.75);
+  }
+}
+
+.image {
+  &__square {
+    width: 30vw;
+    height: 37vw;
+    border-radius: 8px;
+    margin: auto;
+    position: relative;
+    img {
+      position: absolute;
+      width: 30vw;
+      height: 37vw;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+    .heart {
+      position: absolute;
+      right: 0.7rem;
+      bottom: 0.7rem;
+      color: #ea3d51;
+      font-size: 20px;
+      &--fill {
+        position: absolute;
+        right: 0.7rem;
+        bottom: 0.7rem;
+        color: #ea3d51;
+        font-size: 20px;
+      }
+    }
+  }
+}

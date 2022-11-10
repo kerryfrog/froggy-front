@@ -22,6 +22,20 @@ export class PatternService {
       return error.response;
     }
   }
+  async getMainRecommendPatternList() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/recommend/main`,
+        responseType: "json",
+      });
+      console.log("response", response);
+
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getPatternSearchList(keyword) {
     try {
       const response = await axios({

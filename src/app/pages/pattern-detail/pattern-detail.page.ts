@@ -39,13 +39,12 @@ export class PatternDetailPage implements OnInit {
   }
 
   async getPatternDetail() {
-    const {data} = await this.patternService.getPatternDetail(this.patternId);
-  
-    if (data.status === 'Y') {
-      this.pattern = data.pattern
-      console.log("pattern response", data.pattern); 
-    }
-    else {
+    const { data } = await this.patternService.getPatternDetail(this.patternId);
+
+    if (data.status === "Y") {
+      this.pattern = data.pattern;
+      console.log("pattern response", data.pattern);
+    } else {
       this.failtoFetchYarnDetail();
     }
   }

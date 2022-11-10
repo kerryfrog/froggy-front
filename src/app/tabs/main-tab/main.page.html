@@ -21,72 +21,88 @@
     >
       실 api 호출
     </ion-button> -->
+
   <div class="contents__wrapper">
-    <div class="section-title">
-      <div *ngIf="!user">실 추천</div>
-      <div *ngIf="user">
-        <span class="section-title__nick"> {{user.nick}} </span>
-        <span> 님을 위한 실 추천 </span>
+    <div *ngIf="user&&user.isSetProfile=='Y'" class="user-set-profile">
+      <div class="section-title">
+        <span class="section-title__nick"> 초보 </span>
+        <span> 를 위한 쉬운 도안 </span>
+      </div>
+      <div class="recommend-list">
+        <app-recommend-list [patternList]="patternList6"></app-recommend-list>
+        <ion-button>나를 위한 추천 더보기</ion-button>
       </div>
     </div>
-    <div *ngIf="yarnList.length > 0" class="container__products">
-      <div
-        *ngFor="let yarn of yarnList"
-        (click)="goYarnDetailPage(yarn)"
-        class="contents"
-      >
-        <div class="image">
-          <img src="{{ yarn.thumbnail }}" />
-          <ion-icon
-            name="heart-outline"
-            class="heart"
-            *ngIf="!yarn.isFavorite"
-            (click)="enrollFavoriteYarn($event, yarn)"
-          ></ion-icon>
-          <ion-icon
-            name="heart"
-            class="heart"
-            *ngIf="yarn.isFavorite"
-            (click)="enrollFavoriteYarn($event, yarn)"
-          ></ion-icon>
+  </div>
+  <hr />
+  <div *ngIf="user&&user.isSetProfile=='N'" class="user-not-profile">
+    <div class="contents__wrapper">
+      <div class="section-title">
+        <div *ngIf="!user">실 추천</div>
+        <div *ngIf="user">
+          <span class="section-title__nick"> {{user.nick}} </span>
+          <span> 님을 위한 실 추천 </span>
+        </div>
+      </div>
+      <div *ngIf="yarnList.length > 0" class="container__products">
+        <div
+          *ngFor="let yarn of yarnList"
+          (click)="goYarnDetailPage(yarn)"
+          class="contents"
+        >
+          <div class="image">
+            <img src="{{ yarn.thumbnail }}" />
+            <ion-icon
+              name="heart-outline"
+              class="heart"
+              *ngIf="!yarn.isFavorite"
+              (click)="enrollFavoriteYarn($event, yarn)"
+            ></ion-icon>
+            <ion-icon
+              name="heart"
+              class="heart"
+              *ngIf="yarn.isFavorite"
+              (click)="enrollFavoriteYarn($event, yarn)"
+            ></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="contents__wrapper">
+      <div class="section-title">
+        <div *ngIf="!user">패턴 추천</div>
+        <div *ngIf="user">
+          <span class="section-title__nick"> {{user.nick}} </span>
+          <span> 님을 위한 패턴 추천 </span>
+        </div>
+      </div>
+      <div *ngIf="patternList.length > 0" class="container__products">
+        <div
+          *ngFor="let pattern of patternList"
+          (click)="goPatternDetailPage(pattern)"
+          class="contents"
+        >
+          <div class="image">
+            <img src="{{ pattern.thumbnail }}" />
+            <ion-icon
+              name="heart-outline"
+              class="heart"
+              *ngIf="!pattern.isFavorite"
+              (click)="enrollFavoritePattern($event, pattern)"
+            ></ion-icon>
+            <ion-icon
+              name="heart"
+              class="heart--fill"
+              *ngIf="pattern.isFavorite"
+              (click)="enrollFavoritePattern($event, pattern)"
+            ></ion-icon>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <hr />
-  <div class="contents__wrapper">
-    <div class="section-title">
-      <div *ngIf="!user">패턴 추천</div>
-      <div *ngIf="user">
-        <span class="section-title__nick"> {{user.nick}} </span>
-        <span> 님을 위한 패턴 추천 </span>
-      </div>
-    </div>
-    <div *ngIf="patternList.length > 0" class="container__products">
-      <div
-        *ngFor="let pattern of patternList"
-        (click)="goPatternDetailPage(pattern)"
-        class="contents"
-      >
-        <div class="image">
-          <img src="{{ pattern.thumbnail }}" />
-          <ion-icon
-            name="heart-outline"
-            class="heart"
-            *ngIf="!pattern.isFavorite"
-            (click)="enrollFavoritePattern($event, pattern)"
-          ></ion-icon>
-          <ion-icon
-            name="heart"
-            class="heart--fill"
-            *ngIf="pattern.isFavorite"
-            (click)="enrollFavoritePattern($event, pattern)"
-          ></ion-icon>
-        </div>
-      </div>
-    </div>
-  </div>
   <hr />
   <div class="community__title"><h5>커뮤니티 인기글</h5></div>
 

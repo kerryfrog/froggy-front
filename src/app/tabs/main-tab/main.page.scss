@@ -56,7 +56,6 @@ ion-button {
 
 .contents__wrapper {
   padding: 2vw;
-  margin-left: 2vw;
 }
 
 .community__title {
@@ -73,4 +72,8 @@ ion-button {
   &__nick {
     color: var(--ion-color-theme-shade);
   }
+}
+
+.recommend-list {
+  margin: 2.5vw 0vw;
 }
