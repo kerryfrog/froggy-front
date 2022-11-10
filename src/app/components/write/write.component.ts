@@ -123,7 +123,7 @@ export class WriteComponent implements OnInit {
     }
 
     if (savePostResult.data.status === "Y") {
-      this.goBack();
+      this.goBackWithSuccess();
     }
   }
 
@@ -131,7 +131,11 @@ export class WriteComponent implements OnInit {
     await this.userService.deleteUser();
     alert("다시 로그인 해 주세요");
   }
-
+  goBackWithSuccess() {
+    this.modalController.dismiss({
+      dismissed: true,
+    });
+  }
   goBack() {
     this.modalController.dismiss({
       dismissed: false,
