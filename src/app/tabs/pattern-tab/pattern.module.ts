@@ -6,8 +6,8 @@ import { FormsModule } from "@angular/forms";
 import { PatternPage } from "./pattern.page";
 
 import { PatternPageRoutingModule } from "./pattern-routing.module";
-import { ToolbarComponent } from "../../components/toolbar/toolbar.component";
 import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module";
+import { PatternGridComponentModule } from "src/app/components/pattern-grid/pattern-grid.module";
 
 @NgModule({
   imports: [
@@ -17,6 +17,7 @@ import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module"
     RouterModule.forChild([{ path: "", component: PatternPage }]),
     PatternPageRoutingModule,
     ToolbarComponentModule,
+    PatternGridComponentModule,
   ],
   declarations: [PatternPage],
 })

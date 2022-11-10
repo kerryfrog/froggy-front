@@ -24,30 +24,8 @@
     ></ion-input>
   </ion-item>
   <h3 *ngIf="nowIndex !== -1">get api index :{{nowIndex}}</h3> -->
-  <ion-button (click)="getRecommendYarnData()"> 패턴 api 호출 </ion-button>
-  <ion-list *ngIf="patternList" class="list__wrapper">
-    <div
-      *ngFor="let pattern of patternList"
-      class="card__wrapper"
-      (click)="goPatternDetailPage(pattern)"
-    >
-      <div class="image__square">
-        <img src="{{pattern.thumbnail}}" (error)="onImageError($event)" />
-        <ion-icon
-          name="heart-outline"
-          class="heart"
-          *ngIf="!pattern.isFavorite"
-          (click)="enrollFavoritePattern($event, pattern)"
-        ></ion-icon>
-        <ion-icon
-          name="heart"
-          class="heart--fill"
-          *ngIf="pattern.isFavorite"
-          (click)="enrollFavoritePattern($event, pattern)"
-        ></ion-icon>
-      </div>
-    </div>
-  </ion-list>
+  <!-- <ion-button (click)="getRecommendYarnData()"> 패턴 api 호출 </ion-button> -->
+  <app-pattern-grid [patternList]="patternList"></app-pattern-grid>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
       loadingSpinner="circular"

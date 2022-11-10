@@ -121,22 +121,6 @@ export class PatternPage {
     }
   }
 
-  async enrollFavoritePattern(e, pattern) {
-    e.stopPropagation();
-    let patternResult = this.patternList.filter(
-      (pa) => pa.id === pattern.id
-    )[0];
-
-    if (patternResult["isFavorite"]) {
-      this.fetchEnrollFavoritePattern(pattern.id);
-      patternResult["isFavorite"] = false;
-    } else {
-      this.fetchEnrollFavoritePattern(pattern.id);
-      patternResult["isFavorite"] = true;
-    }
-    console.log(patternResult);
-  }
-
   checkIsPatternFavorite(favoritePatternList) {
     if (!favoritePatternList) return;
     this.patternList = this.patternList.map((pattern) => {
@@ -150,16 +134,6 @@ export class PatternPage {
       return patterns;
     });
   }
-
-  fetchEnrollFavoritePattern(patternId) {
-    const postPatternLikeResult =
-      this.patternService.postPatternLike(patternId);
-    console.log(postPatternLikeResult);
-  }
-
-  deleteFavoritePattern(e, pattern) {}
-
-  onImageError(e) {}
 
   loadData(event) {
     setTimeout(async () => {
