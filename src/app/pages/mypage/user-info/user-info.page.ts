@@ -1,4 +1,4 @@
-import { Attribute, Component, OnInit } from "@angular/core";
+import { Attribute, Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import {
   NavController,
   ModalController,
@@ -38,7 +38,8 @@ export class UserInfoPage implements OnInit {
     public navController: NavController,
     public profileService: ProfileService,
     public alertController: AlertController,
-    public patternService: PatternService
+    public patternService: PatternService,
+    public changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {}
@@ -49,6 +50,8 @@ export class UserInfoPage implements OnInit {
 
   async getUser() {
     const userInfo = await this.userService.getUser();
+    console.log(userInfo);
+
     this.user = userInfo;
     this.userPreferForShow.proficiency = userInfo.proficiency.toString();
     this.userPreferForShow.crochet = userInfo.crochet;
@@ -151,6 +154,8 @@ export class UserInfoPage implements OnInit {
     const { data } = await modal.onDidDismiss();
     if (data.dismissed) {
       await this.getUser();
+      await this.getPatternAttributeList();
+      this.changeDetectorRef.detectChanges();
     }
     console.log(data);
   }

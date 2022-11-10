@@ -12,7 +12,7 @@ import { PatternService } from "src/app/api/pattern.service";
 export class SelectAttributeComponent implements OnInit {
   @Input() user;
   public patternAttributeList = [];
-  public favoriteList = [];
+  // public favoriteList = [];
 
   constructor(
     public modalController: ModalController,
@@ -37,42 +37,56 @@ export class SelectAttributeComponent implements OnInit {
   }
 
   async getPatternAttributeList() {
+    const userFavoriteAttribute = this.user.favoritePatternAttributeIdArr;
     const patternAttributeListResult =
       await this.patternService.getPatternAttributeList();
-    console.log(patternAttributeListResult);
     if (patternAttributeListResult.data.status === "Y") {
       for (let el of patternAttributeListResult.data.patternAttributeList) {
-        el.isSelected = false;
+        if (userFavoriteAttribute.includes(el.id)) {
+          el.isSelected = true;
+        } else {
+          el.isSelected = false;
+        }
         this.patternAttributeList.push(el);
       }
     }
   }
   selectAttribute(attribute, event) {
     console.log(attribute, event);
-    if (!attribute.isSelected) {
-      this.favoriteList.push(attribute.id);
-    } else {
-      this.favoriteList = this.favoriteList.filter((attributeId) => {
-        return attribute.id !== attributeId;
-      });
-    }
+    // if (!attribute.isSelected) {
+    //   this.favoriteList.push(attribute.id);
+    // } else {
+    //   this.favoriteList = this.favoriteList.filter((attributeId) => {
+    //     return attribute.id !== attributeId;
+    //   });
+    // }
     attribute.isSelected = !attribute.isSelected;
   }
 
   async saveFavoriteAttribute() {
-    console.log(this.favoriteList);
-    this.favoriteList.sort();
+    const favoriteList = this.getFavoriteList();
     const saveFavoriteAttributeResult =
       await this.profileService.saveFavoriteAttribute({
-        attributeList: this.favoriteList,
+        attributeList: favoriteList,
       });
-    console.log(saveFavoriteAttributeResult);
     if (saveFavoriteAttributeResult.data.status === "Y") {
-      this.user.favoritePatternAttributeIdArr = this.favoriteList;
+      this.user.favoritePatternAttributeIdArr = favoriteList;
       await this.userService.saveUser(this.user);
       this.goBackWithSuccess();
     }
   }
+
+  getFavoriteList() {
+    let favoriteList = [];
+    for (let el of this.patternAttributeList) {
+      if (el.isSelected) {
+        favoriteList.push(el.id);
+      }
+    }
+    favoriteList.sort();
+    return favoriteList;
+  }
+
   goBackWithSuccess() {
     this.modalController.dismiss({
       dismissed: true,
