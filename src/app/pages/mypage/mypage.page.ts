@@ -67,11 +67,11 @@ export class MypagePage implements OnInit {
     this.navController.navigateForward(`/mypage/profile`);
   }
 
-  async openFavoriteYarn() {
-    const modal = await this.modalController.create({
-      component: SigninComponent,
-      cssClass: "modal-fullscreen",
-    });
-    await modal.present();
+  goFavoritePatternPage() {
+    this.navController.navigateForward(`/mypage/favorite/pattern`);
+  }
+
+  goFavoriteYarnPage() {
+    this.navController.navigateForward(`/mypage/favorite/yarn`);
   }
 }

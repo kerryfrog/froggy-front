@@ -15,6 +15,20 @@ const routes: Routes = [
         (m) => m.UserInfoPageModule
       ),
   },
+  {
+    path: "favorite/pattern",
+    loadChildren: () =>
+      import(
+        "src/app/pages/mypage/favorite-pattern/favorite-pattern.module"
+      ).then((m) => m.FavoritePatternPageModule),
+  },
+  {
+    path: "favorite/yarn",
+    loadChildren: () =>
+      import("src/app/pages/mypage/favorite-yarn/favorite-yarn.module").then(
+        (m) => m.FavoriteYarnPageModule
+      ),
+  },
 ];
 
 @NgModule({

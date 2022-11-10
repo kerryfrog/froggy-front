@@ -16,7 +16,7 @@ export class PatternService {
         responseType: "json",
       });
       console.log("response", response);
-      
+
       return response;
     } catch (error) {
       return error.response;
@@ -53,6 +53,18 @@ export class PatternService {
       const response = await axios({
         method: "get",
         url: `${environment.apiUrl}/pattern/flask/test`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+  async getFavoritePatternList() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/favorite-list`,
         responseType: "json",
       });
       return response;

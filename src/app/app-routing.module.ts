@@ -27,24 +27,53 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'yarn-search',
-    loadChildren: () => import('./pages/yarn-search/yarn-search.module').then( m => m.YarnSearchPageModule)
+    path: "yarn-search",
+    loadChildren: () =>
+      import("./pages/yarn-search/yarn-search.module").then(
+        (m) => m.YarnSearchPageModule
+      ),
   },
   {
-    path: 'pattern-search',
-    loadChildren: () => import('./pages/pattern-search/pattern-search.module').then( m => m.PatternSearchPageModule)
+    path: "pattern-search",
+    loadChildren: () =>
+      import("./pages/pattern-search/pattern-search.module").then(
+        (m) => m.PatternSearchPageModule
+      ),
   },
   {
-    path: 'post-detail',
-    loadChildren: () => import('./pages/post-detail/post-detail.module').then( m => m.PostDetailPageModule)
+    path: "post-detail",
+    loadChildren: () =>
+      import("./pages/post-detail/post-detail.module").then(
+        (m) => m.PostDetailPageModule
+      ),
   },
   {
-    path: 'yarn-review-write',
-    loadChildren: () => import('./pages/yarn-review-write/yarn-review-write.module').then( m => m.YarnReviewWritePageModule)
+    path: "yarn-review-write",
+    loadChildren: () =>
+      import("./pages/yarn-review-write/yarn-review-write.module").then(
+        (m) => m.YarnReviewWritePageModule
+      ),
   },
   {
-    path: 'user-info',
-    loadChildren: () => import('./pages/user-info/user-info.module').then( m => m.UserInfoPageModule)
+    path: "user-info",
+    loadChildren: () =>
+      import("./pages/user-info/user-info.module").then(
+        (m) => m.UserInfoPageModule
+      ),
+  },
+  {
+    path: "favorite-pattern",
+    loadChildren: () =>
+      import("./pages/mypage/favorite-pattern/favorite-pattern.module").then(
+        (m) => m.FavoritePatternPageModule
+      ),
+  },
+  {
+    path: "favorite-yarn",
+    loadChildren: () =>
+      import("./pages/mypage/favorite-yarn/favorite-yarn.module").then(
+        (m) => m.FavoriteYarnPageModule
+      ),
   },
 ];
 @NgModule({
