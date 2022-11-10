@@ -1,4 +1,3 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
@@ -9,26 +8,23 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content class="ion-padding">
-    <ion-item>
-      <ion-label>글 제목</ion-label>
-      <ion-input
-        type="text"
-        [(ngModel)]="title"
-        placeholder="제목을 입력하세요"
-        ngDefaultControl
-      ></ion-input>
-    </ion-item>
-      
-    <quill-editor 
+  <ion-item>
+    <ion-label>글 제목</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="title"
+      placeholder="제목을 입력하세요"
+      ngDefaultControl
+    ></ion-input>
+  </ion-item>
+  <div class="invisible-input-cont">
+    <input #quillFile type="file" (change)="quillFileSelected($event)" />
+  </div>
+  <quill-editor
+    (onEditorCreated)="getMeEditorInstance($event)"
     (onContentChanged)="myCallback($event)"
-    ></quill-editor>
-    
-  
-
-  <ion-button 
-  (click)="submitPost()">
-    작성하기
-  </ion-button>
+    [modules]="editorModules"
+  ></quill-editor>
+  <ion-button (click)="submitPost()"> 작성하기 </ion-button>
 </ion-content>
