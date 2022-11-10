@@ -5,8 +5,6 @@ import { AuthService } from "src/app/api/auth/auth.service";
 import { UserService } from "src/app/services/user.service";
 import { SignupComponent } from "src/app/components/signup/signup.component";
 
-
-
 @Component({
   selector: "app-signin",
   templateUrl: "./signin.component.html",
@@ -20,8 +18,8 @@ export class SigninComponent implements OnInit {
     public formBuilder: FormBuilder,
     public modalController: ModalController,
     public authService: AuthService,
-    public userService:UserService,
-    ) {}
+    public userService: UserService
+  ) {}
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
@@ -47,17 +45,17 @@ export class SigninComponent implements OnInit {
       console.log("Please provide all the required values!");
       return false;
     } else {
-      const signInResult = await this.authService.postSignIn(this.ionicForm.value);
-      console.log("signInResult" , signInResult);
-        
-      if (signInResult.data.status === 'Y') {
-        await this.userService.saveUser(signInResult.data.user);        
-        this.goBackWithSignIn()
+      const signInResult = await this.authService.postSignIn(
+        this.ionicForm.value
+      );
+
+      if (signInResult.data.status === "Y") {
+        await this.userService.saveUser(signInResult.data.user);
+        this.goBackWithSignIn();
       }
       console.log(this.ionicForm.value);
     }
   }
-
 
   async goSignUp() {
     const modal = await this.modalController.create({
@@ -67,10 +65,9 @@ export class SigninComponent implements OnInit {
     await modal.present();
   }
 
-
   goBack() {
     console.log("go back");
-    
+
     this.modalController.dismiss({
       dismissed: false,
     });
@@ -81,6 +78,4 @@ export class SigninComponent implements OnInit {
       isSignedIn: true,
     });
   }
-
-
 }

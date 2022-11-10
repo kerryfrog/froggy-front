@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'yarn-review-write',
     loadChildren: () => import('./pages/yarn-review-write/yarn-review-write.module').then( m => m.YarnReviewWritePageModule)
   },
+  {
+    path: 'user-info',
+    loadChildren: () => import('./pages/user-info/user-info.module').then( m => m.UserInfoPageModule)
+  },
 ];
 @NgModule({
   imports: [

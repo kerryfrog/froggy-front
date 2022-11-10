@@ -1,22 +1,20 @@
 import { Component, OnInit } from "@angular/core";
-import { UserService } from "src/app/services/user.service";
-import { AuthService } from "src/app/api/auth/auth.service";
-import { UserPrefer } from "../../models/server-request";
-
 import {
   NavController,
   ModalController,
   AlertController,
 } from "@ionic/angular";
 
+import { UserService } from "src/app/services/user.service";
+import { AuthService } from "src/app/api/auth/auth.service";
+import { UserPrefer } from "../../models/server-request";
 import { ProfileService } from "src/app/api/profile.service";
-
 @Component({
   selector: "app-user-info",
-  templateUrl: "./user-info.component.html",
-  styleUrls: ["./user-info.component.scss"],
+  templateUrl: "./user-info.page.html",
+  styleUrls: ["./user-info.page.scss"],
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoPage implements OnInit {
   public user;
   public userPreferChange: UserPrefer = {
     proficiency: -1,
@@ -34,12 +32,12 @@ export class UserInfoComponent implements OnInit {
     public userService: UserService,
     public authService: AuthService,
     public modalController: ModalController,
+    public navController: NavController,
     public profileService: ProfileService,
     public alertController: AlertController
   ) {}
 
   ngOnInit() {}
-
   async ionViewDidEnter() {
     await this.getUser();
   }
@@ -166,10 +164,13 @@ export class UserInfoComponent implements OnInit {
   changeNickName() {
     this.isChangeNickName = true;
   }
+  // goBack() {
+  //   this.modalController.dismiss({
+  //     dismissed: false,
+  //   });
+  // }
   goBack() {
-    this.modalController.dismiss({
-      dismissed: false,
-    });
+    this.navController.navigateBack("mypage");
   }
 
   async setUserSyncWithServer() {

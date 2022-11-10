@@ -181,8 +181,6 @@ export class PatternPage {
   }
 
   async goSearchPatternPage() {
-    console.log("go search page");
-
     this.navController.navigateForward(`/tabs/pattern/search`);
   }
   goMypage() {
