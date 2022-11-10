@@ -3,7 +3,6 @@ import { ModalController, NavController } from "@ionic/angular";
 
 import { SignupComponent } from "src/app/components/signup/signup.component";
 import { SigninComponent } from "src/app/components/signin/signin.component";
-import { UserInfoComponent } from "src/app/components/user-info/user-info.component";
 import { Storage } from "@ionic/storage-angular";
 
 @Component({
