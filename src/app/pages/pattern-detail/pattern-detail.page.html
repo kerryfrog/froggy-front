@@ -9,29 +9,31 @@
 </ion-header>
 
 <ion-content>
-  <div class="name__wrapper">{{pattern.name}}</div>
-  <div class="info__wrapper">
-    <div class="image__square">
-      <img src="{{pattern.thumbnail}}" />
-    </div>
-    <div class="content__wrapper">
-      <div>작가 : {{pattern.author}}</div>
-      <div>난이도 : {{pattern.difficultyAverage | number: '1.0-0' }}</div>
-      <div>바늘 호수 : {{pattern.gauge }}</div>
-      <div *ngIf="pattern.price">
-        가격 : {{pattern.price}} {{pattern.currencySymbol}}
-      </div>
-      <div *ngIf="!pattern.price">가격 : 가격정보 없음</div>
-    </div>
+  <div class="image__square">
+    <img src="{{pattern.thumbnail}}" />
   </div>
-  <div class="note__wrapper">{{pattern.note}}</div>
-  <div class="link__wrapper">
-    <div>판매 링크</div>
-    <div>> 쿠팡 바로가기</div>
+  <div class="info__wrapper">
+    <div>도안 창작자 <span>{{pattern.author}}</span></div>
+    <div class="name">{{pattern.name}}</div>
+    <div class="price" *ngIf="pattern.price">
+      only for <span>{{pattern.price}}</span> {{pattern.currencySymbol}}
+    </div>
+    <div class="price" *ngIf="!pattern.price">가격정보 없음</div>
+    <div class="difficulty">
+      난이도 <span>{{pattern.difficultyAverage | number: '1.0-0' }}</span>
+    </div>
+    <div *ngIf="pattern.gauge">바늘 호수 : {{pattern.gauge }}</div>
+    <div></div>
+
+    <!-- <div *ngIf="pattern.notes">작가의 메모 <br />{{pattern.notes}}</div> -->
+  </div>
+  <div *ngIf="pattern.downloadable" class="link__wrapper">
+    <h4>판매 링크</h4>
+    <a href="{{pattern.url}}" target="_blank">{{pattern.url}}</a>
   </div>
 
   <div class="review__wrapper">
-    <h3>패턴 리뷰</h3>
+    <h4>패턴 리뷰</h4>
     <div class="card">
       <ion-card>
         <ion-item>
