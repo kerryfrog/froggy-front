@@ -8,17 +8,16 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <h1>선호 카테고리를 선택해 주세요</h1>
-  <div
-    class="attribute__wrapper"
-    *ngFor="let attribute of patternAttributeList"
-  >
-    <div
-      class="custom-chip-button"
-      [ngStyle]="attribute.isSelected ? selectedStyle : notSelectedStyle"
-      (click)="selectAttribute(attribute, $event)"
-    >
-      {{ attribute.attribute }}
+  <div class="tag_list">
+    <h3>선호 카테고리를 선택해 주세요</h3>
+    <div class="tags" *ngFor="let attribute of patternAttributeList">
+      <div
+        class="custom_chip_button"
+        [ngStyle]="attribute.isSelected ? selectedStyle : notSelectedStyle"
+        (click)="selectAttribute(attribute, $event)"
+      >
+        {{ attribute.attribute }}
+      </div>
     </div>
   </div>
 
