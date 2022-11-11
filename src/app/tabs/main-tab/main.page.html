@@ -21,7 +21,10 @@
     >
       실 api 호출
     </ion-button> -->
-
+  <ion-refresher slot="fixed" (ionRefresh)="refreshMain($event)">
+    <ion-refresher-content pullingIcon="" refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="contents__wrapper">
     <div *ngIf="user&&user.isSetProfile=='Y'" class="user-set-profile">
       <div class="section-title">

@@ -60,6 +60,10 @@ export class UserInfoPage implements OnInit {
   async getPatternAttributeList() {
     const patternAttributeListResult =
       await this.patternService.getPatternAttributeList();
+    if (!this.user.favoritePatternAttributeIdArr) {
+      console.log("user does not set favorite pattern attirbute");
+      return;
+    }
     if (patternAttributeListResult.data.status === "Y") {
       const patternAttributeList =
         patternAttributeListResult.data.patternAttributeList;
