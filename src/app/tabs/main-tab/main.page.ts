@@ -49,6 +49,7 @@ export class MainPage {
   }
   async refreshMain(event) {
     await this.getUser();
+    await this.getMainRecommendViewByState();
     event.target.disabled = true;
     event.target.complete();
     setTimeout(() => {
@@ -134,7 +135,6 @@ export class MainPage {
 
   async getRecommendPatternByDifficulty() {
     const patternResult = await this.patternService.getRecommendByDifficulty();
-    console.log("getRecommend List by difficulty", patternResult);
     if (
       patternResult.data.status === "N" &&
       patternResult.data.isUserLogin === "N"
