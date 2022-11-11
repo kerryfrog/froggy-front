@@ -178,6 +178,6 @@ export class MainPage {
   async getUser() {
     const userInfo = await this.userService.getUser();
     this.user = userInfo;
-    console.log(this.user.isSetProfile);
+    //console.log(this.user.isSetProfile);
   }
 }
