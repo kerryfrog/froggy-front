@@ -37,6 +37,20 @@ ion-button.outline {
   height: 45px;
 }
 
+ion-button.outline_n_fill {
+  font-family: "Pretendard-Light";
+  --background: var(--ion-color-theme);
+  --border-radius: 100px;
+  --color: rgb(47, 56, 47);
+  --box-shadow: none;
+  --border-color: rgba(1, 15, 1, 0.182);
+  --border-width: 1px;
+  padding: 0px 10px;
+  display: block;
+  font-size: 14px;
+  height: 45px;
+}
+
 ion-chip {
   color: var(--ion-color-theme-shade);
 }

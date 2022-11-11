@@ -6,6 +6,24 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  font-family: "Pretendard-Light";
+}
+
+.chip {
+  font-family: "Pretendard-Light";
+  font-size: 15px;
+  border-radius: 100px;
+  margin: 4px;
+  padding: 6px 12px;
+  color: rgb(37, 54, 37, 0.8);
+  background: var(--ion-color-theme-light);
+}
+
+ion-select-option {
+  --font-family: "Pretendard-Light";
+}
+.save {
+  font-size: 17px;
 }
 
 .nickname {
@@ -21,7 +39,7 @@
 
   &__text {
     margin: auto 0;
-    font-size: 5vw;
+    font-size: 8vw;
   }
 
   &__change {
@@ -36,19 +54,22 @@
 }
 
 .prefernece__checkbox {
-  padding: 10px;
   display: flex;
   flex-direction: row;
-  &__list1 {
-    margin-right: 10px;
 
-    ion-checkbox {
-      margin-right: 5px;
-    }
+  margin-right: 10px;
+
+  ion-checkbox {
+    margin-right: 5px;
+    --background-checked: var(--ion-color-theme);
+    --border-checked: var(--ion-color-theme);
+  }
+  ion-checkbox::part(container) {
+    border-radius: 6px;
+    border: 2px solid var(--ion-color-theme);
   }
 }
 
 .logout {
-  margin: 0 auto;
-  margin-top: 70vw;
+  margin-top: 30px;
 }

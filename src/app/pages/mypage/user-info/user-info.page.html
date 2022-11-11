@@ -5,12 +5,15 @@
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="save" (click)="saveUserInfo()"> 저장 </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="mypage__wrapper">
     <div class="nickname" *ngIf="user">
-      <ion-icon name="person-circle-outline"></ion-icon>
+      <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
       <div class="nickname__text">{{ user.nick }}</div>
       <ion-button
         class="nickname__change__btn1"
@@ -23,29 +26,30 @@
     </div>
 
     <div class="preference">
-      <h3>선호 바늘</h3>
+      <h4>선호 바늘</h4>
       <div class="prefernece__checkbox">
-        <div class="prefernece__checkbox__list1">
+        <ion-item lines="none">
           <ion-checkbox
             slot="start"
             [(ngModel)]="userPreferForShow.crochet"
             (ionChange)="onChangeCrochet($event)"
           ></ion-checkbox>
-          <span>코바늘</span>
-        </div>
-        <div class="prefernece__checkbox__list1">
+          <ion-label>코바늘</ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
           <ion-checkbox
             slot="start"
             [(ngModel)]="userPreferForShow.knitting"
             (ionChange)="onChangeKnitting($event)"
           ></ion-checkbox>
-          <span>대바늘</span>
-        </div>
+          <ion-label>대바늘</ion-label>
+        </ion-item>
       </div>
     </div>
 
     <div class="difficulty">
-      <h3>숙련도</h3>
+      <h4>숙련도</h4>
       <ion-select
         (ionChange)="handleChange($event)"
         [value]="userPreferForShow.proficiency.toString()"
@@ -57,22 +61,27 @@
     </div>
 
     <div class="category">
-      <h3>선호 카테고리</h3>
-      <ion-button slot="clear" (click)="selectPatternAttribute()"
+      <h4>선호 카테고리</h4>
+      <ion-button
+        class="outline"
+        fill="outline"
+        slot="clear"
+        (click)="selectPatternAttribute()"
         >선호 카테고리 변경</ion-button
       >
       <div
         *ngFor="let el of patternAttributeListForShow"
         class="category__list"
+        style="display: inline-block"
       >
-        <ion-chip color="success">{{el.attribute}}</ion-chip>
+        <div class="chip" color="success">{{el.attribute}}</div>
       </div>
     </div>
 
-    <ion-button (click)="saveUserInfo()"> 변경사항저장 </ion-button>
-
     <div class="logout">
-      <ion-button (click)="logout()"> 로그아웃하기 </ion-button>
+      <ion-button class="outline_n_fill" fill="outline" (click)="logout()">
+        로그아웃하기
+      </ion-button>
     </div>
   </div>
 </ion-content>
