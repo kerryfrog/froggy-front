@@ -25,15 +25,15 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-@import '~quill/dist/quill.core.css';
-@import '~quill/dist/quill.snow.css';
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
 
-@import 'src/theme/common.scss';
+@import "src/theme/common.scss";
 
 [contenteditable] {
   -webkit-user-select: text;
   user-select: text;
 }
 * {
-  font-family: 'Pretendard-Medium';
+  font-family: "Pretendard-Medium";
 }
