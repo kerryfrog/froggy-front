@@ -67,36 +67,30 @@ export class MainPage {
       await this.getYarnPageView();
     }
   }
-  // getRandomInt(min, max) {
-  //   min = Math.ceil(min);
-  //   max = Math.floor(max);
-  //   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
-  // }
-
   async getRecommendPatternByUserProfile() {
     if (this.viewState === 0) {
       await this.getRecommendPatternByDifficulty();
     } else if (this.viewState === 1) {
       if (this.user.crochet === 0) {
         this.changeViewState();
-        this.getRecommendPatternByUserProfile();
+        await this.getRecommendPatternByUserProfile();
+        return;
       }
       await this.getRecommendPatternByCrochet();
     } else if (this.viewState === 2) {
       if (this.user.knitting === 0) {
         this.changeViewState();
-        this.getRecommendPatternByUserProfile();
+        await this.getRecommendPatternByUserProfile();
+        return;
       }
-      await this.getRecommendPatternByCrochet();
+      await this.getRecommendPatternByKnitting();
     }
   }
   async getPatternPageView() {
     const { data } = await this.patternService.getRecommendPatternList();
     if (data.status === "Y") {
       this.patternList = [...this.patternList, ...data.patternList];
-      //this.patternListForUser = this.patternList.slice(0, 6);
     }
-    console.log(this.patternListForUser);
   }
 
   async getYarnPageView() {
@@ -177,7 +171,6 @@ export class MainPage {
     } else {
       yarnResult["isFavorite"] = true;
     }
-    console.log(yarnResult);
   }
 
   async enrollFavoritePattern(e, pattern) {
@@ -193,13 +186,11 @@ export class MainPage {
       this.fetchEnrollFavoritePattern(pattern.id);
       patternResult["isFavorite"] = true;
     }
-    console.log(patternResult);
   }
 
   fetchEnrollFavoritePattern(patternId) {
     const postPatternLikeResult =
       this.patternService.postPatternLike(patternId);
-    console.log(postPatternLikeResult);
   }
 
   async setUserSyncWithServer() {
@@ -263,5 +254,11 @@ export class MainPage {
 
   //     this.nowIndex = i;
   //   }
+  // }
+
+  // getRandomInt(min, max) {
+  //   min = Math.ceil(min);
+  //   max = Math.floor(max);
+  //   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
   // }
 }
