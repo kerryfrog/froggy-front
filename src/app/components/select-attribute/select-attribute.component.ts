@@ -37,7 +37,10 @@ export class SelectAttributeComponent implements OnInit {
   }
 
   async getPatternAttributeList() {
-    const userFavoriteAttribute = this.user.favoritePatternAttributeIdArr;
+    let userFavoriteAttribute = this.user.favoritePatternAttributeIdArr;
+    if (!userFavoriteAttribute) {
+      userFavoriteAttribute = [];
+    }
     const patternAttributeListResult =
       await this.patternService.getPatternAttributeList();
     if (patternAttributeListResult.data.status === "Y") {
