@@ -24,11 +24,11 @@ export class SelectAttributeComponent implements OnInit {
   ngOnInit() {}
 
   public selectedStyle = {
-    color: "white",
-    background: "#95c597",
+    color: "var(--ion-color-theme-shade)",
+    background: "var(--ion-color-theme-light)",
   };
   public notSelectedStyle = {
-    color: "lightgray",
+    color: "gray",
     background: "white",
   };
 

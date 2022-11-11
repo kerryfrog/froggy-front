@@ -1,3 +1,12 @@
+h3 {
+  font-family: "Pretendard-Light";
+  span {
+    font-family: "Pretendard-Medium";
+  }
+}
+.button-wrapper {
+  margin: 20px;
+}
 .tag_list {
   margin-left: 20px;
   margin-right: 20px;
@@ -6,9 +15,10 @@
     display: inline-block;
 
     .custom_chip_button {
+      font-family: "Pretendard-Light";
       border-radius: 100px;
-      margin: 3px;
-      padding: 6px 11px;
+      margin: 4px;
+      padding: 6px 12px;
     }
   }
 }
