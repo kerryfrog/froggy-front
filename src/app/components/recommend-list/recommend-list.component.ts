@@ -40,6 +40,10 @@ export class RecommendListComponent implements OnInit {
       this.patternService.postPatternLike(patternId);
     console.log(postPatternLikeResult);
   }
+
+  goRecommendPatternPage() {
+    this.navController.navigateForward(`/recommend-pattern`);
+  }
   async goPatternDetailPage(pattern) {
     const props: NavigationExtras = {
       state: {

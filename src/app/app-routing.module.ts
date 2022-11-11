@@ -75,6 +75,10 @@ const routes: Routes = [
         (m) => m.FavoriteYarnPageModule
       ),
   },
+  {
+    path: 'recommend-pattern',
+    loadChildren: () => import('./pages/recommend-pattern/recommend-pattern.module').then( m => m.RecommendPatternPageModule)
+  },
 ];
 @NgModule({
   imports: [
