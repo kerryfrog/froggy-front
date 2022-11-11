@@ -35,7 +35,7 @@
     </div>
   </div>
   <hr />
-  <div *ngIf="user&&user.isSetProfile=='N'" class="user-not-profile">
+  <div class="user-not-profile" *ngIf="!user||(user && user.isSetProfile=='N')">
     <div class="contents__wrapper">
       <div class="section-title">
         <div *ngIf="!user">실 추천</div>

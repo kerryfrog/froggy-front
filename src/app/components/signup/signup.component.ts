@@ -47,11 +47,7 @@ export class SignupComponent implements OnInit {
       ],
     });
   }
-  async ionViewDidEnter() {
-    
-  }
- 
-
+  async ionViewDidEnter() {}
 
   get errorControl() {
     return this.ionicForm.controls;
@@ -60,11 +56,15 @@ export class SignupComponent implements OnInit {
   async submitForm() {
     this.isSubmitted = true;
     if (!this.ionicForm.valid) {
-      console.log("Please provide all the required values!");
       return false;
     } else {
-      await this.authService.postSignUp(this.ionicForm.value);
-      console.log(this.ionicForm.value);
+      const signUpResult = await this.authService.postSignUp(
+        this.ionicForm.value
+      );
+      console.log(signUpResult);
+      if (signUpResult.data.status === "Y") {
+        this.goBack();
+      }
     }
   }
 

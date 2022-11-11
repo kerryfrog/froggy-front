@@ -193,9 +193,7 @@ export class UserInfoPage implements OnInit {
   }
 
   goBackWithLogout() {
-    this.modalController.dismiss({
-      isLoggedOut: true,
-    });
+    this.navController.navigateBack("mypage");
   }
   changeNickName() {
     this.isChangeNickName = true;
