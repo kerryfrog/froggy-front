@@ -9,7 +9,7 @@
 </ion-header>
 <ion-content>
   <div class="tag_list">
-    <h3>선호 카테고리를 선택해 주세요</h3>
+    <h3><span>선호 카테고리</span>를 선택해 주세요</h3>
     <div class="tags" *ngFor="let attribute of patternAttributeList">
       <div
         class="custom_chip_button"
@@ -20,6 +20,7 @@
       </div>
     </div>
   </div>
-
-  <ion-button (click)="saveFavoriteAttribute()">저장하기</ion-button>
+  <div class="button-wrapper">
+    <ion-button (click)="saveFavoriteAttribute()">저장하기</ion-button>
+  </div>
 </ion-content>
