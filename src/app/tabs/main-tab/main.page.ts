@@ -28,8 +28,9 @@ export class MainPage {
   public postList = [];
   public user;
 
-  // 개인화 추천을 위한 리스트
+  // 개인화 추천을 위한 변수들 ..
   public patternListForUser = [];
+  public viewState = 0;
 
   constructor(
     public dataService: DataService,
@@ -49,6 +50,7 @@ export class MainPage {
   }
   async refreshMain(event) {
     await this.getUser();
+    this.changeViewState();
     await this.getMainRecommendViewByState();
     event.target.disabled = true;
     event.target.complete();
@@ -58,8 +60,8 @@ export class MainPage {
   }
 
   async getMainRecommendViewByState() {
-    if (this.user) {
-      await this.getRecommendPatternByDifficulty();
+    if (this.user && this.user.isSetProfile === "Y") {
+      await this.getRecommendPatternByUserProfile();
     } else {
       await this.getPatternPageView();
       await this.getYarnPageView();
@@ -71,45 +73,25 @@ export class MainPage {
   //   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
   // }
 
-  // async getRaverlyApi() {
-  //   if (!this.min || !this.max) {
-  //     const alert = await this.alertController.create({
-  //       header: "에러",
-  //       message: "범위를 입력해 주세요",
-  //       buttons: ["확인"],
-  //     });
-  //     await alert.present();
-  //     return;
-  //   }
-  //   const subHeader = `index 가 ${this.min} ~ ${this.max}인 `;
-  //   const message = "api 를 호출하시겠습니까?";
-  //   let flag = false;
-  //   const alert = await this.alertController.create({
-  //     subHeader,
-  //     message,
-  //     buttons: [
-  //       {
-  //         text: "취소",
-  //         handler: async () => {
-  //           this.alertController.dismiss();
-  //         },
-  //       },
-  //       {
-  //         text: "확인",
-  //         handler: async () => {
-  //           await this.getAndFetchYarnData();
-  //           flag = true;
-  //         },
-  //       },
-  //     ],
-  //   });
-  //   await alert.present();
-  // }
-
+  async getRecommendPatternByUserProfile() {
+    if (this.viewState === 0) {
+      await this.getRecommendPatternByDifficulty();
+    } else if (this.viewState === 1) {
+      if (this.user.crochet === 0) {
+        this.changeViewState();
+        this.getRecommendPatternByUserProfile();
+      }
+      await this.getRecommendPatternByCrochet();
+    } else if (this.viewState === 2) {
+      if (this.user.knitting === 0) {
+        this.changeViewState();
+        this.getRecommendPatternByUserProfile();
+      }
+      await this.getRecommendPatternByCrochet();
+    }
+  }
   async getPatternPageView() {
     const { data } = await this.patternService.getRecommendPatternList();
-    console.log(data);
-
     if (data.status === "Y") {
       this.patternList = [...this.patternList, ...data.patternList];
       //this.patternListForUser = this.patternList.slice(0, 6);
@@ -145,15 +127,31 @@ export class MainPage {
       this.patternListForUser = patternResult.data.patternList.slice(0, 6);
     }
   }
-  // async getAndFetchYarnData() {
-  //   for (let i = this.min; i <= this.max; i++) {
-  //     const response = await this.dataService.getYarnDataFromRaverly(i);
-  //     // console.log("for i =", i, response);
-  //     const postResult = await this.dataService.postYarnData(response);
 
-  //     this.nowIndex = i;
-  //   }
-  // }
+  async getRecommendPatternByCrochet() {
+    const patternResult = await this.patternService.getRecommendByCrochet();
+    if (
+      patternResult.data.status === "N" &&
+      patternResult.data.isUserLogin === "N"
+    ) {
+      this.setUserSyncWithServer();
+    }
+    if (patternResult.data.status === "Y") {
+      this.patternListForUser = patternResult.data.patternList.slice(0, 6);
+    }
+  }
+  async getRecommendPatternByKnitting() {
+    const patternResult = await this.patternService.getRecommendByKnitting();
+    if (
+      patternResult.data.status === "N" &&
+      patternResult.data.isUserLogin === "N"
+    ) {
+      this.setUserSyncWithServer();
+    }
+    if (patternResult.data.status === "Y") {
+      this.patternListForUser = patternResult.data.patternList.slice(0, 6);
+    }
+  }
 
   async goYarnDetailPage(yarn) {
     const props: NavigationExtras = {
@@ -206,12 +204,64 @@ export class MainPage {
 
   async setUserSyncWithServer() {
     await this.userService.deleteUser();
+    await this.getMainRecommendViewByState();
     alert("다시 로그인 해 주세요");
+  }
+
+  changeViewState() {
+    this.viewState = (this.viewState += 1) % 3;
+    console.log("view state", this.viewState);
   }
 
   async getUser() {
     const userInfo = await this.userService.getUser();
     this.user = userInfo;
-    //console.log(this.user.isSetProfile);
   }
+
+  // get yarn from raverly
+
+  // async getRaverlyApi() {
+  //   if (!this.min || !this.max) {
+  //     const alert = await this.alertController.create({
+  //       header: "에러",
+  //       message: "범위를 입력해 주세요",
+  //       buttons: ["확인"],
+  //     });
+  //     await alert.present();
+  //     return;
+  //   }
+  //   const subHeader = `index 가 ${this.min} ~ ${this.max}인 `;
+  //   const message = "api 를 호출하시겠습니까?";
+  //   let flag = false;
+  //   const alert = await this.alertController.create({
+  //     subHeader,
+  //     message,
+  //     buttons: [
+  //       {
+  //         text: "취소",
+  //         handler: async () => {
+  //           this.alertController.dismiss();
+  //         },
+  //       },
+  //       {
+  //         text: "확인",
+  //         handler: async () => {
+  //           await this.getAndFetchYarnData();
+  //           flag = true;
+  //         },
+  //       },
+  //     ],
+  //   });
+  //   await alert.present();
+  // }
+
+  // async getAndFetchYarnData() {
+  //   for (let i = this.min; i <= this.max; i++) {
+  //     const response = await this.dataService.getYarnDataFromRaverly(i);
+  //     // console.log("for i =", i, response);
+  //     const postResult = await this.dataService.postYarnData(response);
+
+  //     this.nowIndex = i;
+  //   }
+  // }
 }

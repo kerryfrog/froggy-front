@@ -32,6 +32,30 @@ export class PatternService {
       return error.response;
     }
   }
+  async getRecommendByCrochet() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/recommend/crochet`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+  async getRecommendByKnitting() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/recommend/knitting`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getPatternSearchList(keyword) {
     try {
       const response = await axios({
