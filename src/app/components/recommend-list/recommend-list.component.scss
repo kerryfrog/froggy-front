@@ -9,11 +9,22 @@
 }
 
 .card__wrapper {
-  height: 50vw;
+  height: 45vw;
   .card__text {
-    font-family: "Pretendard-Medium";
+    padding: 3px;
+    margin: 2px;
+    font-family: "Pretendard-Light";
+    font-size: 15px;
     color: rgba(1, 15, 1, 0.75);
   }
+}
+
+ion-button {
+  --font-family: "Pretendard-Medium";
+  --background: white;
+  --border-radius: 100px;
+  --color: var(--ion-color-theme-shade);
+  --box-shadow: none;
 }
 
 .image {
