@@ -14,17 +14,12 @@
     padding: 3px;
     margin: 2px;
     font-family: "Pretendard-Light";
-    font-size: 15px;
-    color: rgba(1, 15, 1, 0.75);
+    font-size: 14px;
+    color: rgba(47, 56, 47, 0.811);
   }
 }
-
-ion-button {
-  --font-family: "Pretendard-Medium";
-  --background: white;
-  --border-radius: 100px;
-  --color: var(--ion-color-theme-shade);
-  --box-shadow: none;
+button-wrapper {
+  margin: 5px 10px;
 }
 
 .image {
