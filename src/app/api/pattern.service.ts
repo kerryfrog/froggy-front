@@ -15,22 +15,18 @@ export class PatternService {
         url: `${environment.apiUrl}/pattern`,
         responseType: "json",
       });
-      console.log("response", response);
-
       return response;
     } catch (error) {
       return error.response;
     }
   }
-  async getMainRecommendPatternList() {
+  async getRecommendByDifficulty() {
     try {
       const response = await axios({
         method: "get",
-        url: `${environment.apiUrl}/pattern/recommend/main`,
+        url: `${environment.apiUrl}/pattern/recommend/difficulty`,
         responseType: "json",
       });
-      console.log("response", response);
-
       return response;
     } catch (error) {
       return error.response;

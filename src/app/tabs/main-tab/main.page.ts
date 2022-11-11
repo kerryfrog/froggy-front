@@ -28,8 +28,9 @@ export class MainPage {
   public postList = [];
   public user;
 
-  //추천 html위한
-  public patternList6 = [];
+  // 개인화 추천을 위한 리스트
+  public patternListForUser = [];
+
   constructor(
     public dataService: DataService,
     public alertController: AlertController,
@@ -44,8 +45,7 @@ export class MainPage {
   async ionViewDidEnter() {
     await this.getUser();
     await this.getPostList();
-    await this.getPatternPageView();
-    await this.getYarnPageView();
+    await this.getMainRecommendViewByState();
   }
   async refreshMain(event) {
     await this.getUser();
@@ -54,6 +54,15 @@ export class MainPage {
     setTimeout(() => {
       event.target.disabled = false;
     }, 100);
+  }
+
+  async getMainRecommendViewByState() {
+    if (this.user) {
+      await this.getRecommendPatternByDifficulty();
+    } else {
+      await this.getPatternPageView();
+      await this.getYarnPageView();
+    }
   }
   // getRandomInt(min, max) {
   //   min = Math.ceil(min);
@@ -102,9 +111,9 @@ export class MainPage {
 
     if (data.status === "Y") {
       this.patternList = [...this.patternList, ...data.patternList];
-      this.patternList6 = this.patternList.slice(0, 6);
+      //this.patternListForUser = this.patternList.slice(0, 6);
     }
-    console.log(this.patternList6);
+    console.log(this.patternListForUser);
   }
 
   async getYarnPageView() {
@@ -123,6 +132,19 @@ export class MainPage {
     }
   }
 
+  async getRecommendPatternByDifficulty() {
+    const patternResult = await this.patternService.getRecommendByDifficulty();
+    console.log("getRecommend List by difficulty", patternResult);
+    if (
+      patternResult.data.status === "N" &&
+      patternResult.data.isUserLogin === "N"
+    ) {
+      this.setUserSyncWithServer();
+    }
+    if (patternResult.data.status === "Y") {
+      this.patternListForUser = patternResult.data.patternList.slice(0, 6);
+    }
+  }
   // async getAndFetchYarnData() {
   //   for (let i = this.min; i <= this.max; i++) {
   //     const response = await this.dataService.getYarnDataFromRaverly(i);
@@ -180,6 +202,11 @@ export class MainPage {
     const postPatternLikeResult =
       this.patternService.postPatternLike(patternId);
     console.log(postPatternLikeResult);
+  }
+
+  async setUserSyncWithServer() {
+    await this.userService.deleteUser();
+    alert("다시 로그인 해 주세요");
   }
 
   async getUser() {
