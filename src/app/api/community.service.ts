@@ -56,7 +56,6 @@ export class CommunityService {
         url: `${environment.apiUrl}/community/posts/${postId}`,
         responseType: "json",
       });
-      console.log("response of getPostDetail", response);
       return response;
     } catch (error) {
       return error.response;

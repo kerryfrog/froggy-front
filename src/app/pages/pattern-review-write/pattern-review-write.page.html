@@ -11,7 +11,8 @@
   <div class="review__wrapper">
     <h3>리뷰 작성하기</h3>
     <div class="small-title">별점</div>
-    <app-star-rating> </app-star-rating>
+    <app-star-rating (ratingChanged)="onChangeRating($event)">
+    </app-star-rating>
     <div class="small-title">내용</div>
     <ion-textarea
       placeholder="도안에 대한 평가를 작성해 주세요"

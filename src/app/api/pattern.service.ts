@@ -130,11 +130,12 @@ export class PatternService {
       return error.response;
     }
   }
-  async postPatternReview(data) {
+  async postPatternReview(paramJson) {
     try {
+      const { data, patternId } = paramJson;
       const response = await axios({
         method: "post",
-        url: `${environment.apiUrl}/pattern/review/`,
+        url: `${environment.apiUrl}/pattern/${patternId}/reviews/`,
         data,
         responseType: "json",
       });

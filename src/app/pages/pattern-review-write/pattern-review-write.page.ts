@@ -29,14 +29,22 @@ export class PatternReviewWritePage implements OnInit {
   ) {}
 
   async saveReview() {
+    console.log("this.review is ", this.review);
+
     const postPatternReviewResult = await this.patternService.postPatternReview(
-      this.review
+      {
+        data: this.review,
+        patternId: this.patternId,
+      }
     );
     console.log(postPatternReviewResult);
 
     if (postPatternReviewResult.data.status === "Y") {
       alert("리뷰 작성 성공!");
     }
+  }
+  onChangeRating(event) {
+    this.review.rating = event;
   }
   onChangeTextarea(event) {
     this.review.contents = event.detail.value;
