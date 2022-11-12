@@ -81,9 +81,6 @@ img {
       padding: 3px 0px;
       font-family: "Pretendard-Light";
     }
-    .writer {
-      float: right;
-    }
     &__name {
       margin: 0px 10px;
       font-family: "Pretendard-Light";
@@ -106,5 +103,9 @@ img {
   flex-direction: row;
   ion-icon {
     color: var(--ion-color-theme);
+  }
+  &__bar {
+    margin: 0px 7px;
+    padding: 0px 7px;
   }
 }
