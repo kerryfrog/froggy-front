@@ -5,6 +5,9 @@
 ion-button {
   --background: var(--ion-color-theme);
 }
+ion-refresher {
+  position: relative;
+}
 
 .container {
   &__products {

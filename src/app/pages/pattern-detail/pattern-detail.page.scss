@@ -61,3 +61,11 @@
   padding: 3px 10px;
   font-family: "Pretendard-Light";
 }
+
+.difficulty {
+  display: flex;
+  flex-direction: row;
+  ion-icon {
+    color: var(--ion-color-theme);
+  }
+}
