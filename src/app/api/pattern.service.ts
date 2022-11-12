@@ -130,4 +130,17 @@ export class PatternService {
       return error.response;
     }
   }
+  async postPatternReview(data) {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${environment.apiUrl}/pattern/review/`,
+        data,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 }

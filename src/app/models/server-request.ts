@@ -8,3 +8,8 @@ export interface UserPrefer {
   crochet: number;
   knitting: number;
 }
+
+export interface Review {
+  rating: number;
+  contents: string;
+}

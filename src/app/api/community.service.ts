@@ -4,56 +4,16 @@ import { Post } from "../models/server-request";
 
 import axios from "axios";
 
-
 @Injectable({
-    providedIn: "root",
+  providedIn: "root",
 })
 export class CommunityService {
-    async saveNewPost(data) {
+  async saveNewPost(data) {
     try {
       const response = await axios({
         method: "post",
-        url: `${environment.apiUrl}/community/write`,
+        url: `${environment.apiUrl}/community/posts`,
         data,
-        responseType: "json",
-      });
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-    }
-   async getMainPosts() {
-    try {
-      const response = await axios({
-        method: "get",
-        url: `${environment.apiUrl}/community/main`,
-        responseType: "json",
-      });
-      console.log("response of getMainPosts", response);
-      
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-   }
-  async getPostDetail(postId) {
-     try {
-      const response = await axios({
-        method: "get",
-        url: `${environment.apiUrl}/community/post/${postId}`,
-        responseType: "json",
-      });
-      console.log("response of getPostDetail", response);
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-  }
-  async getComments(postId) {
-      try {
-      const response = await axios({
-        method: "get",
-        url: `${environment.apiUrl}/community/comment/${postId}`,
         responseType: "json",
       });
       return response;
@@ -66,7 +26,7 @@ export class CommunityService {
       const { postId } = data;
       const response = await axios({
         method: "post",
-        url: `${environment.apiUrl}/community/write/${postId}/comment`,
+        url: `${environment.apiUrl}/community/posts/${postId}/comments`,
         data,
         responseType: "json",
       });
@@ -75,7 +35,43 @@ export class CommunityService {
       return error.response;
     }
   }
+  async getMainPosts() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/community/main`,
+        responseType: "json",
+      });
+      console.log("response of getMainPosts", response);
 
-  
- 
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+  async getPostDetail(postId) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/community/posts/${postId}`,
+        responseType: "json",
+      });
+      console.log("response of getPostDetail", response);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+  async getComments(postId) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/community/posts/${postId}/comments`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 }
