@@ -61,12 +61,44 @@ img {
   }
 }
 
-.review__wrapper {
+.review {
   font-family: "Pretendard-Light";
   font-size: 16px;
   margin: 3px 10px;
   padding: 3px 10px;
   font-family: "Pretendard-Light";
+  &__text {
+    margin: 10px 0px;
+    padding: 5px 0px;
+    font-family: "Pretendard-Light";
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    &__star {
+      margin: 3px 0px;
+      padding: 3px 0px;
+      font-family: "Pretendard-Light";
+    }
+    .writer {
+      float: right;
+    }
+    &__name {
+      margin: 0px 10px;
+      font-family: "Pretendard-Light";
+      font-size: 13px;
+      vertical-align: middle;
+      padding: 5px 0px;
+    }
+    &__date {
+      font-family: "Pretendard-Light";
+      font-size: 13px;
+      vertical-align: middle;
+      padding: 5px 0px;
+      float: right;
+    }
+  }
 }
 
 .difficulty {
