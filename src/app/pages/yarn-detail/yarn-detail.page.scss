@@ -2,56 +2,113 @@
   --background: white;
 }
 
+img {
+  width: 100%;
+}
+
 .name__wrapper {
-  font-weight: 700;
-  font-size: 30px;
-  padding: 10px;
+  font-family: "Pretendard-Medium";
+  font-size: 24px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .info__wrapper {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 40vw;
-  margin-left: 10px;
-
-  .image__square {
-    width: 40vw;
-    height: 40vw;
-    border-radius: 8px;
-    margin: auto;
-    img {
-      width: 40vw;
-      height: 100%;
-      -o-object-fit: cover;
-      object-fit: cover;
+  font-family: "Pretendard-Light";
+  font-size: 16px;
+  margin: 3px 10px;
+  padding: 3px 10px;
+  hr {
+    margin: 10px 0px;
+    padding: 0px;
+    color: var(--ion-color-theme-shade);
+  }
+  div {
+    font-family: "Pretendard-Light";
+    margin: 2px 0px;
+    padding: 2px 0px;
+  }
+  .price {
+    font-size: 18px;
+    //float: right;
+    span {
+      font-size: 26px;
+      font-family: "Pretendard-Bold";
     }
   }
-  .content__wrapper {
-    margin-left: 20px;
-    width: 83vw;
-    height: 40vw;
+  .name {
+    font-size: 17px;
+    font-family: "Comfortaa";
+    font-weight: 700;
+  }
+  span {
+    font-family: "Pretendard-Regular";
+    font-size: 18px;
   }
 }
 
 .link__wrapper {
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-.review__wrapper {
-  padding: 10px;
+  font-family: "Pretendard-Light";
+  font-size: 16px;
+  margin: 10px 3px 20px 10px;
+  padding: 3px 10px;
+  a {
+    font-family: "Pretendard-Light";
+    margin-bottom: 10px;
+  }
+  div {
+    font-family: "Pretendard-Light";
+  }
 }
 
 .review {
+  font-family: "Pretendard-Light";
+  font-size: 16px;
+  margin: 3px 10px;
+  padding: 3px 10px;
+  font-family: "Pretendard-Light";
+
   &__title {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-
-    &__text {
+    h4 {
       margin: auto 0;
-      font-weight: 800;
-      font-size: 25px;
+    }
+    ion-button {
+      padding: 0;
+    }
+  }
+
+  &__text {
+    margin: 10px 0px;
+    padding: 5px 0px;
+    font-family: "Pretendard-Light";
+  }
+  ion-button {
+    margin: 20px 0px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: row;
+    margin: 8px 0px;
+    &__star {
+      padding-right: 10px;
+      font-family: "Pretendard-Light";
+      margin-top: auto;
+    }
+    &__name {
+      font-family: "Pretendard-Light";
+      font-size: 13px;
+      padding: 5px 0px;
+    }
+    &__date {
+      font-family: "Pretendard-Light";
+      font-size: 12px;
+      padding: 5px 0px;
+      margin-left: auto;
+      //float: right;
     }
   }
 }
