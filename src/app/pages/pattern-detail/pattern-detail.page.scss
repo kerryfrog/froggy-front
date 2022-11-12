@@ -51,10 +51,11 @@ img {
 .link__wrapper {
   font-family: "Pretendard-Light";
   font-size: 16px;
-  margin: 3px 10px;
+  margin: 10px 3px 20px 10px;
   padding: 3px 10px;
   a {
     font-family: "Pretendard-Light";
+    margin-bottom: 10px;
   }
   div {
     font-family: "Pretendard-Light";
@@ -72,28 +73,29 @@ img {
     padding: 5px 0px;
     font-family: "Pretendard-Light";
   }
-
+  ion-button {
+    margin: 20px 0px;
+  }
   &__info {
     display: flex;
     flex-direction: row;
+    margin: 8px 0px;
     &__star {
-      margin: 3px 0px;
-      padding: 3px 0px;
+      padding-right: 10px;
       font-family: "Pretendard-Light";
+      margin-top: auto;
     }
     &__name {
-      margin: 0px 10px;
       font-family: "Pretendard-Light";
       font-size: 13px;
-      vertical-align: middle;
       padding: 5px 0px;
     }
     &__date {
       font-family: "Pretendard-Light";
-      font-size: 13px;
-      vertical-align: middle;
+      font-size: 12px;
       padding: 5px 0px;
-      float: right;
+      margin-left: auto;
+      //float: right;
     }
   }
 }
@@ -104,8 +106,16 @@ img {
   ion-icon {
     color: var(--ion-color-theme);
   }
+  span {
+    margin-right: 8px;
+    padding-top: 3px;
+    font-family: "Pretendard-Light";
+    font-size: 16px;
+  }
+  &__text {
+    margin-right: 10px;
+  }
   &__bar {
-    margin: 0px 7px;
-    padding: 0px 7px;
+    margin-left: 10px;
   }
 }
