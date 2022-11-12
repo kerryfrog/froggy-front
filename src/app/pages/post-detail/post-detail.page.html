@@ -11,24 +11,21 @@
 <ion-content>
   <div class="post__wrapper">
     <div class="post" *ngIf="post">
+      <div class="post__user">{{post.userNick}}</div>
       <div class="post__title">{{post.title}}</div>
       <div class="post__contents">{{post.contents}}</div>
-
-      <div class="post__created-date">
-        {{post.createdAt | date: "YY/MM/dd HH:mm"}}
-      </div>
+      <div class="post__date">{{post.createdAt | date: "YY/MM/dd HH:mm"}}</div>
     </div>
   </div>
-
+  <hr />
   <div class="comment__wrapper">
-    <h3>댓글</h3>
-    <div class="comment__list" *ngFor="let comment of commentList">
-      <div>
-        <ion-icon name="person-circle-outline"></ion-icon>
+    <div class="comment" *ngFor="let comment of commentList">
+      <div class="comment__user">
+        <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
         {{comment.userNick}}
       </div>
-      <div class="comment__list__contents">{{comment.contents}}</div>
-      <div class="comment__list__date">
+      <div class="comment__contents">{{comment.contents}}</div>
+      <div class="comment__date">
         {{comment.createdAt | date: "YY/MM/dd HH:mm"}}
       </div>
     </div>

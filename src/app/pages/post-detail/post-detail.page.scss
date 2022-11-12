@@ -1,33 +1,68 @@
-.post__wrapper{
-    padding:10px;
+.post__wrapper {
+  padding: 10px;
+  margin: 10px;
 }
 
-.post{
-   &__title{
-      font-size: medium;
-      font-weight: 500;
-      margin-bottom: 3px;
-      margin-top: 3px;
-    }
-    &__contents{
-      color: rgba(1, 15, 1, 0.75); 
-    }
+.post {
+  &__user {
+    font-family: "Pretendard-Light";
+    margin: 10px 0px;
+    padding: 3px 0px;
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 3px 0px;
+    padding: 3px 0px;
+  }
+  &__contents {
+    font-size: 16px;
+    font-family: "Pretendard-Regular";
+    color: rgba(1, 15, 1, 0.75);
+    margin: 3px 0px;
+    padding: 3px 0px;
+  }
+  &__date {
+    font-size: 13px;
+    font-family: "Pretendard-Light";
+    margin: 6px 0px;
+    padding: 3px 0px;
+  }
 }
 
-.comment__wrapper{
-  padding:10px; 
+.comment__wrapper {
+  padding: 10px;
+  margin: 10px;
   display: flex;
-  flex-direction: column;
 
+  flex-direction: column;
+  font-size: 14px;
 }
 
-.comment{
-  &__input{
+.comment {
+  margin: 5px;
+  padding: 5px;
+  &__user {
+    font-family: "Pretendard-Light";
+    margin: 3px 0px;
+    padding: 2px 0px;
+  }
+  &__input {
     display: flex;
     flex-direction: row;
-
-  } 
-  &__list{
-    margin:10px;
+    font-family: "Pretendard-Light";
+    font-size: 16px;
+  }
+  &__contents {
+    font-size: 16px;
+    font-family: "Pretendard-Regular";
+    margin: 3px 0px;
+    padding: 0px 0px;
+  }
+  &__date {
+    font-size: 13px;
+    font-family: "Pretendard-Light";
+    margin: 3px 0px;
+    padding: 0px 0px;
   }
 }
