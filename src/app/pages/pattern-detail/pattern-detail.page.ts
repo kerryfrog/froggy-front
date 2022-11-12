@@ -60,9 +60,9 @@ export class PatternDetailPage implements OnInit {
     }
   }
   async getPatternReview() {
-    const { data } = await this.patternService.getPatternReview({
-      patternId: this.patternId,
-    });
+    const { data } = await this.patternService.getPatternReview(this.patternId);
+    console.log(data);
+
     if (data.status === "Y") {
       this.reviewList = data.reviewList;
     }

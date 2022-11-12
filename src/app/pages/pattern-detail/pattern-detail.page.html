@@ -47,35 +47,22 @@
         리뷰 작성하기
       </ion-button>
     </div>
-    <div class="review__info">
-      <div class="review__info__star">
-        <span><ion-icon name="star"></ion-icon></span>
-        <span><ion-icon name="star"></ion-icon></span>
-        <span><ion-icon name="star"></ion-icon></span>
-        <span><ion-icon name="star-outline"></ion-icon></span>
-        <span><ion-icon name="star-outline"></ion-icon></span>
+    <div *ngFor="let review of reviewList">
+      <div class="review__info">
+        <div class="review__info__star">
+          <span><ion-icon name="star"></ion-icon></span>
+          <span><ion-icon name="star"></ion-icon></span>
+          <span><ion-icon name="star"></ion-icon></span>
+          <span><ion-icon name="star-outline"></ion-icon></span>
+          <span><ion-icon name="star-outline"></ion-icon></span>
+        </div>
+        <div class="review__info__name">{{review.userNick}}</div>
+        <div class="review__info__date">
+          {{review.createdAt | date: "YY/MM/dd HH:mm"}}
+        </div>
       </div>
-      <div class="review__info__name">akinakamori</div>
-      <div class="review__info__date">1965.07.13</div>
+      <div class="review__text">{{review.contents}}</div>
+      <hr />
     </div>
-    <div class="review__text">
-      핏도 예쁘고, 디자인도 마음에 들어요. 163cm 53kg기준 레귤러 핏이었습니다.
-    </div>
-    <hr />
-    <div class="review__info">
-      <div class="review__info__star">
-        <span><ion-icon name="star"></ion-icon></span>
-        <span><ion-icon name="star"></ion-icon></span>
-        <span><ion-icon name="star"></ion-icon></span>
-        <span><ion-icon name="star-outline"></ion-icon></span>
-        <span><ion-icon name="star-outline"></ion-icon></span>
-      </div>
-      <div class="review__info__name">soft</div>
-      <div class="review__info__date">2021.01.30</div>
-    </div>
-    <div class="review__text">
-      이 도안이 이 가격이라고요 당장 구매하세요. 설명도 자세하고 친절해요
-    </div>
-    <hr />
   </div>
 </ion-content>

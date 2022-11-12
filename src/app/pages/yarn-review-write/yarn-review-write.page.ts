@@ -15,6 +15,7 @@ import { StarRatingComponent } from "src/app/components/star-rating/star-rating.
 export class YarnReviewWritePage implements OnInit {
   public yarnId;
   public rating;
+  public yarn: any = {};
 
   public fontSize: string = "28px";
   public maxRating: number = 5;
@@ -27,10 +28,16 @@ export class YarnReviewWritePage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.yarn = this.router.getCurrentNavigation().extras.state.yarn;
+      }
       this.yarnId = params.yarnId;
     });
   }
-
+  async ionViewDidEnter() {
+    // await this.getYarnDetail();
+    // await this.getYarnReview();
+  }
   goBack() {
     this.navController.navigateBack(`tabs/yarn/${this.yarnId}`);
   }

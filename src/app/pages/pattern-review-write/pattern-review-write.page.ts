@@ -30,14 +30,12 @@ export class PatternReviewWritePage implements OnInit {
   ) {}
 
   async saveReview() {
-    console.log("this.review is ", this.review);
     const postPatternReviewResult = await this.patternService.postPatternReview(
       {
         data: this.review,
         patternId: this.patternId,
       }
     );
-    console.log(postPatternReviewResult);
     if (postPatternReviewResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
     }
