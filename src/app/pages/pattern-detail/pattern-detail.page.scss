@@ -2,6 +2,10 @@
   --background: white;
 }
 
+img {
+  width: 100%;
+}
+
 .name__wrapper {
   font-family: "Pretendard-Medium";
   font-size: 24px;
@@ -15,29 +19,32 @@
   font-size: 16px;
   margin: 3px 10px;
   padding: 3px 10px;
+  hr {
+    margin: 10px 0px;
+    padding: 0px;
+    color: var(--ion-color-theme-shade);
+  }
   div {
     font-family: "Pretendard-Light";
     margin: 2px 0px;
     padding: 2px 0px;
   }
   .price {
-    font-size: 16px;
+    font-size: 18px;
+    //float: right;
     span {
       font-size: 26px;
-      font-weight: 700;
+      font-family: "Pretendard-Bold";
     }
   }
   .name {
-    font-size: 19px;
+    font-size: 17px;
     font-family: "Comfortaa";
+    font-weight: 700;
   }
   span {
-    font-family: "Pretendard-Medium";
-  }
-  .difficulty {
-    span {
-      font-size: 20px;
-    }
+    font-family: "Pretendard-Regular";
+    font-size: 18px;
   }
 }
 
