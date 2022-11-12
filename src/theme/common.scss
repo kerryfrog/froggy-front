@@ -60,6 +60,12 @@ ion-chip {
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap");
 
 @font-face {
+  font-family: "Comfortaa-Bold";
+  src: url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap")
+    format("woff2");
+}
+
+@font-face {
   font-family: "Pretendard-Black";
   src: local("Pretendard-Black"),
     url("../assets/fonts/Pretendard/web/static/woff2/Pretendard-Black.woff2")
