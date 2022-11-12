@@ -100,3 +100,11 @@ img {
     }
   }
 }
+
+.difficulty {
+  display: flex;
+  flex-direction: row;
+  ion-icon {
+    color: var(--ion-color-theme);
+  }
+}

@@ -17,6 +17,10 @@ export class PatternDetailPage implements OnInit {
   public pattern: any = {};
   public patternImg = [];
 
+  //for difficulty icon
+  iconsArray: number[] = [];
+  defaultIcon: string = "ellipse-outline";
+  activeIcon: string = "ellipse";
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
@@ -32,6 +36,11 @@ export class PatternDetailPage implements OnInit {
       }
       this.patternId = params.patternId;
     });
+
+    // 난이도  표시를 위한 코드
+    for (let i = 0; i < 10; i++) {
+      this.iconsArray.push(i);
+    }
   }
 
   async ionViewDidEnter() {

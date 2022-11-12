@@ -19,7 +19,15 @@
     <div class="price" *ngIf="!pattern.price">가격정보 없음</div>
     <hr />
     <div class="difficulty">
-      난이도 <span>{{pattern.difficultyAverage | number: '1.0-0' }}</span>
+      <span>난이도</span>
+      <div *ngFor="let index of iconsArray" id="{{index}}">
+        <ion-icon
+          name="{{
+            index - pattern.difficultyAverage  <= -1
+            ?  activeIcon :defaultIcon
+          }}"
+        ></ion-icon>
+      </div>
     </div>
     <div *ngIf="pattern.gauge">바늘 호수 <span>{{pattern.gauge }}</span></div>
     <div></div>

@@ -56,8 +56,6 @@ export class StarRatingComponent implements OnInit {
 
   // event is different for firefox and chrome
   changeRating(event) {
-    console.log("??");
-
     if (this.readonly && this.readonly === "true") return;
     let id = event.target.id
       ? parseInt(event.target.id)
