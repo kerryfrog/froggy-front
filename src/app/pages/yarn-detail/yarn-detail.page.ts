@@ -35,18 +35,15 @@ export class YarnDetailPage implements OnInit {
   }
 
   async ionViewDidEnter() {
- 
     await this.getYarnDetail();
-
   }
 
   async getYarnDetail() {
     const { data } = await this.yarnService.getYarnDetail(this.yarnId);
     console.log("get yarn detail result", data);
-    if (data.status === 'Y') {
+    if (data.status === "Y") {
       this.yarn = data.yarn;
-    }
-    else {
+    } else {
       this.failtoFetchYarnDetail();
     }
   }
@@ -58,7 +55,6 @@ export class YarnDetailPage implements OnInit {
   async writeReview() {
     this.navController.navigateForward(`tabs/yarn/review/${this.yarnId}`);
   }
-
 
   goBack() {
     this.navController.navigateBack("tabs/yarn");

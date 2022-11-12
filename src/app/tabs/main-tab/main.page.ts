@@ -195,8 +195,8 @@ export class MainPage {
 
   async setUserSyncWithServer() {
     await this.userService.deleteUser();
-    await this.getMainRecommendViewByState();
     alert("다시 로그인 해 주세요");
+    await this.getMainRecommendViewByState();
   }
 
   changeViewState() {
