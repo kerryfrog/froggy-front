@@ -21,6 +21,13 @@ const routes: Routes = [
         (m) => m.PatternDetailPageModule
       ),
   },
+  {
+    path: "review/:patternId",
+    loadChildren: () =>
+      import(
+        "src/app/pages/pattern-review-write/pattern-review-write.module"
+      ).then((m) => m.PatternReviewWritePageModule),
+  },
 ];
 
 @NgModule({
