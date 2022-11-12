@@ -82,6 +82,18 @@ export class PatternService {
       return error.response;
     }
   }
+  async getPatternReview(patternId) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/${patternId}/reviews`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getAiPattern() {
     try {
       const response = await axios({

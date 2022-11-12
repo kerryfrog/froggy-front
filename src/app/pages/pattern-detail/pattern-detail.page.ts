@@ -16,6 +16,7 @@ export class PatternDetailPage implements OnInit {
   public patternId;
   public pattern: any = {};
   public patternImg = [];
+  public reviewList = [];
 
   //for difficulty icon
   iconsArray: number[] = [];
@@ -45,6 +46,7 @@ export class PatternDetailPage implements OnInit {
 
   async ionViewDidEnter() {
     await this.getPatternDetail();
+    await this.getPatternReview();
   }
 
   async getPatternDetail() {
@@ -55,6 +57,14 @@ export class PatternDetailPage implements OnInit {
       console.log("pattern response", data.pattern);
     } else {
       this.failtoFetchYarnDetail();
+    }
+  }
+  async getPatternReview() {
+    const { data } = await this.patternService.getPatternReview({
+      patternId: this.patternId,
+    });
+    if (data.status === "Y") {
+      this.reviewList = data.reviewList;
     }
   }
 
