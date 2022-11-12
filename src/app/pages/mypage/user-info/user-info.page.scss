@@ -24,11 +24,16 @@ ion-select-option {
 }
 .save {
   font-size: 17px;
+  --color: var(--ion-color-theme);
+}
+.back {
+  --color: var(--ion-color-theme);
 }
 
 .nickname {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin-bottom: 10px;
 
   ion-icon {
@@ -72,4 +77,14 @@ ion-select-option {
 
 .logout {
   margin-top: 30px;
+}
+.category {
+  &__title {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__list {
+    display: inline-block;
+  }
 }

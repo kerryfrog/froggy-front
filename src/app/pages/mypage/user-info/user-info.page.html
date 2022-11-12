@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()">
+      <ion-button class="back" (click)="goBack()">
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -16,8 +16,9 @@
       <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
       <div class="nickname__text">{{ user.nick }}</div>
       <ion-button
-        class="nickname__change__btn1"
-        fill="clear"
+        class="outline"
+        fill="outline"
+        slot="clear"
         (click)="openChangeNickAlert()"
         *ngIf="!isChangeNickName"
       >
@@ -61,18 +62,19 @@
     </div>
 
     <div class="category">
-      <h4>선호 카테고리</h4>
-      <ion-button
-        class="outline"
-        fill="outline"
-        slot="clear"
-        (click)="selectPatternAttribute()"
-        >선호 카테고리 변경</ion-button
-      >
+      <div class="category__title">
+        <h4>선호 카테고리</h4>
+        <ion-button
+          class="outline"
+          fill="outline"
+          slot="clear"
+          (click)="selectPatternAttribute()"
+          >선호 카테고리 변경</ion-button
+        >
+      </div>
       <div
-        *ngFor="let el of patternAttributeListForShow"
         class="category__list"
-        style="display: inline-block"
+        *ngFor="let el of patternAttributeListForShow"
       >
         <div class="chip" color="success">{{el.attribute}}</div>
       </div>
