@@ -5,7 +5,7 @@ import {
   LoadingController,
 } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
-
+import { UserService } from "src/app/services/user.service";
 import { PatternService } from "src/app/api/pattern.service";
 import { Review } from "../../models/server-request";
 @Component({
@@ -25,7 +25,8 @@ export class PatternReviewWritePage implements OnInit {
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public navController: NavController,
-    public patternService: PatternService
+    public patternService: PatternService,
+    public userService: UserService
   ) {}
 
   async saveReview() {
@@ -38,7 +39,9 @@ export class PatternReviewWritePage implements OnInit {
       }
     );
     console.log(postPatternReviewResult);
-
+    if (postPatternReviewResult.data.isUserLogin === "N") {
+      this.setUserSyncWithServer();
+    }
     if (postPatternReviewResult.data.status === "Y") {
       alert("리뷰 작성 성공!");
     }
@@ -48,6 +51,11 @@ export class PatternReviewWritePage implements OnInit {
   }
   onChangeTextarea(event) {
     this.review.contents = event.detail.value;
+  }
+
+  async setUserSyncWithServer() {
+    await this.userService.deleteUser();
+    alert("다시 로그인 해 주세요");
   }
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {

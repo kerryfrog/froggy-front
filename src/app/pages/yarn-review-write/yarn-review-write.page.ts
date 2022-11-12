@@ -1,33 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {
   NavController,
   ModalController,
   LoadingController,
 } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
-import { StarRatingComponent } from 'src/app/components/star-rating/star-rating.component';
+import { StarRatingComponent } from "src/app/components/star-rating/star-rating.component";
 
 @Component({
-  selector: 'app-yarn-review-write',
-  templateUrl: './yarn-review-write.page.html',
-  styleUrls: ['./yarn-review-write.page.scss'],
+  selector: "app-yarn-review-write",
+  templateUrl: "./yarn-review-write.page.html",
+  styleUrls: ["./yarn-review-write.page.scss"],
 })
 export class YarnReviewWritePage implements OnInit {
   public yarnId;
-  public rating = 0;
+  public rating;
 
-
-  public fontSize: string = '28px';
+  public fontSize: string = "28px";
   public maxRating: number = 5;
 
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
-    public navController: NavController,
-  ) { }
+    public navController: NavController
+  ) {}
 
   ngOnInit() {
-     this.activatedRoute.params.subscribe(async (params) => {
+    this.activatedRoute.params.subscribe(async (params) => {
       this.yarnId = params.yarnId;
     });
   }
