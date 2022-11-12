@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="review__wrapper">
+    <h3>리뷰 작성하기</h3>
+    <app-star-rating> </app-star-rating>
+    <ion-textarea></ion-textarea>
+  </div>
+</ion-content>

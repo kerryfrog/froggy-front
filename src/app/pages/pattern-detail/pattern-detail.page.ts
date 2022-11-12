@@ -61,6 +61,9 @@ export class PatternDetailPage implements OnInit {
   failtoFetchYarnDetail() {
     //this.navController.navigateBack('tabs/yarn');
   }
+  async writeReview() {
+    this.navController.navigateForward(`tabs/pattern/review/${this.patternId}`);
+  }
 
   goBack() {
     this.navController.navigateBack("tabs/pattern");

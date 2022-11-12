@@ -22,7 +22,7 @@ export class StarRatingComponent implements OnInit {
   @Input()
   readonly: string = "false";
   @Input()
-  activeColor: string = "#488aff";
+  activeColor: string = "#95c8a5";
   @Input()
   defaultColor: string = "#aaaaaa";
   @Input()

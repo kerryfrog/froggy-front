@@ -79,6 +79,10 @@ const routes: Routes = [
     path: 'recommend-pattern',
     loadChildren: () => import('./pages/recommend-pattern/recommend-pattern.module').then( m => m.RecommendPatternPageModule)
   },
+  {
+    path: 'pattern-review-write',
+    loadChildren: () => import('./pages/pattern-review-write/pattern-review-write.module').then( m => m.PatternReviewWritePageModule)
+  },
 ];
 @NgModule({
   imports: [
