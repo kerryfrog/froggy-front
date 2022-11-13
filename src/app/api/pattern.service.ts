@@ -107,6 +107,18 @@ export class PatternService {
       return error.response;
     }
   }
+  async getPatternReviewByUser() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/reviews`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getAiPattern() {
     try {
       const response = await axios({

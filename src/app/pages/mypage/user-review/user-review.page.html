@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-button class="back" (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="review__wrapper">
+    <h4>패턴 리뷰</h4>
+    <div *ngIf="patternReviewList.length > 0">
+      <app-review-list [reviewList]="patternReviewList"></app-review-list>
+    </div>
+    <h4>실 리뷰</h4>
+  </div>
+</ion-content>

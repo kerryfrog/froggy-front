@@ -29,6 +29,10 @@ const routes: Routes = [
         (m) => m.FavoriteYarnPageModule
       ),
   },
+  {
+    path: 'user-review',
+    loadChildren: () => import('./user-review/user-review.module').then( m => m.UserReviewPageModule)
+  },
 ];
 
 @NgModule({

@@ -67,6 +67,10 @@ export class MypagePage implements OnInit {
     this.navController.navigateForward(`/mypage/profile`);
   }
 
+  goUserReviewPage() {
+    this.navController.navigateForward(`/mypage/user-review`);
+  }
+
   goFavoritePatternPage() {
     this.navController.navigateForward(`/mypage/favorite/pattern`);
   }
