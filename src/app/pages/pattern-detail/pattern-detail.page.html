@@ -47,7 +47,10 @@
         리뷰 작성하기
       </ion-button>
     </div>
-    <div *ngFor="let review of reviewList">
+    <div *ngIf="reviewList.length > 0">
+      <app-review-list [reviewList]="reviewList"></app-review-list>
+    </div>
+    <!-- <div *ngFor="let review of reviewList">
       <div class="review__info">
         <div class="review__info__star">
           <span><ion-icon name="star"></ion-icon></span>
@@ -63,6 +66,6 @@
       </div>
       <div class="review__text">{{review.contents}}</div>
       <hr />
-    </div>
+    </div> -->
   </div>
 </ion-content>

@@ -8,6 +8,8 @@ import { PatternDetailPageRoutingModule } from "./pattern-detail-routing.module"
 
 import { PatternDetailPage } from "./pattern-detail.page";
 import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module";
+import { ReviewListComponentModule } from "src/app/components/review-list/review-list.module";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,7 @@ import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module"
     IonicModule,
     PatternDetailPageRoutingModule,
     ToolbarComponentModule,
+    ReviewListComponentModule,
   ],
   declarations: [PatternDetailPage],
 })

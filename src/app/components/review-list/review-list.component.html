@@ -1,0 +1,33 @@
+<div *ngFor="let review of reviewList">
+  <div class="review__info">
+    <ion-button
+      size="large"
+      fill="clear"
+      class="rate-button"
+      class="review__info__star"
+      id="{{ index }}"
+      *ngFor="let index of iconsArray"
+    >
+      <ion-icon
+        [ngStyle]="{
+          color: index < parseFloat(review.rating) ? activeColor : defaultColor
+        }"
+        name="{{
+          halfStar === 'true' &&
+          review.rating - index > 0 &&
+          review.rating - index <= 0.5
+            ? halfIcon
+            : index < round(parseFloat(rating))
+            ? activeIcon
+            : defaultIcon
+        }}"
+      ></ion-icon>
+    </ion-button>
+    <div class="review__info__name">{{ review.userNick }}</div>
+    <div class="review__info__date">
+      {{ review.createdAt | date: "YY/MM/dd HH:mm" }}
+    </div>
+  </div>
+  <div class="review__text">{{ review.contents }}</div>
+  <hr />
+</div>
