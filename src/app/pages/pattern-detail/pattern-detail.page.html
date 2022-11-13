@@ -50,22 +50,5 @@
     <div *ngIf="reviewList.length > 0">
       <app-review-list [reviewList]="reviewList"></app-review-list>
     </div>
-    <!-- <div *ngFor="let review of reviewList">
-      <div class="review__info">
-        <div class="review__info__star">
-          <span><ion-icon name="star"></ion-icon></span>
-          <span><ion-icon name="star"></ion-icon></span>
-          <span><ion-icon name="star"></ion-icon></span>
-          <span><ion-icon name="star-outline"></ion-icon></span>
-          <span><ion-icon name="star-outline"></ion-icon></span>
-        </div>
-        <div class="review__info__name">{{review.userNick}}</div>
-        <div class="review__info__date">
-          {{review.createdAt | date: "YY/MM/dd HH:mm"}}
-        </div>
-      </div>
-      <div class="review__text">{{review.contents}}</div>
-      <hr />
-    </div> -->
   </div>
 </ion-content>

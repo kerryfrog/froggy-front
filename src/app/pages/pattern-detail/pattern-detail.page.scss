@@ -80,37 +80,6 @@ img {
       padding: 0;
     }
   }
-
-  &__text {
-    margin: 10px 0px;
-    padding: 5px 0px;
-    font-family: "Pretendard-Light";
-  }
-  ion-button {
-    margin: 20px 0px;
-  }
-  &__info {
-    display: flex;
-    flex-direction: row;
-    margin: 8px 0px;
-    &__star {
-      padding-right: 10px;
-      font-family: "Pretendard-Light";
-      margin-top: auto;
-    }
-    &__name {
-      font-family: "Pretendard-Light";
-      font-size: 13px;
-      padding: 5px 0px;
-    }
-    &__date {
-      font-family: "Pretendard-Light";
-      font-size: 12px;
-      padding: 5px 0px;
-      margin-left: auto;
-      //float: right;
-    }
-  }
 }
 
 .difficulty {
