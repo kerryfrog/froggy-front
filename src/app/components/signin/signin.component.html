@@ -13,10 +13,10 @@
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3>Froggy 에 로그인 하세요!</h3>
-          </div>
-          <div padding>
+          <div class="sign-in-form">
+            <div text-center>
+              <h3>Froggy에 로그인하세요!</h3>
+            </div>
             <ion-item>
               <ion-input
                 name="id"
@@ -33,15 +33,10 @@
                 formControlName="password"
               ></ion-input>
             </ion-item>
-          </div>
-          <div class="button__wrapper">
-            <div class="login">
-              <ion-button type="submit"
-                >로그인</ion-button>
-            </div>
-            <div class="siginup">
-              <ion-button (click)="goSignUp()"
-                >회원가입하기</ion-button>
+            <div class="button-wrapper">
+              <ion-button class="outline" fill="outline" type="submit">
+                로그인
+              </ion-button>
             </div>
           </div>
         </ion-col>
