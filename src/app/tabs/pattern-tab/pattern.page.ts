@@ -10,8 +10,6 @@ import {
 // import { LocalStorageService } from '../../common/local-storage.service';
 import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 // const testList = [763264, 763263, 17, 20, 766149];
-
-//다넣음 ㅋ
 const famousList = [760196, 761594, 763023, 763263, 763264, 766149];
 
 @Component({
@@ -110,7 +108,9 @@ export class PatternPage {
   }
 
   async getPatternPageView() {
+    //getTmpPatternList()
     const { data } = await this.patternService.getRecommendPatternList();
+    // const { data } = await this.patternService.getTmpPatternList();
     console.log(data);
 
     if (data.status === "Y") {

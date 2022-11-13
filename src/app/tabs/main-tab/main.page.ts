@@ -50,6 +50,9 @@ export class MainPage {
   }
   async refreshMain(event) {
     await this.getUser();
+    this.patternListForUser = [];
+    this.patternList = [];
+    this.yarnList = [];
     this.changeViewState();
     await this.getMainRecommendViewByState();
     event.target.disabled = true;

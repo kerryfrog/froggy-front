@@ -20,6 +20,19 @@ export class PatternService {
       return error.response;
     }
   }
+  async getTmpPatternList() {
+    try {
+      //const headers = { 'access-token': token };
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/recommend/doll`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getRecommendByDifficulty() {
     try {
       const response = await axios({
