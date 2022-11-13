@@ -1,14 +1,8 @@
-.toolbar {
-  --background: var(--ion-color-theme);
+.button-wrapper {
+  margin-top: 20px;
 }
 
-.button__wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-ion-button {
-  --background: var(--ion-color-theme);
+.sign-in-form {
+  padding: 10px;
+  margin: 20px;
 }
