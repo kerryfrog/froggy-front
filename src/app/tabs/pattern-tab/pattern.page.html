@@ -24,12 +24,12 @@
     ></ion-input>
   </ion-item>
   <h3 *ngIf="nowIndex !== -1">get api index :{{nowIndex}}</h3> -->
-  <!-- <ion-button (click)="getRecommendYarnData()"> 패턴 api 호출 </ion-button> -->
+  <ion-button (click)="getAndFetchPatternData()"> 패턴 api 호출 </ion-button>
   <app-pattern-grid [patternList]="patternList"></app-pattern-grid>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
       loadingSpinner="circular"
-      loadingText="상품 리스트를 불러오는 중 입니다."
+      loadingText="새로운 도안을 불러오는 중 입니다."
     >
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>

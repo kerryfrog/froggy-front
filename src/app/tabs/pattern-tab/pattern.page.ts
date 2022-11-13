@@ -9,6 +9,7 @@ import {
 } from "@ionic/angular";
 // import { LocalStorageService } from '../../common/local-storage.service';
 import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
+import { of } from "rxjs";
 // const testList = [763264, 763263, 17, 20, 766149];
 const famousList = [760196, 761594, 763023, 763263, 763264, 766149];
 
@@ -35,7 +36,6 @@ export class PatternPage {
   async ionViewDidEnter() {
     await this.getPatternPageView();
     this.setFavoriteFalse(this.patternList);
-    console.log("famousList length", famousList.length);
   }
 
   async handleChange(event) {
@@ -46,40 +46,40 @@ export class PatternPage {
     console.log(data);
   }
 
-  async getRaverlyApi() {
-    if (!this.min || !this.max) {
-      const alert = await this.alertController.create({
-        header: "에러",
-        message: "범위를 입력해 주세요",
-        buttons: ["확인"],
-      });
-      await alert.present();
-      return;
-    }
-    const subHeader = `index 가 ${this.min} ~ ${this.max}인 `;
-    const message = "api 를 호출하시겠습니까?";
-    let flag = false;
-    const alert = await this.alertController.create({
-      subHeader,
-      message,
-      buttons: [
-        {
-          text: "취소",
-          handler: async () => {
-            this.alertController.dismiss();
-          },
-        },
-        {
-          text: "확인",
-          handler: async () => {
-            await this.getAndFetchYarnData();
-            flag = true;
-          },
-        },
-      ],
-    });
-    await alert.present();
-  }
+  // async getRaverlyApi() {
+  //   if (!this.min || !this.max) {
+  //     const alert = await this.alertController.create({
+  //       header: "에러",
+  //       message: "범위를 입력해 주세요",
+  //       buttons: ["확인"],
+  //     });
+  //     await alert.present();
+  //     return;
+  //   }
+  //   const subHeader = `index 가 ${this.min} ~ ${this.max}인 `;
+  //   const message = "api 를 호출하시겠습니까?";
+  //   let flag = false;
+  //   const alert = await this.alertController.create({
+  //     subHeader,
+  //     message,
+  //     buttons: [
+  //       {
+  //         text: "취소",
+  //         handler: async () => {
+  //           this.alertController.dismiss();
+  //         },
+  //       },
+  //       {
+  //         text: "확인",
+  //         handler: async () => {
+  //           await this.getAndFetchYarnData();
+  //           flag = true;
+  //         },
+  //       },
+  //     ],
+  //   });
+  //   await alert.present();
+  // }
 
   async getRecommendYarnData() {
     for (let i of famousList) {
@@ -90,13 +90,18 @@ export class PatternPage {
     }
   }
 
-  async getAndFetchYarnData() {
-    for (let i = this.min; i <= this.max; i++) {
-      const response = await this.dataService.getPatternDataFromRaverly(i);
-      console.log("for i =", i, response);
-      const postResult = await this.dataService.postPatternData(response);
-
-      this.nowIndex = i;
+  async getAndFetchPatternData() {
+    const { data } = await this.dataService.getEmptyImageIndex();
+    console.log(data.indexList);
+    if (data.status === "Y") {
+      const { indexList } = data;
+      for (let index of indexList) {
+        const response = await this.dataService.getPatternDataFromRaverly(
+          index
+        );
+        console.log("for i =", index, response);
+        const postResult = await this.dataService.postPatternData(response);
+      }
     }
   }
 

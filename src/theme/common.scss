@@ -55,6 +55,11 @@ ion-chip {
   color: var(--ion-color-theme-shade);
 }
 
+ion-toolbar.custom-back {
+  ion-icon {
+    color: var(--ion-color-theme-shade);
+  }
+}
 // font
 
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap");

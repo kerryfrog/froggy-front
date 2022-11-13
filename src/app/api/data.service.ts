@@ -57,6 +57,18 @@ export class DataService {
       return error.response;
     }
   }
+  async getEmptyImageIndex() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/dbPatternTest`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async postYarnData(data) {
     try {
       const response = await axios({
