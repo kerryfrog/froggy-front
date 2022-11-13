@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class ReviewListComponent implements OnInit {
   @Input() reviewList;
-
+  halfStar: string = "true";
   iconsArray: number[] = [];
   defaultIcon: string = "star-outline";
   halfIcon: string = "star-half";
