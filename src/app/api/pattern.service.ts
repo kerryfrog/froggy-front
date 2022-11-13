@@ -135,7 +135,7 @@ export class PatternService {
     try {
       const response = await axios({
         method: "get",
-        url: `${environment.apiUrl}/pattern/favorite-list`,
+        url: `${environment.apiUrl}/pattern/liked/list`,
         responseType: "json",
       });
       return response;

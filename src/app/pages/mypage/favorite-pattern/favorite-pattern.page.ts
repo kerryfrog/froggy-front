@@ -13,6 +13,7 @@ import { PatternService } from "src/app/api/pattern.service";
   styleUrls: ["./favorite-pattern.page.scss"],
 })
 export class FavoritePatternPage implements OnInit {
+  public patternList = [];
   constructor(
     public navController: NavController,
     public patternService: PatternService
@@ -25,16 +26,21 @@ export class FavoritePatternPage implements OnInit {
   }
 
   async getFavoritePatternList() {
-    // const { data } = await this.patternService.getFavoritePatternList();
-    // console.log(data);
-    // if (data.status === "Y") {
-    //   const newPatternListWithIsFavorite = this.setFavoriteFalse(
-    //     data.patternList
-    //   );
-    //   this.patternList = [...this.patternList, ...newPatternListWithIsFavorite];
-    // }
+    const { data } = await this.patternService.getFavoritePatternList();
+    console.log(data);
+    if (data.status === "Y") {
+      const newPatternListWithIsFavorite = this.setFavoriteTrue(
+        data.patternList
+      );
+      this.patternList = [...this.patternList, ...newPatternListWithIsFavorite];
+    }
   }
-
+  setFavoriteTrue(newPatternList) {
+    for (let pattern of newPatternList) {
+      pattern["isFavorite"] = true;
+    }
+    return newPatternList;
+  }
   goBack() {
     this.navController.navigateBack("mypage");
   }
