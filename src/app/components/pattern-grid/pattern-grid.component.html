@@ -4,20 +4,11 @@
     class="card__wrapper"
     (click)="goPatternDetailPage(pattern)"
   >
-    <div class="image__square">
-      <img src="{{ pattern.thumbnail }}" />
-      <ion-icon
-        name="heart-outline"
-        class="heart"
-        *ngIf="!pattern.isFavorite"
-        (click)="enrollFavoritePattern($event, pattern)"
-      ></ion-icon>
-      <ion-icon
-        name="heart"
-        class="heart--fill"
-        *ngIf="pattern.isFavorite"
-        (click)="enrollFavoritePattern($event, pattern)"
-      ></ion-icon>
-    </div>
+    <app-heart-image
+      class="image"
+      [product]="pattern"
+      [size]="'49vw'"
+      [type]="'pattern'"
+    ></app-heart-image>
   </div>
 </ion-list>

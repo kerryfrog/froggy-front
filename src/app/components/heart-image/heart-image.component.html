@@ -1,4 +1,10 @@
-<div class="image__square">
+<div
+  [ngStyle]="{
+    width: size,
+    height: size
+  }"
+  class="image__square"
+>
   <img src="{{ product.thumbnail }}" />
   <ion-icon
     name="heart-outline"

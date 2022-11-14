@@ -7,33 +7,8 @@
   background-color: white;
   justify-content: center;
 }
-.image {
-  &__square {
-    width: 49vw;
-    height: 49vw;
-    border-radius: 8px;
-    margin: auto;
-    position: relative;
-    img {
-      position: absolute;
-      width: 49vw;
-      height: 49vw;
-      -o-object-fit: cover;
-      object-fit: cover;
-    }
-    .heart {
-      position: absolute;
-      right: 0.7rem;
-      bottom: 0.7rem;
-      color: #ea3d51;
-      font-size: 20px;
-      &--fill {
-        position: absolute;
-        right: 0.7rem;
-        bottom: 0.7rem;
-        color: #ea3d51;
-        font-size: 20px;
-      }
-    }
-  }
+
+.image__square {
+  width: 49vw;
+  height: 49vw;
 }

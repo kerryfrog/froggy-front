@@ -14,6 +14,9 @@ export class HeartImageComponent implements OnInit {
   // @Input() isUser;
   @Input() type: string;
 
+  @Input() size: string = "";
+
+  public customLength: string = "49vw";
   public user;
   constructor(
     public userService: UserService,
