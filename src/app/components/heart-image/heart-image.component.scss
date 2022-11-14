@@ -1,0 +1,26 @@
+.image__square {
+  border-radius: 8px;
+  margin: auto;
+  position: relative;
+  width: 100%;
+
+  img {
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  .heart {
+    position: absolute;
+    right: 0.7rem;
+    bottom: 0.7rem;
+    color: #ea3d51;
+    font-size: 20px;
+    &--fill {
+      position: absolute;
+      right: 0.7rem;
+      bottom: 0.7rem;
+      color: #ea3d51;
+      font-size: 20px;
+    }
+  }
+}

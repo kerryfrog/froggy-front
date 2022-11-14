@@ -9,6 +9,7 @@ import { PatternDetailPageRoutingModule } from "./pattern-detail-routing.module"
 import { PatternDetailPage } from "./pattern-detail.page";
 import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module";
 import { ReviewListComponentModule } from "src/app/components/review-list/review-list.module";
+import { HeartImageComponentModule } from "src/app/components/heart-image/heart-image.module";
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { ReviewListComponentModule } from "src/app/components/review-list/review
     PatternDetailPageRoutingModule,
     ToolbarComponentModule,
     ReviewListComponentModule,
+    HeartImageComponentModule,
   ],
   declarations: [PatternDetailPage],
 })

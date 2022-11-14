@@ -1,0 +1,15 @@
+<div class="image__square">
+  <img src="{{ product.thumbnail }}" />
+  <ion-icon
+    name="heart-outline"
+    class="heart"
+    *ngIf="!product.isFavorite"
+    (click)="enrollFavorite($event, product)"
+  ></ion-icon>
+  <ion-icon
+    name="heart"
+    class="heart--fill"
+    *ngIf="product.isFavorite"
+    (click)="enrollFavorite($event, product)"
+  ></ion-icon>
+</div>

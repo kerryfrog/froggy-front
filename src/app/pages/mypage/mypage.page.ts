@@ -55,7 +55,6 @@ export class MypagePage implements OnInit {
     });
     await modal.present();
     const { data } = await modal.onWillDismiss();
-    console.log("signin result", data);
 
     if (data.isSignedIn) {
       await this.checkIsUserLogIn();
