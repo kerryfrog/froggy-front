@@ -4,6 +4,7 @@ import { ModalController, NavController } from "@ionic/angular";
 import { UserService } from "src/app/services/user.service";
 import { SigninComponent } from "../signin/signin.component";
 import { PatternService } from "src/app/api/pattern.service";
+import { NavigationExtras } from "@angular/router";
 @Component({
   selector: "app-heart-image",
   templateUrl: "./heart-image.component.html",
@@ -14,17 +15,32 @@ export class HeartImageComponent implements OnInit {
   // @Input() isUser;
   @Input() type: string;
 
-  @Input() size: string = "";
-
-  public customLength: string = "49vw";
+  @Input() setWidth: string = "";
+  @Input() setHeight: string = "";
+  @Input() link: boolean = true;
   public user;
   constructor(
     public userService: UserService,
     public modalController: ModalController,
+    public navController: NavController,
     public patternService: PatternService
   ) {}
 
   async ngOnInit() {}
+
+  async goDetailPage() {
+    if (this.type === "pattern" && this.link) {
+      const props: NavigationExtras = {
+        state: {
+          pattern: this.product,
+        },
+      };
+      this.navController.navigateForward(
+        `/tabs/pattern/${this.product.id}`,
+        props
+      );
+    }
+  }
 
   async enrollFavorite(event, product) {
     this.user = await this.userService.getUser();

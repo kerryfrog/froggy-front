@@ -105,13 +105,11 @@
         </div>
       </div>
       <div *ngIf="patternList.length > 0" class="container__products">
-        <div
-          *ngFor="let pattern of patternList"
-          (click)="goPatternDetailPage(pattern)"
-          class="contents"
-        >
+        <div *ngFor="let pattern of patternList" class="contents">
           <app-heart-image
-            class="image"
+            [setWidth]="'31vw'"
+            [setHeight]="'35vw'"
+            [link]="true"
             [product]="pattern"
             [type]="'pattern'"
           ></app-heart-image>
