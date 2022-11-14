@@ -11,6 +11,7 @@ import { ToolbarComponentModule } from "../../components/toolbar/toolbar.module"
 import { PostListComponent } from "src/app/components/post-list/post-list.component";
 import { PostListComponentModule } from "src/app/components/post-list/post-list.module";
 import { RecommendListComponentModule } from "src/app/components/recommend-list/recommend-list.module";
+import { HeartImageComponentModule } from "src/app/components/heart-image/heart-image.module";
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { RecommendListComponentModule } from "src/app/components/recommend-list/
     ToolbarComponentModule,
     PostListComponentModule,
     RecommendListComponentModule,
+    HeartImageComponentModule,
   ],
   declarations: [MainPage],
   entryComponents: [ToolbarComponent, PostListComponent],
