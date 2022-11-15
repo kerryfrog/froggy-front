@@ -69,7 +69,7 @@ export class PatternDetailPage implements OnInit {
   }
 
   failtoFetchYarnDetail() {
-    //this.navController.navigateBack('tabs/yarn');
+    this.navController.navigateBack("tabs/pattern");
   }
   async writeReview() {
     this.navController.navigateForward(`tabs/pattern/review/${this.patternId}`);

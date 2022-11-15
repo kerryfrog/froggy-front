@@ -45,7 +45,7 @@ export class HeartImageComponent implements OnInit {
     if (this.type === "yarn" && this.link) {
       const props: NavigationExtras = {
         state: {
-          pattern: this.product,
+          yarn: this.product,
         },
       };
       this.navController.navigateForward(

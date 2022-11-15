@@ -17,6 +17,7 @@ export class YarnDetailPage implements OnInit {
   public yarn: any = {};
   public yarnImg = [];
 
+  public reviewList = [];
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
@@ -29,6 +30,7 @@ export class YarnDetailPage implements OnInit {
     this.activatedRoute.params.subscribe(async (params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.yarn = this.router.getCurrentNavigation().extras.state.yarn;
+        console.log("ngoinint yarn", this.yarn);
       }
       this.yarnId = params.yarnId;
     });
@@ -49,7 +51,7 @@ export class YarnDetailPage implements OnInit {
   }
 
   failtoFetchYarnDetail() {
-    //this.navController.navigateBack('tabs/yarn');
+    this.navController.navigateBack("tabs/yarn");
   }
 
   async writeReview() {
