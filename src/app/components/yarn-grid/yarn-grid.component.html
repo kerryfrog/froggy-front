@@ -1,23 +1,11 @@
 <ion-list *ngIf="yarnList" class="list__wrapper">
-  <div
-    *ngFor="let yarn of yarnList"
-    class="card__wrapper"
-    (click)="goYarnDetailPage(yarn)"
-  >
-    <div class="image__square">
-      <img src="{{ yarn.thumbnail }}" />
-      <ion-icon
-        name="heart-outline"
-        class="heart"
-        *ngIf="!yarn.isFavorite"
-        (click)="enrollFavoriteYarn($event, yarn)"
-      ></ion-icon>
-      <ion-icon
-        name="heart"
-        class="heart"
-        *ngIf="yarn.isFavorite"
-        (click)="enrollFavoriteYarn($event, yarn)"
-      ></ion-icon>
-    </div>
+  <div *ngFor="let yarn of yarnList" class="card__wrapper">
+    <app-heart-image
+      class="image"
+      [product]="yarn"
+      [setWidth]="'49vw'"
+      [setHeight]="'49vw'"
+      [type]="'yarn'"
+    ></app-heart-image>
   </div>
 </ion-list>

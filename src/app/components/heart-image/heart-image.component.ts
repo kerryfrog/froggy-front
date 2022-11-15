@@ -4,6 +4,7 @@ import { ModalController, NavController } from "@ionic/angular";
 import { UserService } from "src/app/services/user.service";
 import { SigninComponent } from "../signin/signin.component";
 import { PatternService } from "src/app/api/pattern.service";
+import { YarnService } from "src/app/api/yarn.service";
 import { NavigationExtras } from "@angular/router";
 @Component({
   selector: "app-heart-image",
@@ -23,7 +24,8 @@ export class HeartImageComponent implements OnInit {
     public userService: UserService,
     public modalController: ModalController,
     public navController: NavController,
-    public patternService: PatternService
+    public patternService: PatternService,
+    public yarnService: YarnService
   ) {}
 
   async ngOnInit() {}
@@ -40,16 +42,27 @@ export class HeartImageComponent implements OnInit {
         props
       );
     }
+    if (this.type === "yarn" && this.link) {
+      const props: NavigationExtras = {
+        state: {
+          pattern: this.product,
+        },
+      };
+      this.navController.navigateForward(
+        `/tabs/yarn/${this.product.id}`,
+        props
+      );
+    }
   }
 
   async enrollFavorite(event, product) {
     this.user = await this.userService.getUser();
-    console.log("favoirte user info", this.user);
 
     if (this.user === undefined || this.user === null) {
       await this.openSignInModal();
       return;
     }
+
     event.stopPropagation();
     if (product["isFavorite"]) {
       product["isFavorite"] = false;
@@ -62,6 +75,10 @@ export class HeartImageComponent implements OnInit {
   async fetchEnrollFavorite(id) {
     if (this.type === "pattern") {
       const postPatternLikeResult = this.patternService.postPatternLike(id);
+      console.log(postPatternLikeResult);
+    }
+    if (this.type === "yarn") {
+      const postPatternLikeResult = this.yarnService.postYarnLike(id);
       console.log(postPatternLikeResult);
     }
   }

@@ -25,34 +25,34 @@ export class PatternGridComponent implements OnInit {
 
   ngOnInit() {}
 
-  async goPatternDetailPage(pattern) {
-    const props: NavigationExtras = {
-      state: {
-        pattern,
-      },
-    };
-    this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
-  }
+  // async goPatternDetailPage(pattern) {
+  //   const props: NavigationExtras = {
+  //     state: {
+  //       pattern,
+  //     },
+  //   };
+  //   this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
+  // }
 
-  async enrollFavoritePattern(e, pattern) {
-    e.stopPropagation();
-    let patternResult = this.patternList.filter(
-      (pa) => pa.id === pattern.id
-    )[0];
+  // async enrollFavoritePattern(e, pattern) {
+  //   e.stopPropagation();
+  //   let patternResult = this.patternList.filter(
+  //     (pa) => pa.id === pattern.id
+  //   )[0];
 
-    if (patternResult["isFavorite"]) {
-      this.fetchEnrollFavoritePattern(pattern.id);
-      patternResult["isFavorite"] = false;
-    } else {
-      this.fetchEnrollFavoritePattern(pattern.id);
-      patternResult["isFavorite"] = true;
-    }
-    console.log(patternResult);
-  }
+  //   if (patternResult["isFavorite"]) {
+  //     this.fetchEnrollFavoritePattern(pattern.id);
+  //     patternResult["isFavorite"] = false;
+  //   } else {
+  //     this.fetchEnrollFavoritePattern(pattern.id);
+  //     patternResult["isFavorite"] = true;
+  //   }
+  //   console.log(patternResult);
+  // }
 
-  fetchEnrollFavoritePattern(patternId) {
-    const postPatternLikeResult =
-      this.patternService.postPatternLike(patternId);
-    console.log(postPatternLikeResult);
-  }
+  // fetchEnrollFavoritePattern(patternId) {
+  //   const postPatternLikeResult =
+  //     this.patternService.postPatternLike(patternId);
+  //   console.log(postPatternLikeResult);
+  // }
 }

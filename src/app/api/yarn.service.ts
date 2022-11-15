@@ -34,6 +34,18 @@ export class YarnService {
       return error.response;
     }
   }
+  async getFavoriteYarnList() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/yarn/liked/list`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getYarnDetail(yarnId) {
     try {
       const response = await axios({
@@ -53,6 +65,18 @@ export class YarnService {
         url: `${environment.apiUrl}/yarn`,
         responseType: "json",
         data,
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+  async postYarnLike(yarnId) {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${environment.apiUrl}/yarn/liked/${yarnId}`,
+        responseType: "json",
       });
       return response;
     } catch (error) {

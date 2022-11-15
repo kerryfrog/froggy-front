@@ -1,0 +1,14 @@
+.list__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1px;
+  row-gap: 1px;
+  padding: 0;
+  background-color: white;
+  justify-content: center;
+}
+
+.image__square {
+  width: 49vw;
+  height: 49vw;
+}
