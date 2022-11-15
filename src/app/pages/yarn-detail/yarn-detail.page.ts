@@ -18,19 +18,22 @@ export class YarnDetailPage implements OnInit {
   public yarnImg = [];
 
   public reviewList = [];
+  previousUrl: string = "";
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public navController: NavController,
-    public yarnService: YarnService,
-    private loadingController: LoadingController
+    public yarnService: YarnService
   ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.yarn = this.router.getCurrentNavigation().extras.state.yarn;
-        console.log("ngoinint yarn", this.yarn);
+        if (this.router.getCurrentNavigation().extras.state.previousUrl) {
+          this.previousUrl =
+            this.router.getCurrentNavigation().extras.state.previousUrl;
+        }
       }
       this.yarnId = params.yarnId;
     });
@@ -42,7 +45,6 @@ export class YarnDetailPage implements OnInit {
 
   async getYarnDetail() {
     const { data } = await this.yarnService.getYarnDetail(this.yarnId);
-    console.log("get yarn detail result", data);
     if (data.status === "Y") {
       this.yarn = data.yarn;
     } else {
@@ -59,6 +61,10 @@ export class YarnDetailPage implements OnInit {
   }
 
   goBack() {
-    this.navController.navigateBack("tabs/yarn");
+    if (this.previousUrl) {
+      this.navController.navigateBack(this.previousUrl);
+    } else {
+      this.navController.navigateBack("tabs/yarn");
+    }
   }
 }

@@ -77,21 +77,14 @@
           (click)="goYarnDetailPage(yarn)"
           class="contents"
         >
-          <div class="image">
-            <img src="{{ yarn.thumbnail }}" />
-            <ion-icon
-              name="heart-outline"
-              class="heart"
-              *ngIf="!yarn.isFavorite"
-              (click)="enrollFavoriteYarn($event, yarn)"
-            ></ion-icon>
-            <ion-icon
-              name="heart"
-              class="heart"
-              *ngIf="yarn.isFavorite"
-              (click)="enrollFavoriteYarn($event, yarn)"
-            ></ion-icon>
-          </div>
+          <app-heart-image
+            [setWidth]="'31vw'"
+            [setHeight]="'35vw'"
+            [link]="true"
+            [product]="yarn"
+            [type]="'yarn'"
+            [previousUrl]="'tabs/main'"
+          ></app-heart-image>
         </div>
       </div>
     </div>
@@ -112,6 +105,7 @@
             [link]="true"
             [product]="pattern"
             [type]="'pattern'"
+            [previousUrl]="'tabs/main'"
           ></app-heart-image>
         </div>
       </div>

@@ -4,9 +4,9 @@ import {
   ModalController,
   LoadingController,
 } from "@ionic/angular";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { PatternService } from "src/app/api/pattern.service";
-
+import { filter } from "rxjs/operators";
 @Component({
   selector: "app-pattern-detail",
   templateUrl: "./pattern-detail.page.html",
@@ -22,18 +22,24 @@ export class PatternDetailPage implements OnInit {
   iconsArray: number[] = [];
   defaultIcon: string = "ellipse-outline";
   activeIcon: string = "ellipse";
+
+  previousUrl: string = "";
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public navController: NavController,
-    public patternService: PatternService,
-    private loadingController: LoadingController
+    public patternService: PatternService
   ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.pattern = this.router.getCurrentNavigation().extras.state.pattern;
+        if (this.router.getCurrentNavigation().extras.state.previousUrl) {
+          this.previousUrl =
+            this.router.getCurrentNavigation().extras.state.previousUrl;
+        }
       }
       this.patternId = params.patternId;
     });
@@ -51,18 +57,14 @@ export class PatternDetailPage implements OnInit {
 
   async getPatternDetail() {
     const { data } = await this.patternService.getPatternDetail(this.patternId);
-
     if (data.status === "Y") {
       this.pattern = data.pattern;
-      console.log("pattern response", data.pattern);
     } else {
       this.failtoFetchYarnDetail();
     }
   }
   async getPatternReview() {
     const { data } = await this.patternService.getPatternReview(this.patternId);
-    console.log(data);
-
     if (data.status === "Y") {
       this.reviewList = data.reviewList;
     }
@@ -76,6 +78,10 @@ export class PatternDetailPage implements OnInit {
   }
 
   goBack() {
-    this.navController.navigateBack("tabs/pattern");
+    if (this.previousUrl) {
+      this.navController.navigateBack(this.previousUrl);
+    } else {
+      this.navController.navigateBack("tabs/pattern");
+    }
   }
 }

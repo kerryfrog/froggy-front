@@ -19,6 +19,7 @@ export class HeartImageComponent implements OnInit {
   @Input() setWidth: string = "";
   @Input() setHeight: string = "";
   @Input() link: boolean = true;
+  @Input() previousUrl: string = "";
   public user;
   constructor(
     public userService: UserService,
@@ -35,6 +36,7 @@ export class HeartImageComponent implements OnInit {
       const props: NavigationExtras = {
         state: {
           pattern: this.product,
+          previousUrl: this.previousUrl,
         },
       };
       this.navController.navigateForward(
@@ -46,6 +48,7 @@ export class HeartImageComponent implements OnInit {
       const props: NavigationExtras = {
         state: {
           yarn: this.product,
+          previousUrl: this.previousUrl,
         },
       };
       this.navController.navigateForward(

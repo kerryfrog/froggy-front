@@ -8,8 +8,14 @@ import {
   NavController,
 } from "@ionic/angular";
 // import { LocalStorageService } from '../../common/local-storage.service';
-import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
-import { of } from "rxjs";
+import {
+  ActivatedRoute,
+  NavigationExtras,
+  Router,
+  NavigationEnd,
+} from "@angular/router";
+
+import { filter } from "rxjs/operators";
 // const testList = [763264, 763263, 17, 20, 766149];
 const famousList = [760196, 761594, 763023, 763263, 763264, 766149];
 
@@ -25,14 +31,25 @@ export class PatternPage {
   public patternList = [];
   public results;
 
+  previousUrl: string = null;
+  currentUrl: string = null;
   constructor(
     public navController: NavController,
     public dataService: DataService,
+    public router: Router,
     public alertController: AlertController,
     public patternService: PatternService,
     public modalController: ModalController
   ) {}
-
+  ngOnInit() {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.previousUrl = this.currentUrl;
+        this.currentUrl = event.url;
+        console.log("mainpage", this.previousUrl);
+      });
+  }
   async ionViewDidEnter() {
     await this.getPatternPageView();
     this.setFavoriteFalse(this.patternList);
@@ -148,15 +165,6 @@ export class PatternPage {
       //   event.target.disabled = true;
       // }
     }, 500);
-  }
-
-  async goPatternDetailPage(pattern) {
-    const props: NavigationExtras = {
-      state: {
-        pattern,
-      },
-    };
-    this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
   }
 
   async goSearchPatternPage() {

@@ -1,36 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { PatternService } from "src/app/api/pattern.service";
 import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
-import {
-  LoadingController,
-  NavController,
-} from "@ionic/angular";
+import { LoadingController, NavController } from "@ionic/angular";
 @Component({
-  selector: 'app-pattern-search',
-  templateUrl: './pattern-search.page.html',
-  styleUrls: ['./pattern-search.page.scss'],
+  selector: "app-pattern-search",
+  templateUrl: "./pattern-search.page.html",
+  styleUrls: ["./pattern-search.page.scss"],
 })
 export class PatternSearchPage implements OnInit {
   public patternList = [];
   public results;
   constructor(
     public patternService: PatternService,
-    public navController: NavController,
-  ) { }
+    public navController: NavController
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async handleChange(event) {
     this.results = event.target.value;
-    const { data } = await this.patternService.getPatternSearchList(this.results);
-    console.log("serach pattern", data);
-    
-    this.patternList = data['searchList'];
+    const { data } = await this.patternService.getPatternSearchList(
+      this.results
+    );
+
+    this.patternList = data["searchList"];
     console.log(this.patternList);
   }
-
-
 
   checkIsPatternFavorite(favoritePatternList) {
     if (!favoritePatternList) return;
@@ -46,16 +41,13 @@ export class PatternSearchPage implements OnInit {
     });
   }
 
-
   async goPatternDetailPage(pattern) {
     const props: NavigationExtras = {
       state: {
         pattern,
+        previous: "tabs/pattern/search",
       },
     };
     this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
   }
-
 }
-
-

@@ -162,6 +162,7 @@ export class MainPage {
     const props: NavigationExtras = {
       state: {
         pattern,
+        previous: "/tabs/main",
       },
     };
     this.navController.navigateForward(`/tabs/pattern/${pattern.id}`, props);
