@@ -35,15 +35,14 @@ export class CommunityPage {
       this.postList = result.data.postList;
     }
   }
-  // async getRecommendPatternList() {
-  //   const aiPatternResult = await this.patternService.getAiPattern();
+  async getRecommendPatternList() {
+    const aiPatternResult = await this.patternService.getAiPattern();
 
-  //   if (aiPatternResult.data.status === 'Y') {
-  //     this.result = aiPatternResult.data.patternList['test'];
-  //     this.flag = true;
-  //   }
-
-  // }
+    if (aiPatternResult.data.status === "Y") {
+      this.result = aiPatternResult.data.patternList["test"];
+      this.flag = true;
+    }
+  }
 
   async write() {
     const user = await this.userService.getUser();
