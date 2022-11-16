@@ -36,7 +36,6 @@ export class HeartImageComponent implements OnInit {
       const props: NavigationExtras = {
         state: {
           pattern: this.product,
-          previousUrl: this.previousUrl,
         },
       };
       this.navController.navigateForward(`/pattern/${this.product.id}`, props);
@@ -45,7 +44,6 @@ export class HeartImageComponent implements OnInit {
       const props: NavigationExtras = {
         state: {
           yarn: this.product,
-          previousUrl: this.previousUrl,
         },
       };
       this.navController.navigateForward(`/yarn/${this.product.id}`, props);

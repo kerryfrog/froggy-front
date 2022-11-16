@@ -25,5 +25,16 @@
     </div>
   </div>
   <div class="review__text">{{ review.contents }}</div>
+  <div *ngIf="isGoDetail" class="review__button">
+    <ion-button
+      fill="outline"
+      class="outline"
+      slot="clear"
+      (click)="goDetailPage(review)"
+    >
+      자세히 보기
+    </ion-button>
+  </div>
+
   <hr />
 </div>

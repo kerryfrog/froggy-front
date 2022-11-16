@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
-
+import {
+  NavController,
+  ModalController,
+  AlertController,
+} from "@ionic/angular";
 @Component({
   selector: "app-review-list",
   templateUrl: "./review-list.component.html",
@@ -7,6 +11,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class ReviewListComponent implements OnInit {
   @Input() reviewList;
+  @Input() isGoDetail: boolean = false;
   halfStar: string = "true";
   iconsArray: number[] = [];
   defaultIcon: string = "star-outline";
@@ -15,7 +20,7 @@ export class ReviewListComponent implements OnInit {
 
   activeColor: string = "#95c8a5";
   defaultColor: string = "#aaaaaa";
-  constructor() {}
+  constructor(public navController: NavController) {}
 
   ngOnInit() {
     for (let i = 0; i < 5; i++) {
@@ -27,5 +32,8 @@ export class ReviewListComponent implements OnInit {
   }
   parseFloat(num) {
     return parseFloat(num);
+  }
+  goDetailPage(review) {
+    this.navController.navigateForward(`/pattern/${review.patternId}`);
   }
 }

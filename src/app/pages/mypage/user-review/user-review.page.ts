@@ -35,4 +35,7 @@ export class UserReviewPage implements OnInit {
   goBack() {
     this.navController.navigateBack("mypage");
   }
+  goPatternDetailPage(review) {
+    this.navController.navigateForward(`/pattern/${review.patternId}`);
+  }
 }
