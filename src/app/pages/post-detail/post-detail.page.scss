@@ -7,6 +7,13 @@ ion-button {
 }
 
 .post {
+  display: flex;
+  flex-direction: column;
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   &__user {
     font-family: "Pretendard-Light";
     margin: 10px 0px;

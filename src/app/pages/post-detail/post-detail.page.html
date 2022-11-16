@@ -11,7 +11,12 @@
 <ion-content>
   <div class="post__wrapper">
     <div class="post" *ngIf="post">
-      <div class="post__user">{{post.userNick}}</div>
+      <div class="post__top">
+        <div class="post__user">{{post.userNick}}</div>
+        <ion-button *ngIf="isWriter" fill="clear" (click)="deletePost()"
+          >삭제</ion-button
+        >
+      </div>
       <div class="post__title">{{post.title}}</div>
       <div class="post__contents">{{post.contents}}</div>
       <div class="post__date">{{post.createdAt | date: "YY/MM/dd HH:mm"}}</div>
