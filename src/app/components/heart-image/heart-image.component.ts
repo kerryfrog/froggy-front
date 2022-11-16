@@ -39,10 +39,7 @@ export class HeartImageComponent implements OnInit {
           previousUrl: this.previousUrl,
         },
       };
-      this.navController.navigateForward(
-        `/tabs/pattern/${this.product.id}`,
-        props
-      );
+      this.navController.navigateForward(`/pattern/${this.product.id}`, props);
     }
     if (this.type === "yarn" && this.link) {
       const props: NavigationExtras = {
@@ -51,10 +48,7 @@ export class HeartImageComponent implements OnInit {
           previousUrl: this.previousUrl,
         },
       };
-      this.navController.navigateForward(
-        `/tabs/yarn/${this.product.id}`,
-        props
-      );
+      this.navController.navigateForward(`/yarn/${this.product.id}`, props);
     }
   }
 

@@ -59,12 +59,4 @@ export class YarnDetailPage implements OnInit {
   async writeReview() {
     this.navController.navigateForward(`tabs/yarn/review/${this.yarnId}`);
   }
-
-  goBack() {
-    if (this.previousUrl) {
-      this.navController.navigateBack(this.previousUrl);
-    } else {
-      this.navController.navigateBack("tabs/yarn");
-    }
-  }
 }

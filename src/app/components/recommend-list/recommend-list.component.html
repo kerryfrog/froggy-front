@@ -1,25 +1,12 @@
 <div>
   <ion-list *ngIf="patternList" class="list__wrapper">
-    <div
-      *ngFor="let pattern of patternList"
-      class="card__wrapper"
-      (click)="goPatternDetailPage(pattern)"
-    >
-      <div class="image__square">
-        <img src="{{ pattern.thumbnail }}" />
-        <ion-icon
-          name="heart-outline"
-          class="heart"
-          *ngIf="!pattern.isFavorite"
-          (click)="enrollFavoritePattern($event, pattern)"
-        ></ion-icon>
-        <ion-icon
-          name="heart"
-          class="heart--fill"
-          *ngIf="pattern.isFavorite"
-          (click)="enrollFavoritePattern($event, pattern)"
-        ></ion-icon>
-      </div>
+    <div *ngFor="let pattern of patternList" class="card__wrapper">
+      <app-heart-image
+        [product]="pattern"
+        [setWidth]="'30vw'"
+        [setHeight]="'37vw'"
+        [type]="'pattern'"
+      ></app-heart-image>
       <div class="card__text">{{ pattern.name | preview: 12:"none" }}</div>
     </div>
   </ion-list>

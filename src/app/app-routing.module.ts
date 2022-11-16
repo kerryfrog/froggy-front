@@ -13,14 +13,14 @@ const routes: Routes = [
       import("./pages/mypage/mypage.module").then((m) => m.MypagePageModule),
   },
   {
-    path: "pattern-detail",
+    path: "pattern/:patternId",
     loadChildren: () =>
       import("./pages/pattern-detail/pattern-detail.module").then(
         (m) => m.PatternDetailPageModule
       ),
   },
   {
-    path: "yarn-detail",
+    path: "yarn/:yarnId",
     loadChildren: () =>
       import("./pages/yarn-detail/yarn-detail.module").then(
         (m) => m.YarnDetailPageModule
@@ -76,12 +76,18 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'recommend-pattern',
-    loadChildren: () => import('./pages/recommend-pattern/recommend-pattern.module').then( m => m.RecommendPatternPageModule)
+    path: "recommend-pattern",
+    loadChildren: () =>
+      import("./pages/recommend-pattern/recommend-pattern.module").then(
+        (m) => m.RecommendPatternPageModule
+      ),
   },
   {
-    path: 'pattern-review-write',
-    loadChildren: () => import('./pages/pattern-review-write/pattern-review-write.module').then( m => m.PatternReviewWritePageModule)
+    path: "pattern-review-write",
+    loadChildren: () =>
+      import("./pages/pattern-review-write/pattern-review-write.module").then(
+        (m) => m.PatternReviewWritePageModule
+      ),
   },
 ];
 @NgModule({
