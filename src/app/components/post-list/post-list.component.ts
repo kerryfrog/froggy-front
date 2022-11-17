@@ -16,6 +16,6 @@ export class PostListComponent implements OnInit {
   }
 
   goPostDetailPage(postId) {
-    this.navController.navigateForward(`/tabs/community/${postId}`);
+    this.navController.navigateForward(`/community/${postId}`);
   }
 }
