@@ -18,7 +18,7 @@
       ngDefaultControl
     ></ion-input>
   </ion-item>
-  <div class="invisible-input-cont">
+  <div style="display: none" class="invisible-input-cont">
     <input #quillFile type="file" (change)="quillFileSelected($event)" />
   </div>
   <quill-editor
@@ -27,5 +27,9 @@
     (onContentChanged)="onContentChange($event)"
     [modules]="editorModules"
   ></quill-editor>
-  <ion-button (click)="submitPost()"> 작성하기 </ion-button>
+  <div class="button__wrapper">
+    <ion-button class="outline" fill="outline" (click)="submitPost()">
+      작성하기
+    </ion-button>
+  </div>
 </ion-content>

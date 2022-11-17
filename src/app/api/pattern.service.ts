@@ -181,4 +181,17 @@ export class PatternService {
       return error.response;
     }
   }
+  async deletePatternReview(paramJson) {
+    try {
+      const { patternId } = paramJson;
+      const response = await axios({
+        method: "delete",
+        url: `${environment.apiUrl}/pattern/${patternId}/reviews/`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 }
