@@ -16,7 +16,9 @@
         >
       </div>
       <div class="post__title">{{post.title}}</div>
-      <div class="post__contents">{{post.contents}}</div>
+      <div class="post__contents" [innerHTML]="post.htmlContents">
+        <!-- {{post.htmlContents}} -->
+      </div>
       <div class="post__date">{{post.createdAt | date: "YY/MM/dd HH:mm"}}</div>
     </div>
   </div>

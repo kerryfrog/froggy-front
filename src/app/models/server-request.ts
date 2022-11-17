@@ -1,6 +1,7 @@
 export interface Post {
   title: string;
   contents: string;
+  htmlContents: string;
 }
 
 export interface UserPrefer {
