@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import {
+  AlertController,
   NavController,
   ModalController,
   LoadingController,
@@ -25,9 +26,16 @@ export class PatternReviewWritePage implements OnInit {
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public navController: NavController,
+    public alertController: AlertController,
     public patternService: PatternService,
     public userService: UserService
   ) {}
+
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(async (params) => {
+      this.patternId = params.patternId;
+    });
+  }
 
   async saveReview() {
     const postPatternReviewResult = await this.patternService.postPatternReview(
@@ -40,7 +48,25 @@ export class PatternReviewWritePage implements OnInit {
       this.setUserSyncWithServer();
     }
     if (postPatternReviewResult.data.status === "Y") {
-      alert("리뷰 작성 성공!");
+      await this.successAlert();
+    }
+  }
+
+  async successAlert() {
+    const alert = await this.alertController.create({
+      header: "리뷰 작성 완료",
+      subHeader: "리뷰가 저장되었습니다.",
+      buttons: [
+        {
+          text: "확인",
+          role: "confirm",
+        },
+      ],
+    });
+    await alert.present();
+    const { role } = await alert.onDidDismiss();
+    if (role === "confirm") {
+      this.goBack();
     }
   }
   onChangeRating(event) {
@@ -54,11 +80,7 @@ export class PatternReviewWritePage implements OnInit {
     await this.userService.deleteUser();
     alert("다시 로그인 해 주세요");
   }
-  ngOnInit() {
-    this.activatedRoute.params.subscribe(async (params) => {
-      this.patternId = params.patternId;
-    });
-  }
+
   goBack() {
     this.navController.navigateBack(`tabs/pattern/${this.patternId}`);
   }
