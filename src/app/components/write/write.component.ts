@@ -22,9 +22,10 @@ export class WriteComponent implements OnInit {
   public ionicForm: FormGroup;
   public isSubmitted;
   public contents;
+  public htmlContents;
   public title;
   public image;
-
+  public imageList = [];
   @ViewChild("quillFile") quillFileRef: ElementRef;
   quillFile: any;
   quillEditorRef;
@@ -56,10 +57,11 @@ export class WriteComponent implements OnInit {
 
   ngOnInit() {}
 
-  myCallback(event) {
+  onContentChange(event) {
     //editor, html, text, content, delta, oldDelta, source
     //console.log("testing", event.text);
     this.contents = event.text;
+    this.htmlContents = event.html;
   }
 
   // getEditorInstance(editorInstance: any) {
@@ -69,6 +71,7 @@ export class WriteComponent implements OnInit {
   // }
   getMeEditorInstance(editorInstance: any) {
     this.meQuillRef = editorInstance;
+    this.quillEditorRef = editorInstance;
   }
   customImageUpload(image: any) {
     console.log(image);
@@ -76,17 +79,35 @@ export class WriteComponent implements OnInit {
     this.quillFileRef.nativeElement.click();
   }
 
-  quillFileSelected(ev: any) {
+  async quillFileSelected(ev: any) {
     /* After the file is selected from the file chooser, we handle the upload process */
-    const imageData = {
-      fileName: undefined,
-      fileFormat: undefined,
-      fileBlob: undefined,
-    };
+    let inputList = [];
 
     this.quillFile = ev.target.files[0];
     this.image = ev.target.files[0];
-    console.log(ev.target.files[0]);
+    // this.image["time"] = Date.now();
+    console.log(this.image);
+
+    const imageUploadResult = await this.imageService.uploadSingleImage(
+      this.image
+    );
+    console.log(imageUploadResult);
+
+    if (imageUploadResult.data.status === "Y") {
+      const inputList = imageUploadResult.data.imageUrlList;
+      const editor = this.quillEditorRef;
+      const range = editor.getSelection();
+
+      editor.insertEmbed(range, "image", inputList[0]);
+    } else {
+      alert("이미지 업로드 실패");
+      return;
+    }
+
+    //console.log(ev.target.files[0]);
+
+    let imageCount = 0;
+    //this.imageList.push(imageUrl);
 
     // const imageData = {
     //   id:
@@ -109,15 +130,14 @@ export class WriteComponent implements OnInit {
     // });
   }
   async submitPost() {
-    await this.imageService.uploadSingleImage(this.image);
     const payload: Post = {
       title: this.title,
       contents: this.contents,
+      htmlContents: this.htmlContents,
     };
 
     const savePostResult = await this.communityService.saveNewPost(payload);
     console.log("savePostResult", savePostResult);
-
     if (savePostResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
     }
@@ -143,17 +163,17 @@ export class WriteComponent implements OnInit {
   }
 
   // base64를 blob으로 변경하는 함수
-  base64toBlob(dataURI) {
-    const splitDataURI = dataURI.split(",");
-    const byteString =
-      splitDataURI[0].indexOf("base64") >= 0
-        ? atob(splitDataURI[1])
-        : decodeURI(splitDataURI[1]);
-    const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
-    const ia = new Uint8Array(byteString.length);
-    for (let i = 0; i < byteString.length; i++)
-      ia[i] = byteString.charCodeAt(i);
+  // base64toBlob(dataURI) {
+  //   const splitDataURI = dataURI.split(",");
+  //   const byteString =
+  //     splitDataURI[0].indexOf("base64") >= 0
+  //       ? atob(splitDataURI[1])
+  //       : decodeURI(splitDataURI[1]);
+  //   const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
+  //   const ia = new Uint8Array(byteString.length);
+  //   for (let i = 0; i < byteString.length; i++)
+  //     ia[i] = byteString.charCodeAt(i);
 
-    return new Blob([ia], { type: mimeString });
-  }
+  //   return new Blob([ia], { type: mimeString });
+  // }
 }

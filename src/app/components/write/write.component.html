@@ -22,8 +22,9 @@
     <input #quillFile type="file" (change)="quillFileSelected($event)" />
   </div>
   <quill-editor
+    #quillEditorRef
     (onEditorCreated)="getMeEditorInstance($event)"
-    (onContentChanged)="myCallback($event)"
+    (onContentChanged)="onContentChange($event)"
     [modules]="editorModules"
   ></quill-editor>
   <ion-button (click)="submitPost()"> 작성하기 </ion-button>
