@@ -46,6 +46,10 @@ export class PatternReviewWritePage implements OnInit {
     );
     if (postPatternReviewResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
+      return;
+    }
+    if (postPatternReviewResult.data.status === "N") {
+      alert(postPatternReviewResult.data.reason);
     }
     if (postPatternReviewResult.data.status === "Y") {
       await this.successAlert();
