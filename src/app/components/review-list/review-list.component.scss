@@ -14,6 +14,15 @@
     padding: 5px 0px;
     font-family: "Pretendard-Light";
   }
+  &__delete {
+    display: flex;
+    justify-content: right;
+    ion-button {
+      font-size: 15px;
+      margin-bottom: 20px;
+      color: var(--ion-color-theme);
+    }
+  }
   &__info {
     display: flex;
     flex-direction: row;

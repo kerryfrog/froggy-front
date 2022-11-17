@@ -35,8 +35,15 @@
       자세히 보기
     </ion-button>
   </div>
-
-  <ion-button fill="clear" (click)="deleteReview(review)"> 삭제 </ion-button>
+  <div class="review__delete">
+    <ion-button
+      *ngIf="review.isWriter"
+      fill="clear"
+      (click)="deleteReview(review)"
+    >
+      삭제
+    </ion-button>
+  </div>
 
   <hr />
 </div>

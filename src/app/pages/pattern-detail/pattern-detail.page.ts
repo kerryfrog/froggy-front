@@ -4,9 +4,11 @@ import {
   ModalController,
   LoadingController,
 } from "@ionic/angular";
+import { UserService } from "src/app/services/user.service";
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { PatternService } from "src/app/api/pattern.service";
 import { filter } from "rxjs/operators";
+import { of } from "rxjs";
 @Component({
   selector: "app-pattern-detail",
   templateUrl: "./pattern-detail.page.html",
@@ -26,6 +28,7 @@ export class PatternDetailPage implements OnInit {
   previousUrl: string = "";
 
   constructor(
+    public userService: UserService,
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public navController: NavController,
@@ -63,13 +66,27 @@ export class PatternDetailPage implements OnInit {
       this.failtoFetchYarnDetail();
     }
   }
+
   async getPatternReview() {
     const { data } = await this.patternService.getPatternReview(this.patternId);
     if (data.status === "Y") {
       this.reviewList = data.reviewList;
+      await this.setIsWriter();
     }
   }
+  async setIsWriter() {
+    const user = await this.userService.getUser();
+    console.log(user);
+    console.log(this.reviewList);
 
+    for (let review of this.reviewList) {
+      if (user.id === review.userId) {
+        review["isWriter"] = true;
+      } else {
+        review["isWriter"] = false;
+      }
+    }
+  }
   failtoFetchYarnDetail() {
     this.navController.navigateBack("tabs/pattern");
   }
