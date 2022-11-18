@@ -6,6 +6,7 @@ import {
 } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
 import { YarnService } from "src/app/api/yarn.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-yarn-detail",
@@ -23,7 +24,8 @@ export class YarnDetailPage implements OnInit {
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public navController: NavController,
-    public yarnService: YarnService
+    public yarnService: YarnService,
+    public userService: UserService
   ) {}
 
   ngOnInit() {
@@ -41,6 +43,7 @@ export class YarnDetailPage implements OnInit {
 
   async ionViewDidEnter() {
     await this.getYarnDetail();
+    await this.getYarnReview();
   }
 
   async getYarnDetail() {
@@ -55,7 +58,26 @@ export class YarnDetailPage implements OnInit {
   failtoFetchYarnDetail() {
     this.navController.navigateBack("tabs/yarn");
   }
+  async getYarnReview() {
+    const { data } = await this.yarnService.getYarnReview(this.yarnId);
+    if (data.status === "Y") {
+      this.reviewList = data.reviewList;
+      await this.setIsWriter();
+    }
+  }
+  async setIsWriter() {
+    const user = await this.userService.getUser();
+    console.log(user);
+    console.log(this.reviewList);
 
+    for (let review of this.reviewList) {
+      if (user.id === review.userId) {
+        review["isWriter"] = true;
+      } else {
+        review["isWriter"] = false;
+      }
+    }
+  }
   async writeReview() {
     this.navController.navigateForward(`tabs/yarn/review/${this.yarnId}`);
   }
