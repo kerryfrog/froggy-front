@@ -7,9 +7,8 @@ import axios from "axios";
   providedIn: "root",
 })
 export class PatternService {
-  async getRecommendPatternList() {
+  async getRandomPatternList() {
     try {
-      //const headers = { 'access-token': token };
       const response = await axios({
         method: "get",
         url: `${environment.apiUrl}/pattern`,
@@ -20,9 +19,20 @@ export class PatternService {
       return error.response;
     }
   }
+  async getRecommendPatternList(page) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/recommend/${page}`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getTmpPatternList() {
     try {
-      //const headers = { 'access-token': token };
       const response = await axios({
         method: "get",
         url: `${environment.apiUrl}/pattern/recommend/doll`,
