@@ -32,14 +32,15 @@
       <div class="comment__contents">{{comment.contents}}</div>
       <div class="comment__date">
         {{comment.createdAt | date: "YY/MM/dd HH:mm"}}
+        <ion-button
+          *ngIf="comment.isWriter"
+          fill="clear"
+          (click)="deleteComment(comment)"
+        >
+          삭제
+        </ion-button>
       </div>
-      <ion-button
-        *ngIf="comment.isWriter"
-        fill="clear"
-        (click)="deleteComment(comment)"
-      >
-        삭제
-      </ion-button>
+      <hr />
     </div>
 
     <div class="comment__input">
