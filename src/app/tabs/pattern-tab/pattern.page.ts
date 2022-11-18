@@ -1,13 +1,10 @@
 import { Component } from "@angular/core";
-import { DataService } from "src/app/api/data.service";
-import { PatternService } from "src/app/api/pattern.service";
 import {
   AlertController,
   LoadingController,
   ModalController,
   NavController,
 } from "@ionic/angular";
-// import { LocalStorageService } from '../../common/local-storage.service';
 import {
   ActivatedRoute,
   NavigationExtras,
@@ -15,7 +12,11 @@ import {
   NavigationEnd,
 } from "@angular/router";
 
-import { filter } from "rxjs/operators";
+import { DataService } from "src/app/api/data.service";
+import { PatternService } from "src/app/api/pattern.service";
+import { UserService } from "src/app/services/user.service";
+import { Paging } from "../../models/server-request";
+
 // const testList = [763264, 763263, 17, 20, 766149];
 const famousList = [
   10, 16, 17, 20, 29, 38, 40, 45, 54, 58, 66, 69, 71, 74, 87, 88, 91, 92, 108,
@@ -437,29 +438,29 @@ export class PatternPage {
   public nowIndex = -1;
   public patternList = [];
   public results;
+  public user;
+
+  // for paging
+  public paging: Paging;
+  public pageNum = 1;
+  public isFirstInit = false;
 
   previousUrl: string = null;
   currentUrl: string = null;
   constructor(
-    public navController: NavController,
-    public dataService: DataService,
     public router: Router,
+    public navController: NavController,
     public alertController: AlertController,
+    public modalController: ModalController,
+    public dataService: DataService,
     public patternService: PatternService,
-    public modalController: ModalController
+    public userService: UserService
   ) {}
-  ngOnInit() {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.previousUrl = this.currentUrl;
-        this.currentUrl = event.url;
-        console.log("mainpage", this.previousUrl);
-      });
-  }
+  ngOnInit() {}
+
   async ionViewDidEnter() {
+    this.user = await this.userService.getUser();
     await this.getPatternPageView();
-    this.setFavoriteFalse(this.patternList);
   }
 
   async handleChange(event) {
@@ -470,6 +471,90 @@ export class PatternPage {
     console.log(data);
   }
 
+  async getRecommendYarnData() {
+    for (let i of famousList) {
+      const response = await this.dataService.getPatternDataFromRaverly(i);
+      console.log("for i =", i, response);
+      const postResult = await this.dataService.postPatternData(response);
+      this.nowIndex = i;
+    }
+  }
+
+  // 이미지 없는 패턴 리스트 받아서 라이벌리에서 받은 후 전송 ..
+  async getAndFetchPatternData() {
+    const { data } = await this.dataService.getEmptyImageIndex();
+    console.log(data.indexList);
+    if (data.status === "Y") {
+      const { indexList } = data;
+      for (let index of indexList) {
+        const response = await this.dataService.getPatternDataFromRaverly(
+          index
+        );
+        console.log("for i =", index, response);
+        const postResult = await this.dataService.postPatternData(response);
+      }
+    }
+  }
+
+  async getPatternPageView() {
+    // 유저 level에 따른 다른 데이터 불러오기
+    console.log(this.user);
+
+    if (!this.user || this.user.level < 1) {
+      const { data } = await this.patternService.getRandomPatternList();
+      console.log("pattern when level 0", data);
+      if (data.status === "Y") {
+        this.patternList = [...this.patternList, ...data.patternList];
+      }
+    } else if (this.user.level === 1) {
+      const { data } = await this.patternService.getRecommendPatternList(
+        this.pageNum
+      );
+      if (data.isUserLogin === "N") {
+        this.setUserSyncWithServer();
+      }
+      if (data.status === "Y") {
+        console.log("페이지네이션 성공 ", data);
+
+        if (this.pageNum === 1) {
+          this.patternList = [...data.patternList];
+        } else {
+          this.patternList = [...this.patternList, ...data.patternList];
+        }
+        console.log("pattern list is ", this.patternList);
+
+        this.paging = data.mainPaging;
+        this.pageNum += 1;
+      }
+    }
+  }
+
+  loadData(event) {
+    setTimeout(async () => {
+      await this.getPatternPageView();
+      event.target.complete();
+      // if (this.paging.curPage === this.paging.totalPage) {
+      //   event.target.disabled = true;
+      // }
+    }, 500);
+  }
+  async goSearchPatternPage() {
+    this.navController.navigateForward(`/tabs/pattern/search`);
+  }
+
+  goMypage() {
+    this.navController.navigateForward("mypage");
+  }
+
+  resetProperties() {
+    this.paging = null;
+    this.pageNum = 1;
+  }
+
+  async setUserSyncWithServer() {
+    await this.userService.deleteUser();
+    alert("다시 로그인 해 주세요");
+  }
   // async getRaverlyApi() {
   //   if (!this.min || !this.max) {
   //     const alert = await this.alertController.create({
@@ -504,81 +589,4 @@ export class PatternPage {
   //   });
   //   await alert.present();
   // }
-
-  async getRecommendYarnData() {
-    for (let i of famousList) {
-      const response = await this.dataService.getPatternDataFromRaverly(i);
-      console.log("for i =", i, response);
-      const postResult = await this.dataService.postPatternData(response);
-      this.nowIndex = i;
-    }
-  }
-
-  // 이미지 없는 패턴 리스트 받아서 라이벌리에서 받은 후 전송 ..
-  async getAndFetchPatternData() {
-    const { data } = await this.dataService.getEmptyImageIndex();
-    console.log(data.indexList);
-    if (data.status === "Y") {
-      const { indexList } = data;
-      for (let index of indexList) {
-        const response = await this.dataService.getPatternDataFromRaverly(
-          index
-        );
-        console.log("for i =", index, response);
-        const postResult = await this.dataService.postPatternData(response);
-      }
-    }
-  }
-
-  setFavoriteFalse(newPatternList) {
-    for (let pattern of newPatternList) {
-      pattern["isFavorite"] = false;
-    }
-    return newPatternList;
-  }
-
-  async getPatternPageView() {
-    //getTmpPatternList()
-    const { data } = await this.patternService.getRecommendPatternList();
-    // const { data } = await this.patternService.getTmpPatternList();
-    console.log(data);
-
-    if (data.status === "Y") {
-      const newPatternListWithIsFavorite = this.setFavoriteFalse(
-        data.patternList
-      );
-      this.patternList = [...this.patternList, ...newPatternListWithIsFavorite];
-    }
-  }
-
-  checkIsPatternFavorite(favoritePatternList) {
-    if (!favoritePatternList) return;
-    this.patternList = this.patternList.map((pattern) => {
-      const patterns = { ...pattern };
-      const isFavorite = favoritePatternList.includes(pattern.id);
-      if (isFavorite) {
-        patterns.isFavorite = true;
-      } else {
-        patterns.isFavorite = false;
-      }
-      return patterns;
-    });
-  }
-
-  loadData(event) {
-    setTimeout(async () => {
-      await this.getPatternPageView();
-      event.target.complete();
-      // if (this.paging.curPage === this.paging.totalPage) {
-      //   event.target.disabled = true;
-      // }
-    }, 500);
-  }
-
-  async goSearchPatternPage() {
-    this.navController.navigateForward(`/tabs/pattern/search`);
-  }
-  goMypage() {
-    this.navController.navigateForward("mypage");
-  }
 }

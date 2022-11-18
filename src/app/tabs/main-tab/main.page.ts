@@ -90,7 +90,7 @@ export class MainPage {
     }
   }
   async getPatternPageView() {
-    const { data } = await this.patternService.getRecommendPatternList();
+    const { data } = await this.patternService.getRandomPatternList();
     if (data.status === "Y") {
       this.patternList = [...this.patternList, ...data.patternList];
     }
