@@ -20,6 +20,7 @@ export class PostDetailPage implements OnInit {
   public isWriter: boolean = false;
   public commentList = [];
   public comment = "";
+  public commentId;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -46,8 +47,10 @@ export class PostDetailPage implements OnInit {
     }
     const userInfo = await this.userService.getUser();
     console.log(this.post, userInfo);
-
-    if (this.post.userId === userInfo.id) {
+    if (userInfo === null) {
+      this.isWriter = false;
+      return;
+    } else if (this.post.userId === userInfo.id) {
       this.isWriter = true;
     }
   }
@@ -58,7 +61,17 @@ export class PostDetailPage implements OnInit {
 
     if (result.data.status === "Y") {
       this.commentList = result.data.commentList;
-      console.log(this.commentList);
+      const userInfo = await this.userService.getUser();
+
+      for (let comment of this.commentList) {
+        if (userInfo === null) {
+          comment.isWriter = false;
+        } else if (comment.userId === userInfo.id) {
+          comment.isWriter = true;
+        } else {
+          comment.isWriter = false;
+        }
+      }
     }
   }
 
@@ -100,6 +113,37 @@ export class PostDetailPage implements OnInit {
         buttons: ["확인"],
       });
       await alert.present();
+    } else {
+      const alert = await this.alertController.create({
+        header: "실패",
+        subHeader: "삭제에 실패했습니다.",
+        message: "다시 시도해 주세요",
+        buttons: ["확인"],
+      });
+      await alert.present();
+    }
+  }
+
+  async deleteComment(comment) {
+    const deleteResult = await this.communityService.deleteComment(
+      this.postId,
+      comment["id"]
+    );
+    console.log(this.postId, comment["id"]);
+    console.log(deleteResult);
+    if (deleteResult.data.isUserLogin === "N") {
+      this.setUserSyncWithServer();
+      return;
+    }
+
+    if (deleteResult.data.status === "Y") {
+      const alert = await this.alertController.create({
+        header: "성공",
+        subHeader: "삭제가 완료되었습니다.",
+        buttons: ["확인"],
+      });
+      await alert.present();
+      await this.fetchComments();
       this.goBack();
     } else {
       const alert = await this.alertController.create({
@@ -111,6 +155,7 @@ export class PostDetailPage implements OnInit {
       await alert.present();
     }
   }
+
   async setUserSyncWithServer() {
     await this.userService.deleteUser();
     alert("다시 로그인 해 주세요");

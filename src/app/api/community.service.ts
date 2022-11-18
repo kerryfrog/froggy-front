@@ -85,4 +85,16 @@ export class CommunityService {
       return error.response;
     }
   }
+  async deleteComment(postId, commentId) {
+    try {
+      const response = await axios({
+        method: "delete",
+        url: `${environment.apiUrl}/community/posts/${postId}/comments/${commentId}`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 }
