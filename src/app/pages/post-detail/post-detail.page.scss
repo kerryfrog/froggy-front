@@ -72,7 +72,15 @@ ion-button {
   &__date {
     font-size: 13px;
     font-family: "Pretendard-Light";
-    margin: 3px 0px;
+    //margin: 3px 0px;
     padding: 0px 0px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    ion-button {
+      height: 14px;
+      font-size: 13px;
+    }
   }
 }
