@@ -113,6 +113,7 @@ export class PostDetailPage implements OnInit {
         buttons: ["확인"],
       });
       await alert.present();
+      this.goBack();
     } else {
       const alert = await this.alertController.create({
         header: "실패",
@@ -144,7 +145,6 @@ export class PostDetailPage implements OnInit {
       });
       await alert.present();
       await this.fetchComments();
-      this.goBack();
     } else {
       const alert = await this.alertController.create({
         header: "실패",
