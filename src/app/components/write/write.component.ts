@@ -59,7 +59,6 @@ export class WriteComponent implements OnInit {
 
   onContentChange(event) {
     //editor, html, text, content, delta, oldDelta, source
-    //console.log("testing", event.text);
     this.contents = event.text;
     this.htmlContents = event.html;
   }
@@ -70,7 +69,7 @@ export class WriteComponent implements OnInit {
   //   //toolbar.addHandler("image", customImageUpload);
   // }
   getMeEditorInstance(editorInstance: any) {
-    this.meQuillRef = editorInstance;
+    // this.meQuillRef = editorInstance;
     this.quillEditorRef = editorInstance;
   }
   customImageUpload(image: any) {
@@ -81,15 +80,10 @@ export class WriteComponent implements OnInit {
 
   async quillFileSelected(ev: any) {
     /* After the file is selected from the file chooser, we handle the upload process */
-    let inputList = [];
-    const imageData = {
-      fileName: undefined,
-      fileFormat: undefined,
-      fileBlob: undefined,
-    };
+    // let inputList = [];
     this.quillFile = ev.target.files[0];
     this.image = ev.target.files[0];
-    // this.image["time"] = Date.now();
+    // this.image["time"] = Date.now();글
     console.log(this.image);
 
     const imageUploadResult = await this.imageService.uploadSingleImage(
@@ -101,7 +95,6 @@ export class WriteComponent implements OnInit {
       const inputList = imageUploadResult.data.imageUrlList;
       const editor = this.quillEditorRef;
       const range = editor.getSelection();
-
       editor.insertEmbed(range, "image", inputList[0]);
     } else {
       alert(imageUploadResult.data.reason);
