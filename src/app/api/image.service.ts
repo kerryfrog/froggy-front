@@ -11,14 +11,15 @@ export class ImageService {
       console.log("imageservice", data);
 
       const formData = new FormData();
-      // const { imageData } = data;
-
       formData.append("image", data);
-
+      // formData.append("imageName", data.name);
       // imageData.forEach((image) => {
       //   formData.append("image", image.fileBlob, image.fileName);
       // });
-
+      // const response = await axios.post(
+      //   `${environment.apiUrl}/image/single`,
+      //   formData
+      // );
       const response = await axios({
         method: "post",
         url: `${environment.apiUrl}/image/single`,

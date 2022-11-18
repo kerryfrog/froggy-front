@@ -82,7 +82,11 @@ export class WriteComponent implements OnInit {
   async quillFileSelected(ev: any) {
     /* After the file is selected from the file chooser, we handle the upload process */
     let inputList = [];
-
+    const imageData = {
+      fileName: undefined,
+      fileFormat: undefined,
+      fileBlob: undefined,
+    };
     this.quillFile = ev.target.files[0];
     this.image = ev.target.files[0];
     // this.image["time"] = Date.now();
@@ -100,7 +104,7 @@ export class WriteComponent implements OnInit {
 
       editor.insertEmbed(range, "image", inputList[0]);
     } else {
-      alert("이미지 업로드 실패");
+      alert(imageUploadResult.data.reason);
       return;
     }
 
@@ -162,18 +166,25 @@ export class WriteComponent implements OnInit {
     });
   }
 
-  // base64를 blob으로 변경하는 함수
-  // base64toBlob(dataURI) {
-  //   const splitDataURI = dataURI.split(",");
-  //   const byteString =
-  //     splitDataURI[0].indexOf("base64") >= 0
-  //       ? atob(splitDataURI[1])
-  //       : decodeURI(splitDataURI[1]);
-  //   const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
-  //   const ia = new Uint8Array(byteString.length);
-  //   for (let i = 0; i < byteString.length; i++)
-  //     ia[i] = byteString.charCodeAt(i);
+  // // base64를 blob으로 변경하는 함수
+  // b64toBlob = async (b64Data, contentType = "", sliceSize = 512) => {
+  //   const byteCharacters = atob(b64Data);
+  //   const byteArrays = [];
 
-  //   return new Blob([ia], { type: mimeString });
-  // }
+  //   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+  //     const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+  //     const byteNumbers = new Array(slice.length);
+  //     for (let i = 0; i < slice.length; i++) {
+  //       byteNumbers[i] = slice.charCodeAt(i);
+  //     }
+
+  //     const byteArray = new Uint8Array(byteNumbers);
+  //     byteArrays.push(byteArray);
+  //   }
+
+  //   const blob = new Blob(byteArrays, { type: contentType });
+
+  //   return blob;
+  // };
 }
