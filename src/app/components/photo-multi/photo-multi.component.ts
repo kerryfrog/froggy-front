@@ -68,13 +68,10 @@ export class PhotoMultiComponent implements OnInit {
 
   // 이미지 버튼 클릭 핸들러 함수
   async openUserPhotoLibrary(): Promise<void> {
-    if (this.userPlatform === "web") {
-      this.fileInput.nativeElement.click();
-      const fileList = this.fileInput.nativeElement.files;
-      await this.getImageWeb(fileList);
-    } else {
-      // await this.getImageMob();
-    }
+    this.fileInput.nativeElement.click();
+    const fileList = this.fileInput.nativeElement.files;
+    await this.getImageWeb(fileList);
+
     this.changeDetectorRef.detectChanges();
   }
 

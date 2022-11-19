@@ -16,7 +16,7 @@ import { Review } from "../../models/server-request";
 })
 export class PatternReviewWritePage implements OnInit {
   public patternId;
-  public rating;
+  public rating = 3;
   public certifyImages = [];
 
   public review: Review = {
@@ -43,6 +43,7 @@ export class PatternReviewWritePage implements OnInit {
       {
         data: this.review,
         patternId: this.patternId,
+        images: this.certifyImages,
       }
     );
     if (postPatternReviewResult.data.isUserLogin === "N") {

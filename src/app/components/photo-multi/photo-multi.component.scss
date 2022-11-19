@@ -75,3 +75,37 @@
     height: 14px;
   }
 }
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  margin-bottom: 20px;
+  &__text {
+    margin: auto;
+  }
+  &__list {
+    display: flex;
+    flex-direction: row;
+    &__images {
+      display: flex;
+      flex-direction: row;
+    }
+    &__image {
+      width: 80px;
+      height: 80px;
+      img {
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  ion-icon {
+    font-size: 50px;
+    color: gray;
+    background: rgb(37 40 37 / 11%);
+    border: 1px solid;
+  }
+}

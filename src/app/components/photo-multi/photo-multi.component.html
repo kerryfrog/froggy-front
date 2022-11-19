@@ -1,54 +1,32 @@
-<div class="container__get-photo">
-  <span
-    class="container__get-photo--attach-btn"
-    expand="block"
-    (click)="openUserPhotoLibrary()"
-  >
-    <input
-      #fileInput
-      style="display: none"
-      type="file"
-      accept="image/*"
-      (change)="getImageWeb(fileInput.files)"
-      multiple
-    />
-    <ion-icon name="add-outline"></ion-icon>
-    <p class="f_cMain f_s14 f_w700">"attached_file_add"</p>
-    <img
-      class="icon__attached-file"
-      src="../../../../assets/icon/attached_file.svg"
-    />
-  </span>
-  <div
-    *ngIf="isShowFileNames && imagesForDisplay.length > 0"
-    class="container__get-photo--image-name-list"
-  >
-    <div *ngFor="let imageData of imagesForDisplay; index as i">
-      <span
-        ><p class="f_w300 f_cGray f_s14">
-          {{ imageData.imageName }}
-        </p></span
-      >
-    </div>
+<div class="photo">
+  <div class="photo__text" *ngIf="imagesForDisplay.length === 0">
+    사진을 추가해 주세요
   </div>
-  <div
-    *ngIf="imagesForDisplay.length > 0"
-    class="container__get-photo--image-list"
-  >
-    <div
-      *ngFor="let imageData of imagesForDisplay; index as i"
-      class="image__square"
-    >
-      <!-- <img src="{{ imageData.image }}" (click)="openImagePreviewModal(i)" /> -->
-      <img src="{{ imageData.image }}" />
-
+  <div class="photo__list">
+    <div class="photo__list__images" *ngIf="imagesForDisplay.length > 0">
       <div
-        class="button button__delete-btn"
-        (click)="deleteImage(i)"
-        click-stop-propagation
+        class="photo__list__image"
+        *ngFor="let imageData of imagesForDisplay; index as i"
       >
-        <img src="../../../../assets/icon/delete_circle.svg" />
+        <img src="{{ imageData.image }}" />
+        <div
+          class="button button__delete-btn"
+          (click)="deleteImage(i)"
+          click-stop-propagation
+        ></div>
       </div>
     </div>
+    <ion-icon (click)="openUserPhotoLibrary()" name="add-outline">
+      <input
+        #fileInput
+        style="display: none"
+        type="file"
+        accept="image/*"
+        (change)="getImageWeb(fileInput.files)"
+        multiple
+      />
+      <ion-icon name="add-outline"></ion-icon>
+      <p class="f_cMain f_s14 f_w700">파일을 추가해 주세요</p>
+    </ion-icon>
   </div>
 </div>
