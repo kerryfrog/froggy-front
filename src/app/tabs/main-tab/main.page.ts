@@ -50,9 +50,7 @@ export class MainPage {
   }
   async refreshMain(event) {
     await this.getUser();
-    this.patternListForUser = [];
-    this.patternList = [];
-    this.yarnList = [];
+    this.clear();
     this.changeViewState();
     await this.getMainRecommendViewByState();
     event.target.disabled = true;
@@ -60,6 +58,11 @@ export class MainPage {
     setTimeout(() => {
       event.target.disabled = false;
     }, 100);
+  }
+  clear() {
+    this.patternListForUser = [];
+    this.patternList = [];
+    this.yarnList = [];
   }
 
   async getMainRecommendViewByState() {
@@ -121,6 +124,8 @@ export class MainPage {
       this.setUserSyncWithServer();
     }
     if (patternResult.data.status === "Y") {
+      console.log("get by difficulty", patternResult.data);
+
       this.patternListForUser = patternResult.data.patternList.slice(0, 6);
     }
   }
