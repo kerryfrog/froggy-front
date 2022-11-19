@@ -37,7 +37,6 @@ export class ReviewListComponent implements OnInit {
         await this.patternService.deletePatternReview({
           patternId: review.patternId,
         });
-      console.log(deletePatternReviewResult);
 
       if (deletePatternReviewResult.data.isUserLogin === "N") {
         this.setUserSyncWithServer();
@@ -53,7 +52,6 @@ export class ReviewListComponent implements OnInit {
       const deleteYarnReviewResult = await this.yarnService.deleteYarnReview({
         yarnId: review.yarnId,
       });
-      console.log(deleteYarnReviewResult);
 
       if (deleteYarnReviewResult.data.isUserLogin === "N") {
         this.setUserSyncWithServer();
