@@ -1,5 +1,6 @@
 export interface Post {
   title: string;
+  category: string;
   contents: string;
   htmlContents: string;
 }
