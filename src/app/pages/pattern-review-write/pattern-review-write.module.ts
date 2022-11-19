@@ -8,6 +8,7 @@ import { PatternReviewWritePageRoutingModule } from "./pattern-review-write-rout
 
 import { PatternReviewWritePage } from "./pattern-review-write.page";
 import { StarRatingComponentModule } from "src/app/components/star-rating/star-rating.module";
+import { PhotoMultiComponentModule } from "src/app/components/photo-multi/photo-multi.module";
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +16,7 @@ import { StarRatingComponentModule } from "src/app/components/star-rating/star-r
     IonicModule,
     PatternReviewWritePageRoutingModule,
     StarRatingComponentModule,
+    PhotoMultiComponentModule,
   ],
   declarations: [PatternReviewWritePage],
 })

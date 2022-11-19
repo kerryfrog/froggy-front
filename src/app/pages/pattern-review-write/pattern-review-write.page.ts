@@ -17,6 +17,7 @@ import { Review } from "../../models/server-request";
 export class PatternReviewWritePage implements OnInit {
   public patternId;
   public rating;
+  public certifyImages = [];
 
   public review: Review = {
     rating: 0,
@@ -72,6 +73,10 @@ export class PatternReviewWritePage implements OnInit {
     if (role === "confirm") {
       this.goBack();
     }
+  }
+  async certifyImagesChange(certifyImages) {
+    console.log(certifyImages);
+    this.certifyImages = certifyImages;
   }
   onChangeRating(event) {
     this.review.rating = event;
