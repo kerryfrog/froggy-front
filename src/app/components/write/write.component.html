@@ -13,7 +13,7 @@
     <ion-label>글 제목</ion-label>
     <ion-input
       type="text"
-      [(ngModel)]="title"
+      (ionChange)="onChangeTitle($event)"
       placeholder="제목을 입력하세요"
       ngDefaultControl
     ></ion-input>
@@ -28,7 +28,12 @@
     [modules]="editorModules"
   ></quill-editor>
   <div class="button__wrapper">
-    <ion-button class="outline" fill="outline" (click)="submitPost()">
+    <ion-button
+      [disabled]="!isValidPost"
+      class="outline"
+      fill="outline"
+      (click)="submitPost()"
+    >
       작성하기
     </ion-button>
   </div>

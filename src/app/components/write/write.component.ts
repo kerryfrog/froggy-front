@@ -12,6 +12,7 @@ import { Post } from "../../models/server-request";
 import { UserService } from "src/app/services/user.service";
 import { CommunityService } from "src/app/api/community.service";
 import { ImageService } from "src/app/api/image.service";
+import { truncate } from "fs";
 
 @Component({
   selector: "app-write",
@@ -21,11 +22,15 @@ import { ImageService } from "src/app/api/image.service";
 export class WriteComponent implements OnInit {
   public ionicForm: FormGroup;
   public isSubmitted;
-  public contents;
-  public htmlContents;
-  public title;
+  public contents = "";
+  public htmlContents = "";
+  public title = "";
   public image;
   public imageList = [];
+
+  //작성 가능
+  public isValidPost: boolean = false;
+
   @ViewChild("quillFile") quillFileRef: ElementRef;
   quillFile: any;
   quillEditorRef;
@@ -61,6 +66,7 @@ export class WriteComponent implements OnInit {
     //editor, html, text, content, delta, oldDelta, source
     this.contents = event.text;
     this.htmlContents = event.html;
+    this.isValidPost = this.checkIsValid();
   }
 
   // getEditorInstance(editorInstance: any) {
@@ -68,6 +74,11 @@ export class WriteComponent implements OnInit {
   //   let toolbar = editorInstance.getModule("toolbar");
   //   //toolbar.addHandler("image", customImageUpload);
   // }
+  onChangeTitle(event) {
+    // console.log(event);
+    this.title = event.detail.value;
+    this.isValidPost = this.checkIsValid();
+  }
   getMeEditorInstance(editorInstance: any) {
     // this.meQuillRef = editorInstance;
     this.quillEditorRef = editorInstance;
@@ -89,13 +100,12 @@ export class WriteComponent implements OnInit {
     const imageUploadResult = await this.imageService.uploadSingleImage(
       this.image
     );
-    console.log(imageUploadResult);
 
     if (imageUploadResult.data.status === "Y") {
       const inputList = imageUploadResult.data.imageUrlList;
       const editor = this.quillEditorRef;
       const range = editor.getSelection();
-      editor.insertEmbed(range, "image", inputList[0]);
+      editor.insertEmbed(range + 1, "image", inputList[0]);
     } else {
       alert(imageUploadResult.data.reason);
       return;
@@ -141,6 +151,18 @@ export class WriteComponent implements OnInit {
 
     if (savePostResult.data.status === "Y") {
       this.goBackWithSuccess();
+    }
+  }
+
+  checkIsValid(): boolean {
+    const title = this.title.replace(/(\s*)/g, "");
+    const contents = this.contents.replace(/(\s*)/g, "");
+    if (title.length === 0) {
+      return false;
+    } else if (contents.length === 0) {
+      return false;
+    } else {
+      return true;
     }
   }
 
