@@ -142,7 +142,6 @@ export class WriteComponent implements OnInit {
     // });
   }
   async submitPost() {
-    console.log("submitPost", this.category);
     const payload: Post = {
       title: this.title,
       category: this.category,
