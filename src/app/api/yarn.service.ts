@@ -83,4 +83,69 @@ export class YarnService {
       return error.response;
     }
   }
+
+  async getYarnReview(yarnId) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/yarn/${yarnId}/reviews`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+  async getYarnReviewByUser() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/yarn/reviews`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+  async getYarnAttributeList() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/yarn/attribute/list`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+
+  async postYarnReview(paramJson) {
+    try {
+      const { data, yarnId } = paramJson;
+      const response = await axios({
+        method: "post",
+        url: `${environment.apiUrl}/yarn/${yarnId}/reviews/`,
+        data,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+  async deleteYarnReview(paramJson) {
+    try {
+      const { yarnId } = paramJson;
+      const response = await axios({
+        method: "delete",
+        url: `${environment.apiUrl}/yarn/${yarnId}/reviews/`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 }
