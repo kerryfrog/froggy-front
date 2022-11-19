@@ -53,6 +53,7 @@
           </div>
         </div>
         <div class="recommend-list">
+          <div *ngIf="isLoading.recommend" class="loading-text">로딩중 ..</div>
           <app-recommend-list
             [patternList]="patternListForUser"
           ></app-recommend-list>
@@ -71,6 +72,7 @@
           <span>님을 위한 실 추천 </span>
         </div>
       </div>
+      <div *ngIf="isLoading.yarn" class="loading-text">로딩중 ..</div>
       <div *ngIf="yarnList.length > 0" class="container__products">
         <div
           *ngFor="let yarn of yarnList"
@@ -97,6 +99,7 @@
           <span> 님을 위한 패턴 추천 </span>
         </div>
       </div>
+      <div *ngIf="isLoading.pattern" class="loading-text">로딩중 ..</div>
       <div *ngIf="patternList.length > 0" class="container__products">
         <div *ngFor="let pattern of patternList" class="contents">
           <app-heart-image

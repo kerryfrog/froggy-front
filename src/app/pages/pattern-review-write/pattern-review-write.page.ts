@@ -86,6 +86,6 @@ export class PatternReviewWritePage implements OnInit {
   }
 
   goBack() {
-    this.navController.navigateBack(`tabs/pattern/${this.patternId}`);
+    this.navController.navigateBack(`pattern/${this.patternId}`);
   }
 }

@@ -48,7 +48,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: "yarn-review-write",
+    path: "yarn/:yarnId/write",
     loadChildren: () =>
       import("./pages/yarn-review-write/yarn-review-write.module").then(
         (m) => m.YarnReviewWritePageModule
@@ -83,7 +83,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: "pattern-review-write",
+    path: "pattern/:patternId/review",
     loadChildren: () =>
       import("./pages/pattern-review-write/pattern-review-write.module").then(
         (m) => m.PatternReviewWritePageModule
