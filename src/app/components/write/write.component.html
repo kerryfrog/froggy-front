@@ -17,7 +17,17 @@
       placeholder="제목을 입력하세요"
       ngDefaultControl
     ></ion-input>
+
+    <ion-label>카테고리</ion-label>
+    <ion-select (ionChange)="onChangeCategory($event)" [value]="toString()">
+      <ion-select-option value="자유">자유</ion-select-option>
+      <ion-select-option value="정보">정보</ion-select-option>
+      <ion-select-option value="홍보">홍보</ion-select-option>
+      <ion-select-option value="전시">전시</ion-select-option>
+      <ion-select-option value="노래방">노래방</ion-select-option>
+    </ion-select>
   </ion-item>
+
   <div style="display: none" class="invisible-input-cont">
     <input #quillFile type="file" (change)="quillFileSelected($event)" />
   </div>

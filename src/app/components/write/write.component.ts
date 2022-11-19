@@ -25,6 +25,7 @@ export class WriteComponent implements OnInit {
   public contents = "";
   public htmlContents = "";
   public title = "";
+  public category = "";
   public image;
   public imageList = [];
 
@@ -77,6 +78,10 @@ export class WriteComponent implements OnInit {
   onChangeTitle(event) {
     // console.log(event);
     this.title = event.detail.value;
+    this.isValidPost = this.checkIsValid();
+  }
+  onChangeCategory(event) {
+    this.category = event.detail.value;
     this.isValidPost = this.checkIsValid();
   }
   getMeEditorInstance(editorInstance: any) {
@@ -137,8 +142,10 @@ export class WriteComponent implements OnInit {
     // });
   }
   async submitPost() {
+    console.log("submitPost", this.category);
     const payload: Post = {
       title: this.title,
+      category: this.category,
       contents: this.contents,
       htmlContents: this.htmlContents,
     };
