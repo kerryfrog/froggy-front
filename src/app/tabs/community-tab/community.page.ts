@@ -16,15 +16,17 @@ export class CommunityPage {
   public result = "";
   public flag = false;
   public postList;
-
+  public user;
   constructor(
     public patternService: PatternService,
     public modalController: ModalController,
     public communityService: CommunityService,
-    public userService: UserService,
-    public navController: NavController
+    public navController: NavController,
+    public activatedRoute: ActivatedRoute,
+    public userService: UserService
   ) {}
 
+  async ngOnInit() {}
   async ionViewDidEnter() {
     await this.getMainPostList();
   }
@@ -46,8 +48,6 @@ export class CommunityPage {
 
   async write() {
     const user = await this.userService.getUser();
-    console.log("userinfo", user);
-
     if (!user) {
       alert("로그인해주세요");
     } else {
@@ -63,13 +63,25 @@ export class CommunityPage {
       }
     }
   }
+  async refreshCommunity(event) {
+    await this.getMainPostList();
+    event.target.disabled = true;
+    event.target.complete();
+    setTimeout(() => {
+      event.target.disabled = false;
+    }, 100);
+  }
 
+  async getUser() {
+    const userInfo = await this.userService.getUser();
+    this.user = userInfo;
+  }
   goPostDetailPage(postId) {
     // const props: NavigationExtras = {
     //   state: {
 
     //   },
     // };
-    this.navController.navigateForward(`/tabs/community/${postId}`);
+    this.navController.navigateForward(`/community/${postId}`);
   }
 }
