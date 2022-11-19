@@ -48,7 +48,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: "yarn/:yarnId/write",
+    path: "yarn/:yarnId/review",
     loadChildren: () =>
       import("./pages/yarn-review-write/yarn-review-write.module").then(
         (m) => m.YarnReviewWritePageModule

@@ -20,7 +20,7 @@ export class PatternReviewWritePage implements OnInit {
   public certifyImages = [];
 
   public review: Review = {
-    rating: 0,
+    rating: 3,
     contents: "",
   };
   constructor(

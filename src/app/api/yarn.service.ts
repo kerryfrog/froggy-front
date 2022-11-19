@@ -123,11 +123,19 @@ export class YarnService {
 
   async postYarnReview(paramJson) {
     try {
-      const { data, yarnId } = paramJson;
+      const { data, yarnId, images } = paramJson;
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(data));
+      if (images.length > 0) {
+        images.forEach((image) => {
+          formData.append("images", image.fileBlob, image.fileName);
+        });
+      }
+
       const response = await axios({
         method: "post",
         url: `${environment.apiUrl}/yarn/${yarnId}/reviews/`,
-        data,
+        data: formData,
         responseType: "json",
       });
       return response;
