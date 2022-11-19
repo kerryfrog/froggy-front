@@ -32,6 +32,12 @@ export class MainPage {
   public patternListForUser = [];
   public viewState = 0;
 
+  public isLoading = {
+    pattern: false,
+    yarn: false,
+    recommend: false,
+  };
+
   constructor(
     public dataService: DataService,
     public alertController: AlertController,
@@ -67,10 +73,16 @@ export class MainPage {
 
   async getMainRecommendViewByState() {
     if (this.user && this.user.isSetProfile === "Y") {
+      this.isLoading.recommend = true;
       await this.getRecommendPatternByUserProfile();
+      this.isLoading.recommend = false;
     } else {
+      this.isLoading.pattern = true;
+      this.isLoading.yarn = true;
       await this.getPatternPageView();
+      this.isLoading.pattern = false;
       await this.getYarnPageView();
+      this.isLoading.yarn = false;
     }
   }
   async getRecommendPatternByUserProfile() {

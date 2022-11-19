@@ -30,6 +30,7 @@ export class CommunityPage {
   async ionViewDidEnter() {
     await this.getMainPostList();
   }
+
   async getMainPostList() {
     const result = await this.communityService.getMainPosts();
 

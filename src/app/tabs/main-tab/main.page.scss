@@ -81,3 +81,11 @@ ion-refresher {
 .recommend-list {
   margin: 2.5vw 0vw;
 }
+
+.loading-text {
+  display: flex;
+  justify-content: center;
+  font-family: "Pretendard";
+  margin: 30px 0px 30px 0px;
+  color: var(--ion-color-theme-shade);
+}

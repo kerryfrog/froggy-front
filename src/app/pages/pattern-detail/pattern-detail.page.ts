@@ -39,10 +39,6 @@ export class PatternDetailPage implements OnInit {
     this.activatedRoute.params.subscribe(async (params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.pattern = this.router.getCurrentNavigation().extras.state.pattern;
-        if (this.router.getCurrentNavigation().extras.state.previousUrl) {
-          this.previousUrl =
-            this.router.getCurrentNavigation().extras.state.previousUrl;
-        }
       }
       this.patternId = params.patternId;
     });
@@ -91,6 +87,6 @@ export class PatternDetailPage implements OnInit {
     this.navController.navigateBack("tabs/pattern");
   }
   async writeReview() {
-    this.navController.navigateForward(`tabs/pattern/review/${this.patternId}`);
+    this.navController.navigateForward(`pattern/review/${this.patternId}`);
   }
 }
