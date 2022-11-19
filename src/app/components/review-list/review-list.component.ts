@@ -6,6 +6,7 @@ import {
 } from "@ionic/angular";
 import { UserService } from "src/app/services/user.service";
 import { PatternService } from "src/app/api/pattern.service";
+import { YarnService } from "src/app/api/yarn.service";
 @Component({
   selector: "app-review-list",
   templateUrl: "./review-list.component.html",
@@ -25,26 +26,43 @@ export class ReviewListComponent implements OnInit {
   constructor(
     public navController: NavController,
     public patternService: PatternService,
+    public yarnService: YarnService,
     public alertController: AlertController,
     public userService: UserService
   ) {}
 
   async deleteReview(review) {
-    const deletePatternReviewResult =
-      await this.patternService.deletePatternReview({
-        patternId: review.patternId,
-      });
-    console.log(deletePatternReviewResult);
+    if (review.patternId) {
+      const deletePatternReviewResult =
+        await this.patternService.deletePatternReview({
+          patternId: review.patternId,
+        });
 
-    if (deletePatternReviewResult.data.isUserLogin === "N") {
-      this.setUserSyncWithServer();
-      return;
-    }
-    if (deletePatternReviewResult.data.status === "N") {
-      alert(deletePatternReviewResult.data.reason);
-    }
-    if (deletePatternReviewResult.data.status === "Y") {
-      await this.successAlert();
+      if (deletePatternReviewResult.data.isUserLogin === "N") {
+        this.setUserSyncWithServer();
+        return;
+      }
+      if (deletePatternReviewResult.data.status === "N") {
+        alert(deletePatternReviewResult.data.reason);
+      }
+      if (deletePatternReviewResult.data.status === "Y") {
+        await this.successAlert();
+      }
+    } else if (review.yarnId) {
+      const deleteYarnReviewResult = await this.yarnService.deleteYarnReview({
+        yarnId: review.yarnId,
+      });
+
+      if (deleteYarnReviewResult.data.isUserLogin === "N") {
+        this.setUserSyncWithServer();
+        return;
+      }
+      if (deleteYarnReviewResult.data.status === "N") {
+        alert(deleteYarnReviewResult.data.reason);
+      }
+      if (deleteYarnReviewResult.data.status === "Y") {
+        await this.successAlert();
+      }
     }
   }
 
@@ -82,6 +100,10 @@ export class ReviewListComponent implements OnInit {
     return parseFloat(num);
   }
   goDetailPage(review) {
-    this.navController.navigateForward(`/pattern/${review.patternId}`);
+    if (review.patternId) {
+      this.navController.navigateForward(`/pattern/${review.patternId}`);
+    } else if (review.yarnId) {
+      this.navController.navigateForward(`/yarn/${review.yarnId}`);
+    }
   }
 }

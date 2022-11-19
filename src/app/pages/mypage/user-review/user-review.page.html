@@ -16,5 +16,11 @@
       ></app-review-list>
     </div>
     <h4>실 리뷰</h4>
+    <div *ngIf="yarnReviewList.length > 0">
+      <app-review-list
+        [reviewList]="yarnReviewList"
+        [isGoDetail]="true"
+      ></app-review-list>
+    </div>
   </div>
 </ion-content>
