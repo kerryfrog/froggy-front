@@ -34,7 +34,7 @@
   <quill-editor
     #quillEditorRef
     (onEditorCreated)="getMeEditorInstance($event)"
-    (onContentChanged)="onContentChange($event)"
+    (onContentChanged)="onChangeContent($event)"
     [modules]="editorModules"
   ></quill-editor>
   <div class="button__wrapper">
