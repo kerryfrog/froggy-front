@@ -51,7 +51,6 @@ ion-button {
 
 .comment {
   margin: 5px;
-  padding: 5px;
   &__user {
     font-family: "Pretendard-Light";
     margin: 3px 0px;
@@ -73,8 +72,9 @@ ion-button {
     font-size: 13px;
     font-family: "Pretendard-Light";
     //margin: 3px 0px;
-    padding: 0px 0px;
+    padding: 3px 0px;
     margin-bottom: 10px;
+    height: 20px;
     display: flex;
     justify-content: space-between;
 
