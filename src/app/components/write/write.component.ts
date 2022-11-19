@@ -63,7 +63,7 @@ export class WriteComponent implements OnInit {
 
   ngOnInit() {}
 
-  onContentChange(event) {
+  onChangeContent(event) {
     //editor, html, text, content, delta, oldDelta, source
     this.contents = event.text;
     this.htmlContents = event.html;
