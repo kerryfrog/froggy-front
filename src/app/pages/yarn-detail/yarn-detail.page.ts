@@ -79,6 +79,6 @@ export class YarnDetailPage implements OnInit {
     }
   }
   async writeReview() {
-    this.navController.navigateForward(`tabs/yarn/review/${this.yarnId}`);
+    this.navController.navigateForward(`/yarn/${this.yarnId}/review`);
   }
 }

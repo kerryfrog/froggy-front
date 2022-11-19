@@ -50,6 +50,7 @@ export class MainPage {
   ) {}
 
   async ionViewDidEnter() {
+    this.clear();
     await this.getUser();
     await this.getPostList();
     await this.getMainRecommendViewByState();

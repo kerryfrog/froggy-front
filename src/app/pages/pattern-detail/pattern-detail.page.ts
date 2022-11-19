@@ -87,6 +87,6 @@ export class PatternDetailPage implements OnInit {
     this.navController.navigateBack("tabs/pattern");
   }
   async writeReview() {
-    this.navController.navigateForward(`pattern/review/${this.patternId}`);
+    this.navController.navigateForward(`pattern/${this.patternId}/review`);
   }
 }
