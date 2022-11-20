@@ -179,11 +179,18 @@ export class PatternService {
   }
   async postPatternReview(paramJson) {
     try {
-      const { data, patternId } = paramJson;
+      const { data, patternId, images } = paramJson;
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(data));
+      if (images.length > 0) {
+        images.forEach((image) => {
+          formData.append("images", image.fileBlob, image.fileName);
+        });
+      }
       const response = await axios({
         method: "post",
         url: `${environment.apiUrl}/pattern/${patternId}/reviews/`,
-        data,
+        data: formData,
         responseType: "json",
       });
       return response;

@@ -21,6 +21,19 @@
       color: var(--ion-color-theme-shade);
     }
   }
+  &__image {
+    display: flex;
+    flex-direction: row;
+    &__el {
+      width: 80px;
+      height: 80px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
   &__delete {
     display: flex;
     justify-content: right;

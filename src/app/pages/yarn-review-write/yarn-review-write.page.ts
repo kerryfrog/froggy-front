@@ -18,16 +18,16 @@ import { Review } from "../../models/server-request";
 })
 export class YarnReviewWritePage implements OnInit {
   public yarnId;
-  public rating;
-  public yarn: any = {};
+  public rating = 3;
+  public certifyImages = [];
 
   public review: Review = {
-    rating: 0,
+    rating: 3,
     contents: "",
   };
 
-  public fontSize: string = "28px";
-  public maxRating: number = 5;
+  // public fontSize: string = "28px";
+  // public maxRating: number = 5;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -40,9 +40,6 @@ export class YarnReviewWritePage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params) => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        this.yarn = this.router.getCurrentNavigation().extras.state.yarn;
-      }
       this.yarnId = params.yarnId;
     });
   }
@@ -55,6 +52,7 @@ export class YarnReviewWritePage implements OnInit {
     const postYarnReviewResult = await this.yarnService.postYarnReview({
       data: this.review,
       yarnId: this.yarnId,
+      images: this.certifyImages,
     });
     if (postYarnReviewResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
@@ -84,6 +82,11 @@ export class YarnReviewWritePage implements OnInit {
     if (role === "confirm") {
       this.goBack();
     }
+  }
+
+  async certifyImagesChange(certifyImages) {
+    console.log(certifyImages);
+    this.certifyImages = certifyImages;
   }
   onChangeRating(event) {
     this.review.rating = event;

@@ -1,4 +1,4 @@
-import { Attribute, Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import {
   NavController,
   ModalController,
@@ -145,6 +145,13 @@ export class UserInfoPage implements OnInit {
     }
     if (changeProfileResult.data.status === "Y") {
       this.setUserProfile();
+      const alert = await this.alertController.create({
+        header: "변경 완료",
+        subHeader: "",
+        message: "상세 정보가 변경되었습니다.",
+        buttons: [{ text: "확인" }],
+      });
+      await alert.present();
     }
   }
   async selectPatternAttribute() {
