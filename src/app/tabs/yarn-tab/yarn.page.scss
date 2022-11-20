@@ -1,48 +1,15 @@
 .toolbar {
   --background: var(--ion-color-theme);
 }
-
-.list__wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1px;
-  row-gap: 1px;
-  padding: 0;
-  background-color: white;
-  justify-content: center;
+ion-infinite-scroll {
+  margin-top: 30px;
 }
 
 .card__wrapper {
   width: 100%;
   margin: 0 auto;
 }
-.image {
-  &__square {
-    width: 49vw;
-    height: 49vw;
-    border-radius: 8px;
-    margin: auto;
-    position: relative;
-    img {
-      position: absolute;
-      width: 49vw;
-      height: 49vw;
-      -o-object-fit: cover;
-      object-fit: cover;
-    }
-    .heart {
-      position: absolute;
-      right: 0.7rem;
-      bottom: 0.7rem;
-      color: #ea3d51;
-      font-size: 20px;
-      &--fill {
-        position: absolute;
-        right: 0.7rem;
-        bottom: 0.7rem;
-        color: #ea3d51;
-        font-size: 20px;
-      }
-    }
-  }
+
+ion-infinite-scroll {
+  margin-top: 30px;
 }
