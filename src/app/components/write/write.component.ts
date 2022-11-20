@@ -162,8 +162,11 @@ export class WriteComponent implements OnInit {
 
   checkIsValid(): boolean {
     const title = this.title.replace(/(\s*)/g, "");
+    const category = this.category;
     const contents = this.contents.replace(/(\s*)/g, "");
     if (title.length === 0) {
+      return false;
+    } else if (category === "") {
       return false;
     } else if (contents.length === 0) {
       return false;
