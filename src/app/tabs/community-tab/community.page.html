@@ -11,6 +11,7 @@
     </div> -->
   <div class="community__wrapper">
     <div class="top">
+      <ion-chip (click)="getMainPostList()" color="success">전체</ion-chip>
       <div *ngFor="let category of categories" (click)="getPostList(category)">
         <ion-chip color="success">{{category}}</ion-chip>
       </div>
