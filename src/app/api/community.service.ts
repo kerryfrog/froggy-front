@@ -49,6 +49,20 @@ export class CommunityService {
       return error.response;
     }
   }
+  async getPosts(category) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/community/posts/${category}`,
+        responseType: "json",
+      });
+      console.log("response of specific posts of category", response);
+
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getPostDetail(postId) {
     try {
       const response = await axios({

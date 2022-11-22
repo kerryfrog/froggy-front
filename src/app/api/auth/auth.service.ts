@@ -10,18 +10,19 @@ export class AuthService {
   async postSignIn(data) {
     try {
       const headers = {
-        'Accept': "application/json",
-        'Content-Type': 'application/json',
-      }
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
       const response = await axios({
         method: "post",
         url: `${environment.apiUrl}/auth/login`,
         headers,
         data,
         responseType: "json",
-      });      
+      });
       return response;
     } catch (error) {
+      console.log(error);
       return error.response;
     }
   }
@@ -50,6 +51,6 @@ export class AuthService {
       return response;
     } catch (error) {
       return error.response;
-    }    
+    }
   }
 }

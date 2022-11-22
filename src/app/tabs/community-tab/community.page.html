@@ -11,11 +11,10 @@
     </div> -->
   <div class="community__wrapper">
     <div class="top">
-      <ion-chip color="success">전체</ion-chip>
-      <ion-chip color="success">인기</ion-chip>
-      <ion-chip color="success">전시</ion-chip>
-      <ion-chip color="success">정보</ion-chip>
-      <ion-chip color="success">자유</ion-chip>
+      <ion-chip (click)="getMainPostList()" color="success">전체</ion-chip>
+      <div *ngFor="let category of categories" (click)="getPostList(category)">
+        <ion-chip color="success">{{category}}</ion-chip>
+      </div>
     </div>
     <app-post-list [postList]="postList"> </app-post-list>
   </div>
