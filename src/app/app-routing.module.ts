@@ -89,6 +89,13 @@ const routes: Routes = [
         (m) => m.PatternReviewWritePageModule
       ),
   },
+  {
+    path: "user-post",
+    loadChildren: () =>
+      import("./pages/mypage/user-post/user-post.module").then(
+        (m) => m.UserPostPageModule
+      ),
+  },
 ];
 @NgModule({
   imports: [

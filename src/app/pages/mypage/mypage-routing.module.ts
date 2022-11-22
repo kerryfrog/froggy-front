@@ -30,8 +30,16 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'user-review',
-    loadChildren: () => import('./user-review/user-review.module').then( m => m.UserReviewPageModule)
+    path: "user-review",
+    loadChildren: () =>
+      import("./user-review/user-review.module").then(
+        (m) => m.UserReviewPageModule
+      ),
+  },
+  {
+    path: "user-post",
+    loadChildren: () =>
+      import("./user-post/user-post.module").then((m) => m.UserPostPageModule),
   },
 ];
 
