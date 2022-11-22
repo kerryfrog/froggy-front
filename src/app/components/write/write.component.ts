@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { NavController, ModalController } from "@ionic/angular";
+import {
+  NavController,
+  ModalController,
+  AlertController,
+} from "@ionic/angular";
 import {
   FormGroup,
   FormBuilder,
@@ -58,7 +62,8 @@ export class WriteComponent implements OnInit {
     public modalController: ModalController,
     public communityService: CommunityService,
     public userService: UserService,
-    public imageService: ImageService
+    public imageService: ImageService,
+    public alertController: AlertController
   ) {}
 
   ngOnInit() {}
@@ -177,7 +182,13 @@ export class WriteComponent implements OnInit {
 
   async setUserSyncWithServer() {
     await this.userService.deleteUser();
-    alert("다시 로그인 해 주세요");
+    const alert = await this.alertController.create({
+      header: "안내",
+      subHeader: "",
+      message: "다시 로그인 해주세요",
+      buttons: [{ text: "확인" }],
+    });
+    await alert.present();
   }
   goBackWithSuccess() {
     this.modalController.dismiss({

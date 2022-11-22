@@ -1,0 +1,24 @@
+.section-title {
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  &__nick {
+    font-family: "Pretendard-Semibold";
+    color: var(--ion-color-theme-shade);
+  }
+}
+.contents__wrapper {
+  padding: 10px;
+}
+
+.recommend-list {
+  margin: 2.5vw 0vw;
+
+  display: flex;
+  justify-content: center;
+  ion-spinner {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: var(--ion-color-theme-shade);
+  }
+}
