@@ -12,20 +12,20 @@ ion-refresher {
 .container {
   &__products {
     background: white;
-    margin: 2.5vw 0vw;
-    padding: 0vw;
+    margin: 10px 0px;
+    padding: 0px;
     display: flex;
     justify-content: flex-start;
     overflow-x: scroll;
     font-family: "Pretender-Regular";
     .contents {
-      min-width: 31vw;
+      min-width: 121px;
       display: flex;
       flex-direction: column;
-      margin: 0 1.2vw;
+      margin: 0 5px;
       .image {
-        width: 31vw;
-        height: 35vw;
+        width: 121px;
+        height: 137px;
         position: relative;
         img {
           position: absolute;
@@ -79,7 +79,7 @@ ion-refresher {
 }
 
 .recommend-list {
-  margin: 2.5vw 0vw;
+  margin: 10px 0px;
 }
 
 .loading-text {

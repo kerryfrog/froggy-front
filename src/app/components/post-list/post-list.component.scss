@@ -5,22 +5,22 @@
   .post {
     background-color: white;
     &__textbox {
-      padding: 2vw;
-      margin: 2vw;
+      padding: 8px;
+      margin: 8px;
     }
     &__infobox {
-      padding: 2vw;
-      margin: 2vw;
+      padding: 8px;
+      margin: 8px;
     }
     &__category {
-      font-size: 3.2vw;
+      font-size: 12px;
       font-family: "Pretendard-Light";
       display: flex;
       background-color: var(--ion-color-theme-light);
       border-radius: 5px;
-      width: 11vw;
-      height: 6vw;
-      margin-bottom: 2.5vw;
+      width: 43px;
+      height: 23px;
+      margin-bottom: 10px;
       span {
         margin: auto;
         font-family: "Pretendard-Light";
@@ -28,22 +28,22 @@
     }
 
     &__title {
-      font-size: 4vw;
+      font-size: 16px;
       font-family: "Pretendard-Regular";
-      margin-bottom: 1.8vw;
+      margin-bottom: 7px;
     }
     &__contents {
       color: rgba(1, 15, 1, 0.75);
-      font-size: 3.7vw;
+      font-size: 14px;
       font-family: "Pretendard-Light";
-      margin-bottom: 5vw;
+      margin-bottom: 20px;
     }
     &__small__info {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       color: rgba(1, 15, 1, 0.75);
-      font-size: 3.2vw;
+      font-size: 12px;
       div {
         font-family: "Pretendard-Light";
       }
@@ -52,16 +52,16 @@
     &__bottom {
       display: flex;
       flex-direction: row;
-      font-size: 3.7vw;
+      font-size: 14px;
       font-family: "Pretendard-Light";
 
       &__icon {
         display: flex;
-        margin-right: 2.3vw;
+        margin-right: 9px;
         color: rgba(1, 15, 1, 0.75);
         ion-icon {
           margin: auto;
-          padding-right: 0.5vw;
+          padding-right: 2px;
         }
         span {
           font-family: "Pretendard-Light";
