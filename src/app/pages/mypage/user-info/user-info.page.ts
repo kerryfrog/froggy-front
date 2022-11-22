@@ -144,7 +144,7 @@ export class UserInfoPage implements OnInit {
       this.setUserSyncWithServer();
     }
     if (changeProfileResult.data.status === "Y") {
-      this.setUserProfile();
+      this.setUserProfile(changeProfileResult.data.isSetProfileChanged);
       const alert = await this.alertController.create({
         header: "변경 완료",
         subHeader: "",
@@ -171,13 +171,16 @@ export class UserInfoPage implements OnInit {
     console.log(data);
   }
 
-  async setUserProfile() {
+  async setUserProfile(isSetProfileChanged) {
     if (this.userPreferChange.crochet !== -1)
       this.user.crochet = this.userPreferChange.crochet;
     if (this.userPreferChange.knitting !== -1)
       this.user.knitting = this.userPreferChange.knitting;
     if (this.userPreferChange.proficiency !== -1)
       this.user.proficiency = this.userPreferChange.proficiency;
+    if (isSetProfileChanged === "Y") {
+      this.user.isSetProfile = "Y";
+    }
     await this.userService.saveUser(this.user);
   }
 
