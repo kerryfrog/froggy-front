@@ -32,15 +32,7 @@
   </div>
   <div class="content">
     <div style="display: none" class="invisible-input-cont">
-      <input
-        #fileInput
-        style="display: none"
-        type="file"
-        accept="image/*"
-        (change)="getImageWeb(fileInput.files)"
-        multiple
-      />
-      <!-- <input #quillFile type="file" (change)="quillFileSelected($event)" /> -->
+      <input #quillFile type="file" (change)="quillFileSelected($event)" />
     </div>
     <quill-editor
       #quillEditorRef
@@ -50,11 +42,6 @@
     ></quill-editor>
   </div>
 
-  <div *ngIf="imagesForDisplay.length > 0">
-    <div *ngFor="let imageData of imagesForDisplay; index as i">
-      <img src="{{ imageData.image }}" />
-    </div>
-  </div>
   <div class="button__wrapper">
     <ion-button
       [disabled]="!isValidPost"
