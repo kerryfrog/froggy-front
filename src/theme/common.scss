@@ -58,6 +58,11 @@ ion-chip {
 ion-back-button {
   color: var(--ion-color-theme);
 }
+
+ion-button.custom-back {
+  color: var(--ion-color-theme);
+}
+
 ion-toolbar.custom-back {
   ion-icon {
     color: var(--ion-color-theme-shade);

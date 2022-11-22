@@ -553,7 +553,14 @@ export class PatternPage {
 
   async setUserSyncWithServer() {
     await this.userService.deleteUser();
-    alert("다시 로그인 해 주세요");
+    const alert = await this.alertController.create({
+      header: "안내",
+      subHeader: "",
+      message: "다시 로그인 해주세요",
+      buttons: [{ text: "확인" }],
+    });
+    await alert.present();
+    return;
   }
   // async getRaverlyApi() {
   //   if (!this.min || !this.max) {

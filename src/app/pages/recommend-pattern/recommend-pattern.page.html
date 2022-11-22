@@ -1,11 +1,77 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()">
+      <ion-button class="custom-back" (click)="goBack()">
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <div *ngIf="user" class="contents__wrapper">
+    <div *ngIf="user.proficiency !==0">
+      <div class="section-title">
+        <span *ngIf="user.proficiency===1" class="section-title__nick">
+          초보
+        </span>
+        <span *ngIf="user.proficiency===1">를 위한 쉬운 도안 </span>
+        <span *ngIf="user.proficiency===2" class="section-title__nick">
+          중수
+        </span>
+        <span *ngIf="user.proficiency===2">를 위한 다양한 도안 </span>
+        <span *ngIf="user.proficiency===3" class="section-title__nick">
+          고수
+        </span>
+        <span *ngIf="user.proficiency===3">를 위한 도전! 어려운 도안 </span>
+      </div>
+      <div class="recommend-list">
+        <ion-spinner
+          *ngIf="difficultyPatternList.length < 1"
+          name="circular"
+        ></ion-spinner>
+        <app-recommend-list
+          [patternList]="difficultyPatternList"
+        ></app-recommend-list>
+      </div>
+    </div>
+
+    <div *ngIf="user.crochet ===1">
+      <div class="section-title">
+        <span class="section-title__nick"> 코바늘 </span>
+        <span> 사용자를 위한 도안 </span>
+      </div>
+      <div class="recommend-list">
+        <ion-spinner
+          *ngIf="crochetPatternList.length < 1"
+          name="circular"
+        ></ion-spinner>
+        <app-recommend-list
+          [patternList]="crochetPatternList"
+        ></app-recommend-list>
+      </div>
+    </div>
+    <div *ngIf="user.knitting ===1">
+      <div class="section-title">
+        <span class="section-title__nick"> 대바늘 </span>
+        <span> 사용자를 위한 도안 </span>
+      </div>
+      <div class="recommend-list">
+        <ion-spinner
+          *ngIf="knitPatternList.length < 1"
+          name="circular"
+        ></ion-spinner>
+        <app-recommend-list
+          [patternList]="knitPatternList"
+        ></app-recommend-list>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="recommend-list">
+      <div *ngIf="isLoading.recommend" class="loading-text">로딩중 ..</div>
+      <app-recommend-list
+        [patternList]="patternListForUser"
+      ></app-recommend-list>
+    </div> -->
+</ion-content>

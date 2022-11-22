@@ -1,20 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { RecommendPatternPageRoutingModule } from './recommend-pattern-routing.module';
+import { RecommendPatternPageRoutingModule } from "./recommend-pattern-routing.module";
 
-import { RecommendPatternPage } from './recommend-pattern.page';
+import { RecommendPatternPage } from "./recommend-pattern.page";
+import { RecommendListComponentModule } from "src/app/components/recommend-list/recommend-list.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecommendPatternPageRoutingModule
+    RecommendPatternPageRoutingModule,
+    RecommendListComponentModule,
   ],
-  declarations: [RecommendPatternPage]
+  declarations: [RecommendPatternPage],
 })
 export class RecommendPatternPageModule {}

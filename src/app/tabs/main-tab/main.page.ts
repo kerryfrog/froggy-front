@@ -1,7 +1,5 @@
 import { Component } from "@angular/core";
 
-import { DataService } from "src/app/api/data.service";
-import { UserService } from "src/app/services/user.service";
 import {
   AlertController,
   LoadingController,
@@ -9,6 +7,8 @@ import {
 } from "@ionic/angular";
 import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 
+import { DataService } from "src/app/api/data.service";
+import { UserService } from "src/app/services/user.service";
 import { YarnService } from "src/app/api/yarn.service";
 import { PatternService } from "src/app/api/pattern.service";
 import { CommunityService } from "src/app/api/community.service";
@@ -218,8 +218,15 @@ export class MainPage {
   async setUserSyncWithServer() {
     this.user = false;
     await this.userService.deleteUser();
-    alert("다시 로그인 해 주세요");
+    const alert = await this.alertController.create({
+      header: "안내",
+      subHeader: "",
+      message: "다시 로그인 해주세요",
+      buttons: [{ text: "확인" }],
+    });
+    await alert.present();
     await this.getMainRecommendViewByState();
+    return;
   }
 
   changeViewState() {

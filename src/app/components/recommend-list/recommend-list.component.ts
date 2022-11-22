@@ -14,6 +14,7 @@ import { PatternService } from "src/app/api/pattern.service";
 })
 export class RecommendListComponent implements OnInit {
   @Input() patternList;
+  @Input() isButton: boolean = false;
   constructor(
     public navController: NavController,
     public patternService: PatternService
