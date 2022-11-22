@@ -70,6 +70,10 @@ export class MypagePage implements OnInit {
     this.navController.navigateForward(`/mypage/user-review`);
   }
 
+  goUserPostPage() {
+    this.navController.navigateForward(`/mypage/user-post`);
+  }
+
   goFavoritePatternPage() {
     this.navController.navigateForward(`/mypage/favorite/pattern`);
   }
