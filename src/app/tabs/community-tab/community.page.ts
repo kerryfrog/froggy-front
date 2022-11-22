@@ -17,6 +17,7 @@ export class CommunityPage {
   public flag = false;
   public postList;
   public user;
+  public categories = ["자유", "정보", "홍보", "노래방"];
   constructor(
     public patternService: PatternService,
     public modalController: ModalController,
@@ -44,6 +45,12 @@ export class CommunityPage {
     if (aiPatternResult.data.status === "Y") {
       this.result = aiPatternResult.data.patternList["test"];
       this.flag = true;
+    }
+  }
+  async getPostList(category) {
+    const postsByCategory = await this.communityService.getPosts(category);
+    if (postsByCategory.data.status === "Y") {
+      this.postList = postsByCategory.data.postList;
     }
   }
 
