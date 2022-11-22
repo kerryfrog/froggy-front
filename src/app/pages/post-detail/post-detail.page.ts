@@ -52,6 +52,8 @@ export class PostDetailPage implements OnInit {
       return;
     } else if (this.post.userId === userInfo.id) {
       this.isWriter = true;
+    } else {
+      this.isWriter = false;
     }
   }
 
@@ -87,14 +89,12 @@ export class PostDetailPage implements OnInit {
     const saveCommentResult = await this.communityService.saveNewComment(
       paramJson
     );
-
     if (saveCommentResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
     }
     if (saveCommentResult.data.status === "Y") {
       this.comment = "";
     }
-
     await this.fetchComments();
   }
 

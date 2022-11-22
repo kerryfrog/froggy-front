@@ -53,7 +53,7 @@ export class CommunityService {
     try {
       const response = await axios({
         method: "get",
-        url: `${environment.apiUrl}/community/posts/${category}`,
+        url: `${environment.apiUrl}/community/categories/${category}`,
         responseType: "json",
       });
       console.log("response of specific posts of category", response);
