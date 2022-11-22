@@ -141,11 +141,11 @@ export class PatternService {
       return error.response;
     }
   }
-  async getFavoritePatternList() {
+  async getFavoritePatternList(page) {
     try {
       const response = await axios({
         method: "get",
-        url: `${environment.apiUrl}/pattern/liked/list`,
+        url: `${environment.apiUrl}/pattern/liked/list/${page}`,
         responseType: "json",
       });
       return response;

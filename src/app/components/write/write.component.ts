@@ -70,11 +70,6 @@ export class WriteComponent implements OnInit {
     this.isValidPost = this.checkIsValid();
   }
 
-  // getEditorInstance(editorInstance: any) {
-  //   console.log(editorInstance);
-  //   let toolbar = editorInstance.getModule("toolbar");
-  //   //toolbar.addHandler("image", customImageUpload);
-  // }
   onChangeTitle(event) {
     // console.log(event);
     this.title = event.detail.value;
@@ -99,7 +94,6 @@ export class WriteComponent implements OnInit {
     // let inputList = [];
     this.quillFile = ev.target.files[0];
     this.image = ev.target.files[0];
-    // this.image["time"] = Date.now();글
     console.log(this.image);
 
     const imageUploadResult = await this.imageService.uploadSingleImage(
@@ -119,27 +113,6 @@ export class WriteComponent implements OnInit {
     //console.log(ev.target.files[0]);
 
     let imageCount = 0;
-    //this.imageList.push(imageUrl);
-
-    // const imageData = {
-    //   id:
-    //     this.article != null && this.article !== undefined
-    //       ? this.article.post_id
-    //       : null,
-    //   title: this.quillFile.name,
-    //   file: this.quillFile,
-    // };
-    // this.dataService.postImage(imageData).subscribe((response: any) => {
-    //   console.log(response);
-    //   const filename = response.data.filename;
-    //   let range: any;
-    //   const img =
-    //     '<img class="img-within" src="your_upload_directory_here/' +
-    //     filename +
-    //     '"></img>';
-    //   range = this.meQuillRef.getSelection();
-    //   this.meQuillRef.clipboard.dangerouslyPasteHTML(range.index, img);
-    // });
   }
   async submitPost() {
     const payload: Post = {
@@ -189,26 +162,4 @@ export class WriteComponent implements OnInit {
       dismissed: false,
     });
   }
-
-  // // base64를 blob으로 변경하는 함수
-  // b64toBlob = async (b64Data, contentType = "", sliceSize = 512) => {
-  //   const byteCharacters = atob(b64Data);
-  //   const byteArrays = [];
-
-  //   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-  //     const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-  //     const byteNumbers = new Array(slice.length);
-  //     for (let i = 0; i < slice.length; i++) {
-  //       byteNumbers[i] = slice.charCodeAt(i);
-  //     }
-
-  //     const byteArray = new Uint8Array(byteNumbers);
-  //     byteArrays.push(byteArray);
-  //   }
-
-  //   const blob = new Blob(byteArrays, { type: contentType });
-
-  //   return blob;
-  // };
 }
