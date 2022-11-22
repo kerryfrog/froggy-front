@@ -52,12 +52,13 @@
     <div class="difficulty">
       <h4>숙련도</h4>
       <ion-select
+        placeholder="당신의 숙련도를 알려주세요"
         (ionChange)="handleChange($event)"
         [value]="userPreferForShow.proficiency.toString()"
       >
-        <ion-select-option value="0">초보</ion-select-option>
-        <ion-select-option value="1">중수</ion-select-option>
-        <ion-select-option value="2">고수</ion-select-option>
+        <ion-select-option value="1">초보</ion-select-option>
+        <ion-select-option value="2">중수</ion-select-option>
+        <ion-select-option value="3">고수</ion-select-option>
       </ion-select>
     </div>
 
