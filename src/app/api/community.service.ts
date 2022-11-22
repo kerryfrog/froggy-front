@@ -63,6 +63,19 @@ export class CommunityService {
       return error.response;
     }
   }
+  async getPostsByUser() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/community/list`,
+        responseType: "json",
+      });
+      console.log("response of posts of this user", response);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getPostDetail(postId) {
     try {
       const response = await axios({

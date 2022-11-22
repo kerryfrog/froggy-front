@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        text=""
+        defaultHref="tabs/main"
+        icon="chevron-back-outline"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="post__wrapper">
+    <h5>내가 쓴 글</h5>
+  </div>
+  <div *ngIf="userPostList.length > 0">
+    <app-post-list [postList]="userPostList"> </app-post-list>
+  </div>
+</ion-content>

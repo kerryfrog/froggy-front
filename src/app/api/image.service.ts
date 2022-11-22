@@ -26,11 +26,26 @@ export class ImageService {
         data: formData,
         responseType: "json",
       });
-      console.log("response", response);
+      console.log("imageservice response", response);
 
       return response;
     } catch (error) {
       return error.response;
     }
+  }
+  async uploadSingleImageFile(data) {
+    return new Promise((resolve, reject) => {
+      const formData = new FormData();
+      formData.append("image", data);
+      const response = axios({
+        method: "post",
+        url: `${environment.apiUrl}/image/single`,
+        data: formData,
+        responseType: "json",
+      }).then(function () {
+        console.log("imageservice response", response);
+        resolve(response);
+      });
+    });
   }
 }
