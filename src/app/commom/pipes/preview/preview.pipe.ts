@@ -4,7 +4,11 @@ import { Pipe, PipeTransform } from "@angular/core";
   name: "preview",
 })
 export class PreviewPipe implements PipeTransform {
-  transform(value: string, maxLength: number, type: string): string {
+  transform(
+    value: string,
+    maxLength: number = 20,
+    type: string = "none"
+  ): string {
     if (value.length >= maxLength) {
       if (type === "none") {
         const short = value.substring(0, maxLength);
