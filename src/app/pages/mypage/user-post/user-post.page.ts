@@ -35,7 +35,4 @@ export class UserPostPage implements OnInit {
   goBack() {
     this.navController.navigateBack("mypage");
   }
-  goPostDetailPage(review) {
-    // this.navController.navigateForward(`/pattern/${review.patternId}`);
-  }
 }
