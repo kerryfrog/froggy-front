@@ -2,8 +2,12 @@
   --background: white;
   --background-position: left 0 top -4px;
 }
+.toolbar-container {
+  min-height: 60px;
+}
 .logo {
   font-family: "Comfortaa";
+  font-size: 20px;
   letter-spacing: -0.4px;
   color: var(--ion-color-theme);
 }
