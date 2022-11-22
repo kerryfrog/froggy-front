@@ -13,10 +13,8 @@
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3>Create your account!</h3>
-          </div>
-          <div padding>
+          <div class="signup__wrapper">
+            <h4>Create your account!</h4>
             <ion-item>
               <ion-input
                 name="id"
@@ -57,11 +55,15 @@
                 formControlName="confirm"
               ></ion-input>
             </ion-item>
-          </div>
-          <div padding>
-            <ion-button size="large" type="submit" expand="block"
-              >회원가입하기</ion-button
-            >
+            <div class="button__wrapper">
+              <ion-button
+                class="outline_n_fill"
+                size="large"
+                type="submit"
+                expand="block"
+                >회원가입하기</ion-button
+              >
+            </div>
           </div>
         </ion-col>
       </ion-row>
