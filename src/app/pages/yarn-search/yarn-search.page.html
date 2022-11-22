@@ -1,34 +1,39 @@
 <app-toolbar></app-toolbar>
 
+<ion-searchbar
+  (ionChange)="handleChange($event)"
+  (search)="search($event)"
+  class="custom"
+  color="light"
+  placeholder="검색하기"
+></ion-searchbar>
 <ion-content>
-  <ion-searchbar
-    [debounce]="1300"
-    (ionChange)="handleChange($event)"
-    class="custom"
-    color="light"
-    placeholder="검색하기"
-  ></ion-searchbar>
+  <div class="spinner__wrapper">
+    <ion-spinner *ngIf="isWaiting" name="circular"></ion-spinner>
+  </div>
   <div class="serachResult" *ngIf="yarnList.length > 0 ">
     <div class="card__wrapper" *ngFor="let yarn of yarnList; let i = index">
-      <ion-card>
-        <ion-card-content>
-          <div class="yarn__wrapper">
-            <div class="yarn__image">
-              <img src="{{ yarn.thumbnail }}" />
-            </div>
-            <div class="yarn__info">
-              <div class="yarn__info__name">{{yarn.name}}</div>
-              <div class="yanr__info__extra">
-                회사 : {{yarn.yarnCompanyName}}
+      <div (click)="goPatternDetailPage(yarn)">
+        <ion-card>
+          <ion-card-content>
+            <div class="yarn__wrapper">
+              <div class="yarn__image">
+                <img src="{{ yarn.thumbnail }}" />
               </div>
-              <div class="yanr__info__extra">
-                gaugeDivisor : {{yarn. gaugeDivisor}}
+              <div class="yarn__info">
+                <div class="yarn__info__name">{{yarn.name}}</div>
+                <div class="yanr__info__extra">
+                  회사 : {{yarn.yarnCompanyName}}
+                </div>
+                <div class="yanr__info__extra">
+                  gaugeDivisor : {{yarn. gaugeDivisor}}
+                </div>
+                <div class="yanr__info__extra">무게 : {{yarn.grams}}g</div>
               </div>
-              <div class="yanr__info__extra">무게 : {{yarn.grams}}g</div>
             </div>
-          </div>
-        </ion-card-content>
-      </ion-card>
+          </ion-card-content>
+        </ion-card>
+      </div>
     </div>
   </div>
 </ion-content>

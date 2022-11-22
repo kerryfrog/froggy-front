@@ -1,15 +1,13 @@
 <app-toolbar></app-toolbar>
 
-<ion-content [fullscreen]="true">
-  <ion-searchbar
-    [debounce]="1300"
-    (click)="goSearchYarnPage()"
-    class="custom"
-    color="light"
-    placeholder="검색"
-  ></ion-searchbar>
-  <h1>{{results}}</h1>
-
+<ion-searchbar
+  [debounce]="1300"
+  (click)="goSearchYarnPage()"
+  class="custom"
+  color="light"
+  placeholder="검색하기"
+></ion-searchbar>
+<ion-content>
   <app-yarn-grid [yarnList]="yarnList"></app-yarn-grid>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content

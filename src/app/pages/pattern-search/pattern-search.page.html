@@ -1,12 +1,15 @@
 <app-toolbar></app-toolbar>
 
+<ion-searchbar
+  (search)="search($event)"
+  (ionChange)="handleChange($event)"
+  class="custom"
+  color="light"
+  placeholder="검색하기"
+></ion-searchbar>
 <ion-content>
-  <ion-searchbar
-    [debounce]="1300"
-    (ionChange)="handleChange($event)"
-    class="custom"
-    color="light"
-    placeholder="검색하기"
-  ></ion-searchbar>
+  <div class="spinner__wrapper">
+    <ion-spinner *ngIf="isWaiting" name="circular"></ion-spinner>
+  </div>
   <app-pattern-grid [patternList]="patternList"></app-pattern-grid>
 </ion-content>
