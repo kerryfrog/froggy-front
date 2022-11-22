@@ -47,6 +47,9 @@ export class PostDetailPage implements OnInit {
     }
     const userInfo = await this.userService.getUser();
     console.log(this.post, userInfo);
+    if (this.post === undefined) {
+      this.goBack();
+    }
     if (userInfo === null) {
       this.isWriter = false;
       return;
