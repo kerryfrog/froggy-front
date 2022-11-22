@@ -5,26 +5,17 @@
   .post {
     background-color: white;
     &__textbox {
-      padding: 8px;
-      margin: 8px;
+      padding: 3px 10px 10px 10px;
+      margin: 0px 10px 10px 10px; // top 부터 시계방향
     }
     &__infobox {
-      padding: 8px;
-      margin: 8px;
-    }
-    &__category {
+      padding: 7px 10px;
+      margin: 7px 10px;
       font-size: 13px;
-      font-family: "Pretendard-Light";
-      display: flex;
-      background-color: var(--ion-color-theme-light);
-      border-radius: 5px;
-      width: 43px;
-      height: 23px;
-      margin-bottom: 10px;
-      span {
-        margin: auto;
-        font-family: "Pretendard-Light";
-      }
+    }
+
+    &__category {
+      margin: 15px 10px 0px 10px;
     }
 
     &__title {
