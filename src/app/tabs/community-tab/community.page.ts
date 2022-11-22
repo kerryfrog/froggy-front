@@ -17,7 +17,7 @@ export class CommunityPage {
   public flag = false;
   public postList;
   public user;
-  public categories = ["자유", "정보", "홍보", "노래방"];
+  public categories = ["자유", "정보", "홍보", "방명록", "노래방"];
   constructor(
     public patternService: PatternService,
     public modalController: ModalController,
