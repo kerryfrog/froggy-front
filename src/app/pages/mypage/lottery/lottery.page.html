@@ -11,7 +11,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-progress-bar type="indeterminate" color="warning"></ion-progress-bar>
   <div class="content__wrapper">
     <div class="info">
       <div class="info__title">경품 뽑기</div>
@@ -20,4 +19,32 @@
       </div>
     </div>
   </div>
+  <ion-segment
+    [scrollable]="true"
+    (ionChange)="onChangeSegment($event)"
+    color="success"
+    value="heart"
+  >
+    <ion-segment-button value="0">
+      <ion-icon name="heart"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="1">
+      <ion-icon name="star"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-icon name="globe"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      <ion-icon name="barbell"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="4">
+      <ion-icon name="trash"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="5">
+      <ion-icon name="person"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-button (click)="onSelectSegment()">고르기</ion-button>
+  <h2 *ngIf="rating !== -1">축하합니다!</h2>
+  <h1 *ngIf="rating !== -1">{{rating}}등에 당첨되셨습니다!</h1>
 </ion-content>
