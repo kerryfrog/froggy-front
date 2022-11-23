@@ -1,12 +1,21 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/services/user.service";
+import {
+  ModalController,
+  NavController,
+  AlertController,
+} from "@ionic/angular";
+
 @Component({
   selector: "app-lottery",
   templateUrl: "./lottery.page.html",
   styleUrls: ["./lottery.page.scss"],
 })
 export class LotteryPage implements OnInit {
-  constructor(public userService: UserService) {}
+  constructor(
+    public userService: UserService,
+    public alertController: AlertController
+  ) {}
   public user;
   public curIcon = "heart";
   public arr = [1, 2, 2, 3, 3, 3];
@@ -20,9 +29,22 @@ export class LotteryPage implements OnInit {
     this.curIcon = event.detail.value;
   }
   async onSelectSegment() {
-    const shuffledArr = await this.shuffleArray(this.arr);
-    console.log(shuffledArr, shuffledArr[this.curIcon]);
-    this.rating = shuffledArr[this.curIcon];
+    if (this.user.ticket > 0) {
+      const shuffledArr = await this.shuffleArray(this.arr);
+      console.log(shuffledArr, shuffledArr[this.curIcon]);
+      this.rating = shuffledArr[this.curIcon];
+      this.user.ticket = this.user.ticket - 1;
+      await this.userService.saveUser(this.user);
+    } else {
+      const alert = await this.alertController.create({
+        header: "안내",
+        subHeader: "",
+        message: "티켓을 전부 사용했습니다 ㅠㅠ",
+        buttons: [{ text: "확인" }],
+      });
+      await alert.present();
+      return;
+    }
   }
   async shuffleArray(array) {
     array.sort(() => Math.random() - 0.5);
