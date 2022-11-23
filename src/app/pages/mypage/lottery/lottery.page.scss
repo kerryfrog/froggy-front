@@ -9,7 +9,7 @@
       font-size: 30px;
     }
     &__user {
-      font-family: "Pretendard-Light";
+      font-family: "Pretendard-Medium";
       font-size: 20px;
       margin-top: 10px;
     }
@@ -24,7 +24,8 @@ ion-segment {
 }
 
 .result__wrapper {
-  margin: 20px;
+  justify-content: center;
+  margin: 30px;
 }
 
 span {
@@ -32,4 +33,8 @@ span {
 }
 h2 {
   margin: none;
+}
+div {
+  font-family: "Pretendard-Light";
+  font-size: 20px;
 }
