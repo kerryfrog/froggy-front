@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-button class="custom-back" (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="mypage__wrapper">
+    <h5>Thanks To...</h5>
+    <h1>송희정씨, 이구재씨, 최은영씨, 이원영씨</h1>
+    <ion-progress-bar type="indeterminate" color="danger"></ion-progress-bar>
+    <h2>정하림씨, 서아영씨, 서주연씨, Q</h2>
+    <ion-progress-bar type="indeterminate" color="warning"></ion-progress-bar>
+    <h3>김은삼 교수님, 젤리슬</h3>
+    <ion-progress-bar type="indeterminate" color="success"></ion-progress-bar>
+    <h4>이석덕파스타, 카페 공휴, 신촌 커피빈, T608, 가짜 피카츄</h4>
+    <ion-progress-bar type="indeterminate" color="tertiary"></ion-progress-bar>
+    <h5>
+      raverly, 뜨개구리, 홍익대학교 컴퓨터공학과, 헬스보이짐, 김태희마스크
+    </h5>
+    <ion-progress-bar type="indeterminate" color="dark"></ion-progress-bar>
+    <h5 *ngIf="user">and... 나와 모닝 차주와 {{user.nick}}.</h5>
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/froggy-34371.appspot.com/o/8C12F1C2-34BC-44AC-B316-E800AA545E88.jpeg_1669206358324?alt=media&token=469320c5-9750-4abc-afa0-413385b20e76"
+    />
+  </div>
+</ion-content>

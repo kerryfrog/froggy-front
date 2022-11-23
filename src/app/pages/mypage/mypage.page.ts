@@ -81,4 +81,7 @@ export class MypagePage implements OnInit {
   goFavoriteYarnPage() {
     this.navController.navigateForward(`/mypage/favorite/yarn`);
   }
+  goThanksToPage() {
+    this.navController.navigateForward(`/mypage/thanks`);
+  }
 }

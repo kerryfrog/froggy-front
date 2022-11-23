@@ -41,6 +41,10 @@ const routes: Routes = [
     loadChildren: () =>
       import("./user-post/user-post.module").then((m) => m.UserPostPageModule),
   },
+  {
+    path: 'thanks',
+    loadChildren: () => import('./thanks/thanks.module').then( m => m.ThanksPageModule)
+  },
 ];
 
 @NgModule({
