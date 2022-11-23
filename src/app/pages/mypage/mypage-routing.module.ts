@@ -42,8 +42,14 @@ const routes: Routes = [
       import("./user-post/user-post.module").then((m) => m.UserPostPageModule),
   },
   {
-    path: 'lottery',
-    loadChildren: () => import('./lottery/lottery.module').then( m => m.LotteryPageModule)
+    path: "lottery",
+    loadChildren: () =>
+      import("./lottery/lottery.module").then((m) => m.LotteryPageModule),
+  },
+  {
+    path: "thanks",
+    loadChildren: () =>
+      import("./thanks/thanks.module").then((m) => m.ThanksPageModule),
   },
 ];
 
