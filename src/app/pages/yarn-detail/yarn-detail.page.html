@@ -11,11 +11,12 @@
 </ion-header>
 
 <ion-content>
-  <app-heart-image
+  <!-- <app-heart-image
     [product]="yarn"
     [type]="'yarn'"
     [link]="false"
-  ></app-heart-image>
+  ></app-heart-image> -->
+  <img src="{{yarn.thumbnail}}" />
   <div class="info__wrapper">
     <div>회사 <span>{{yarn.yarnCompanyName}}</span></div>
     <div class="name">{{yarn.name}}</div>
