@@ -9,4 +9,11 @@
 </ion-header>
 <ion-content>
   <app-pattern-grid [patternList]="patternList"></app-pattern-grid>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="circular"
+      loadingText="좋아요한 도안을 불러오는 중 입니다."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

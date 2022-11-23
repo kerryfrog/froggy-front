@@ -19,6 +19,20 @@ img {
   font-size: 16px;
   margin: 3px 10px;
   padding: 3px 10px;
+  .info__top {
+    display: flex;
+    justify-content: space-between;
+    &__icon {
+      .heart {
+        color: #ea3d51;
+        font-size: 20px;
+        &--fill {
+          color: #ea3d51;
+          font-size: 20px;
+        }
+      }
+    }
+  }
   hr {
     margin: 10px 0px;
     padding: 0px;

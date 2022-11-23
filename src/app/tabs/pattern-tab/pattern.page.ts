@@ -445,8 +445,6 @@ export class PatternPage {
   public pageNum = 1;
   public isFirstInit = false;
 
-  previousUrl: string = null;
-  currentUrl: string = null;
   constructor(
     public router: Router,
     public navController: NavController,

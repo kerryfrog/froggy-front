@@ -18,29 +18,47 @@
   ></app-heart-image> -->
   <img src="{{pattern.thumbnail}}" />
   <div class="info__wrapper">
-    <div>도안 창작자 <span>{{pattern.author}}</span></div>
-    <div class="name">{{pattern.name}}</div>
-    <div class="price" *ngIf="pattern.price">
-      only for <span>{{pattern.price}}</span> {{pattern.currencySymbol}}
+    <div class="info__top">
+      <div class="info__top__text">
+        <div>도안 창작자 <span>{{pattern.author}}</span></div>
+        <div class="name">{{pattern.name}}</div>
+        <div class="price" *ngIf="pattern.price">
+          only for <span>{{pattern.price}}</span> {{pattern.currencySymbol}}
+        </div>
+        <div class="price" *ngIf="!pattern.price">가격정보 없음</div>
+      </div>
+      <div class="info__top__icon">
+        <ion-icon
+          name="heart-outline"
+          class="heart"
+          *ngIf="!pattern.isFavorite"
+          (click)="enrollFavorite($event, pattern)"
+        ></ion-icon>
+        <ion-icon
+          name="heart"
+          class="heart--fill"
+          *ngIf="pattern.isFavorite"
+          (click)="enrollFavorite($event, pattern)"
+        ></ion-icon>
+      </div>
     </div>
-    <div class="price" *ngIf="!pattern.price">가격정보 없음</div>
     <hr />
     <div class="difficulty">
       <span>난이도</span>
       <div *ngFor="let index of iconsArray" id="{{index}}">
         <ion-icon
           name="{{
-            index - pattern.difficultyAverage  <= -1
-            ?  activeIcon :defaultIcon
-          }}"
+              index - pattern.difficultyAverage  <= -1
+              ?  activeIcon :defaultIcon
+            }}"
         ></ion-icon>
       </div>
     </div>
     <div *ngIf="pattern.gauge">바늘 호수 <span>{{pattern.gauge }}</span></div>
-    <div></div>
 
     <!-- <div *ngIf="pattern.notes">작가의 메모 <br />{{pattern.notes}}</div> -->
   </div>
+  <div class="icon__wrapper"></div>
   <hr />
   <div *ngIf="pattern.downloadable" class="link__wrapper">
     <h4>판매 링크</h4>
