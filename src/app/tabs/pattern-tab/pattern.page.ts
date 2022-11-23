@@ -499,10 +499,19 @@ export class PatternPage {
     console.log(this.user);
 
     if (!this.user || this.user.level < 1) {
-      const { data } = await this.patternService.getRandomPatternList();
-      console.log("pattern when level 0", data);
+      const { data } = await this.patternService.getRandomPatternListByPaging(
+        this.pageNum
+      );
       if (data.status === "Y") {
-        this.patternList = [...this.patternList, ...data.patternList];
+        if (this.pageNum === 1) {
+          this.patternList = [...data.patternList];
+        } else {
+          this.patternList = [...this.patternList, ...data.patternList];
+        }
+        console.log("pattern list is ", this.patternList);
+
+        this.paging = data.mainPaging;
+        this.pageNum += 1;
       }
     } else if (this.user.level === 1) {
       const { data } = await this.patternService.getRecommendPatternList(
@@ -512,8 +521,6 @@ export class PatternPage {
         this.setUserSyncWithServer();
       }
       if (data.status === "Y") {
-        console.log("페이지네이션 성공 ", data);
-
         if (this.pageNum === 1) {
           this.patternList = [...data.patternList];
         } else {

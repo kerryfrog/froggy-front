@@ -19,6 +19,18 @@ export class PatternService {
       return error.response;
     }
   }
+  async getRandomPatternListByPaging(page) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${environment.apiUrl}/pattern/tab/${page}`,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async getRecommendPatternList(page) {
     try {
       const response = await axios({
