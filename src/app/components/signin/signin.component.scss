@@ -6,6 +6,9 @@
   padding: 10px;
   margin: 20px;
 }
+
 ion-button {
-  color: var(--ion-color-theme);
+  ion-icon {
+    color: var(--ion-color-theme);
+  }
 }
