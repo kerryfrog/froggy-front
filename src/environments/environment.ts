@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-
+  // apiUrl: "https://fro99y.shop",
   apiUrl: "https://localhost:8003",
   // apiUrl: "http://localhost:8002",
   // apiUrl: "https://ec2-13-52-238-87.us-west-1.compute.amazonaws.com:8003",
