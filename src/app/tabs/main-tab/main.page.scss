@@ -17,6 +17,7 @@ ion-refresher {
     display: flex;
     justify-content: flex-start;
     overflow-x: scroll;
+    overflow-y: clip;
     font-family: "Pretender-Regular";
     .contents {
       min-width: 121px;
