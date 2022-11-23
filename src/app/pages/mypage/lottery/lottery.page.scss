@@ -38,3 +38,13 @@ div {
   font-family: "Pretendard-Light";
   font-size: 20px;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  ion-spinner {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: var(--ion-color-theme-shade);
+  }
+}

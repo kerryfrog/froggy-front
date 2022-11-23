@@ -21,24 +21,33 @@ export class LotteryPage implements OnInit {
   public curIcon = "heart";
   public arr = [1, 2, 2, 3, 3, 3];
   public rating = -1;
+  public isLoading = false;
+  public isButton = true;
+
   ngOnInit() {}
   // 확률: 1/6, 2/6, 3/6
   async ionViewDidEnter() {
     await this.getUser();
   }
   async onChangeSegment(event) {
+    this.isButton = false;
     this.curIcon = event.detail.value;
   }
   async onSelectSegment() {
     if (this.user.ticket > 0) {
+      this.rating = -1;
+      this.isButton = true;
+      this.isLoading = true;
       const shuffledArr = await this.shuffleArray(this.arr);
-      console.log(shuffledArr, shuffledArr[this.curIcon]);
-      this.rating = shuffledArr[this.curIcon];
       this.user.ticket = this.user.ticket - 1;
       await this.userService.saveUser(this.user);
       await this.profileService.changeTicket({
         ticket: this.user.ticket,
       });
+      setTimeout(() => {
+        this.rating = shuffledArr[this.curIcon];
+        this.isLoading = false;
+      }, 500);
     } else {
       const alert = await this.alertController.create({
         header: "안내",

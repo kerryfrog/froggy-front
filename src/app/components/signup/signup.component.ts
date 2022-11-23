@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { NavController, ModalController } from "@ionic/angular";
+import {
+  NavController,
+  ModalController,
+  AlertController,
+} from "@ionic/angular";
 import { AuthService } from "src/app/api/auth/auth.service";
 
 @Component({
@@ -15,7 +19,8 @@ export class SignupComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public modalController: ModalController,
-    public authService: AuthService
+    public authService: AuthService,
+    public alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -57,7 +62,15 @@ export class SignupComponent implements OnInit {
       );
       console.log(signUpResult);
       if (signUpResult.data.status === "Y") {
+        const alert = await this.alertController.create({
+          header: "회원가입 성공",
+          subHeader: "",
+          message: "로그인 해주세요!",
+          buttons: [{ text: "확인" }],
+        });
+        await alert.present();
         this.goBack();
+        return;
       }
     }
   }
