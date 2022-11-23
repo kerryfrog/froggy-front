@@ -1,5 +1,10 @@
 .toolbar {
   --background: white;
+  ion-button {
+    ion-icon {
+      color: var(--ion-color-theme);
+    }
+  }
 }
 
 .mypage__wrapper {

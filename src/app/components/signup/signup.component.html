@@ -33,14 +33,6 @@
             </ion-item>
             <ion-item>
               <ion-input
-                name="email"
-                type="email"
-                placeholder="xxxx@email.com"
-                formControlName="email"
-              ></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input
                 name="password"
                 type="password"
                 placeholder="Password"
@@ -55,12 +47,21 @@
                 formControlName="confirm"
               ></ion-input>
             </ion-item>
+            <ion-item>
+              <ion-input
+                name="code"
+                type="text"
+                placeholder="추천인 코드를 입력해 주세요"
+                formControlName="code"
+              ></ion-input>
+            </ion-item>
             <div class="button__wrapper">
               <ion-button
                 class="outline_n_fill"
                 size="large"
                 type="submit"
                 expand="block"
+                [disabled]="!ionicForm.valid"
                 >회원가입하기</ion-button
               >
             </div>

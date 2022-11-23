@@ -100,8 +100,4 @@ export class RecommendPatternPage implements OnInit {
 
     this.user = userInfo;
   }
-
-  goBack() {
-    this.navController.navigateBack("tabs/main");
-  }
 }

@@ -41,6 +41,10 @@ const routes: Routes = [
     loadChildren: () =>
       import("./user-post/user-post.module").then((m) => m.UserPostPageModule),
   },
+  {
+    path: 'lottery',
+    loadChildren: () => import('./lottery/lottery.module').then( m => m.LotteryPageModule)
+  },
 ];
 
 @NgModule({
