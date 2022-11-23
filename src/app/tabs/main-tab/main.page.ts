@@ -174,7 +174,7 @@ export class MainPage {
         yarn,
       },
     };
-    this.navController.navigateForward(`/tabs/yarn/${yarn.id}`, props);
+    this.navController.navigateForward(`/yarn/${yarn.id}`, props);
   }
   async goPatternDetailPage(pattern) {
     const props: NavigationExtras = {
