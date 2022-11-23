@@ -4,7 +4,7 @@ import { ModalController, NavController } from "@ionic/angular";
 import { SignupComponent } from "src/app/components/signup/signup.component";
 import { SigninComponent } from "src/app/components/signin/signin.component";
 import { Storage } from "@ionic/storage-angular";
-
+import { UserService } from "src/app/services/user.service";
 @Component({
   selector: "app-mypage",
   templateUrl: "./mypage.page.html",
@@ -12,9 +12,11 @@ import { Storage } from "@ionic/storage-angular";
 })
 export class MypagePage implements OnInit {
   public isLoggedIn = false;
+  public user;
   constructor(
     public modalController: ModalController,
     public storage: Storage,
+    public userService: UserService,
     public changeDetectorRef: ChangeDetectorRef,
     public navController: NavController
   ) {}
@@ -26,10 +28,11 @@ export class MypagePage implements OnInit {
   }
 
   async checkIsUserLogIn() {
-    const keyVal = await this.storage.get("user");
-    console.log(keyVal);
+    const userInfo = await this.userService.getUser();
+    this.user = userInfo;
+    console.log(userInfo);
 
-    if (!keyVal) {
+    if (!userInfo) {
       this.isLoggedIn = false;
     } else {
       this.isLoggedIn = true;
@@ -83,5 +86,8 @@ export class MypagePage implements OnInit {
   }
   goThanksToPage() {
     this.navController.navigateForward(`/mypage/thanks`);
+  }
+  goLotteryPage() {
+    this.navController.navigateForward(`/mypage/lottery`);
   }
 }

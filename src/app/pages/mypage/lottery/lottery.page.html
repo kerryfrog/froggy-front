@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>lottery</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        text=""
+        defaultHref="tabs/main"
+        icon="chevron-back-outline"
+      ></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-progress-bar type="indeterminate" color="warning"></ion-progress-bar>
+  <div class="content__wrapper">
+    <div class="info">
+      <div class="info__title">경품 뽑기</div>
+      <div class="info__user" *ngIf="user">
+        당신의 티켓 수 : {{user.ticket}}
+      </div>
+    </div>
+  </div>
 </ion-content>
