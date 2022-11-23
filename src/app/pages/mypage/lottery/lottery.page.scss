@@ -2,17 +2,34 @@
   display: flex;
   padding: 10px;
   justify-content: center;
+
   .info {
     &__title {
-      font-size: 40px;
-      font-weight: 500;
+      font-family: "Pretendard-Medium";
+      font-size: 30px;
     }
     &__user {
+      font-family: "Pretendard-Light";
       font-size: 20px;
       margin-top: 10px;
     }
   }
 }
 ion-segment {
-  height: 100px;
+  height: 70px;
+}
+
+.button__wrapper {
+  margin: 20px;
+}
+
+.result__wrapper {
+  margin: 20px;
+}
+
+span {
+  color: red;
+}
+h2 {
+  margin: none;
 }
