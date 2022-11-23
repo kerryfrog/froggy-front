@@ -1,8 +1,15 @@
 .content__wrapper {
   display: flex;
-
+  padding: 10px;
   justify-content: center;
-  .title {
-    display: flex;
+  .info {
+    &__title {
+      font-size: 40px;
+      font-weight: 500;
+    }
+    &__user {
+      font-size: 20px;
+      margin-top: 10px;
+    }
   }
 }
