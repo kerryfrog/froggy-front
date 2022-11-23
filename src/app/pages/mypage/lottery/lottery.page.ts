@@ -5,7 +5,7 @@ import {
   NavController,
   AlertController,
 } from "@ionic/angular";
-
+import { ProfileService } from "src/app/api/profile.service";
 @Component({
   selector: "app-lottery",
   templateUrl: "./lottery.page.html",
@@ -14,7 +14,8 @@ import {
 export class LotteryPage implements OnInit {
   constructor(
     public userService: UserService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public profileService: ProfileService
   ) {}
   public user;
   public curIcon = "heart";
@@ -35,6 +36,9 @@ export class LotteryPage implements OnInit {
       this.rating = shuffledArr[this.curIcon];
       this.user.ticket = this.user.ticket - 1;
       await this.userService.saveUser(this.user);
+      await this.profileService.changeTicket({
+        ticket: this.user.ticket,
+      });
     } else {
       const alert = await this.alertController.create({
         header: "안내",
