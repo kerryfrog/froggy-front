@@ -17,13 +17,15 @@
       <div class="info__user" *ngIf="user">
         당신의 티켓 수 : {{user.ticket}}
       </div>
+      <div>6가지 아이템 중 하나를 골라보세요.</div>
     </div>
   </div>
+
   <ion-segment
     [scrollable]="true"
     (ionChange)="onChangeSegment($event)"
     color="success"
-    value="heart"
+    value="0"
   >
     <ion-segment-button value="0">
       <ion-icon name="heart"></ion-icon>
@@ -44,7 +46,16 @@
       <ion-icon name="person"></ion-icon>
     </ion-segment-button>
   </ion-segment>
-  <ion-button (click)="onSelectSegment()">고르기</ion-button>
-  <h2 *ngIf="rating !== -1">축하합니다!</h2>
-  <h1 *ngIf="rating !== -1">{{rating}}등에 당첨되셨습니다!</h1>
+  <div class="button__wrapper">
+    <ion-button class="outline_n_fill" (click)="onSelectSegment()"
+      >고르기</ion-button
+    >
+  </div>
+  <div *ngIf="rating !== -1" class="result__wrapper">
+    <div>축하합니다!</div>
+    <h1><span>{{rating}}등</span>에 당첨되셨습니다!</h1>
+    <div>이 화면을 예은이나 다솜이에게 보여주세요.</div>
+    <div>먼 길 자리해주셔서 감사합니다.</div>
+    <div>가는 길도 살펴 가세요.</div>
+  </div>
 </ion-content>
