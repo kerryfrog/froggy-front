@@ -7,8 +7,7 @@ import {
 import { UserService } from "src/app/services/user.service";
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { PatternService } from "src/app/api/pattern.service";
-import { filter } from "rxjs/operators";
-import { of } from "rxjs";
+import { SigninComponent } from "src/app/components/signin/signin.component";
 @Component({
   selector: "app-pattern-detail",
   templateUrl: "./pattern-detail.page.html",
@@ -25,11 +24,11 @@ export class PatternDetailPage implements OnInit {
   defaultIcon: string = "ellipse-outline";
   activeIcon: string = "ellipse";
 
-  previousUrl: string = "";
-
+  public user;
   constructor(
     public userService: UserService,
     public activatedRoute: ActivatedRoute,
+    public modalController: ModalController,
     public router: Router,
     public navController: NavController,
     public patternService: PatternService
@@ -63,6 +62,26 @@ export class PatternDetailPage implements OnInit {
     }
   }
 
+  async enrollFavorite(event, product) {
+    this.user = await this.userService.getUser();
+    if (this.user === undefined || this.user === null) {
+      await this.openSignInModal();
+      return;
+    }
+    event.stopPropagation();
+    if (product["isFavorite"]) {
+      product["isFavorite"] = false;
+    } else {
+      product["isFavorite"] = true;
+    }
+    await this.fetchEnrollFavorite(product.id);
+  }
+
+  async fetchEnrollFavorite(id) {
+    const postPatternLikeResult = this.patternService.postPatternLike(id);
+    console.log(postPatternLikeResult);
+  }
+
   async getPatternReview() {
     const { data } = await this.patternService.getPatternReview(this.patternId);
     if (data.status === "Y") {
@@ -70,10 +89,9 @@ export class PatternDetailPage implements OnInit {
       await this.setIsWriter();
     }
   }
+
   async setIsWriter() {
     const user = await this.userService.getUser();
-    console.log(user);
-    console.log(this.reviewList);
 
     for (let review of this.reviewList) {
       if (user.id === review.userId) {
@@ -83,6 +101,17 @@ export class PatternDetailPage implements OnInit {
       }
     }
   }
+
+  async openSignInModal() {
+    const modal = await this.modalController.create({
+      component: SigninComponent,
+      cssClass: "modal-fullscreen",
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    this.user = await this.userService.getUser();
+  }
+
   failtoFetchYarnDetail() {
     this.navController.navigateBack("tabs/pattern");
   }
