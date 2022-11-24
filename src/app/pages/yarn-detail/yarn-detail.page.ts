@@ -45,6 +45,8 @@ export class YarnDetailPage implements OnInit {
 
   async getYarnDetail() {
     const { data } = await this.yarnService.getYarnDetail(this.yarnId);
+    console.log(data);
+
     if (data.status === "Y") {
       this.yarn = data.yarn;
     } else {

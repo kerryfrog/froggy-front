@@ -8,8 +8,6 @@ import axios from "axios";
 export class ImageService {
   async uploadSingleImage(data) {
     try {
-      // console.log("imageservice", data);
-
       const formData = new FormData();
       formData.append("image", data);
       // formData.append("imageName", data.name);

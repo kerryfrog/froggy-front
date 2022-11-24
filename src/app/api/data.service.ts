@@ -83,7 +83,6 @@ export class DataService {
     }
   }
   async postPatternData(data) {
-    // console.log("post Pattern Data", data);
     try {
       const response = await axios({
         method: "post",

@@ -99,7 +99,7 @@ export class PatternService {
         params: keyword,
         responseType: "json",
       });
-      // console.log(response);
+
       return response;
     } catch (error) {
       return error.response;

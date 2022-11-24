@@ -74,7 +74,6 @@ export class HeartImageComponent implements OnInit {
     }
     if (this.type === "yarn") {
       const postPatternLikeResult = this.yarnService.postYarnLike(id);
-      // console.log(postPatternLikeResult);
     }
   }
 

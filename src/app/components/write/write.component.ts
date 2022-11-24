@@ -94,7 +94,7 @@ export class WriteComponent implements OnInit {
     // let inputList = [];
     this.quillFile = ev.target.files[0];
     this.image = ev.target.files[0];
-    console.log(this.image);
+    // console.log(this.image);
 
     const imageUploadResult = await this.imageService.uploadSingleImage(
       this.image
@@ -123,7 +123,7 @@ export class WriteComponent implements OnInit {
     };
 
     const savePostResult = await this.communityService.saveNewPost(payload);
-    console.log("savePostResult", savePostResult);
+    // console.log("savePostResult", savePostResult);
     if (savePostResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
     }
