@@ -137,8 +137,6 @@ export class MainPage {
       this.setUserSyncWithServer();
     }
     if (patternResult.data.status === "Y") {
-      // console.log("get by difficulty", patternResult.data);
-
       this.patternListForUser = patternResult.data.patternList.slice(0, 6);
     }
   }
@@ -231,7 +229,6 @@ export class MainPage {
 
   changeViewState() {
     this.viewState = (this.viewState += 1) % 3;
-    // console.log("view state", this.viewState);
   }
 
   async getUser() {
@@ -279,7 +276,7 @@ export class MainPage {
   // async getAndFetchYarnData() {
   //   for (let i = this.min; i <= this.max; i++) {
   //     const response = await this.dataService.getYarnDataFromRaverly(i);
-  //     // console.log("for i =", i, response);
+
   //     const postResult = await this.dataService.postYarnData(response);
 
   //     this.nowIndex = i;

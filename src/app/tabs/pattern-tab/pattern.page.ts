@@ -466,13 +466,12 @@ export class PatternPage {
     const { data } = await this.patternService.getPatternSearchList(
       this.results
     );
-    // console.log(data);
   }
 
   async getRecommendYarnData() {
     for (let i of famousList) {
       const response = await this.dataService.getPatternDataFromRaverly(i);
-      // console.log("for i =", i, response);
+
       const postResult = await this.dataService.postPatternData(response);
       this.nowIndex = i;
     }
@@ -481,14 +480,13 @@ export class PatternPage {
   // 이미지 없는 패턴 리스트 받아서 라이벌리에서 받은 후 전송 ..
   async getAndFetchPatternData() {
     const { data } = await this.dataService.getEmptyImageIndex();
-    // console.log(data.indexList);
+
     if (data.status === "Y") {
       const { indexList } = data;
       for (let index of indexList) {
         const response = await this.dataService.getPatternDataFromRaverly(
           index
         );
-        // console.log("for i =", index, response);
         const postResult = await this.dataService.postPatternData(response);
       }
     }
@@ -496,7 +494,6 @@ export class PatternPage {
 
   async getPatternPageView() {
     // 유저 level에 따른 다른 데이터 불러오기
-    // console.log(this.user);
 
     if (!this.user || this.user.level < 1) {
       const { data } = await this.patternService.getRandomPatternListByPaging(
@@ -508,7 +505,6 @@ export class PatternPage {
         } else {
           this.patternList = [...this.patternList, ...data.patternList];
         }
-        // console.log("pattern list is ", this.patternList);
 
         this.paging = data.mainPaging;
         this.pageNum += 1;
@@ -526,7 +522,6 @@ export class PatternPage {
         } else {
           this.patternList = [...this.patternList, ...data.patternList];
         }
-        // console.log("pattern list is ", this.patternList);
 
         this.paging = data.mainPaging;
         this.pageNum += 1;

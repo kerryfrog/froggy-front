@@ -30,7 +30,7 @@ export class MypagePage implements OnInit {
   async checkIsUserLogIn() {
     const userInfo = await this.userService.getUser();
     this.user = userInfo;
-    console.log(userInfo);
+    // console.log(userInfo);
 
     if (!userInfo) {
       this.isLoggedIn = false;
@@ -46,7 +46,7 @@ export class MypagePage implements OnInit {
     });
     await modal.present();
     const keyVal = await this.storage.get("user");
-    console.log("check sign up result", keyVal);
+    // console.log("check sign up result", keyVal);
     await this.checkIsUserLogIn();
     this.changeDetectorRef.detectChanges();
   }

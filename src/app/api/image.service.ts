@@ -24,7 +24,6 @@ export class ImageService {
         data: formData,
         responseType: "json",
       });
-      // console.log("imageservice response", response);
 
       return response;
     } catch (error) {
