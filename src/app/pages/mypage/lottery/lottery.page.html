@@ -53,9 +53,15 @@
     </ion-segment-button>
   </ion-segment>
   <div class="button__wrapper">
-    <ion-button class="outline_n_fill" (click)="onSelectSegment()"
+    <ion-button
+      [disabled]="isButton"
+      class="outline_n_fill"
+      (click)="onSelectSegment()"
       >고르기</ion-button
     >
+  </div>
+  <div class="spinner" *ngIf="isLoading">
+    <ion-spinner *ngIf="isLoading" name="circular"></ion-spinner>
   </div>
   <div *ngIf="rating !== -1" class="result__wrapper">
     <div>축하합니다!</div>

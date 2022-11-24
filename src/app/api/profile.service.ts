@@ -19,6 +19,19 @@ export class ProfileService {
       return error.response;
     }
   }
+  async changeTicket(data) {
+    try {
+      const response = await axios({
+        method: "put",
+        url: `${environment.apiUrl}/profile/ticket`,
+        data,
+        responseType: "json",
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
   async changeProfile(data) {
     try {
       const response = await axios({

@@ -1,12 +1,15 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="custom-back">
+  <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
-      <ion-button class="custom-back" (click)="goBack()">
-        <ion-icon name="chevron-back-outline"></ion-icon>
-      </ion-button>
+      <ion-back-button
+        text=""
+        defaultHref="tabs/main"
+        icon="chevron-back-outline"
+      ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
   <app-yarn-grid [yarnList]="yarnList"></app-yarn-grid>
 </ion-content>
