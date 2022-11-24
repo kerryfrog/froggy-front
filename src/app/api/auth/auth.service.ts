@@ -22,7 +22,7 @@ export class AuthService {
       });
       return response;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return error.response;
     }
   }

@@ -42,7 +42,7 @@ export class CommunityService {
         url: `${environment.apiUrl}/community/main`,
         responseType: "json",
       });
-      console.log("response of getMainPosts", response);
+      // console.log("response of getMainPosts", response);
 
       return response;
     } catch (error) {
@@ -56,7 +56,7 @@ export class CommunityService {
         url: `${environment.apiUrl}/community/categories/${category}`,
         responseType: "json",
       });
-      console.log("response of specific posts of category", response);
+      // console.log("response of specific posts of category", response);
 
       return response;
     } catch (error) {
@@ -70,7 +70,7 @@ export class CommunityService {
         url: `${environment.apiUrl}/community/list`,
         responseType: "json",
       });
-      console.log("response of posts of this user", response);
+      // console.log("response of posts of this user", response);
       return response;
     } catch (error) {
       return error.response;

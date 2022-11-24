@@ -70,7 +70,7 @@ export class StarRatingComponent implements OnInit {
     // this.ionicRatingService.publishStartRatingChanged(this.rating);
     // this.ionicRatingService.publishTopic(this.eventInfo.topic, this.rating);
     // unique event
-    console.log(this.rating);
+    // console.log(this.rating);
 
     this.ratingChanged.emit(this.rating);
   }

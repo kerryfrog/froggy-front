@@ -79,7 +79,7 @@ export class PatternDetailPage implements OnInit {
 
   async fetchEnrollFavorite(id) {
     const postPatternLikeResult = this.patternService.postPatternLike(id);
-    console.log(postPatternLikeResult);
+    // console.log(postPatternLikeResult);
   }
 
   async getPatternReview() {

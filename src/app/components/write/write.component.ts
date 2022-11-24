@@ -84,7 +84,7 @@ export class WriteComponent implements OnInit {
     this.quillEditorRef = editorInstance;
   }
   customImageUpload(image: any) {
-    console.log(image);
+    // console.log(image);
     /* Here we trigger a click action on the file input field, this will open a file chooser on a client computer */
     this.quillFileRef.nativeElement.click();
   }

@@ -60,7 +60,7 @@ export class SignupComponent implements OnInit {
       const signUpResult = await this.authService.postSignUp(
         this.ionicForm.value
       );
-      console.log(signUpResult);
+      // console.log(signUpResult);
       if (signUpResult.data.status === "Y") {
         const alert = await this.alertController.create({
           header: "회원가입 성공",

@@ -30,7 +30,7 @@ export class UserReviewPage implements OnInit {
   }
   async getPatternReview() {
     const { data } = await this.patternService.getPatternReviewByUser();
-    console.log(data);
+    // console.log(data);
 
     if (data.status === "Y") {
       this.patternReviewList = data.reviewList;
@@ -39,7 +39,7 @@ export class UserReviewPage implements OnInit {
 
   async getYarnReview() {
     const { data } = await this.yarnService.getYarnReviewByUser();
-    console.log(data);
+    // console.log(data);
 
     if (data.status === "Y") {
       this.yarnReviewList = data.reviewList;

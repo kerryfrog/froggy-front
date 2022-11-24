@@ -42,7 +42,7 @@ export class SigninComponent implements OnInit {
   async submitForm() {
     this.isSubmitted = true;
     if (!this.ionicForm.valid) {
-      console.log("Please provide all the required values!");
+      // console.log("Please provide all the required values!");
       return false;
     } else {
       const signInResult = await this.authService.postSignIn(
@@ -53,7 +53,7 @@ export class SigninComponent implements OnInit {
         await this.userService.saveUser(signInResult.data.user);
         this.goBackWithSignIn();
       }
-      console.log(this.ionicForm.value);
+      // console.log(this.ionicForm.value);
     }
   }
 

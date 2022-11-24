@@ -55,7 +55,7 @@ export class SelectAttributeComponent implements OnInit {
     }
   }
   selectAttribute(attribute, event) {
-    console.log(attribute, event);
+    // console.log(attribute, event);
     // if (!attribute.isSelected) {
     //   this.favoriteList.push(attribute.id);
     // } else {

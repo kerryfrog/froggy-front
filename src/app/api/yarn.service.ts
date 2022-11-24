@@ -28,7 +28,7 @@ export class YarnService {
         params: keyword,
         responseType: "json",
       });
-      console.log(response);
+      // console.log(response);
       return response;
     } catch (error) {
       return error.response;

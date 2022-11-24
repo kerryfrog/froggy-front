@@ -51,7 +51,7 @@ export class RecommendPatternPage implements OnInit {
       this.setUserSyncWithServer();
     }
     if (patternResult.data.status === "Y") {
-      console.log("get by difficulty", patternResult.data);
+      // console.log("get by difficulty", patternResult.data);
 
       this.difficultyPatternList = patternResult.data.patternList.slice(0, 6);
     }
@@ -96,7 +96,7 @@ export class RecommendPatternPage implements OnInit {
 
   async getUser() {
     const userInfo = await this.userService.getUser();
-    console.log(userInfo);
+    // console.log(userInfo);
 
     this.user = userInfo;
   }

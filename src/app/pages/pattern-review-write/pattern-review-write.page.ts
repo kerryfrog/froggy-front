@@ -76,7 +76,7 @@ export class PatternReviewWritePage implements OnInit {
     }
   }
   async certifyImagesChange(certifyImages) {
-    console.log(certifyImages);
+    // console.log(certifyImages);
     this.certifyImages = certifyImages;
   }
   onChangeRating(event) {
