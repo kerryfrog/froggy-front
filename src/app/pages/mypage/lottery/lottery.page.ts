@@ -19,7 +19,7 @@ export class LotteryPage implements OnInit {
   ) {}
   public user;
   public curIcon = "heart";
-  public arr = [1, 2, 2, 2, 3, 3, 3, 3];
+  public arr = [1, 2, 2, 3, 3, 3, 3, 3];
   public rating = -1;
   public isLoading = false;
   public isButton = true;
