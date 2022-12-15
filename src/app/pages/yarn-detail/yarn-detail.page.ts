@@ -45,6 +45,8 @@ export class YarnDetailPage implements OnInit {
 
   async getYarnDetail() {
     const { data } = await this.yarnService.getYarnDetail(this.yarnId);
+    console.log(data);
+
     if (data.status === "Y") {
       this.yarn = data.yarn;
     } else {
@@ -83,8 +85,8 @@ export class YarnDetailPage implements OnInit {
   }
   async setIsWriter() {
     const user = await this.userService.getUser();
-    console.log(user);
-    console.log(this.reviewList);
+    // console.log(user);
+    // console.log(this.reviewList);
 
     for (let review of this.reviewList) {
       if (user.id === review.userId) {

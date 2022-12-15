@@ -48,7 +48,7 @@ export class PhotoMultiComponent implements OnInit {
   }
 
   setImagesForDisplay() {
-    console.log(this.imgSrcList);
+    // console.log(this.imgSrcList);
     if (this.imgSrcList.length > 0) {
       this.imgSrcList.forEach((imgSrc) => {
         this.imagesForDisplay.push({

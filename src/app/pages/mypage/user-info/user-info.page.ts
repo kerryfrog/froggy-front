@@ -50,7 +50,7 @@ export class UserInfoPage implements OnInit {
 
   async getUser() {
     const userInfo = await this.userService.getUser();
-    console.log(userInfo);
+    // console.log(userInfo);
 
     this.user = userInfo;
     this.userPreferForShow.proficiency = userInfo.proficiency.toString();
@@ -61,7 +61,7 @@ export class UserInfoPage implements OnInit {
     const patternAttributeListResult =
       await this.patternService.getPatternAttributeList();
     if (!this.user.favoritePatternAttributeIdArr) {
-      console.log("user does not set favorite pattern attirbute");
+      // console.log("user does not set favorite pattern attirbute");
       return;
     }
     if (patternAttributeListResult.data.status === "Y") {
@@ -71,7 +71,7 @@ export class UserInfoPage implements OnInit {
         (attribute) =>
           this.user.favoritePatternAttributeIdArr.includes(attribute.id)
       );
-      console.log(this.patternAttributeListForShow);
+      // console.log(this.patternAttributeListForShow);
     }
   }
   async logout() {
@@ -107,7 +107,7 @@ export class UserInfoPage implements OnInit {
     await alert.present();
 
     const { data, role } = await alert.onDidDismiss();
-    console.log(data);
+    // console.log(data);
 
     if (role === "confirm") {
       await this.saveChangeNickName(data.values["0"]);
@@ -168,7 +168,7 @@ export class UserInfoPage implements OnInit {
       await this.getPatternAttributeList();
       this.changeDetectorRef.detectChanges();
     }
-    console.log(data);
+    // console.log(data);
   }
 
   async setUserProfile(isSetProfileChanged) {
@@ -195,7 +195,7 @@ export class UserInfoPage implements OnInit {
     } else {
       this.userPreferChange.crochet = 0;
     }
-    console.log(event.detail.value, " ", this.userPreferChange);
+    // console.log(event.detail.value, " ", this.userPreferChange);
   }
 
   onChangeKnitting(event) {

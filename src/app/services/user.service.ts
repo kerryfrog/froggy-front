@@ -9,9 +9,6 @@ export class UserService {
 
   async saveUser(user) {
     await this.storageService.set("user", JSON.stringify(user));
-
-    //const testUser = await this.storageService.get('user');
-    //console.log("test local storage", testUser);
   }
 
   async getUser() {

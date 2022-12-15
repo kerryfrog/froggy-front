@@ -8,8 +8,6 @@ import axios from "axios";
 export class ImageService {
   async uploadSingleImage(data) {
     try {
-      console.log("imageservice", data);
-
       const formData = new FormData();
       formData.append("image", data);
       // formData.append("imageName", data.name);
@@ -26,7 +24,6 @@ export class ImageService {
         data: formData,
         responseType: "json",
       });
-      console.log("imageservice response", response);
 
       return response;
     } catch (error) {

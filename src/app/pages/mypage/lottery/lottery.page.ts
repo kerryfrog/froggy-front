@@ -67,6 +67,6 @@ export class LotteryPage implements OnInit {
 
   async getUser() {
     this.user = await this.userService.getUser();
-    console.log(this.user);
+    // console.log(this.user);
   }
 }

@@ -84,7 +84,7 @@ export class WriteComponent implements OnInit {
     this.quillEditorRef = editorInstance;
   }
   customImageUpload(image: any) {
-    console.log(image);
+    // console.log(image);
     /* Here we trigger a click action on the file input field, this will open a file chooser on a client computer */
     this.quillFileRef.nativeElement.click();
   }
@@ -94,7 +94,7 @@ export class WriteComponent implements OnInit {
     // let inputList = [];
     this.quillFile = ev.target.files[0];
     this.image = ev.target.files[0];
-    console.log(this.image);
+    // console.log(this.image);
 
     const imageUploadResult = await this.imageService.uploadSingleImage(
       this.image
@@ -123,7 +123,7 @@ export class WriteComponent implements OnInit {
     };
 
     const savePostResult = await this.communityService.saveNewPost(payload);
-    console.log("savePostResult", savePostResult);
+    // console.log("savePostResult", savePostResult);
     if (savePostResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
     }

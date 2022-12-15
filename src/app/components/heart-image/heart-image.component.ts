@@ -70,11 +70,9 @@ export class HeartImageComponent implements OnInit {
   async fetchEnrollFavorite(id) {
     if (this.type === "pattern") {
       const postPatternLikeResult = this.patternService.postPatternLike(id);
-      console.log(postPatternLikeResult);
     }
     if (this.type === "yarn") {
       const postPatternLikeResult = this.yarnService.postYarnLike(id);
-      console.log(postPatternLikeResult);
     }
   }
 

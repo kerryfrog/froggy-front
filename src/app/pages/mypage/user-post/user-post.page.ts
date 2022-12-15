@@ -26,7 +26,7 @@ export class UserPostPage implements OnInit {
   }
   async getUserPosts() {
     const { data } = await this.communityService.getPostsByUser();
-    console.log(data);
+    // console.log(data);
 
     if (data.status === "Y") {
       this.userPostList = data.postList;

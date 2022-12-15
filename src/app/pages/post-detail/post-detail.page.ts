@@ -46,7 +46,7 @@ export class PostDetailPage implements OnInit {
       this.post = result.data.postDetail;
     }
     const userInfo = await this.userService.getUser();
-    console.log(this.post, userInfo);
+    // console.log(this.post, userInfo);
     if (this.post === undefined) {
       this.goBack();
     }
@@ -62,7 +62,7 @@ export class PostDetailPage implements OnInit {
 
   async fetchComments() {
     const result = await this.communityService.getComments(this.postId);
-    console.log("comment result", result);
+    // console.log("comment result", result);
 
     if (result.data.status === "Y") {
       this.commentList = result.data.commentList;
@@ -103,7 +103,7 @@ export class PostDetailPage implements OnInit {
 
   async deletePost() {
     const deleteResult = await this.communityService.deletePost(this.postId);
-    console.log(deleteResult);
+    // console.log(deleteResult);
     if (deleteResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
       return;
@@ -133,8 +133,8 @@ export class PostDetailPage implements OnInit {
       this.postId,
       comment["id"]
     );
-    console.log(this.postId, comment["id"]);
-    console.log(deleteResult);
+    // console.log(this.postId, comment["id"]);
+    // console.log(deleteResult);
     if (deleteResult.data.isUserLogin === "N") {
       this.setUserSyncWithServer();
       return;

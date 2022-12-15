@@ -85,7 +85,6 @@ export class YarnReviewWritePage implements OnInit {
   }
 
   async certifyImagesChange(certifyImages) {
-    console.log(certifyImages);
     this.certifyImages = certifyImages;
   }
   onChangeRating(event) {

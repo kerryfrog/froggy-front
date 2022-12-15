@@ -38,7 +38,7 @@ export class FavoritePatternPage implements OnInit {
     const { data } = await this.patternService.getFavoritePatternList(
       this.pageNum
     );
-    console.log(data);
+    // console.log(data);
 
     if (data.isUserLogin === "N") {
       this.setUserSyncWithServer();

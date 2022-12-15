@@ -31,7 +31,6 @@ export class YarnPage implements OnInit {
   async handleChange(event) {
     this.results = event.target.value;
     const { data } = await this.yarnService.getYarnSearchList(this.results);
-    console.log(data);
   }
 
   async ngOnInit() {
@@ -45,11 +44,9 @@ export class YarnPage implements OnInit {
 
   async getYarnPageView() {
     const { data } = await this.yarnService.getRecommendYarnList();
-    console.log("data", data);
 
     if (data.status === "Y") {
       this.yarnList = [...this.yarnList, ...data.randYarn];
-      console.log(data);
     }
   }
 
@@ -64,14 +61,12 @@ export class YarnPage implements OnInit {
   enrollFavoriteYarn(e, yarn) {
     e.stopPropagation();
     let yarnResult = this.yarnList.filter((ya) => ya.id === yarn.id)[0];
-    console.log("enrool favoaite yanr", yarnResult);
 
     if (yarnResult["isFavorite"]) {
       yarnResult["isFavorite"] = false;
     } else {
       yarnResult["isFavorite"] = true;
     }
-    console.log(yarnResult);
   }
   deleteFavoriteYarn(e, yarn) {}
 
@@ -120,10 +115,7 @@ export class YarnPage implements OnInit {
       // }
     }, 500);
   }
-    async goSearchYarnPage() {  
+  async goSearchYarnPage() {
     this.navController.navigateForward(`/tabs/yarn/search`);
   }
-
-
-
 }

@@ -34,12 +34,12 @@ export class RecommendListComponent implements OnInit {
       this.fetchEnrollFavoritePattern(pattern.id);
       patternResult["isFavorite"] = true;
     }
-    console.log(patternResult);
+    // console.log(patternResult);
   }
   fetchEnrollFavoritePattern(patternId) {
     const postPatternLikeResult =
       this.patternService.postPatternLike(patternId);
-    console.log(postPatternLikeResult);
+    // console.log(postPatternLikeResult);
   }
 
   goRecommendPatternPage() {
